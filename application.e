@@ -21,4 +21,11 @@ feature {NONE} -- Initialization
 			print ("Hello Eiffel World!%N")
 		end
 
+feature
+	tempgame:GAMES
+	tempfond:FOND_ECRAN
+	temptrou:TROU
+	tempmarmotte:MARMOTTE
+	tempmarteau:MARTEAU
+
 end

@@ -8,8 +8,13 @@ class
 	BRUIT
 
 inherit
-	COLLISION
 
-	COLLISION
+
+
+
+
+feature -- Access
+
+	 --| Remove line when Void Safety is properly set
 
 end

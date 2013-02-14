@@ -1,5 +1,5 @@
-Compiler version: 7.1.8.8986 GPL Edition - windows
+Compiler version: 7.1.8.8986 GPL Edition - unix
 Type: Quick_melt
 batch mode: False
 new session: True
-starting date: 02/07/2013 2:41:51.384 PM
+starting date: 02/11/2013 5:25:23.943 PM

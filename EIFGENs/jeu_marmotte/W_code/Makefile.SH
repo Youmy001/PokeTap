@@ -104,7 +104,7 @@ E1/eparents.o: Makefile E1/Makefile E1/estructure.h
 
 OBJECTS= C1/Cobj1.o  E1/eoption.o E1/epattern.o E1/efrozen.o E1/ecall.o E1/eplug.o E1/eskelet.o E1/enames.o E1/evisib.o E1/ececil.o E1/einit.o E1/eparents.o
 
-PRECOMP_OBJECTS= "c:\users\utilisateur\documents\eiffel user files\7.1\precomp\spec\windows\EIFGENs\base\W_code\precomp.lib"
+PRECOMP_OBJECTS= "/home/youmy/.es/eiffel_user_files/7.1/precomp/spec/unix/EIFGENs/base/W_code/preobj.o"
 
 
 jeu_marmotte: $(OBJECTS)  E1/emain.o Makefile
