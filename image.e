@@ -7,7 +7,4 @@ note
 class
 	IMAGE
 
-inherit
-	GAMES
-
 end

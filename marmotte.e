@@ -10,8 +10,14 @@ class
 inherit
 	IMAGE
 
-	TROU
 
-	COLLISION
+
+
+
+feature -- Access
+
+	marmotte_sort: TROU
+			-- `marmotte_sort'
+		attribute Result := ({like marmotte_sort}).default end --| Remove line when Void Safety is properly set
 
 end

@@ -10,9 +10,9 @@ class
 inherit
 	IMAGE
 
-	COLLISION
+	
 
-	COLLISION
+	
 
 	COLLISION
 
