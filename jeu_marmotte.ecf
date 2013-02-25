@@ -6,8 +6,26 @@
 			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
 		</option>
 		<setting name="console_application" value="true"/>
-		<external_include location="..\..\..\..\SDL-1.2.14\include\SDL"/>
-		<external_library location="..\..\..\SDL-1.2.14\lib\libSDL.dll.a"/>
+		<external_include location="..\..\..\..\SDL-1.2.14\include\SDL">
+			<condition>
+				<platform value="windows"/>
+			</condition>
+		</external_include>
+		<external_include location="-I/usr/include/SDL">
+			<condition>
+				<platform excluded_value="windows"/>
+			</condition>
+		</external_include>
+		<external_library location="..\..\..\SDL-1.2.14\lib\libSDL.dll.a">
+			<condition>
+				<platform value="windows"/>
+			</condition>
+		</external_library>
+		<external_library location="-lSDL">
+			<condition>
+				<platform excluded_value="windows"/>
+			</condition>
+		</external_library>
 		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<cluster name="jeu_marmotte" location=".\" recursive="true">
