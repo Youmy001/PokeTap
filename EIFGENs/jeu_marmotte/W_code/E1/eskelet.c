@@ -700,6 +700,21 @@ extern uint32 types157[];
 extern uint32 types205[];
 extern uint32 types105[];
 extern int32 ra329[];
+extern uint32 types847[];
+extern int32 ra330[];
+extern int32 ra331[];
+extern int32 ra332[];
+extern uint32 types845[];
+extern int32 ra333[];
+extern uint32 types839[];
+extern int32 ra334[];
+extern uint32 types844[];
+extern int32 ra335[];
+extern int32 ra336[];
+extern int32 ra337[];
+extern int32 ra338[];
+extern uint32 types842[];
+extern int32 ra339[];
 
 extern char *names5[];
 uint32 types5 [] =
@@ -19745,6 +19760,142 @@ static int32 cn_attr836 [] =
 4416,
 };
 
+extern char *names839[];
+uint32 types839 [] =
+{
+SK_REF,
+SK_REF,
+};
+
+uint16 attr_flags839 [] =
+{0,0,};
+
+static EIF_TYPE_INDEX g_atype839_0 [] = {0,842,0xFFFF};
+static EIF_TYPE_INDEX g_atype839_1 [] = {0,836,0xFFFF};
+
+static EIF_TYPE_INDEX *gtypes839 [] = {
+g_atype839_0,
+g_atype839_1,
+};
+
+static int32 cn_attr839 [] =
+{
+4470,
+4471,
+};
+
+extern char *names842[];
+uint32 types842 [] =
+{
+SK_REF,
+SK_REF,
+SK_REF,
+};
+
+uint16 attr_flags842 [] =
+{0,0,0,};
+
+static EIF_TYPE_INDEX g_atype842_0 [] = {0,843,0xFFFF};
+static EIF_TYPE_INDEX g_atype842_1 [] = {0,844,0xFFFF};
+static EIF_TYPE_INDEX g_atype842_2 [] = {0,836,0xFFFF};
+
+static EIF_TYPE_INDEX *gtypes842 [] = {
+g_atype842_0,
+g_atype842_1,
+g_atype842_2,
+};
+
+static int32 cn_attr842 [] =
+{
+4472,
+4473,
+4474,
+};
+
+extern char *names844[];
+uint32 types844 [] =
+{
+SK_REF,
+SK_REF,
+SK_REF,
+};
+
+uint16 attr_flags844 [] =
+{0,0,0,};
+
+static EIF_TYPE_INDEX g_atype844_0 [] = {0,843,0xFFFF};
+static EIF_TYPE_INDEX g_atype844_1 [] = {0,844,0xFFFF};
+static EIF_TYPE_INDEX g_atype844_2 [] = {0,836,0xFFFF};
+
+static EIF_TYPE_INDEX *gtypes844 [] = {
+g_atype844_0,
+g_atype844_1,
+g_atype844_2,
+};
+
+static int32 cn_attr844 [] =
+{
+4472,
+4473,
+4474,
+};
+
+extern char *names845[];
+uint32 types845 [] =
+{
+SK_REF,
+};
+
+uint16 attr_flags845 [] =
+{0,};
+
+static EIF_TYPE_INDEX g_atype845_0 [] = {0,839,0xFFFF};
+
+static EIF_TYPE_INDEX *gtypes845 [] = {
+g_atype845_0,
+};
+
+static int32 cn_attr845 [] =
+{
+4475,
+};
+
+extern char *names847[];
+uint32 types847 [] =
+{
+SK_REF,
+SK_REF,
+SK_REF,
+SK_REF,
+SK_REF,
+};
+
+uint16 attr_flags847 [] =
+{0,0,0,0,0,};
+
+static EIF_TYPE_INDEX g_atype847_0 [] = {0,838,0xFFFF};
+static EIF_TYPE_INDEX g_atype847_1 [] = {0,845,0xFFFF};
+static EIF_TYPE_INDEX g_atype847_2 [] = {0,839,0xFFFF};
+static EIF_TYPE_INDEX g_atype847_3 [] = {0,844,0xFFFF};
+static EIF_TYPE_INDEX g_atype847_4 [] = {0,843,0xFFFF};
+
+static EIF_TYPE_INDEX *gtypes847 [] = {
+g_atype847_0,
+g_atype847_1,
+g_atype847_2,
+g_atype847_3,
+g_atype847_4,
+};
+
+static int32 cn_attr847 [] =
+{
+4478,
+4479,
+4480,
+4481,
+4482,
+};
+
 struct cnode egc_fsystem_init[] = {
 {
 	(long) 0,
@@ -33961,7 +34112,7 @@ struct cnode egc_fsystem_init[] = {
 {
 	(long) 0,
 	(long) 0,
-	"APPLICATION",
+	"BRUIT",
 	NULL,
 	NULL,
 	NULL,
@@ -33970,7 +34121,177 @@ struct cnode egc_fsystem_init[] = {
 	(int32 *) 0,
 	0,
 	0L,
-	(int32) 0,(int32) 836,
+	(int32) 26,(int32) 836,
+	ra337,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 0,
+	(long) 0,
+	"SDL_WRAPPER",
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(uint16) 0,
+	(int32 *) 0,
+	0,
+	0L,
+	(int32) 26,(int32) 837,
+	ra335,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 2,
+	(long) 2,
+	"GAMES",
+	names839,
+	types839,
+	attr_flags839,
+	gtypes839,
+	(uint16) 0,
+	cn_attr839,
+	8,
+	2L,
+	(int32) 26,(int32) 838,
+	ra333,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 0,
+	(long) 0,
+	"TROU",
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(uint16) 0,
+	(int32 *) 0,
+	0,
+	0L,
+	(int32) 26,(int32) 839,
+	ra331,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 0,
+	(long) 0,
+	"POINTAGE",
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(uint16) 0,
+	(int32 *) 0,
+	0,
+	0L,
+	(int32) 26,(int32) 840,
+	ra339,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 3,
+	(long) 3,
+	"COLLISION",
+	names842,
+	types842,
+	attr_flags842,
+	gtypes842,
+	(uint16) 0,
+	cn_attr842,
+	12,
+	3L,
+	(int32) 26,(int32) 841,
+	ra338,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 0,
+	(long) 0,
+	"IMAGE",
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(uint16) 4096,
+	(int32 *) 0,
+	0,
+	0L,
+	(int32) 0,(int32) 842,
+	ra336,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 3,
+	(long) 3,
+	"MARTEAU",
+	names844,
+	types844,
+	attr_flags844,
+	gtypes844,
+	(uint16) 0,
+	cn_attr844,
+	12,
+	3L,
+	(int32) 26,(int32) 843,
+	ra334,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 1,
+	(long) 1,
+	"MARMOTTE",
+	names845,
+	types845,
+	attr_flags845,
+	gtypes845,
+	(uint16) 0,
+	cn_attr845,
+	4,
+	1L,
+	(int32) 26,(int32) 844,
+	ra332,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 0,
+	(long) 0,
+	"FOND_ECRAN",
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(uint16) 0,
+	(int32 *) 0,
+	0,
+	0L,
+	(int32) 26,(int32) 845,
+	ra330,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 5,
+	(long) 5,
+	"APPLICATION",
+	names847,
+	types847,
+	attr_flags847,
+	gtypes847,
+	(uint16) 0,
+	cn_attr847,
+	20,
+	5L,
+	(int32) 0,(int32) 846,
 	ra329,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
@@ -34813,6 +35134,16 @@ int32 *egc_fcall_init[] = {
 (int32 *) 0,
 (int32 *) 0,
 (int32 *) 0,
+ra337,
+ra335,
+ra333,
+ra331,
+ra339,
+ra338,
+ra336,
+ra334,
+ra332,
+ra330,
 ra329,
 };
 

@@ -4765,6 +4765,40 @@ char *names836 [] =
 "type",
 };
 
+char *names839 [] =
+{
+"image",
+"fondsonore",
+};
+
+char *names842 [] =
+{
+"marteau_c",
+"marmotte_c",
+"bruit_c",
+};
+
+char *names844 [] =
+{
+"marteau_c",
+"marmotte_c",
+"bruit_c",
+};
+
+char *names845 [] =
+{
+"marmotte_sort",
+};
+
+char *names847 [] =
+{
+"tempgame",
+"tempfond",
+"temptrou",
+"tempmarmotte",
+"tempmarteau",
+};
+
 
 
 #ifdef __cplusplus

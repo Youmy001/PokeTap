@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C1"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH = 
+INCLUDE_PATH =  -I"-I/usr/include/SDL"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -53,7 +53,11 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 .cpp.o:
 	$(CPP) $(CPPFLAGS) -c $<
 
-OBJECTS = ap837.o ap837d.o ap837f.o 
+OBJECTS = ap847.o ap847d.o ap847f.o fo846.o fo846d.o fo846f.o tr840.o \
+	tr840d.o tr840f.o ma845.o ma845d.o ma845f.o ga839.o ga839d.o ga839f.o \
+	ma844.o ma844d.o ma844f.o sd838.o sd838d.o sd838f.o im843.o im843d.o \
+	im843f.o br837.o br837d.o br837f.o co842.o co842d.o co842f.o po841.o \
+	po841d.o po841f.o 
 
 all: Cobj1.o
 

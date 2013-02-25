@@ -871,6 +871,48 @@ static void toc424 (fnptr ptr)
 	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE)) ptr)(Current,*arg1,*arg2,*arg3,*arg4,*arg5);
 }
 
+static EIF_TYPED_VALUE toi480(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+static EIF_TYPED_VALUE toi480 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1, EIF_TYPED_VALUE arg2, EIF_TYPED_VALUE arg3, EIF_TYPED_VALUE arg4)
+{
+	GTCX
+	EIF_TYPED_VALUE *it;
+	it = iget();
+	it->type = SK_POINTER;it->it_p = ((arg1.type & SK_HEAD) == SK_REF)? * (EIF_POINTER *)arg1.it_r: arg1.it_p;
+	it = iget();
+	it->type = SK_POINTER;it->it_p = ((arg2.type & SK_HEAD) == SK_REF)? * (EIF_POINTER *)arg2.it_r: arg2.it_p;
+	it = iget();
+	it->type = SK_POINTER;it->it_p = ((arg3.type & SK_HEAD) == SK_REF)? * (EIF_POINTER *)arg3.it_r: arg3.it_p;
+	it = iget();
+	it->type = SK_POINTER;it->it_p = ((arg4.type & SK_HEAD) == SK_REF)? * (EIF_POINTER *)arg4.it_r: arg4.it_p;
+	it = iget();
+	it->type = SK_REF;
+	it->it_ref = Current;
+
+	xinterp(IC, 5);
+	return * opop();
+}
+
+static void toc480(fnptr);
+static void toc480 (fnptr ptr)
+{
+	EIF_REFERENCE Current;
+	EIF_TYPED_VALUE result;
+	EIF_TYPED_VALUE *it;
+	EIF_TYPED_VALUE *arg1;
+	EIF_TYPED_VALUE *arg2;
+	EIF_TYPED_VALUE *arg3;
+	EIF_TYPED_VALUE *arg4;
+	Current = opop()->it_ref;
+	
+	arg4 = opop();
+	arg3 = opop();
+	arg2 = opop();
+	arg1 = opop();
+	result = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE)) ptr)(Current,*arg1,*arg2,*arg3,*arg4);
+	it = iget();
+	*it = result;
+}
+
 static EIF_TYPED_VALUE toi312(EIF_REFERENCE);
 static EIF_TYPED_VALUE toi312 (EIF_REFERENCE Current)
 {
@@ -3318,6 +3360,48 @@ static void toc44 (fnptr ptr)
 	
 	arg1 = opop();
 	result = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) ptr)(Current,*arg1);
+	it = iget();
+	*it = result;
+}
+
+static EIF_TYPED_VALUE toi479(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+static EIF_TYPED_VALUE toi479 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1, EIF_TYPED_VALUE arg2, EIF_TYPED_VALUE arg3, EIF_TYPED_VALUE arg4)
+{
+	GTCX
+	EIF_TYPED_VALUE *it;
+	it = iget();
+	it->type = SK_INT32;it->it_i4 = ((arg1.type & SK_HEAD) == SK_REF)? * (EIF_INTEGER_32 *)arg1.it_r: arg1.it_i4;
+	it = iget();
+	it->type = SK_INT32;it->it_i4 = ((arg2.type & SK_HEAD) == SK_REF)? * (EIF_INTEGER_32 *)arg2.it_r: arg2.it_i4;
+	it = iget();
+	it->type = SK_INT32;it->it_i4 = ((arg3.type & SK_HEAD) == SK_REF)? * (EIF_INTEGER_32 *)arg3.it_r: arg3.it_i4;
+	it = iget();
+	it->type = SK_UINT32;it->it_n4 = ((arg4.type & SK_HEAD) == SK_REF)? * (EIF_NATURAL_32 *)arg4.it_r: arg4.it_n4;
+	it = iget();
+	it->type = SK_REF;
+	it->it_ref = Current;
+
+	xinterp(IC, 5);
+	return * opop();
+}
+
+static void toc479(fnptr);
+static void toc479 (fnptr ptr)
+{
+	EIF_REFERENCE Current;
+	EIF_TYPED_VALUE result;
+	EIF_TYPED_VALUE *it;
+	EIF_TYPED_VALUE *arg1;
+	EIF_TYPED_VALUE *arg2;
+	EIF_TYPED_VALUE *arg3;
+	EIF_TYPED_VALUE *arg4;
+	Current = opop()->it_ref;
+	
+	arg4 = opop();
+	arg3 = opop();
+	arg2 = opop();
+	arg1 = opop();
+	result = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE)) ptr)(Current,*arg1,*arg2,*arg3,*arg4);
 	it = iget();
 	*it = result;
 }
@@ -9356,6 +9440,35 @@ static void toc469 (fnptr ptr)
 	arg2 = opop();
 	arg1 = opop();
 	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE)) ptr)(Current,*arg1,*arg2,*arg3,*arg4,*arg5);
+}
+
+static void toi481(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+static void toi481 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1, EIF_TYPED_VALUE arg2)
+{
+	GTCX
+	EIF_TYPED_VALUE *it;
+	it = iget();
+	it->type = SK_POINTER;it->it_p = ((arg1.type & SK_HEAD) == SK_REF)? * (EIF_POINTER *)arg1.it_r: arg1.it_p;
+	it = iget();
+	it->type = SK_INT16;it->it_i2 = ((arg2.type & SK_HEAD) == SK_REF)? * (EIF_INTEGER_16 *)arg2.it_r: arg2.it_i2;
+	it = iget();
+	it->type = SK_REF;
+	it->it_ref = Current;
+
+	xinterp(IC, 3);
+}
+
+static void toc481(fnptr);
+static void toc481 (fnptr ptr)
+{
+	EIF_REFERENCE Current;
+	EIF_TYPED_VALUE *arg1;
+	EIF_TYPED_VALUE *arg2;
+	Current = opop()->it_ref;
+	
+	arg2 = opop();
+	arg1 = opop();
+	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE)) ptr)(Current,*arg1,*arg2);
 }
 
 static void toi123(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
@@ -16680,6 +16793,9 @@ struct p_interface egc_fpattern_init[] = {
 {(void (*)(fnptr)) toc476, (fnptr) toi476},
 {(void (*)(fnptr)) toc477, (fnptr) toi477},
 {(void (*)(fnptr)) toc478, (fnptr) toi478},
+{(void (*)(fnptr)) toc479, (fnptr) toi479},
+{(void (*)(fnptr)) toc480, (fnptr) toi480},
+{(void (*)(fnptr)) toc481, (fnptr) toi481},
 };
 
 #ifdef __cplusplus

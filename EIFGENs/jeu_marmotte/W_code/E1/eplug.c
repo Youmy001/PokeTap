@@ -140,12 +140,12 @@ void egc_init_plug (void)
 	egc_forg_table = egc_forg_table_init;
 
 	egc_system_name = "jeu_marmotte";
-	egc_system_location = "/home/youmy/documents/POO2/jeu_marmotte/EIFGENs/jeu_marmotte/W_code";
+	egc_system_location = "/home/youmy/documents/POO2/PokeTap/EIFGENs/jeu_marmotte/W_code";
 	egc_compiler_tag = 38;
 	egc_project_version = 1359059715;
 	egc_has_old_special_semantic = 0;
 	egc_has_ieee_semantic = 1;
-	scount = 837;
+	scount = 847;
 
 	egc_rcount = 1;
 	egc_ridx = 0;
@@ -170,7 +170,7 @@ void egc_init_plug (void)
 void egc_rcdt_init (void)
 {
 	if (egc_rcdt[0] == 0) {
-		egc_rcdt[0] = 836; /* APPLICATION */
+		egc_rcdt[0] = 846; /* APPLICATION */
 	}
 }
 

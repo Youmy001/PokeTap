@@ -11759,7 +11759,36 @@ extern void F831_6431();
 extern void F831_6432();
 extern EIF_REFERENCE F831_6433();
 extern EIF_CHARACTER_32 F831_6434();
-extern void F837_6523();
+extern EIF_INTEGER_32 F838_6523();
+extern EIF_POINTER F838_6524();
+extern EIF_POINTER F838_6525();
+extern EIF_INTEGER_32 F838_6526();
+extern EIF_INTEGER_32 F838_6527();
+extern void F838_6528();
+extern void F838_6529();
+extern void F838_6530();
+extern void F838_6531();
+extern void F838_6532();
+extern EIF_INTEGER_32 F838_6533();
+extern EIF_INTEGER_32 F838_6534();
+extern EIF_INTEGER_32 F838_6535();
+extern EIF_NATURAL_32 F838_6536();
+extern EIF_NATURAL_32 F838_6537();
+extern EIF_POINTER F838_6538();
+extern EIF_INTEGER_32 F838_6539();
+extern EIF_REFERENCE F839_6541();
+extern EIF_REFERENCE F839_6540();
+extern EIF_REFERENCE F842_6542();
+extern EIF_REFERENCE F842_6543();
+extern EIF_REFERENCE F842_6544();
+extern EIF_REFERENCE F845_6545();
+extern void F846_6546();
+extern void F847_6547();
+extern EIF_REFERENCE F847_6548();
+extern EIF_REFERENCE F847_6549();
+extern EIF_REFERENCE F847_6550();
+extern EIF_REFERENCE F847_6551();
+extern EIF_REFERENCE F847_6552();
 
 #ifdef __cplusplus
 }
@@ -23524,7 +23553,36 @@ fnptr egc_frozen_init[] = {
 (fnptr) F831_6432,
 (fnptr) F831_6433,
 (fnptr) F831_6434,
-(fnptr) F837_6523,
+(fnptr) F838_6523,
+(fnptr) F838_6524,
+(fnptr) F838_6525,
+(fnptr) F838_6526,
+(fnptr) F838_6527,
+(fnptr) F838_6528,
+(fnptr) F838_6529,
+(fnptr) F838_6530,
+(fnptr) F838_6531,
+(fnptr) F838_6532,
+(fnptr) F838_6533,
+(fnptr) F838_6534,
+(fnptr) F838_6535,
+(fnptr) F838_6536,
+(fnptr) F838_6537,
+(fnptr) F838_6538,
+(fnptr) F838_6539,
+(fnptr) F839_6541,
+(fnptr) F839_6540,
+(fnptr) F842_6542,
+(fnptr) F842_6543,
+(fnptr) F842_6544,
+(fnptr) F845_6545,
+(fnptr) F846_6546,
+(fnptr) F847_6547,
+(fnptr) F847_6548,
+(fnptr) F847_6549,
+(fnptr) F847_6550,
+(fnptr) F847_6551,
+(fnptr) F847_6552,
 };
 
 int egc_fpatidtab_init[] = {
@@ -35281,7 +35339,36 @@ int egc_fpatidtab_init[] = {
 7,
 371,
 20,
+154,
+44,
+478,
+479,
+45,
+36,
+480,
+480,
+122,
+122,
+45,
+45,
+8,
+14,
+14,
+370,
+45,
+0,
+0,
+0,
+0,
+0,
+0,
 5,
+5,
+0,
+0,
+0,
+0,
+0,
 };
 
 #ifdef __cplusplus
