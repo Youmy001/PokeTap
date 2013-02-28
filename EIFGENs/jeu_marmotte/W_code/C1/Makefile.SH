@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C1"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"-I/usr/include/SDL"
+INCLUDE_PATH =  -I"/usr/include/SDL"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -53,11 +53,13 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 .cpp.o:
 	$(CPP) $(CPPFLAGS) -c $<
 
-OBJECTS = ap847.o ap847d.o ap847f.o fo846.o fo846d.o fo846f.o tr840.o \
-	tr840d.o tr840f.o ma845.o ma845d.o ma845f.o ga839.o ga839d.o ga839f.o \
-	ma844.o ma844d.o ma844f.o sd838.o sd838d.o sd838f.o im843.o im843d.o \
-	im843f.o br837.o br837d.o br837f.o co842.o co842d.o co842f.o po841.o \
-	po841d.o po841f.o 
+OBJECTS = big_file_C1_c.o 
+
+OLDOBJECTS =  ap848.o ap848d.o ap848f.o fo847.o fo847d.o fo847f.o tr841.o \
+	tr841d.o tr841f.o ma846.o ma846d.o ma846f.o ga840.o ga840d.o ga840f.o \
+	ma845.o ma845d.o ma845f.o sd839.o sd839d.o sd839f.o sd838.o sd838d.o \
+	sd838f.o im844.o im844d.o im844f.o br837.o br837d.o br837f.o co843.o \
+	co843d.o co843f.o po842.o po842d.o po842f.o 
 
 all: Cobj1.o
 
@@ -78,3 +80,4 @@ local_clobber:: local_clean
 !NO!SUBS!
 chmod 644 Makefile
 $eunicefix Makefile
+

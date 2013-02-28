@@ -1,5 +1,5 @@
 /*
- * Class MARMOTTE
+ * Class MARTEAU
  */
 
 #include "eif_macros.h"
@@ -48,7 +48,9 @@ static struct desc_info desc_845[] = {
 	{28, (BODY_INDEX)-1, 844, NULL},
 	{29, (BODY_INDEX)-1, 196, NULL},
 	{30, (BODY_INDEX)-1, 844, NULL},
-	{11775, 0, 839, NULL},
+	{11775, 0, 844, NULL},
+	{11776, 4, 845, NULL},
+	{11777, 8, 836, NULL},
 };
 
 extern void Init845(void);
@@ -56,7 +58,7 @@ void Init845(void)
 {
 	IDSC(desc_845, 0, 844);
 	IDSC(desc_845 + 1, 1, 844);
-	IDSC(desc_845 + 32, 332, 844);
+	IDSC(desc_845 + 32, 339, 844);
 }
 
 

@@ -9,15 +9,21 @@ class
 
 inherit
 	IMAGE
-feature -- Initialization
+create
+	make
 
+feature {NONE} -- Initialization
+	make
+		do
+			affiche_fond_ecran
+		end
 affiche_fond_ecran
 	local
 			l_init:NATURAL_32
 			ctr:INTEGER
 			screen: POINTER
-			ef_bmp:STRING
-			c_bmp: C_STRING
+			ef_img:STRING
+			c_img: C_STRING
 			targetarea:POINTER
 			l_infile, memory_manager: POINTER
 			bmp_w, bmp_h: INTEGER
@@ -27,9 +33,9 @@ affiche_fond_ecran
 			ctr :={SDL_WRAPPER}.SDL_Init(l_init)
 
 			--Charger l'image test.bmp dans un SDL surface
-			ef_bmp :="poke_arena.bmp"
-			create c_bmp.make (ef_bmp)
-			l_infile:={SDL_WRAPPER}.SDL_Loadbmp(c_bmp.item)
+			ef_img :="poke_arena.png"
+			create c_img.make (ef_img)
+			l_infile:={SDL_IMAGE}.IMG_Load(c_img.item)
 
 			bmp_h := {SDL_WRAPPER}.get_SDL_Surface_H(l_infile)
 			bmp_w := {SDL_WRAPPER}.get_SDL_Surface_W(l_infile)

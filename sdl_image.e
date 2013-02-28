@@ -12,7 +12,8 @@ feature --Functions- SDL_IMAGE.h
 	frozen IMG_Load(file:POINTER):POINTER
 		-- Loads an image from file name
 	external
-		"C (const char *) : SDL_Surface* | <SDL_IMAGE.h>"
+		"C (const char *) : SDL_Surface* | <SDL_image.h>"
 	alias
 		"IMG_Load"
+	end
 end

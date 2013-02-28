@@ -8,22 +8,22 @@ class
 Feature --Functions- SDL.h
 
 	Frozen SDL_Init(flags:NATURAL_32) :INTEGER
-	-- Initialise la bibliothèque SDL
+		-- Initialise la bibliothèque SDL
 	external
-		"C (Uint32) :  int | <SDL.h>"
+		"C (Uint32) : int | <SDL.h>"
 	alias
 		"SDL_Init"
 	end
 
 	Frozen SDL_LoadBMP(file:POINTER) :POINTER
-	--Loads a surface from a named Windows BMP file.
+		--Loads a surface from a named Windows BMP file.
 	external
 		"C (const char *) : SDL_Surface* | <SDL.h>"
 	alias
 		"SDL_LoadBMP"
 	end
 	frozen SDL_SetVideoMode(width,height,bitsperpixel:INTEGER;flags:NATURAL_32) : POINTER
-	--Set up a video mode with the specified width, height and bitsperpixel.
+		--Set up a video mode with the specified width, height and bitsperpixel.
 	external
 		"C (int, int, int, Uint32) : SDL_Surface* | <SDL.h>"
 	alias
@@ -31,7 +31,7 @@ Feature --Functions- SDL.h
 	end
 
 	frozen SDL_BlitSurface(src,srcrect,dst,dstrect:POINTER) : INTEGER
-	--This performs a fast blit from the source surface to the destination surface.
+		--This performs a fast blit from the source surface to the destination surface.
 	external
 		"C (SDL_Surface *, SDL_Rect *, SDL_Surface *, SDL_Rect *) : int | <SDL.h>"
 	alias
@@ -39,7 +39,7 @@ Feature --Functions- SDL.h
 	end
 
 	frozen SDL_Flip(screen:POINTER) : INTEGER
-	-- swaps screen buffers
+		-- swaps screen buffers
 	external
 		"C (SDL_Surface*) : int | <SDL.h>"
 	alias
@@ -47,12 +47,21 @@ Feature --Functions- SDL.h
 	end
 
 	frozen SDL_Delay(ms:NATURAL_32)
-	-- Wait a specified number of milliseconds before returning.
+		-- Wait a specified number of milliseconds before returning.
 	external
 		"C (Uint32) | <SDL.h>"
 	alias
 		"SDL_Delay"
 	end
+
+	frozen SDL_PollEvent(event:POINTER):INTEGER
+		-- Polls for currently pending events
+	external
+		"C (SDL_Event*): int | <SDL.h>"
+	alias
+		"SDL_PollEvent"
+	end
+
 feature -- Setter -- SDL.h	
 	frozen set_SDL_Rect_X(SDL_Rect:POINTER; value:INTEGER_16)
 		--Modifie le x de l'image
@@ -87,34 +96,42 @@ feature -- Setter -- SDL.h
 feature -- getter  -- SDL.h
 	frozen get_SDL_Surface_H(SDL_Surface : POINTER):INTEGER
 		--la surface vertical de l'image
-		external
-			"C [struct <SDL.h>] (SDL_Surface) : int"
-		alias
-			"h"
-		end
+	external
+		"C [struct <SDL.h>] (SDL_Surface) : int"
+	alias
+		"h"
+	end
 
 	frozen get_SDL_Surface_W(SDL_Surface : POINTER):INTEGER
 		-- la surface horizontale de l'image
-		external
-			"C [struct <SDL.h>] (SDL_Surface) : int"
-		alias
-			"w"
-		end
+	external
+		"C [struct <SDL.h>] (SDL_Surface) : int"
+	alias
+		"w"
+	end
 
 feature --sizeof
 
 	frozen sizeof_SDL_Rect:INTEGER
-
+		-- Définie une zone rectangulaire
 	external
 		"C inline use <SDL.h>"
 	alias
 		"sizeof(SDL_Rect)"
 	end
 
+	frozen sizeof_SDL_Event:INTEGER
+		-- Définie un évènement
+	external
+		"C inline use <SDL.h>"
+	alias
+		"sizeof(SDL_Event)"
+	end
+
 feature -- Constante C
 
 	frozen SDL_INIT_VIDEO :NATURAL_32
-	--Constante C pour initialiser
+		--Constante C pour initialiser
 	external
 		"C inline use <SDL.h>"
 	alias
@@ -122,29 +139,18 @@ feature -- Constante C
 	end
 
 	frozen SDL_SWSURFACE :NATURAL_32
-	--Constante C pour initialiser la surface
+		--Constante C pour initialiser la surface
 	external
 		"C inline use <SDL.h>"
 	alias
 		"SDL_SWSURFACE"
 	end
 
-	frozen fopen (filename, mode: POINTER): POINTER
-			-- Open the file `filename' with the opening `mode'.
-			-- Voir: http://pubs.opengroup.org/onlinepubs/009695399/functions/fopen.html
-			-- Signature: FILE *fopen(const char * filename, const char * mode);
-		external
-			"C (const char *, const char *) : FILE * | <stdio.h>"
-		alias
-			"fopen"
-		end
-		frozen fclose (file: POINTER): INTEGER_32
-			-- Close the `file'.
-			-- Voir: http://pubs.opengroup.org/onlinepubs/009695399/functions/fclose.html
-			-- Signature: int fclose(FILE *stream);
-		external
-			"C (FILE *) : int | <stdio.h>"
-		alias
-			"fclose"
-		end
+	frozen SDL_QUIT:NATURAL_8
+		--Constante C pour l'évènement Quit
+	external
+		"C inline use <SDL.h>"
+	alias
+		"SDL_QUIT"
+	end
 end

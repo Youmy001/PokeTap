@@ -4765,20 +4765,14 @@ char *names836 [] =
 "type",
 };
 
-char *names839 [] =
+char *names840 [] =
 {
 "image",
 "fondsonore",
+"fond",
 };
 
-char *names842 [] =
-{
-"marteau_c",
-"marmotte_c",
-"bruit_c",
-};
-
-char *names844 [] =
+char *names843 [] =
 {
 "marteau_c",
 "marmotte_c",
@@ -4787,10 +4781,17 @@ char *names844 [] =
 
 char *names845 [] =
 {
+"marteau_c",
+"marmotte_c",
+"bruit_c",
+};
+
+char *names846 [] =
+{
 "marmotte_sort",
 };
 
-char *names847 [] =
+char *names848 [] =
 {
 "tempgame",
 "tempfond",

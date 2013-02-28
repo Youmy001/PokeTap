@@ -7,12 +7,6 @@ note
 class
 	BRUIT
 
-inherit
-
-
-
-
-
 feature -- Access
 
 	 --| Remove line when Void Safety is properly set

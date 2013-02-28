@@ -11,7 +11,7 @@
 				<platform value="windows"/>
 			</condition>
 		</external_include>
-		<external_include location="-I/usr/include/SDL">
+		<external_include location="/usr/include/SDL">
 			<condition>
 				<platform excluded_value="windows"/>
 			</condition>
@@ -22,6 +22,11 @@
 			</condition>
 		</external_library>
 		<external_library location="-lSDL">
+			<condition>
+				<platform excluded_value="windows"/>
+			</condition>
+		</external_library>
+		<external_library location="-lSDL_image">
 			<condition>
 				<platform excluded_value="windows"/>
 			</condition>

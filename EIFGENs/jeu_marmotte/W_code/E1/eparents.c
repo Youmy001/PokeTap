@@ -3356,43 +3356,47 @@ static struct eif_par_types par836 = {836, ptf836, (uint16) 0, (char) 0};
 static EIF_TYPE_INDEX ptf837[] = {0,0,0xFFFF};
 static struct eif_par_types par837 = {837, ptf837, (uint16) 0, (char) 0};
 
-/* GAMES */
+/* SDL_IMAGE */
 static EIF_TYPE_INDEX ptf838[] = {0,0,0xFFFF};
 static struct eif_par_types par838 = {838, ptf838, (uint16) 0, (char) 0};
 
-/* TROU */
+/* GAMES */
 static EIF_TYPE_INDEX ptf839[] = {0,0,0xFFFF};
 static struct eif_par_types par839 = {839, ptf839, (uint16) 0, (char) 0};
 
-/* POINTAGE */
+/* TROU */
 static EIF_TYPE_INDEX ptf840[] = {0,0,0xFFFF};
 static struct eif_par_types par840 = {840, ptf840, (uint16) 0, (char) 0};
 
-/* COLLISION */
-static EIF_TYPE_INDEX ptf841[] = {0,840,0xFFFF};
+/* POINTAGE */
+static EIF_TYPE_INDEX ptf841[] = {0,0,0xFFFF};
 static struct eif_par_types par841 = {841, ptf841, (uint16) 0, (char) 0};
 
-/* IMAGE */
-static EIF_TYPE_INDEX ptf842[] = {0,0,0xFFFF};
+/* COLLISION */
+static EIF_TYPE_INDEX ptf842[] = {0,841,0xFFFF};
 static struct eif_par_types par842 = {842, ptf842, (uint16) 0, (char) 0};
 
-/* MARTEAU */
-static EIF_TYPE_INDEX ptf843[] = {0,842,0xFFF7,0,841,0xFFFF};
+/* IMAGE */
+static EIF_TYPE_INDEX ptf843[] = {0,0,0xFFFF};
 static struct eif_par_types par843 = {843, ptf843, (uint16) 0, (char) 0};
 
-/* MARMOTTE */
-static EIF_TYPE_INDEX ptf844[] = {0,842,0xFFFF};
+/* MARTEAU */
+static EIF_TYPE_INDEX ptf844[] = {0,843,0xFFF7,0,842,0xFFFF};
 static struct eif_par_types par844 = {844, ptf844, (uint16) 0, (char) 0};
 
-/* FOND_ECRAN */
-static EIF_TYPE_INDEX ptf845[] = {0,842,0xFFFF};
+/* MARMOTTE */
+static EIF_TYPE_INDEX ptf845[] = {0,843,0xFFFF};
 static struct eif_par_types par845 = {845, ptf845, (uint16) 0, (char) 0};
 
-/* APPLICATION */
-static EIF_TYPE_INDEX ptf846[] = {0,124,0xFFFF};
+/* FOND_ECRAN */
+static EIF_TYPE_INDEX ptf846[] = {0,843,0xFFFF};
 static struct eif_par_types par846 = {846, ptf846, (uint16) 0, (char) 0};
 
-int egc_partab_size_init = 846;
+/* APPLICATION */
+static EIF_TYPE_INDEX ptf847[] = {0,124,0xFFFF};
+static struct eif_par_types par847 = {847, ptf847, (uint16) 0, (char) 0};
+
+int egc_partab_size_init = 847;
 struct eif_par_types *egc_partab_init[] = {
 &par0,
 &par1,
@@ -4241,6 +4245,7 @@ struct eif_par_types *egc_partab_init[] = {
 &par844,
 &par845,
 &par846,
+&par847,
 NULL};
 
 #ifdef __cplusplus

@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in E1"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"-I/usr/include/SDL"
+INCLUDE_PATH =  -I"/usr/include/SDL"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp

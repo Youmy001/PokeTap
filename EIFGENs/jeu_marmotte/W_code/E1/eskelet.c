@@ -700,21 +700,22 @@ extern uint32 types157[];
 extern uint32 types205[];
 extern uint32 types105[];
 extern int32 ra329[];
-extern uint32 types847[];
+extern uint32 types848[];
 extern int32 ra330[];
 extern int32 ra331[];
 extern int32 ra332[];
-extern uint32 types845[];
+extern uint32 types846[];
 extern int32 ra333[];
-extern uint32 types839[];
+extern uint32 types840[];
 extern int32 ra334[];
-extern uint32 types844[];
+extern uint32 types845[];
 extern int32 ra335[];
 extern int32 ra336[];
 extern int32 ra337[];
 extern int32 ra338[];
-extern uint32 types842[];
 extern int32 ra339[];
+extern uint32 types843[];
+extern int32 ra340[];
 
 extern char *names5[];
 uint32 types5 [] =
@@ -19760,140 +19761,144 @@ static int32 cn_attr836 [] =
 4416,
 };
 
-extern char *names839[];
-uint32 types839 [] =
-{
-SK_REF,
-SK_REF,
-};
-
-uint16 attr_flags839 [] =
-{0,0,};
-
-static EIF_TYPE_INDEX g_atype839_0 [] = {0,842,0xFFFF};
-static EIF_TYPE_INDEX g_atype839_1 [] = {0,836,0xFFFF};
-
-static EIF_TYPE_INDEX *gtypes839 [] = {
-g_atype839_0,
-g_atype839_1,
-};
-
-static int32 cn_attr839 [] =
-{
-4470,
-4471,
-};
-
-extern char *names842[];
-uint32 types842 [] =
+extern char *names840[];
+uint32 types840 [] =
 {
 SK_REF,
 SK_REF,
 SK_REF,
 };
 
-uint16 attr_flags842 [] =
+uint16 attr_flags840 [] =
 {0,0,0,};
 
-static EIF_TYPE_INDEX g_atype842_0 [] = {0,843,0xFFFF};
-static EIF_TYPE_INDEX g_atype842_1 [] = {0,844,0xFFFF};
-static EIF_TYPE_INDEX g_atype842_2 [] = {0,836,0xFFFF};
+static EIF_TYPE_INDEX g_atype840_0 [] = {0,843,0xFFFF};
+static EIF_TYPE_INDEX g_atype840_1 [] = {0,836,0xFFFF};
+static EIF_TYPE_INDEX g_atype840_2 [] = {0,846,0xFFFF};
 
-static EIF_TYPE_INDEX *gtypes842 [] = {
-g_atype842_0,
-g_atype842_1,
-g_atype842_2,
+static EIF_TYPE_INDEX *gtypes840 [] = {
+g_atype840_0,
+g_atype840_1,
+g_atype840_2,
 };
 
-static int32 cn_attr842 [] =
+static int32 cn_attr840 [] =
 {
 4472,
 4473,
 4474,
 };
 
-extern char *names844[];
-uint32 types844 [] =
+extern char *names843[];
+uint32 types843 [] =
 {
 SK_REF,
 SK_REF,
 SK_REF,
 };
 
-uint16 attr_flags844 [] =
+uint16 attr_flags843 [] =
 {0,0,0,};
 
-static EIF_TYPE_INDEX g_atype844_0 [] = {0,843,0xFFFF};
-static EIF_TYPE_INDEX g_atype844_1 [] = {0,844,0xFFFF};
-static EIF_TYPE_INDEX g_atype844_2 [] = {0,836,0xFFFF};
+static EIF_TYPE_INDEX g_atype843_0 [] = {0,844,0xFFFF};
+static EIF_TYPE_INDEX g_atype843_1 [] = {0,845,0xFFFF};
+static EIF_TYPE_INDEX g_atype843_2 [] = {0,836,0xFFFF};
 
-static EIF_TYPE_INDEX *gtypes844 [] = {
-g_atype844_0,
-g_atype844_1,
-g_atype844_2,
+static EIF_TYPE_INDEX *gtypes843 [] = {
+g_atype843_0,
+g_atype843_1,
+g_atype843_2,
 };
 
-static int32 cn_attr844 [] =
+static int32 cn_attr843 [] =
 {
-4472,
-4473,
-4474,
+4475,
+4476,
+4477,
 };
 
 extern char *names845[];
 uint32 types845 [] =
 {
 SK_REF,
+SK_REF,
+SK_REF,
 };
 
 uint16 attr_flags845 [] =
-{0,};
+{0,0,0,};
 
-static EIF_TYPE_INDEX g_atype845_0 [] = {0,839,0xFFFF};
+static EIF_TYPE_INDEX g_atype845_0 [] = {0,844,0xFFFF};
+static EIF_TYPE_INDEX g_atype845_1 [] = {0,845,0xFFFF};
+static EIF_TYPE_INDEX g_atype845_2 [] = {0,836,0xFFFF};
 
 static EIF_TYPE_INDEX *gtypes845 [] = {
 g_atype845_0,
+g_atype845_1,
+g_atype845_2,
 };
 
 static int32 cn_attr845 [] =
 {
 4475,
+4476,
+4477,
 };
 
-extern char *names847[];
-uint32 types847 [] =
+extern char *names846[];
+uint32 types846 [] =
 {
 SK_REF,
-SK_REF,
-SK_REF,
-SK_REF,
-SK_REF,
 };
 
-uint16 attr_flags847 [] =
-{0,0,0,0,0,};
+uint16 attr_flags846 [] =
+{0,};
 
-static EIF_TYPE_INDEX g_atype847_0 [] = {0,838,0xFFFF};
-static EIF_TYPE_INDEX g_atype847_1 [] = {0,845,0xFFFF};
-static EIF_TYPE_INDEX g_atype847_2 [] = {0,839,0xFFFF};
-static EIF_TYPE_INDEX g_atype847_3 [] = {0,844,0xFFFF};
-static EIF_TYPE_INDEX g_atype847_4 [] = {0,843,0xFFFF};
+static EIF_TYPE_INDEX g_atype846_0 [] = {0,840,0xFFFF};
 
-static EIF_TYPE_INDEX *gtypes847 [] = {
-g_atype847_0,
-g_atype847_1,
-g_atype847_2,
-g_atype847_3,
-g_atype847_4,
+static EIF_TYPE_INDEX *gtypes846 [] = {
+g_atype846_0,
 };
 
-static int32 cn_attr847 [] =
+static int32 cn_attr846 [] =
 {
 4478,
-4479,
-4480,
-4481,
+};
+
+extern char *names848[];
+uint32 types848 [] =
+{
+SK_REF,
+SK_REF,
+SK_REF,
+SK_REF,
+SK_REF,
+};
+
+uint16 attr_flags848 [] =
+{0,0,0,0,0,};
+
+static EIF_TYPE_INDEX g_atype848_0 [] = {0,839,0xFFFF};
+static EIF_TYPE_INDEX g_atype848_1 [] = {0,846,0xFFFF};
+static EIF_TYPE_INDEX g_atype848_2 [] = {0,840,0xFFFF};
+static EIF_TYPE_INDEX g_atype848_3 [] = {0,845,0xFFFF};
+static EIF_TYPE_INDEX g_atype848_4 [] = {0,844,0xFFFF};
+
+static EIF_TYPE_INDEX *gtypes848 [] = {
+g_atype848_0,
+g_atype848_1,
+g_atype848_2,
+g_atype848_3,
+g_atype848_4,
+};
+
+static int32 cn_attr848 [] =
+{
 4482,
+4483,
+4484,
+4485,
+4486,
 };
 
 struct cnode egc_fsystem_init[] = {
@@ -34122,7 +34127,7 @@ struct cnode egc_fsystem_init[] = {
 	0,
 	0L,
 	(int32) 26,(int32) 836,
-	ra337,
+	ra338,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
 },
@@ -34139,23 +34144,40 @@ struct cnode egc_fsystem_init[] = {
 	0,
 	0L,
 	(int32) 26,(int32) 837,
+	ra336,
+	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
+	NULL
+},
+{
+	(long) 0,
+	(long) 0,
+	"SDL_IMAGE",
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	(uint16) 0,
+	(int32 *) 0,
+	0,
+	0L,
+	(int32) 26,(int32) 838,
 	ra335,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
 },
 {
-	(long) 2,
-	(long) 2,
+	(long) 3,
+	(long) 3,
 	"GAMES",
-	names839,
-	types839,
-	attr_flags839,
-	gtypes839,
+	names840,
+	types840,
+	attr_flags840,
+	gtypes840,
 	(uint16) 0,
-	cn_attr839,
-	8,
-	2L,
-	(int32) 26,(int32) 838,
+	cn_attr840,
+	12,
+	3L,
+	(int32) 26,(int32) 839,
 	ra333,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
@@ -34172,7 +34194,7 @@ struct cnode egc_fsystem_init[] = {
 	(int32 *) 0,
 	0,
 	0L,
-	(int32) 26,(int32) 839,
+	(int32) 26,(int32) 840,
 	ra331,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
@@ -34189,8 +34211,8 @@ struct cnode egc_fsystem_init[] = {
 	(int32 *) 0,
 	0,
 	0L,
-	(int32) 26,(int32) 840,
-	ra339,
+	(int32) 26,(int32) 841,
+	ra340,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
 },
@@ -34198,16 +34220,16 @@ struct cnode egc_fsystem_init[] = {
 	(long) 3,
 	(long) 3,
 	"COLLISION",
-	names842,
-	types842,
-	attr_flags842,
-	gtypes842,
+	names843,
+	types843,
+	attr_flags843,
+	gtypes843,
 	(uint16) 0,
-	cn_attr842,
+	cn_attr843,
 	12,
 	3L,
-	(int32) 26,(int32) 841,
-	ra338,
+	(int32) 26,(int32) 842,
+	ra339,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
 },
@@ -34223,8 +34245,8 @@ struct cnode egc_fsystem_init[] = {
 	(int32 *) 0,
 	0,
 	0L,
-	(int32) 0,(int32) 842,
-	ra336,
+	(int32) 0,(int32) 843,
+	ra337,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
 },
@@ -34232,15 +34254,15 @@ struct cnode egc_fsystem_init[] = {
 	(long) 3,
 	(long) 3,
 	"MARTEAU",
-	names844,
-	types844,
-	attr_flags844,
-	gtypes844,
+	names845,
+	types845,
+	attr_flags845,
+	gtypes845,
 	(uint16) 0,
-	cn_attr844,
+	cn_attr845,
 	12,
 	3L,
-	(int32) 26,(int32) 843,
+	(int32) 26,(int32) 844,
 	ra334,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
@@ -34249,15 +34271,15 @@ struct cnode egc_fsystem_init[] = {
 	(long) 1,
 	(long) 1,
 	"MARMOTTE",
-	names845,
-	types845,
-	attr_flags845,
-	gtypes845,
+	names846,
+	types846,
+	attr_flags846,
+	gtypes846,
 	(uint16) 0,
-	cn_attr845,
+	cn_attr846,
 	4,
 	1L,
-	(int32) 26,(int32) 844,
+	(int32) 26,(int32) 845,
 	ra332,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
@@ -34274,7 +34296,7 @@ struct cnode egc_fsystem_init[] = {
 	(int32 *) 0,
 	0,
 	0L,
-	(int32) 26,(int32) 845,
+	(int32) 0,(int32) 846,
 	ra330,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
@@ -34283,15 +34305,15 @@ struct cnode egc_fsystem_init[] = {
 	(long) 5,
 	(long) 5,
 	"APPLICATION",
-	names847,
-	types847,
-	attr_flags847,
-	gtypes847,
+	names848,
+	types848,
+	attr_flags848,
+	gtypes848,
 	(uint16) 0,
-	cn_attr847,
+	cn_attr848,
 	20,
 	5L,
-	(int32) 0,(int32) 846,
+	(int32) 0,(int32) 847,
 	ra329,
 	{(int32) 0, (int) 0, (char **) 0, (char *) 0},
 	NULL
@@ -35134,13 +35156,14 @@ int32 *egc_fcall_init[] = {
 (int32 *) 0,
 (int32 *) 0,
 (int32 *) 0,
-ra337,
+ra338,
+ra336,
 ra335,
 ra333,
 ra331,
+ra340,
 ra339,
-ra338,
-ra336,
+ra337,
 ra334,
 ra332,
 ra330,
