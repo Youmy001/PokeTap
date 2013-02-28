@@ -62,6 +62,15 @@ Feature --Functions- SDL.h
 		"SDL_PollEvent"
 	end
 
+	frozen SDL_Exit()
+		-- Quit SDL
+	external
+		"C | <SDL.h>"
+	alias
+		"SDL_Quit"
+	end
+
+
 feature -- Setter -- SDL.h	
 	frozen set_SDL_Rect_X(SDL_Rect:POINTER; value:INTEGER_16)
 		--Modifie le x de l'image
@@ -108,6 +117,14 @@ feature -- getter  -- SDL.h
 		"C [struct <SDL.h>] (SDL_Surface) : int"
 	alias
 		"w"
+	end
+
+	frozen get_SDL_Event_Type(SDL_Event:POINTER):NATURAL_8
+		-- Le type d'event
+	external
+		"C [struct <SDL.h>] (SDL_Event) : Uint8"
+	alias
+		"type"
 	end
 
 feature --sizeof
