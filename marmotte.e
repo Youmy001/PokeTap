@@ -1,3 +1,4 @@
+
 note
 	description: "Summary description for {MARMOTTE}."
 	author: ""
@@ -10,10 +11,6 @@ class
 inherit
 	IMAGE
 
-
-
-
-
 feature -- Access
 
 	marmotte_sort: TROU
@@ -21,3 +18,4 @@ feature -- Access
 		attribute Result := ({like marmotte_sort}).default end --| Remove line when Void Safety is properly set
 
 end
+
