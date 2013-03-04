@@ -33,6 +33,7 @@
 		</external_library>
 		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<library name="sqlite" location="\home\youmy\Eiffel71\unstable\library\persistency\database\sqlite3\sqlite.ecf"/>
 		<cluster name="jeu_marmotte" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>

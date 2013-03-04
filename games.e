@@ -26,6 +26,7 @@ feature -- Access
 			quit:BOOLEAN
 			l_quit:NATURAL_8
 			memory_manager: POINTER
+			bd:DATABASE
 		do
 			-- Initialiser la fenêtre et SDL
 			l_init := {SDL_WRAPPER}.SDL_INIT_VIDEO
@@ -33,8 +34,10 @@ feature -- Access
 			screen := {SDL_WRAPPER}.SDL_SetVideoMode(914,680, 32, {SDL_WRAPPER}.SDL_SWSURFACE)
 
 			create {FOND_ECRAN} fond.make(screen)
+
 			create memory_manager.default_create
 			event:=memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
+
 			from
 				l_quit:={SDL_WRAPPER}.SDL_QUIT
 				quit:=false
@@ -50,7 +53,7 @@ feature -- Access
 					end
 				end
 				ctr := {SDL_WRAPPER}.SDL_Flip(screen)
-				{SDL_WRAPPER}.SDL_Delay(1)
+				{SDL_WRAPPER}.SDL_Delay(17)
 			end
 			{SDL_WRAPPER}.SDL_Exit()
 
