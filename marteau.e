@@ -20,8 +20,12 @@ feature -- Access
 			l_marteau:STRING
 			l_c_marteau:C_STRING
 			l_bmp_os_w, l_bmp_os_h: INTEGER
+			l_memory_manager: POINTER
 
 		do
+			create l_memory_manager.default_create
+			c_targetarea:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
+
 			c_screen:=a_screen
 			l_marteau :="images/garagara_os.png"
 			create l_c_marteau.make (l_marteau)

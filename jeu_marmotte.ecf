@@ -35,7 +35,7 @@
 		<external_library location="..\..\..\SDL_image-devel-1.2.12-VC\SDL_image-1.2.12\lib\x86\SDL_image.dll"/>
 		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
-		<library name="sqlite" location="C:\Program Files\Eiffel Software\EiffelStudio 7.1 GPL\unstable\library\persistency\database\sqlite3\"/>
+		<library name="sqlite" location="C:\Program Files\Eiffel Software\EiffelStudio 7.1 GPL\unstable\library\persistency\database\sqlite3\sqlite.ecf"/>
 		<cluster name="jeu_marmotte" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>
