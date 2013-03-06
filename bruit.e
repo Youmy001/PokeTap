@@ -1,7 +1,7 @@
 note
-	description: "Summary description for {BRUIT}."
+	description: "Du bruit! {BRUIT}."
 	author: ""
-	date: "$Date$"
+	date: "mars ou avril 2013"
 	revision: "$Revision$"
 
 class
@@ -9,6 +9,5 @@ class
 
 feature -- Access
 
-	 --| Remove line when Void Safety is properly set
 
 end

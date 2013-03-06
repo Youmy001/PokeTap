@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {DATABASE}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Base de donnée {DATABASE}."
+	author: "Véronique Blais"
+	date: "mars 2013"
+	revision: ""
 
 class
 	DATABASE

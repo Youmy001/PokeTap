@@ -17,44 +17,52 @@ feature -- Access
 			fondSonore: BRUIT
 
 			l_init:NATURAL_32
-			ctr:INTEGER
-			screen: POINTER
+			l_ctr:INTEGER
+			l_screen: POINTER
 			fond:FOND_ECRAN
-			event:POINTER
-			poll_event:INTEGER
-			quit_event:POINTER
-			quit:BOOLEAN
+			l_event:POINTER
+			l_poll_event:INTEGER
+			l_quit_event:POINTER
+			l_quit_bool:BOOLEAN
 			l_quit:NATURAL_8
+<<<<<<< HEAD
+			l_memory_manager: POINTER
+=======
 			memory_manager: POINTER
 
+>>>>>>> 66de5f82bdbc17b20c1799e884e6970c8ef99095
 			bd:DATABASE
 		do
 			-- Initialiser la fenêtre et SDL
 			l_init := {SDL_WRAPPER}.SDL_INIT_VIDEO
-			ctr :={SDL_WRAPPER}.SDL_Init(l_init)
-			screen := {SDL_WRAPPER}.SDL_SetVideoMode(914,680, 32, {SDL_WRAPPER}.SDL_SWSURFACE)
+			l_ctr :={SDL_WRAPPER}.SDL_Init(l_init)
+			l_screen := {SDL_WRAPPER}.SDL_SetVideoMode(914,680, 32, {SDL_WRAPPER}.SDL_SWSURFACE)
 
-			create {FOND_ECRAN} fond.make(screen)
+			create {FOND_ECRAN} fond.make(l_screen)
 
-			create memory_manager.default_create
-			event:=memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
+			create l_memory_manager.default_create
+			l_event:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
 
 			from
 				l_quit:={SDL_WRAPPER}.SDL_QUIT
-				quit:=false
+				l_quit_bool:=false
 			until
-				quit=true
+				l_quit_bool=true
 			loop
 				fond.affiche_fond_ecran
 
-				poll_event:={SDL_WRAPPER}.SDL_PollEvent(event)
-				if poll_event=1 then
-					if {SDL_WRAPPER}.get_SDL_Event_Type(event) = l_quit then
-						quit:= true
+				l_poll_event:={SDL_WRAPPER}.SDL_PollEvent(l_event)
+				if l_poll_event=1 then
+					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_quit then
+						l_quit_bool:= true
 					end
 				end
+<<<<<<< HEAD
+				l_ctr := {SDL_WRAPPER}.SDL_Flip(l_screen)
+=======
 				ctr := {SDL_WRAPPER}.SDL_Flip(screen)
 
+>>>>>>> 66de5f82bdbc17b20c1799e884e6970c8ef99095
 				{SDL_WRAPPER}.SDL_Delay(17)
 
 			end

@@ -43,8 +43,6 @@
 		<cluster name="jeu_marmotte" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>
-				<exclude>/CVS$</exclude>
-				<exclude>/.svn$</exclude>
 			</file_rule>
 		</cluster>
 	</target>
