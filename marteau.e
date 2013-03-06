@@ -11,10 +11,29 @@ class
 inherit
 	IMAGE
 
-	
-
-	
-
 	COLLISION
+create
+	make
+feature -- Access
+	make(a_screen:POINTER)
+		local
+			l_marteau:STRING
+			l_c_marteau:C_STRING
+			l_bmp_os_w, l_bmp_os_h: INTEGER
+
+		do
+			c_screen:=a_screen
+			l_marteau :="images/garagara_os.png"
+			create l_c_marteau.make (l_marteau)
+			c_infile_os:={SDL_IMAGE}.IMG_Load(l_c_marteau.item)
+
+			l_bmp_os_h := {SDL_WRAPPER}.get_SDL_Surface_H(c_infile_os)
+			l_bmp_os_w := {SDL_WRAPPER}.get_SDL_Surface_W(c_infile_os)
+
+			{SDL_WRAPPER}.set_SDL_Rect_x(c_targetarea, 0)
+			{SDL_WRAPPER}.set_SDL_Rect_y(c_targetarea, 0)
+			{SDL_WRAPPER}.set_SDL_Rect_w(c_targetarea, l_bmp_os_w)
+			{SDL_WRAPPER}.set_SDL_Rect_h(c_targetarea, l_bmp_os_h)
+		end
 
 end

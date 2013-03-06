@@ -21,14 +21,9 @@ feature {NONE} -- Initialization
 			l_bmp_w, l_bmp_h: INTEGER
 		do
 			c_screen:=a_screen
-<<<<<<< HEAD
+
 			create l_memory_manager.default_create
 			c_targetarea:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
-=======
-
-			create memory_manager.default_create
-			c_targetarea:=memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
->>>>>>> 66de5f82bdbc17b20c1799e884e6970c8ef99095
 
 			l_ef_img :="images/background.png"
 			create l_c_img.make (l_ef_img)
@@ -43,23 +38,4 @@ feature {NONE} -- Initialization
 			{SDL_WRAPPER}.set_SDL_Rect_w(c_targetarea, l_bmp_w)
 			{SDL_WRAPPER}.set_SDL_Rect_h(c_targetarea, l_bmp_h)
 		end
-feature
-affiche_fond_ecran
-	local
-			l_ctr:INTEGER
-			l_meowth:STRING
-			l_c_meowth:C_STRING
-			l_infile_m:POINTER
-
-		do
-			l_meowth :="images/meowth.png"
-			create l_c_meowth.make (l_meowth)
-			l_infile_m:={SDL_IMAGE}.IMG_Load(l_c_meowth.item)
-
-			l_ctr := {SDL_WRAPPER}.SDL_BlitSurface(c_infile, create {POINTER}, c_screen, c_targetarea)
-			l_ctr := {SDL_WRAPPER}.SDL_BlitSurface(l_infile_m, create{POINTER}, c_screen, c_targetarea)
-			end
-c_screen:POINTER
-c_infile:POINTER
-c_targetarea:POINTER
 end

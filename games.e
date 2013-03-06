@@ -12,7 +12,7 @@ create
 feature -- Access
 	make
 		local
-			image: IMAGE
+			mart:MARTEAU
 
 			fondSonore: BRUIT
 
@@ -25,12 +25,8 @@ feature -- Access
 			l_quit_event:POINTER
 			l_quit_bool:BOOLEAN
 			l_quit:NATURAL_8
-<<<<<<< HEAD
-			l_memory_manager: POINTER
-=======
-			memory_manager: POINTER
 
->>>>>>> 66de5f82bdbc17b20c1799e884e6970c8ef99095
+			l_memory_manager: POINTER
 			bd:DATABASE
 		do
 			-- Initialiser la fenêtre et SDL
@@ -39,6 +35,7 @@ feature -- Access
 			l_screen := {SDL_WRAPPER}.SDL_SetVideoMode(914,680, 32, {SDL_WRAPPER}.SDL_SWSURFACE)
 
 			create {FOND_ECRAN} fond.make(l_screen)
+			create {MARTEAU} mart.make(l_screen)
 
 			create l_memory_manager.default_create
 			l_event:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
@@ -50,6 +47,7 @@ feature -- Access
 				l_quit_bool=true
 			loop
 				fond.affiche_fond_ecran
+				mart.affiche_image
 
 				l_poll_event:={SDL_WRAPPER}.SDL_PollEvent(l_event)
 				if l_poll_event=1 then
@@ -57,12 +55,8 @@ feature -- Access
 						l_quit_bool:= true
 					end
 				end
-<<<<<<< HEAD
 				l_ctr := {SDL_WRAPPER}.SDL_Flip(l_screen)
-=======
-				ctr := {SDL_WRAPPER}.SDL_Flip(screen)
 
->>>>>>> 66de5f82bdbc17b20c1799e884e6970c8ef99095
 				{SDL_WRAPPER}.SDL_Delay(17)
 
 			end
