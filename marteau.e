@@ -19,7 +19,7 @@ feature -- Access
 		local
 			l_marteau:STRING
 			l_c_marteau:C_STRING
-			l_bmp_os_w, l_bmp_os_h: INTEGER
+			l_bmp_w, l_bmp_h: INTEGER
 			l_memory_manager: POINTER
 
 		do
@@ -29,15 +29,18 @@ feature -- Access
 			c_screen:=a_screen
 			l_marteau :="images/garagara_os.png"
 			create l_c_marteau.make (l_marteau)
-			c_infile_os:={SDL_IMAGE}.IMG_Load(l_c_marteau.item)
+			c_infile:={SDL_IMAGE}.IMG_Load(l_c_marteau.item)
 
-			l_bmp_os_h := {SDL_WRAPPER}.get_SDL_Surface_H(c_infile_os)
-			l_bmp_os_w := {SDL_WRAPPER}.get_SDL_Surface_W(c_infile_os)
+			l_bmp_h := {SDL_WRAPPER}.get_SDL_Surface_H(c_infile)
+			l_bmp_w := {SDL_WRAPPER}.get_SDL_Surface_W(c_infile)
 
-			{SDL_WRAPPER}.set_SDL_Rect_x(c_targetarea, 0)
-			{SDL_WRAPPER}.set_SDL_Rect_y(c_targetarea, 0)
-			{SDL_WRAPPER}.set_SDL_Rect_w(c_targetarea, l_bmp_os_w)
-			{SDL_WRAPPER}.set_SDL_Rect_h(c_targetarea, l_bmp_os_h)
+			c_x:=0
+			c_y:=0
+
+			{SDL_WRAPPER}.set_SDL_Rect_x(c_targetarea, c_x)
+			{SDL_WRAPPER}.set_SDL_Rect_y(c_targetarea, c_y)
+			{SDL_WRAPPER}.set_SDL_Rect_w(c_targetarea, l_bmp_w)
+			{SDL_WRAPPER}.set_SDL_Rect_h(c_targetarea, l_bmp_h)
 		end
 
 end

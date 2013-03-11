@@ -62,6 +62,14 @@ Feature --Functions- SDL.h
 		"SDL_PollEvent"
 	end
 
+	--frozen SDL_MouseMotionEvent(x,y:NATURAL_16;xrel,yrel:INTEGER_16):INTEGER
+		-- Mouse motion event structure
+	--external
+	--	"C (Uint16, Uint16, Sint16, Sint16): int | <SDL.h>"
+	--alias
+	--	"SDL_MouseMotionEvent"
+	--end
+
 	frozen SDL_Exit()
 		-- Quit SDL
 	external
@@ -127,6 +135,21 @@ feature -- getter  -- SDL.h
 		"type"
 	end
 
+	frozen get_SDL_MouseMotionEvent_x(SDL_MouseMotionEvent:POINTER):INTEGER_16
+		--Retrieve the current state of the mouse
+	external
+		"C [struct <SDL.h>] (SDL_MouseMotionEvent): Sint16"
+	alias
+		"x"
+	end
+	frozen get_SDL_MouseMotionEvent_y(SDL_MouseMotionEvent:POINTER):INTEGER_16
+		--Retrieve the current state of the mouse
+	external
+		"C [struct <SDL.h>] (SDL_MouseMotionEvent): Sint16"
+	alias
+		"y"
+	end
+
 feature --sizeof
 
 	frozen sizeof_SDL_Rect:INTEGER
@@ -169,5 +192,13 @@ feature -- Constante C
 		"C inline use <SDL.h>"
 	alias
 		"SDL_QUIT"
+	end
+
+	frozen SDL_MOUSEMOTION:NATURAL_8
+		--Constante C pour l'évènement Quit
+	external
+		"C inline use <SDL.h>"
+	alias
+		"SDL_MOUSEMOTION"
 	end
 end
