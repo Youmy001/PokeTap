@@ -50,7 +50,7 @@ feature -- Access
 				l_quit_bool=true
 			loop
 				fond.affiche_image
-				mart.affiche_image
+
 
 				l_poll_event:={SDL_WRAPPER}.SDL_PollEvent(l_event)
 				if l_poll_event=1 then
@@ -66,9 +66,11 @@ feature -- Access
 						io.put_string(") ")
 					end
 				end
+				mart.affiche_image
+				{SDL_WRAPPER}.SDL_Delay(1)
 				l_ctr := {SDL_WRAPPER}.SDL_Flip(l_screen)
 
-				{SDL_WRAPPER}.SDL_Delay(1)
+
 
 			end
 			{SDL_WRAPPER}.SDL_Exit()
