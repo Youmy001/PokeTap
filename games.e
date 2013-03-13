@@ -49,23 +49,26 @@ feature -- Access
 			until
 				l_quit_bool=true
 			loop
-				fond.affiche_image
+
 
 
 				l_poll_event:={SDL_WRAPPER}.SDL_PollEvent(l_event)
 				if l_poll_event=1 then
 					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_quit then
 						l_quit_bool:= true
-					elseif {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousemotion then
-						mart.set_x({SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(l_event))
-						mart.set_y({SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event))
-						io.put_string(" (")
-						io.put_integer(mart.c_x)
-						io.put_string(",")
-						io.put_integer(mart.c_y)
-						io.put_string(") ")
+					end
+					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousemotion then
+
+						{SDL_WRAPPER}.set_SDL_Rect_x(mart.c_targetarea,{SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(l_event))
+						{SDL_WRAPPER}.set_SDL_Rect_y(mart.c_targetarea,{SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event))
+						--io.put_string(" (")
+						--io.put_integer(mart.c_x)
+						--io.put_string(",")
+						--io.put_integer(mart.c_y)
+						--io.put_string(") ")
 					end
 				end
+				fond.affiche_image
 				mart.affiche_image
 				{SDL_WRAPPER}.SDL_Delay(1)
 				l_ctr := {SDL_WRAPPER}.SDL_Flip(l_screen)
