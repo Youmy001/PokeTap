@@ -150,6 +150,14 @@ feature -- getter  -- SDL.h
 		"y"
 	end
 
+	frozen SDL_ShowCursor(toggle:INTEGER):INTEGER
+		--Toggle whether or not the cursor is shown on the screen
+	external
+		"C (int):int | <SDL.h>"
+	alias
+		"SDL_ShowCursor"
+	end
+
 feature --sizeof
 
 	frozen sizeof_SDL_Rect:INTEGER
@@ -200,5 +208,13 @@ feature -- Constante C
 		"C inline use <SDL.h>"
 	alias
 		"SDL_MOUSEMOTION"
+	end
+
+	frozen SDL_DISABLE:INTEGER
+		--Constant C pour retirer le curseur
+	external
+		"C inline use <SDL.h>"
+	alias
+		"SDL_DISABLE"
 	end
 end
