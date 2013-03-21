@@ -16,19 +16,36 @@ feature {NONE} -- Initialization
 		local
 
 			-- Initialization for `Current'.
+		table_present:BOOLEAN
 		do
+
+--			from
+--				allo_liste.start
+--			until
+--				allo_liste.exhausted
+--			loop
+--				-- Queque chose avec allo_liste
+--				allo_liste.forth
+--			end
+
+--			tous_valid:=across allo_liste as l_element all l_element.is_valid end
 				-- Open/create a Database.
 			create l_db.make_create_read_write ("meilleur_pointage")
-			create l_query.make ("SELECT name FROM pointage ORDER BY name;", l_db)
+			create l_query.make ("SELECT name FROM sqlite_master ORDER BY name;", l_db)
+			table_present:=false
 			across
 				l_query.execute_new as l_cursor
 			loop
 				print (" - table: " + l_cursor.item.string_value (1) + "%N")
+				if l_cursor.item.string_value (1).is_equal ("pointage") then
+					table_present:=true
+				end
 			end
 				-- Create a new table
-			create l_modify.make ("CREATE TABLE pointage (score INTEGER PRIMARY KEY, name TEXT);", l_db)
-			l_modify.execute
-
+			if table_present = false then
+				create l_modify.make ("CREATE TABLE `pointage` (`score` INTEGER PRIMARY KEY, `name` TEXT);", l_db)
+				l_modify.execute
+			end
 		end
 feature
 
