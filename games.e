@@ -13,7 +13,6 @@ feature -- Access
 	make
 		local
 			marteau:MARTEAU
-
 			fondSonore: BRUIT
 			l_init:NATURAL_32
 			l_ctr:INTEGER
@@ -29,7 +28,7 @@ feature -- Access
 			l_warp_x,l_warp_y:INTEGER_16
 
 			l_memory_manager: POINTER
-			bd:DATABASE
+
 		do
 			-- Initialiser la fenêtre et SDL
 			l_init := {SDL_WRAPPER}.SDL_INIT_VIDEO
@@ -46,6 +45,7 @@ feature -- Access
 
 			l_mousemotion:= {SDL_WRAPPER}.SDL_MOUSEMOTION
 
+			marteau.insert_pointage(12,"Tommy")
 			from
 				l_quit:={SDL_WRAPPER}.SDL_QUIT
 				l_quit_bool:=false

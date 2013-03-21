@@ -10,7 +10,6 @@ class
 
 inherit
 	IMAGE
-
 	COLLISION
 create
 	make
@@ -25,7 +24,6 @@ feature -- Access
 		do
 			create l_memory_manager.default_create
 			c_targetarea:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
-
 			c_screen:=a_screen
 			l_marteau :="images/garagara_os.png"
 			create l_c_marteau.make (l_marteau)
@@ -41,6 +39,18 @@ feature -- Access
 			{SDL_WRAPPER}.set_SDL_Rect_y(c_targetarea, c_y)
 			{SDL_WRAPPER}.set_SDL_Rect_w(c_targetarea, l_bmp_w)
 			{SDL_WRAPPER}.set_SDL_Rect_h(c_targetarea, l_bmp_h)
-		end
 
+			create {DATABASE} c_bdd.make()
+		end
+	insert_pointage(a_pointage: INTEGER a_nom: STRING)
+		do
+			c_bdd.insert_pointage (a_pointage, a_nom)
+		end
+	get_best_pointage()
+		do
+			c_bdd.get_pointage ()
+		end
+c_bdd:DATABASE
+c_pointage:INTEGER
+c_nom:STRING
 end

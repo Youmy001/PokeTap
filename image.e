@@ -32,10 +32,6 @@ feature
 				c_y:=y
 				{SDL_WRAPPER}.set_SDL_Rect_y(c_targetarea, c_y - 50)
 			end
-		print_x
-			do
-				io.put_integer(c_x)
-			end
 
 
 c_infile:POINTER
