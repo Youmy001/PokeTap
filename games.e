@@ -45,7 +45,8 @@ feature -- Access
 
 			l_mousemotion:= {SDL_WRAPPER}.SDL_MOUSEMOTION
 
-			marteau.insert_pointage(12,"Tommy")
+			marteau.insert_pointage(21,"Tommy")
+			marteau.get_best_pointage()
 			from
 				l_quit:={SDL_WRAPPER}.SDL_QUIT
 				l_quit_bool:=false
