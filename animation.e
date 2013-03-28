@@ -9,8 +9,9 @@ deferred class
 
 feature -- Access
 
-	animation_sound: BRUIT
-			-- `animation_sound'
-		attribute Result := ({like animation_sound}).default end --| Remove line when Void Safety is properly set
-
+	anime_marmotte
+		do
+			
+		end
+c_rect_src:POINTER
 end

@@ -13,6 +13,7 @@ feature -- Access
 	make
 		local
 			marteau:MARTEAU
+			marmotte:MARMOTTE
 			fondSonore: BRUIT
 			l_init:NATURAL_32
 			l_ctr:INTEGER
@@ -26,6 +27,7 @@ feature -- Access
 			l_mousemotion:NATURAL_8
 			l_disable:INTEGER
 			l_warp_x,l_warp_y:INTEGER_16
+			trou:TROU
 
 			l_memory_manager: POINTER
 
@@ -38,7 +40,10 @@ feature -- Access
 			l_ctr := {SDL_WRAPPER}.SDL_ShowCursor(l_disable)
 
 			create {FOND_ECRAN} fond.make(l_screen)
+			create {TROU} trou.make(l_screen)
 			create {MARTEAU} marteau.make(l_screen)
+			create{MARMOTTE} marmotte.make(l_screen)
+
 
 			create l_memory_manager.default_create
 			l_event:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
@@ -70,7 +75,10 @@ feature -- Access
 					l_poll_event:={SDL_WRAPPER}.SDL_PollEvent(l_event)
 				end
 				fond.affiche_image
+				trou.affiche_image
+				marmotte.animation_marmotte
 				marteau.affiche_image
+
 				{SDL_WRAPPER}.SDL_Delay(16)
 				l_ctr := {SDL_WRAPPER}.SDL_Flip(l_screen)
 
