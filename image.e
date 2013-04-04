@@ -15,6 +15,7 @@ feature
 			end
 
 
+
 		x:INTEGER_16 assign set_x
 			do
 		--		Result:={SDL_WRAPPER}.get_SDL_Rect_x(c_targetarea)
