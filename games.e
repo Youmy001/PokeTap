@@ -50,7 +50,6 @@ feature -- Access
 			create {MARTEAU} marteau.make(l_screen,io.last_string)
 
 			create {TROU} trou.make(l_screen)
-			create {MARTEAU} marteau.make(l_screen)
 			create{MARMOTTE} marmotte.make(l_screen)
 
 			create l_memory_manager.default_create

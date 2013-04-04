@@ -47,7 +47,7 @@ feature {NONE} -- Initialization
 			end
 				-- Create a new table
 			if table_present = false then
-				create l_modify.make ("CREATE TABLE `pointage` (`ID` INTEGER NOT_NULL AUTO_INCREMENT PRIMARY KEY, `score` INTEGER, `name` TEXT);", l_db)
+				create l_modify.make ("CREATE TABLE `pointage` (`ID` INTEGER AUTO_INCREMENT NOT_NULL PRIMARY KEY, `score` INTEGER, `name` TEXT);", l_db)
 				l_modify.execute
 			end
 		end
@@ -69,17 +69,16 @@ feature
 			l_insert.execute_with_arguments ([create {SQLITE_INTEGER_ARG}.make ("?1", a_pointage), create {SQLITE_STRING_ARG}.make ("?2", a_nom)])
 			l_db.commit
 
+				-- Get ID
 			create l_query.make ("SELECT max(id) from pointage where name=?1;",l_db)
 			across
-				l_query.execute_new_with_arguments ([create {SQLITE_STRING_ARG}.make ("?1", a_nom)])
-			as
-				l_cursor
+				l_query.execute_new_with_arguments ([create {SQLITE_STRING_ARG}.make ("?1", a_nom)])	as l_cursor
 			loop
-				l_id:=l_cursor.item.integer_value (0)
+				l_id:=l_cursor.item.integer_value (1)
 			end
 
-			Result:=l_id
 			print(l_id)
+			Result:=l_id
 		end
 	update_pointage(a_id,a_pointage: INTEGER a_nom: STRING)
 		do
@@ -105,29 +104,9 @@ feature
 						print (", ")
 						print (ia_row.string_value (j))
 						print ("%N")
-							-- Print the column name.
-							--	print (ia_row.column_name (j))
-							--	print (":")
-
-							-- Print the text value, regardless of type.
-							--	if not ia_row.is_null (j) then
-							--		print (ia_row.string_value (j))
-							--	else
-							--		print ("<NULL>")
-							--	end
-
-							--	if j < j_count then
-							--		print (", ")
-							--	end
 						j := j + 1
 					end
 					print ("%N")
-
-						-- Cut processing after 5 rows of data have been returned
-						--Result := (ia_row.index \\ 5) = 0
-						--if Result then
-						--	print ("--> We have 5 results, lets forget the rest%N")
-						--end
 				end)
 		end
 

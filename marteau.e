@@ -65,6 +65,11 @@ feature -- Access
 		do
 			c_bdd.get_best_pointage ()
 		end
+	insert_new_pointage(a_pointage:INTEGER a_nom:STRING):INTEGER is
+		do
+			Result:=c_bdd.insert_new_pointage (a_pointage, a_nom)
+		end
+
 c_bdd:DATABASE
 feature
 c_id:INTEGER
