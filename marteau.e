@@ -14,7 +14,7 @@ inherit
 create
 	make
 feature -- Access
-	make(a_screen:POINTER)
+	make(a_screen:POINTER a_nom:STRING)
 		local
 			l_marteau:STRING
 			l_c_marteau:C_STRING
@@ -40,17 +40,34 @@ feature -- Access
 			{SDL_WRAPPER}.set_SDL_Rect_w(c_targetarea, l_bmp_w)
 			{SDL_WRAPPER}.set_SDL_Rect_h(c_targetarea, l_bmp_h)
 
+			set_nom(a_nom)
+
 			create {DATABASE} c_bdd.make()
+			--c_id:=c_bdd.insert_new_pointage(0,c_nom)
 		end
-	insert_pointage(a_pointage: INTEGER a_nom: STRING)
+	set_nom(a_nom:STRING)
 		do
-			c_bdd.insert_pointage (a_pointage, a_nom)
+			c_nom:=a_nom
+		end
+	get_nom:STRING is
+		do
+			Result:=c_nom
+		end
+	set_pointage(a_pointage:INTEGER)
+		do
+			c_pointage:=a_pointage
+		end
+	get_pointage:INTEGER is
+		do
+			Result:=c_pointage
 		end
 	get_best_pointage()
 		do
-			c_bdd.get_pointage ()
+			c_bdd.get_best_pointage ()
 		end
 c_bdd:DATABASE
+feature
+c_id:INTEGER
 c_pointage:INTEGER
 c_nom:STRING
 end

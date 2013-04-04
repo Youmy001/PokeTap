@@ -62,14 +62,6 @@ Feature --Functions- SDL.h
 		"SDL_PollEvent"
 	end
 
-	--frozen SDL_MouseMotionEvent(x,y:NATURAL_16;xrel,yrel:INTEGER_16):INTEGER
-		-- Mouse motion event structure
-	--external
-	--	"C (Uint16, Uint16, Sint16, Sint16): int | <SDL.h>"
-	--alias
-	--	"SDL_MouseMotionEvent"
-	--end
-
 	frozen SDL_Exit()
 		-- Quit SDL
 	external
@@ -203,7 +195,7 @@ feature -- Constante C
 	end
 
 	frozen SDL_MOUSEMOTION:NATURAL_8
-		--Constante C pour l'évènement Quit
+		--Constante C pour l'évènement déplacement de souris
 	external
 		"C inline use <SDL.h>"
 	alias
@@ -216,5 +208,13 @@ feature -- Constante C
 		"C inline use <SDL.h>"
 	alias
 		"SDL_DISABLE"
+	end
+
+	frozen SDL_MOUSEBUTTONDOWN:NATURAL_8
+		--Constante C pour l'évènement bouton de souris
+	external
+		"C inline use <SDL.h>"
+	alias
+		"SDL_MOUSEBUTTONDOWN"
 	end
 end

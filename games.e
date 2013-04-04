@@ -23,11 +23,14 @@ feature -- Access
 			l_quit_event:POINTER
 			l_quit_bool:BOOLEAN
 			l_quit:NATURAL_8
-			l_mousemotion:NATURAL_8
+			l_mousemotion,l_mousedown:NATURAL_8
 			l_disable:INTEGER
 			l_warp_x,l_warp_y:INTEGER_16
+			l_pointage:INTEGER
 
 			l_memory_manager: POINTER
+
+			l_nom:STRING
 
 		do
 			-- Initialiser la fenêtre et SDL
@@ -38,15 +41,20 @@ feature -- Access
 			l_ctr := {SDL_WRAPPER}.SDL_ShowCursor(l_disable)
 
 			create {FOND_ECRAN} fond.make(l_screen)
-			create {MARTEAU} marteau.make(l_screen)
+
+			-- Create Player
+			print("Entrez votre nom : ")
+			io.readLine
+			create {MARTEAU} marteau.make(l_screen,io.last_string)
 
 			create l_memory_manager.default_create
 			l_event:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
 
 			l_mousemotion:= {SDL_WRAPPER}.SDL_MOUSEMOTION
+			l_mousedown:= {SDL_WRAPPER}.SDL_MOUSEBUTTONDOWN
 
-			marteau.insert_pointage(21,"Tommy")
 			marteau.get_best_pointage()
+
 			from
 				l_quit:={SDL_WRAPPER}.SDL_QUIT
 				l_quit_bool:=false
@@ -66,6 +74,13 @@ feature -- Access
 
 						marteau.set_x({SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(l_event))
 						marteau.set_y({SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event))
+					end
+					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousedown then
+						l_pointage:=marteau.get_pointage
+						l_pointage:=l_pointage+1
+						marteau.set_pointage(l_pointage)
+						print(l_pointage)
+						print("%N")
 					end
 					l_poll_event:={SDL_WRAPPER}.SDL_PollEvent(l_event)
 				end

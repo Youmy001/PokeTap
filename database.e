@@ -47,14 +47,16 @@ feature {NONE} -- Initialization
 			end
 				-- Create a new table
 			if table_present = false then
-				create l_modify.make ("CREATE TABLE `pointage` (`score` INTEGER PRIMARY KEY, `name` TEXT);", l_db)
+				create l_modify.make ("CREATE TABLE `pointage` (`ID` INTEGER NOT_NULL AUTO_INCREMENT PRIMARY KEY, `score` INTEGER, `name` TEXT);", l_db)
 				l_modify.execute
 			end
 		end
 
 feature
 
-	insert_pointage (a_pointage: INTEGER a_nom: STRING)
+	insert_new_pointage (a_pointage: INTEGER a_nom: STRING):INTEGER is
+		local
+			l_id:INTEGER
 		do
 				-- Create a insert statement with variables
 			create l_insert.make ("INSERT INTO pointage (score,name) VALUES (?1, ?2);", l_db)
@@ -66,11 +68,27 @@ feature
 				-- Execute the INSERT statement with the argument list.
 			l_insert.execute_with_arguments ([create {SQLITE_INTEGER_ARG}.make ("?1", a_pointage), create {SQLITE_STRING_ARG}.make ("?2", a_nom)])
 			l_db.commit
+
+			create l_query.make ("SELECT max(id) from pointage where name=?1;",l_db)
+			across
+				l_query.execute_new_with_arguments ([create {SQLITE_STRING_ARG}.make ("?1", a_nom)])
+			as
+				l_cursor
+			loop
+				l_id:=l_cursor.item.integer_value (0)
+			end
+
+			Result:=l_id
+			print(l_id)
+		end
+	update_pointage(a_id,a_pointage: INTEGER a_nom: STRING)
+		do
+
 		end
 feature
-	get_pointage
+	get_best_pointage
 		do
-			create l_query.make ("SELECT name, max(score) FROM pointage;", l_db)
+			create l_query.make ("SELECT name, score FROM pointage ORDER BY score DESC;", l_db)
 			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
 				local
 					j, j_count: NATURAL
