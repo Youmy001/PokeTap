@@ -24,14 +24,14 @@ feature
 		set_x(a_x:INTEGER_16)
 			do
 				c_x:=a_x
-				{SDL_WRAPPER}.set_SDL_Rect_x(c_targetarea, c_x - 50)
+				{SDL_WRAPPER}.set_SDL_Rect_x(c_targetarea, c_x)
 			end
 
 
 		set_y(y:INTEGER_16)
 			do
 				c_y:=y
-				{SDL_WRAPPER}.set_SDL_Rect_y(c_targetarea, c_y - 50)
+				{SDL_WRAPPER}.set_SDL_Rect_y(c_targetarea, c_y)
 			end
 
 
