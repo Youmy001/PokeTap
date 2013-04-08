@@ -1,9 +1,9 @@
 
 note
-	description: "Summary description for {MARTEAU}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "mouvement de l'os"
+	author: "Tommy Teasdale & Véronique Blais"
+	date: "28 mars 2013"
+	revision: "4 avril 2013"
 
 class
 	MARTEAU
@@ -15,70 +15,51 @@ create
 	make
 feature -- Access
 	make(a_screen:POINTER a_nom:STRING)
-		local
-			l_marteau:STRING
-			l_c_marteau:C_STRING
-			l_bmp_w, l_bmp_h: INTEGER
-			l_memory_manager: POINTER
-
 		do
-			create l_memory_manager.default_create
-			c_targetarea:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
-			c_screen:=a_screen
-			l_marteau :="images/garagara_os.png"
-			create l_c_marteau.make (l_marteau)
-			c_infile:={SDL_IMAGE}.IMG_Load(l_c_marteau.item)
+			screen:=a_screen
+			creer_image("images/garagara_os.png")
 
-			l_bmp_h := {SDL_WRAPPER}.get_SDL_Surface_H(c_infile)
-			l_bmp_w := {SDL_WRAPPER}.get_SDL_Surface_W(c_infile)
-
-			c_x:=0
-			c_y:=0
-
-			{SDL_WRAPPER}.set_SDL_Rect_x(c_targetarea, c_x)
-			{SDL_WRAPPER}.set_SDL_Rect_y(c_targetarea, c_y)
-			{SDL_WRAPPER}.set_SDL_Rect_w(c_targetarea, l_bmp_w)
-			{SDL_WRAPPER}.set_SDL_Rect_h(c_targetarea, l_bmp_h)
-
+			set_x(0)
+			set_y(0)
 			set_nom(a_nom)
 
-			create {DATABASE} c_bdd.make()
-			c_id:=c_bdd.insert_new_pointage(0,c_nom)
-			print(c_id)
+			create {DATABASE} bdd.make()
+			id:=bdd.insert_new_pointage(0,nom)
+			print(id)
 			print("%N")
 		end
 	set_nom(a_nom:STRING)
 		do
-			c_nom:=a_nom
+			nom:=a_nom
 		end
-	get_nom:STRING is
+	get_nom:STRING
 		do
-			Result:=c_nom
+			Result:=nom
 		end
 	set_pointage(a_pointage:INTEGER)
 		do
-			c_pointage:=a_pointage
+			pointage:=a_pointage
 		end
-	get_pointage:INTEGER is
+	get_pointage:INTEGER
 		do
-			Result:=c_pointage
+			Result:=pointage
 		end
 	get_best_pointage()
 		do
-			c_bdd.get_best_pointage ()
+			bdd.get_best_pointage ()
 		end
-	insert_new_pointage(a_pointage:INTEGER a_nom:STRING):INTEGER is
+	insert_new_pointage(a_pointage:INTEGER a_nom:STRING):INTEGER
 		do
-			Result:=c_bdd.insert_new_pointage (a_pointage, a_nom)
+			Result:=bdd.insert_new_pointage (a_pointage, a_nom)
 		end
 	update_pointage
 		do
-			c_bdd.update_pointage (c_id, c_pointage, c_nom)
+			bdd.update_pointage (id, pointage, nom)
 		end
 
-c_bdd:DATABASE
+bdd:DATABASE
 feature
-c_id:INTEGER
-c_pointage:INTEGER
-c_nom:STRING
+id:INTEGER
+pointage:INTEGER
+nom:STRING
 end

@@ -111,6 +111,22 @@ feature -- getter  -- SDL.h
 		"h"
 	end
 
+	frozen get_SDL_rect_x(SDL_Rect: POINTER):INTEGER_16
+		--La position de l'image x
+	external
+		"C [struct <SDL.h>] (SDL_Rect) : int"
+	alias
+		"x"
+	end
+
+	frozen get_SDL_rect_y(SDL_Rect: POINTER):INTEGER_16
+		--La position de l'image y
+	external
+		"C [struct <SDL.h>] (SDL_Rect) : int"
+	alias
+		"y"
+	end
+
 	frozen get_SDL_Surface_W(SDL_Surface : POINTER):INTEGER
 		-- la surface horizontale de l'image
 	external

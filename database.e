@@ -1,8 +1,8 @@
 note
 	description: "Base de donnée {DATABASE}."
-	author: "Véronique Blais"
-	date: "mars 2013"
-	revision: ""
+	author: "Véronique Blais & Tommy Teasdale"
+	date: "28 mars 2013"
+	revision: "4 avril 2013"
 
 class
 	DATABASE
@@ -19,8 +19,7 @@ feature {NONE} -- Initialization
 	make
 		local
 
-				-- Initialization for `Current'.
-			table_present: BOOLEAN
+			l_table_present: BOOLEAN
 			l_query:SQLITE_QUERY_STATEMENT
 			l_modify:SQLITE_MODIFY_STATEMENT
 		do
@@ -38,17 +37,17 @@ feature {NONE} -- Initialization
 				-- Open/create a Database.
 			create db.make_create_read_write ("meilleur_pointage")
 			create l_query.make ("SELECT name FROM sqlite_master ORDER BY name;", db)
-			table_present := false
+			l_table_present := false
 			across
 				l_query.execute_new as l_cursor
 			loop
 				print (" - table: " + l_cursor.item.string_value (1) + "%N")
 				if l_cursor.item.string_value (1).is_equal ("pointage") then
-					table_present := true
+					l_table_present := true
 				end
 			end
 				-- Create a new table
-			if table_present = false then
+			if l_table_present = false then
 				create l_modify.make ("CREATE TABLE `pointage` (`ID` INTEGER PRIMARY KEY NOT NULL, `score` INTEGER, `name` TEXT);", db)
 				l_modify.execute
 			end
@@ -56,7 +55,7 @@ feature {NONE} -- Initialization
 
 feature
 
-	insert_new_pointage (a_pointage: INTEGER a_nom: STRING):INTEGER is
+	insert_new_pointage (a_pointage: INTEGER a_nom: STRING):INTEGER
 		local
 			l_id:INTEGER
 			l_insert:SQLITE_INSERT_STATEMENT

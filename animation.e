@@ -9,9 +9,4 @@ deferred class
 
 feature -- Access
 
-	anime_marmotte
-		do
-			
-		end
-c_rect_src:POINTER
 end

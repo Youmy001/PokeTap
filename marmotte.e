@@ -1,7 +1,7 @@
 note
-	description: "Summary description for {MARMOTTE}."
-	author: ""
-	date: "$Date$"
+	description: "class pour que le Meowth sort "
+	author: "Véronique Blais & Tommy Teasdale"
+	date: "4 avril 2013"
 	revision: "$Revision$"
 
 class
@@ -17,38 +17,28 @@ create
 feature -- Access
 
 	make (a_screen: POINTER)
-		local
-			l_ctr: INTEGER
-			l_meowth: STRING
-			l_c_meowth: C_STRING
 		do
-			create l_memory_manager.default_create
-			c_targetarea := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
-			rect_src := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
-			c_screen := a_screen
-			l_meowth := "images/meowth.png"
-			create l_c_meowth.make (l_meowth)
-			c_infile := {SDL_IMAGE}.IMG_Load (l_c_meowth.item)
+			screen := a_screen
+			creer_image("images/meowth.png")
+
 		end
 
 	animation_marmotte
 
 		do
 			create l_memory_manager.default_create
-			rect_src := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
-			l_bmp_h := {SDL_WRAPPER}.get_SDL_Surface_H (c_infile)
-			l_bmp_w := {SDL_WRAPPER}.get_SDL_Surface_W (c_infile)
-			c_x := 27
+			l_rect_src := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
+			l_bmp_h := {SDL_WRAPPER}.get_SDL_Surface_H (infile)
+			l_bmp_w := {SDL_WRAPPER}.get_SDL_Surface_W (infile)
+			set_x(27)
 
-			{SDL_WRAPPER}.set_SDL_Rect_x (c_targetarea, c_x)
-			{SDL_WRAPPER}.set_SDL_Rect_y (c_targetarea, c_y)
-			{SDL_WRAPPER}.set_SDL_Rect_w (c_targetarea, l_bmp_w)
-			{SDL_WRAPPER}.set_SDL_Rect_h (c_targetarea, l_bmp_h)
-
-			if c_y = 0 then
-				c_y := 71
+			{SDL_WRAPPER}.set_SDL_Rect_x (targetarea, x)
+			{SDL_WRAPPER}.set_SDL_Rect_y (targetarea, y)
+			{SDL_WRAPPER}.set_SDL_Rect_w (targetarea, l_bmp_w)
+			{SDL_WRAPPER}.set_SDL_Rect_h (targetarea, l_bmp_h)
+			if y = 0 then
+				set_y(71)
 			end
-
 
 			if not sort_trou then
 				rentrer_trou
@@ -56,41 +46,41 @@ feature -- Access
 				sortir_trou
 			end
 
-			l_rect_h := 71 - c_y
+			l_rect_h := 71 - y
 
-			{SDL_WRAPPER}.set_SDL_Rect_x (rect_src, 0)
-			{SDL_WRAPPER}.set_SDL_Rect_y (rect_src, 0)
-			{SDL_WRAPPER}.set_SDL_Rect_w (rect_src, 100)
-			{SDL_WRAPPER}.set_SDL_Rect_h (rect_src, l_rect_h)
-			c_ctr := {SDL_WRAPPER}.SDL_BlitSurface (c_infile, rect_src, c_screen, c_targetarea)
+			{SDL_WRAPPER}.set_SDL_Rect_x (l_rect_src, 0)
+			{SDL_WRAPPER}.set_SDL_Rect_y (l_rect_src, 0)
+			{SDL_WRAPPER}.set_SDL_Rect_w (l_rect_src, 100)
+			{SDL_WRAPPER}.set_SDL_Rect_h (l_rect_src, l_rect_h)
+			ctr := {SDL_WRAPPER}.SDL_BlitSurface (infile, l_rect_src, screen, targetarea)
 
 		end
-	l_bmp_w, l_bmp_h, i: INTEGER
-	rect_src: POINTER
-	l_rect_h: INTEGER
-	l_memory_manager: POINTER
-	sort_trou:BOOLEAN
 
 	rentrer_trou
 		do
-			if c_y < 71 then
-				c_y := c_y + 1
-			elseif c_y = 71 then
+			if y < 71 then
+				set_y(y + 1)
+			elseif y = 71 then
 				sort_trou := true
 			end
 		end
 
 	sortir_trou
 		do
-			if c_y < 15 then
-				i := i + 1
-				if i = 30 then
+			if y < 15 then
+				l_i := l_i + 1
+				if l_i = 30 then
 					sort_trou := false
-					i := 0
+					l_i := 0
 				end
-			elseif c_y >= 15 then
-				c_y := c_y - 1
+			elseif y >= 15 then
+				set_y(y - 1)
 			end
 		end
+	l_bmp_w, l_bmp_h, l_i: INTEGER
+	l_rect_src: POINTER
+	l_rect_h: INTEGER
+	l_memory_manager: POINTER
+	sort_trou:BOOLEAN
 end
 
