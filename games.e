@@ -65,8 +65,8 @@ feature -- Access
 					end
 					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousemotion then
 
-						l_marteau.set_x({SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(l_event))
-						l_marteau.set_y({SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event))
+						l_marteau.x:={SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(l_event)
+						l_marteau.y:={SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event)
 					end
 					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousedown then
 						l_pointage:= l_marteau.get_pointage

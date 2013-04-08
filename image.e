@@ -40,25 +40,28 @@ feature
 			end
 		x:INTEGER_16 assign set_x
 			do
-		--		Result:={SDL_WRAPPER}.get_SDL_Rect_x(c_targetarea)
+				Result:={SDL_WRAPPER}.get_SDL_Rect_x(targetarea)
 			end
+		y:INTEGER_16 assign set_y
+			do
+				Result:={SDL_WRAPPER}.get_SDL_Rect_y(targetarea)
+			end
+
+feature {NONE}
 
 		set_x(a_x:INTEGER_16)
 			do
-				c_x:=a_x
-				{SDL_WRAPPER}.set_SDL_Rect_x(targetarea, c_x)
+				{SDL_WRAPPER}.set_SDL_Rect_x(targetarea, a_x)
 			end
 
 		set_y(a_y:INTEGER_16)
 			do
-				c_y:=a_y
-				{SDL_WRAPPER}.set_SDL_Rect_y(targetarea, c_y)
+				{SDL_WRAPPER}.set_SDL_Rect_y(targetarea, a_y)
 			end
 
 
 infile:POINTER
 targetarea:POINTER
-c_x,c_y :INTEGER_16
 ctr:INTEGER
 screen:POINTER
 end

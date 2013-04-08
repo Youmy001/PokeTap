@@ -30,14 +30,14 @@ feature -- Access
 			l_rect_src := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
 			l_bmp_h := {SDL_WRAPPER}.get_SDL_Surface_H (infile)
 			l_bmp_w := {SDL_WRAPPER}.get_SDL_Surface_W (infile)
-			c_x := 27
+			set_x(27)
 
-			{SDL_WRAPPER}.set_SDL_Rect_x (targetarea, c_x)
-			{SDL_WRAPPER}.set_SDL_Rect_y (targetarea, c_y)
+			{SDL_WRAPPER}.set_SDL_Rect_x (targetarea, x)
+			{SDL_WRAPPER}.set_SDL_Rect_y (targetarea, y)
 			{SDL_WRAPPER}.set_SDL_Rect_w (targetarea, l_bmp_w)
 			{SDL_WRAPPER}.set_SDL_Rect_h (targetarea, l_bmp_h)
-			if c_y = 0 then
-				c_y := 71
+			if y = 0 then
+				set_y(71)
 			end
 
 			if not sort_trou then
@@ -46,7 +46,7 @@ feature -- Access
 				sortir_trou
 			end
 
-			l_rect_h := 71 - c_y
+			l_rect_h := 71 - y
 
 			{SDL_WRAPPER}.set_SDL_Rect_x (l_rect_src, 0)
 			{SDL_WRAPPER}.set_SDL_Rect_y (l_rect_src, 0)
@@ -58,23 +58,23 @@ feature -- Access
 
 	rentrer_trou
 		do
-			if c_y < 71 then
-				c_y := c_y + 1
-			elseif c_y = 71 then
+			if y < 71 then
+				set_y(y + 1)
+			elseif y = 71 then
 				sort_trou := true
 			end
 		end
 
 	sortir_trou
 		do
-			if c_y < 15 then
+			if y < 15 then
 				l_i := l_i + 1
 				if l_i = 30 then
 					sort_trou := false
 					l_i := 0
 				end
-			elseif c_y >= 15 then
-				c_y := c_y - 1
+			elseif y >= 15 then
+				set_y(y - 1)
 			end
 		end
 	l_bmp_w, l_bmp_h, l_i: INTEGER

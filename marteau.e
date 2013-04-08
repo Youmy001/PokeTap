@@ -19,8 +19,8 @@ feature -- Access
 			screen:=a_screen
 			creer_image("images/garagara_os.png")
 
-			c_x:=0
-			c_y:=0
+			set_x(0)
+			set_y(0)
 			set_nom(a_nom)
 			create {DATABASE} bdd.make()
 			--c_id:=c_bdd.insert_new_pointage(0,c_nom)
