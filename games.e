@@ -58,7 +58,7 @@ feature -- Access
 			l_mousemotion:= {SDL_WRAPPER}.SDL_MOUSEMOTION
 			l_mousedown:= {SDL_WRAPPER}.SDL_MOUSEBUTTONDOWN
 
-			marteau.get_best_pointage()
+			--marteau.get_best_pointage()
 
 			from
 				l_quit:={SDL_WRAPPER}.SDL_QUIT
@@ -84,6 +84,7 @@ feature -- Access
 						l_pointage:=marteau.get_pointage
 						l_pointage:=l_pointage+1
 						marteau.set_pointage(l_pointage)
+						marteau.update_pointage
 						print(l_pointage)
 						print("%N")
 					end
