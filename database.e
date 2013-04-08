@@ -21,6 +21,8 @@ feature {NONE} -- Initialization
 
 				-- Initialization for `Current'.
 			table_present: BOOLEAN
+			l_query:SQLITE_QUERY_STATEMENT
+			l_modify:SQLITE_MODIFY_STATEMENT
 		do
 
 				--			from
@@ -34,8 +36,8 @@ feature {NONE} -- Initialization
 
 				--			tous_valid:=across allo_liste as l_element all l_element.is_valid end
 				-- Open/create a Database.
-			create l_db.make_create_read_write ("meilleur_pointage")
-			create l_query.make ("SELECT name FROM sqlite_master ORDER BY name;", l_db)
+			create db.make_create_read_write ("meilleur_pointage")
+			create l_query.make ("SELECT name FROM sqlite_master ORDER BY name;", db)
 			table_present := false
 			across
 				l_query.execute_new as l_cursor
@@ -47,7 +49,7 @@ feature {NONE} -- Initialization
 			end
 				-- Create a new table
 			if table_present = false then
-				create l_modify.make ("CREATE TABLE `pointage` (`ID` INTEGER AUTO_INCREMENT NOT_NULL PRIMARY KEY, `score` INTEGER, `name` TEXT);", l_db)
+				create l_modify.make ("CREATE TABLE `pointage` (`ID` INTEGER PRIMARY KEY NOT NULL, `score` INTEGER, `name` TEXT);", db)
 				l_modify.execute
 			end
 		end
@@ -57,42 +59,53 @@ feature
 	insert_new_pointage (a_pointage: INTEGER a_nom: STRING):INTEGER is
 		local
 			l_id:INTEGER
+			l_insert:SQLITE_INSERT_STATEMENT
+			l_query:SQLITE_QUERY_STATEMENT
 		do
 				-- Create a insert statement with variables
-			create l_insert.make ("INSERT INTO pointage (score,name) VALUES (?1, ?2);", l_db)
+			create l_insert.make ("INSERT INTO pointage (score,name) VALUES (?1, ?2);", db)
 			check
 				l_insert_is_compiled: l_insert.is_compiled
 			end
-			l_db.begin_transaction (False)
+			db.begin_transaction (False)
 
 				-- Execute the INSERT statement with the argument list.
-			l_insert.execute_with_arguments ([create {SQLITE_INTEGER_ARG}.make ("?1", a_pointage), create {SQLITE_STRING_ARG}.make ("?2", a_nom)])
-			l_db.commit
+			l_insert.execute_with_arguments ([ a_pointage.out, a_nom])
+			db.commit
 
 				-- Get ID
-			create l_query.make ("SELECT max(id) from pointage where name=?1;",l_db)
+			create l_query.make ("SELECT `ID` from pointage where name='"+a_nom+"' ORDER BY id DESC LIMIT 1;",db)
 			across
-				l_query.execute_new_with_arguments ([create {SQLITE_STRING_ARG}.make ("?1", a_nom)])	as l_cursor
+				l_query.execute_new	as l_cursor
 			loop
 				l_id:=l_cursor.item.integer_value (1)
 			end
 
-			print(l_id)
 			Result:=l_id
 		end
-	update_pointage(a_id,a_pointage: INTEGER a_nom: STRING)
+	update_pointage(a_id: INTEGER a_pointage: INTEGER a_nom: STRING)
+		local
+			l_modify:SQLITE_MODIFY_STATEMENT
 		do
-
+			create l_modify.make ("UPDATE pointage SET score=?1 WHERE name=?2 AND ID=?3;", db)
+			check
+				l_modify_is_compiled: l_modify.is_compiled
+			end
+			db.begin_transaction (False)
+			l_modify.execute_with_arguments([create {SQLITE_INTEGER_ARG}.make ("?1", a_pointage), create {SQLITE_STRING_ARG}.make ("?2", a_nom), create {SQLITE_INTEGER_ARG}.make ("?3", a_id)])
+			db.commit
 		end
 feature
 	get_best_pointage
+		local
+			l_query:SQLITE_QUERY_STATEMENT
 		do
-			create l_query.make ("SELECT name, score FROM pointage ORDER BY score DESC;", l_db)
+			create l_query.make ("SELECT name, score FROM pointage ORDER BY score DESC;", db)
 			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
 				local
 					j, j_count: NATURAL
 				do
-						--					print ("> Row " + ia_row.index.out + ": ")
+						--	print ("> Row " + ia_row.index.out + ": ")
 
 					from
 						j := 1
@@ -110,12 +123,6 @@ feature
 				end)
 		end
 
-	l_db: SQLITE_DATABASE
-
-	l_modify: SQLITE_MODIFY_STATEMENT
-
-	l_insert: SQLITE_INSERT_STATEMENT
-
-	l_query: SQLITE_QUERY_STATEMENT
+	db: SQLITE_DATABASE
 
 end

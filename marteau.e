@@ -43,7 +43,9 @@ feature -- Access
 			set_nom(a_nom)
 
 			create {DATABASE} c_bdd.make()
-			--c_id:=c_bdd.insert_new_pointage(0,c_nom)
+			c_id:=c_bdd.insert_new_pointage(0,c_nom)
+			print(c_id)
+			print("%N")
 		end
 	set_nom(a_nom:STRING)
 		do
@@ -68,6 +70,10 @@ feature -- Access
 	insert_new_pointage(a_pointage:INTEGER a_nom:STRING):INTEGER is
 		do
 			Result:=c_bdd.insert_new_pointage (a_pointage, a_nom)
+		end
+	update_pointage
+		do
+			c_bdd.update_pointage (c_id, c_pointage, c_nom)
 		end
 
 c_bdd:DATABASE
