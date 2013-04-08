@@ -21,10 +21,15 @@ feature -- Access
 
 			set_x(0)
 			set_y(0)
+				--Setup player name
 			set_nom(a_nom)
 
+				-- Connection to database	
 			create {DATABASE} bdd.make()
+				-- Create an entry in the database for the player
+				-- with is name and empty score. Return an ID.
 			id:=bdd.insert_new_pointage(0,nom)
+				-- Print ID
 			print(id)
 			print("%N")
 		end

@@ -35,7 +35,7 @@ feature {NONE} -- Initialization
 
 				--			tous_valid:=across allo_liste as l_element all l_element.is_valid end
 				-- Open/create a Database.
-			create db.make_create_read_write ("meilleur_pointage")
+			create db.make_create_read_write ("saves/pointage")
 			create l_query.make ("SELECT name FROM sqlite_master ORDER BY name;", db)
 			l_table_present := false
 			across

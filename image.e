@@ -46,6 +46,10 @@ feature
 			do
 				Result:={SDL_WRAPPER}.get_SDL_Rect_y(targetarea)
 			end
+		destroy
+			do
+				{SDL_WRAPPER}.SDL_FreeSurface(screen)
+			end
 
 feature {NONE}
 

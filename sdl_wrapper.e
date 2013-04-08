@@ -38,6 +38,14 @@ Feature --Functions- SDL.h
 		"SDL_BlitSurface"
 	end
 
+	frozen SDL_FreeSurface(surface:POINTER)
+		--Frees(deletes) a SDL_Surface
+	external
+		"C (SDL_Surface *) | <SDL.h>"
+	alias
+		"SDL_FreeSurface"
+	end
+
 	frozen SDL_Flip(screen:POINTER) : INTEGER
 		-- swaps screen buffers
 	external

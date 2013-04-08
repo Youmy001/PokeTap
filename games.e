@@ -37,9 +37,11 @@ feature -- Access
 			io.readLine
 			create  l_marteau.make(l_screen,io.last_string)
 
+			-- Create an ennemy
 			create  l_trou.make(l_screen)
 			create l_marmotte.make(l_screen)
 
+			-- Allow memory for events
 			create l_memory_manager.default_create
 			l_event:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
 
@@ -71,7 +73,7 @@ feature -- Access
 					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousedown then
 						l_pointage:= l_marteau.get_pointage
 						l_pointage:=l_pointage+1
-						
+
 						l_marteau.set_pointage(l_pointage)
 						l_marteau.update_pointage
 						print(l_pointage)
@@ -84,10 +86,11 @@ feature -- Access
 				l_marmotte.animation_marmotte
 				l_marteau.affiche_image
 
-				{SDL_WRAPPER}.SDL_Delay(16)
+				{SDL_WRAPPER}.SDL_Delay(17)
 				l_ctr := {SDL_WRAPPER}.SDL_Flip(l_screen)
 
 			end
+			--l_fond.destroy()
 			{SDL_WRAPPER}.SDL_Exit()
 
 
