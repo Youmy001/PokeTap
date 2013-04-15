@@ -30,9 +30,11 @@ feature
 				create l_c_image.make (l_image)
 				infile := {SDL_IMAGE}.IMG_Load (l_c_image.item)
 
+				-- Get size of the picture file
 				l_bmp_h := {SDL_WRAPPER}.get_SDL_Surface_H (infile)
 				l_bmp_w := {SDL_WRAPPER}.get_SDL_Surface_W (infile)
 
+				-- Setup postion and surface of image
 				{SDL_WRAPPER}.set_SDL_Rect_x (targetarea, 0)
 				{SDL_WRAPPER}.set_SDL_Rect_y (targetarea, 0)
 				{SDL_WRAPPER}.set_SDL_Rect_w (targetarea, l_bmp_w)

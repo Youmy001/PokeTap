@@ -88,25 +88,49 @@ feature -- Setter -- SDL.h
 		"x"
 	end
 	frozen set_SDL_Rect_Y(SDL_Rect:POINTER; value:INTEGER_16)
-		--Modifie le x de l'image
+		--Modifie le y de l'image
 	external
 		"C [struct <SDL.h>] (SDL_Rect, Sint16)"
 	alias
 		"y"
 	end
 	frozen set_SDL_Rect_H(SDL_Rect:POINTER; value:INTEGER)
-		--Modifie le x de l'image
+		--Modifie le h de l'image
 	external
 		"C [struct <SDL.h>] (SDL_Rect, Uint16)"
 	alias
 		"h"
 	end
 	frozen set_SDL_Rect_W(SDL_Rect:POINTER; value:INTEGER)
-		--Modifie le x de l'image
+		--Modifie le w de l'image
 	external
 		"C [struct <SDL.h>] (SDL_Rect, Uint16)"
 	alias
 		"w"
+	end
+
+	frozen set_SDL_Color_r(SDL_Color:POINTER; value:INTEGER_8)
+		--Set color red value
+	external
+		"C [struct <SDL.h>](SDL_Color,Uint8)"
+	alias
+		"r"
+	end
+
+	frozen set_SDL_Color_g(SDL_Color:POINTER; value:INTEGER_8)
+		--Set color red value
+	external
+		"C [struct <SDL.h>](SDL_Color,Uint8)"
+	alias
+		"g"
+	end
+
+	frozen set_SDL_Color_b(SDL_Color:POINTER; value:INTEGER_8)
+		--Set color red value
+	external
+		"C [struct <SDL.h>](SDL_Color,Uint8)"
+	alias
+		"b"
 	end
 
 
@@ -190,6 +214,14 @@ feature --sizeof
 		"C inline use <SDL.h>"
 	alias
 		"sizeof(SDL_Event)"
+	end
+
+	frozen sizeof_SDL_Color:INTEGER
+		-- Définie une couleur
+	external
+		"C inline use <SDL.h>"
+	alias
+		"sizeof(SDL_Color)"
 	end
 
 feature -- Constante C

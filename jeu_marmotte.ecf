@@ -41,6 +41,11 @@
 				<platform value="windows"/>
 			</condition>
 		</external_library>
+		<external_library location="-lSDL_ttf">
+			<condition>
+				<platform excluded_value="windows"/>
+			</condition>
+		</external_library>
 		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="sqlite" location="$ISE_LIBRARY\unstable\library\persistency\database\sqlite3\sqlite.ecf"/>

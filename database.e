@@ -46,7 +46,7 @@ feature {NONE} -- Initialization
 					l_table_present := true
 				end
 			end
-				-- Create a new table
+				-- Create a new table if the table does not exists
 			if l_table_present = false then
 				create l_modify.make ("CREATE TABLE `pointage` (`ID` INTEGER PRIMARY KEY NOT NULL, `score` INTEGER, `name` TEXT);", db)
 				l_modify.execute
