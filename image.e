@@ -19,13 +19,13 @@ feature
 			local
 				l_image: STRING
 				l_c_image: C_STRING
-				l_memory_manager: POINTER
+
 				l_bmp_w, l_bmp_h: INTEGER
 				l_rect_src: POINTER
 			do
-				create l_memory_manager.default_create
-				targetarea := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
-				l_rect_src := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
+				--create l_memory_manager.default_create
+				targetarea := rect
+				l_rect_src := rect
 				l_image := a_image
 				create l_c_image.make (l_image)
 				infile := {SDL_IMAGE}.IMG_Load (l_c_image.item)
@@ -48,14 +48,12 @@ feature
 			do
 				Result:={SDL_WRAPPER}.get_SDL_Rect_y(targetarea)
 			end
-		destroy
-			do
-				{SDL_WRAPPER}.SDL_FreeSurface(screen)
-			end
+
 
 feature {NONE}
 
 		set_x(a_x:INTEGER_16)
+			--
 			do
 				{SDL_WRAPPER}.set_SDL_Rect_x(targetarea, a_x)
 			end
@@ -66,8 +64,24 @@ feature {NONE}
 			end
 
 
+
+feature{NONE}--Routine
+
+	rect:POINTER
+		--allocation de mémoire
+		do
+			create memory_manager.default_create
+			result:=memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
+		end
+
+	destroy
+		--Destructrion
+		do
+			{SDL_WRAPPER}.SDL_FreeSurface(screen)
+		end
+
 infile:POINTER
 targetarea:POINTER
 ctr:INTEGER
-screen:POINTER
+screen,memory_manager:POINTER
 end
