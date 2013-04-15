@@ -22,6 +22,7 @@ feature -- Access
 			l_mousemotion,l_mousedown, l_quit:NATURAL_8
 			l_trou:TROU
 
+			l_database:DATABASE
 			l_font:STRING
 			l_c_font, l_c_text:C_STRING
 			font:POINTER
@@ -37,12 +38,14 @@ feature -- Access
 			l_disable := disable
 			l_ctr := show_cursor_disable(l_disable)
 			create {FOND_ECRAN} l_fond.make(l_screen)
+			create {DATABASE} bdd.make
 			--create l_c_text.make ("19472 points")
 
 			-- Create Player
 			print("Entrez votre nom : ")
 			io.readLine
-			create  l_marteau.make(l_screen,io.last_string)
+			create  l_marteau.make(l_screen,io.last_string,bdd)
+
 			create l_texte_pointage.make (l_screen)
 
 			-- Create an ennemy
@@ -176,6 +179,10 @@ feature{NONE} --Routine
 		result:={SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event)
 	end
 
+id:INTEGER
+pointage:INTEGER
+nom:STRING
+bdd:DATABASE
 --	affiche_texte(a_text, a_screen:POINTER)
 --		local
 --			l_memory_manager, l_targetarea:POINTER
@@ -190,4 +197,5 @@ feature{NONE} --Routine
 --			end
 
 --		end
+
 end

@@ -14,7 +14,7 @@ inherit
 create
 	make
 feature -- Access
-	make(a_screen:POINTER a_nom:STRING)
+	make(a_screen:POINTER a_nom:STRING a_bdd:DATABASE)
 		do
 			screen:=a_screen
 			creer_image("images/garagara_os.png")
@@ -24,8 +24,9 @@ feature -- Access
 				--Setup player name
 			set_nom(a_nom)
 
-				-- Connection to database	
-			create {DATABASE} bdd.make()
+				-- Connection to database
+			bdd:=a_bdd
+			--create {DATABASE} bdd.make()
 				-- Create an entry in the database for the player
 				-- with is name and empty score. Return an ID.
 			id:=bdd.insert_new_pointage(0,nom)
@@ -62,8 +63,8 @@ feature -- Access
 			bdd.update_pointage (id, pointage, nom)
 		end
 
-bdd:DATABASE
 id:INTEGER
 pointage:INTEGER
 nom:STRING
+bdd:DATABASE
 end
