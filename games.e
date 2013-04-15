@@ -27,6 +27,7 @@ feature -- Access
 			font:POINTER
 			l_font_surface:POINTER
 			l_color:POINTER
+			l_texte_pointage:TEXTE
 
 		do
 			-- Initialiser la fenêtre et SDL
@@ -184,7 +185,7 @@ feature{NONE} --Routine
 	do
 		result:={SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event)
 	end
-	
+
 	affiche_texte(a_text, a_screen:POINTER)
 		local
 			l_memory_manager, l_targetarea:POINTER
