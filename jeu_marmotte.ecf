@@ -21,6 +21,11 @@
 				<platform value="windows"/>
 			</condition>
 		</external_include>
+		<external_include location="..\..\..\..\SDL_ttf-2.0.11\include">
+			<condition>
+				<platform value="windows"/>
+			</condition>
+		</external_include>
 		<external_library location="..\..\..\SDL-1.2.14\lib\libSDL.dll.a">
 			<condition>
 				<platform value="windows"/>
@@ -46,6 +51,7 @@
 				<platform excluded_value="windows"/>
 			</condition>
 		</external_library>
+		<external_library location="..\..\..\SDL_ttf-2.0.11\lib\x86\SDL_ttf.lib"/>
 		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="sqlite" location="$ISE_LIBRARY\unstable\library\persistency\database\sqlite3\sqlite.ecf"/>

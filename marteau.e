@@ -11,7 +11,6 @@ class
 inherit
 	IMAGE
 	COLLISION
-	TEXTE
 create
 	make
 feature -- Access
@@ -64,7 +63,6 @@ feature -- Access
 		end
 
 bdd:DATABASE
-feature
 id:INTEGER
 pointage:INTEGER
 nom:STRING
