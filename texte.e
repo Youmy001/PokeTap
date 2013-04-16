@@ -14,7 +14,6 @@ feature -- Access
 		local
 			l_font:STRING
 			l_c_font, l_c_text:C_STRING
-			font:POINTER
 			l_font_surface:POINTER
 			l_color, l_memory_manager:POINTER
 			l_texte_pointage:TEXTE
@@ -28,19 +27,23 @@ feature -- Access
 			font_size:=34
 			font := {SDL_TTF}.TTF_OpenFont (font_name.item,font_size)
 
-			create texte.make ("19472 points")
+			create texte.make ("point")
 			create l_memory_manager.default_create
 			color:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Color)
+			targetarea := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
 			set_r(0)
 			set_g(0)
 			set_b(0)
-			surface:={SDL_TTF}.TTF_RenderText_Solid(font,texte.item,color)
 			affiche_texte()
 		end
-
-feature{NONE}
-		--render
 		--open_font
+		set_texte(a_texte:STRING)
+			local
+				l_texte:STRING
+			do
+				l_texte := a_texte
+				create texte.make (l_texte)
+			end
 		set_r(a_r:INTEGER_8)
 			--
 			do
@@ -55,24 +58,31 @@ feature{NONE}
 			do
 				{SDL_WRAPPER}.set_SDL_Color_b(color, a_b)
 			end
-		affiche_texte()
-			local
-				l_memory_manager, l_targetarea:POINTER
+		set_x(a_x:INTEGER_16)
 			do
-				l_targetarea := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
-				{SDL_WRAPPER}.set_SDL_Rect_x (l_targetarea, 15)
-				{SDL_WRAPPER}.set_SDL_Rect_y (l_targetarea, 15)
-				{SDL_WRAPPER}.set_SDL_Rect_w (l_targetarea, 100)
-				{SDL_WRAPPER}.set_SDL_Rect_h (l_targetarea, 100)
-				if {SDL_WRAPPER}.SDL_BlitSurface(surface, create{POINTER}, screen, l_targetarea) < 0 then
+				{SDL_WRAPPER}.set_SDL_Rect_x (targetarea, a_x)
+			end
+		set_y(a_y:INTEGER_16)
+			do
+				{SDL_WRAPPER}.set_SDL_Rect_y (targetarea, a_y)
+			end
+		affiche_texte()
+			do
+				surface:={SDL_TTF}.TTF_RenderText_Solid(font,texte.item,color)
+				{SDL_WRAPPER}.set_SDL_Rect_w (targetarea, 100)
+				{SDL_WRAPPER}.set_SDL_Rect_h (targetarea, 100)
+				if {SDL_WRAPPER}.SDL_BlitSurface(surface, create{POINTER}, screen, targetarea) < 0 then
 					print ("Erreur at afficher_texte")
 				end
 
 			end
+feature{NONE}
 texte:C_STRING
+font:POINTER
 font_name:C_STRING
 font_size:INTEGER
 color:POINTER
 screen:POINTER
 surface:POINTER
+targetarea:POINTER
 end
