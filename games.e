@@ -30,10 +30,10 @@ feature -- Access
 			l_font_surface:POINTER
 			l_color:POINTER
 			l_texte_pointage:TEXTE
+
 			l_reseau_serveur:RESEAU_SERVEUR
 			l_reseau_client:RESEAU_CLIENT
-
-
+			l_texte_nom:TEXTE
 		do
 			-- Initialiser la fenêtre et SDL
 			l_init := init_video
@@ -163,6 +163,13 @@ make_client
 			create  l_marteau.make(l_screen,io.last_string,bdd)
 
 			create l_texte_pointage.make (l_screen)
+			l_texte_pointage.set_texte("0 point")
+			l_texte_pointage.set_x(400)
+			l_texte_pointage.set_y(570)
+			create l_texte_nom.make(l_screen)
+			l_texte_nom.set_texte(l_marteau.get_nom)
+			l_texte_nom.set_x(15)
+			l_texte_nom.set_y(570)
 
 			-- Create an ennemy
 			create  l_trou.make(l_screen)
@@ -201,12 +208,13 @@ make_client
 					end
 					-- Mouse click event
 					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousedown then
-						pointage:= l_marteau.get_pointage
-						pointage:=l_pointage+1
+						l_pointage:= l_marteau.get_pointage
+						l_pointage:=l_pointage+1
 
-						l_marteau.set_pointage(pointage)
+						l_marteau.set_pointage(l_pointage)
 						l_marteau.update_pointage
-						print(pointage)
+						l_texte_pointage.set_texte(l_pointage.out+" points")
+						print(l_pointage)
 						print("%N")
 					end
 					l_poll_event:=poll_event(l_event)
@@ -217,6 +225,8 @@ make_client
 				l_marmotte.animation_marmotte
 				--l_font_surface:={SDL_TTF}.TTF_RenderText_Solid(font,l_c_text.item,l_color)
 				--affiche_texte(l_font_surface, l_screen)
+				l_texte_pointage.affiche_texte
+				l_texte_nom.affiche_texte
 				l_marteau.affiche_image
 				-- Wait 17ms (for 60fps)
 				delay(17)
@@ -301,19 +311,6 @@ pointage:INTEGER
 nom:STRING
 bdd:DATABASE
 reseau:RESEAU_CLIENT
---	affiche_texte(a_text, a_screen:POINTER)
---		local
---			l_memory_manager, l_targetarea:POINTER
---		do
---			l_targetarea := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
---			{SDL_WRAPPER}.set_SDL_Rect_x (l_targetarea, 15)
---			{SDL_WRAPPER}.set_SDL_Rect_y (l_targetarea, 15)
---			{SDL_WRAPPER}.set_SDL_Rect_w (l_targetarea, 100)
---			{SDL_WRAPPER}.set_SDL_Rect_h (l_targetarea, 590)
---			if {SDL_WRAPPER}.SDL_BlitSurface(a_text, create{POINTER}, a_screen, l_targetarea) < 0 then
---				print ("Erreur at afficher_texte")
---			end
 
---		end
 
 end
