@@ -194,19 +194,5 @@ id:INTEGER
 pointage:INTEGER
 nom:STRING
 bdd:DATABASE
---	affiche_texte(a_text, a_screen:POINTER)
---		local
---			l_memory_manager, l_targetarea:POINTER
---		do
---			l_targetarea := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
---			{SDL_WRAPPER}.set_SDL_Rect_x (l_targetarea, 15)
---			{SDL_WRAPPER}.set_SDL_Rect_y (l_targetarea, 15)
---			{SDL_WRAPPER}.set_SDL_Rect_w (l_targetarea, 100)
---			{SDL_WRAPPER}.set_SDL_Rect_h (l_targetarea, 590)
---			if {SDL_WRAPPER}.SDL_BlitSurface(a_text, create{POINTER}, a_screen, l_targetarea) < 0 then
---				print ("Erreur at afficher_texte")
---			end
-
---		end
 
 end
