@@ -7,10 +7,11 @@ note
 class
 	GAMES
 create
-	make
+	make_serveur,
+	make_client
 
 feature -- Access
-	make
+	make_serveur
 		local
 			l_marteau:MARTEAU
 			l_marmotte:MARMOTTE
@@ -29,6 +30,9 @@ feature -- Access
 			l_font_surface:POINTER
 			l_color:POINTER
 			l_texte_pointage:TEXTE
+			l_reseau_serveur:RESEAU_SERVEUR
+			l_reseau_client:RESEAU_CLIENT
+
 
 		do
 			-- Initialiser la fenêtre et SDL
@@ -39,6 +43,9 @@ feature -- Access
 			l_ctr := show_cursor_disable(l_disable)
 			create {FOND_ECRAN} l_fond.make(l_screen)
 			create {DATABASE} bdd.make
+			create{RESEAU_SERVEUR} l_reseau_serveur.make
+
+
 			--create l_c_text.make ("19472 points")
 
 			-- Create Player
@@ -85,12 +92,12 @@ feature -- Access
 					end
 					-- Mouse click event
 					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousedown then
-						l_pointage:= l_marteau.get_pointage
-						l_pointage:=l_pointage+1
+						pointage:= l_marteau.get_pointage
+						pointage:=l_pointage+1
 
-						l_marteau.set_pointage(l_pointage)
+						l_marteau.set_pointage(pointage)
 						l_marteau.update_pointage
-						print(l_pointage)
+						print(pointage)
 						print("%N")
 					end
 					l_poll_event:=poll_event(l_event)
@@ -108,6 +115,116 @@ feature -- Access
 				l_ctr := flip(l_screen)
 
 			end
+		--	l_reseau_client.close
+			--l_reseau_serveur.close
+			--l_fond.destroy()
+			exit()
+
+
+		end
+
+make_client
+		local
+			l_marteau:MARTEAU
+			l_marmotte:MARMOTTE
+			l_init:NATURAL_32
+			l_ctr, l_pointage, l_disable, l_poll_event:INTEGER
+			l_screen, l_event, l_memory_manager:POINTER
+			l_fond:FOND_ECRAN
+			l_quit_bool:BOOLEAN
+			l_mousemotion,l_mousedown, l_quit:NATURAL_8
+			l_trou:TROU
+
+			l_database:DATABASE
+			l_font:STRING
+			l_c_font, l_c_text:C_STRING
+			font:POINTER
+			l_font_surface:POINTER
+			l_color:POINTER
+			l_texte_pointage:TEXTE
+			l_reseau_client:RESEAU_CLIENT
+
+		do
+			-- Initialiser la fenêtre et SDL
+			l_init := init_video
+			l_ctr := init(l_init)
+			l_screen := set_video_mode
+			l_disable := disable
+			l_ctr := show_cursor_disable(l_disable)
+			create {FOND_ECRAN} l_fond.make(l_screen)
+			create {DATABASE} bdd.make
+			create  {RESEAU_CLIENT}reseau.make
+
+			--create l_c_text.make ("19472 points")
+
+			-- Create Player
+			print("Entrez votre nom : ")
+			io.readLine
+			create  l_marteau.make(l_screen,io.last_string,bdd)
+
+			create l_texte_pointage.make (l_screen)
+
+			-- Create an ennemy
+			create  l_trou.make(l_screen)
+			create l_marmotte.make(l_screen)
+
+			-- Allow memory for events
+			create l_memory_manager.default_create
+			l_event:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
+
+			l_mousemotion:= mouse_motion
+			l_mousedown:= {SDL_WRAPPER}.SDL_MOUSEBUTTONDOWN
+
+			--l_marteau.get_best_pointage()
+
+			from
+				l_quit:={SDL_WRAPPER}.SDL_QUIT
+				l_quit_bool:=false
+			until
+				l_quit_bool=true
+			loop
+
+				from
+					l_poll_event:=poll_event(l_event)
+				until
+					l_poll_event/=1
+				loop
+					-- Quit event
+					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_quit then
+						l_quit_bool:= true
+					end
+					-- Mouse movement event
+					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousemotion then
+
+						l_marteau.x:=mouse_x(l_event)
+						l_marteau.y:=mouse_y(l_event)
+					end
+					-- Mouse click event
+					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousedown then
+						pointage:= l_marteau.get_pointage
+						pointage:=l_pointage+1
+
+						l_marteau.set_pointage(pointage)
+						l_marteau.update_pointage
+						print(pointage)
+						print("%N")
+					end
+					l_poll_event:=poll_event(l_event)
+				end
+				-- Display images
+				l_fond.affiche_image
+				l_trou.affiche_image
+				l_marmotte.animation_marmotte
+				--l_font_surface:={SDL_TTF}.TTF_RenderText_Solid(font,l_c_text.item,l_color)
+				--affiche_texte(l_font_surface, l_screen)
+				l_marteau.affiche_image
+				-- Wait 17ms (for 60fps)
+				delay(17)
+				-- Display a frame
+				l_ctr := flip(l_screen)
+
+			end
+			--l_reseau_client.close
 			--l_fond.destroy()
 			exit()
 
@@ -183,6 +300,7 @@ id:INTEGER
 pointage:INTEGER
 nom:STRING
 bdd:DATABASE
+reseau:RESEAU_CLIENT
 --	affiche_texte(a_text, a_screen:POINTER)
 --		local
 --			l_memory_manager, l_targetarea:POINTER
