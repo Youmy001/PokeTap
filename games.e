@@ -54,6 +54,13 @@ feature -- Access
 			create  l_marteau.make(l_screen,io.last_string,bdd)
 
 			create l_texte_pointage.make (l_screen)
+			l_texte_pointage.set_texte("0 point")
+			l_texte_pointage.set_x(265)
+			l_texte_pointage.set_y(560)
+			create l_texte_nom.make(l_screen)
+			l_texte_nom.set_texte(l_marteau.get_nom)
+			l_texte_nom.set_x(25)
+			l_texte_nom.set_y(560)
 
 			-- Create an ennemy
 			create  l_trou.make(l_screen)
@@ -92,12 +99,13 @@ feature -- Access
 					end
 					-- Mouse click event
 					if {SDL_WRAPPER}.get_SDL_Event_Type(l_event) = l_mousedown then
-						pointage:= l_marteau.get_pointage
-						pointage:=l_pointage+1
+						l_pointage:= l_marteau.get_pointage
+						l_pointage:=l_pointage+1
 
-						l_marteau.set_pointage(pointage)
+						l_marteau.set_pointage(l_pointage)
 						l_marteau.update_pointage
-						print(pointage)
+						l_texte_pointage.set_texte(l_pointage.out+" points")
+						print(l_pointage)
 						print("%N")
 					end
 					l_poll_event:=poll_event(l_event)
@@ -108,6 +116,8 @@ feature -- Access
 				l_marmotte.animation_marmotte
 				--l_font_surface:={SDL_TTF}.TTF_RenderText_Solid(font,l_c_text.item,l_color)
 				--affiche_texte(l_font_surface, l_screen)
+				l_texte_pointage.affiche_texte
+				l_texte_nom.affiche_texte
 				l_marteau.affiche_image
 				-- Wait 17ms (for 60fps)
 				delay(17)
@@ -142,6 +152,7 @@ make_client
 			l_font_surface:POINTER
 			l_color:POINTER
 			l_texte_pointage:TEXTE
+			l_texte_nom:TEXTE
 			l_reseau_client:RESEAU_CLIENT
 
 		do
@@ -164,12 +175,12 @@ make_client
 
 			create l_texte_pointage.make (l_screen)
 			l_texte_pointage.set_texte("0 point")
-			l_texte_pointage.set_x(400)
-			l_texte_pointage.set_y(570)
+			l_texte_pointage.set_x(725)
+			l_texte_pointage.set_y(560)
 			create l_texte_nom.make(l_screen)
 			l_texte_nom.set_texte(l_marteau.get_nom)
-			l_texte_nom.set_x(15)
-			l_texte_nom.set_y(570)
+			l_texte_nom.set_x(490)
+			l_texte_nom.set_y(560)
 
 			-- Create an ennemy
 			create  l_trou.make(l_screen)
