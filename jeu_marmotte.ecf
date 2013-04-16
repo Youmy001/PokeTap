@@ -54,11 +54,18 @@
 		<external_library location="..\..\..\SDL_ttf-2.0.11\lib\x86\SDL_ttf.lib"/>
 		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<library name="net" location="$ISE_LIBRARY\library\net\net.ecf"/>
 		<library name="sqlite" location="$ISE_LIBRARY\unstable\library\persistency\database\sqlite3\sqlite.ecf"/>
 		<cluster name="jeu_marmotte" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>
 			</file_rule>
 		</cluster>
+	</target>
+	<target name="make_serveur" extends="jeu_marmotte">
+		<root class="RESEAU" feature="make_serveur"/>
+	</target>
+	<target name="client" extends="jeu_marmotte">
+		<root class="RESEAU" feature="make_client"/>
 	</target>
 </system>
