@@ -13,6 +13,63 @@ create
 feature -- Access
 
 make_local
+	local
+			l_fond_ecran:FOND_ECRAN
+			l_init, l_init_png: NATURAL_32
+			l_screen:POINTER
+			l_ctr:INTEGER
+			l_exit, l_single:BOOLEAN
+			l_quit_button:BUTTONS
+			l_single_button:BUTTONS
+			l_multijoueur_button:BUTTONS
+	do
+		-- Initialiser la fenêtre et SDL
+			l_init := init_video
+			l_ctr := init (l_init)
+			l_init_png := img_png
+			l_ctr := img_init (l_init_png)
+			l_screen := set_video_mode
+			create l_fond_ecran.make_menu (l_screen)
+			create l_quit_button.make (l_screen,"images/quitter.png", 300, 500)
+			create l_single_button.make (l_screen,"images/forever.png", 300,300)
+			create l_multijoueur_button.make (l_screen,"images/multijoueur.png", 300, 400)
+			from
+				l_exit:=false
+			until
+				l_exit=true
+			loop
+				from
+					l_quit := {SDL_WRAPPER}.SDL_QUIT
+					l_quit_bool := false
+				until
+					l_quit_bool = true
+				loop
+					from
+						l_poll_event := poll_event (l_event)
+					until
+						l_poll_event /= 1
+					loop
+							-- Quit event
+						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_quit then
+							l_exit:=true
+						end
+							-- Mouse click event
+						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+
+						end
+						l_poll_event := poll_event (l_event)
+					end
+				end
+				l_fond_ecran.affiche_image
+				l_single_button.affiche_image
+				l_multijoueur_button.affiche_image
+				l_quit_button.affiche_image
+				single_player
+
+				l_exit:=true
+			end
+	end
+single_player
 		local
 			l_marteau: MARTEAU
 			l_marmotte: MARMOTTE
@@ -498,7 +555,16 @@ feature {NONE} --Routine
 		do
 			result := {SDL_WRAPPER}.SDL_Init (l_init)
 		end
-
+	img_png:NATURAL_32
+		--Parametre de l'image a PNG
+		do
+			result:= {SDL_IMAGE}.IMG_INIT_PNG
+		end
+	img_init(l_init:NATURAL_32):INTEGER
+		--initialisation du format de l'image
+		do
+			result := {SDL_IMAGE}.IMG_Init(l_init)
+		end
 	set_video_mode: POINTER
 			--set les propriétés de la fenêtre
 		do

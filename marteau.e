@@ -17,7 +17,7 @@ feature -- Access
 	make(a_screen:POINTER a_nom:STRING a_bdd:DATABASE)
 		do
 			screen:=a_screen
-			creer_image("images/garagara_os.png")
+			creer_image("images/os_petit.png")
 
 			set_x(0)
 			set_y(0)
