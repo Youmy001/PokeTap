@@ -22,6 +22,7 @@ feature -- Access
 			l_quit_bool:BOOLEAN
 			l_mousemotion,l_mousedown, l_quit:NATURAL_8
 			l_trou:TROU
+			l_cl_pointage:STRING
 
 			l_database:DATABASE
 			l_font:STRING
@@ -30,14 +31,15 @@ feature -- Access
 			l_font_surface:POINTER
 			l_color:POINTER
 			l_texte_pointage:TEXTE
+			l_texte_cl_pointage:TEXTE
 
 			l_reseau_serveur:RESEAU_SERVEUR
 			l_reseau_client:RESEAU_CLIENT
 			l_texte_nom:TEXTE
 		do
 			-- Initialiser la fenêtre et SDL
-			l_init := init_video
-			l_ctr := init(l_init)
+--			l_init := init_video
+--			l_ctr := init(l_init)
 			l_screen := set_video_mode
 			l_disable := disable
 			l_ctr := show_cursor_disable(l_disable)
@@ -61,6 +63,12 @@ feature -- Access
 			l_texte_nom.set_texte(l_marteau.get_nom)
 			l_texte_nom.set_x(25)
 			l_texte_nom.set_y(560)
+
+			-- Create client
+			create l_texte_cl_pointage.make(l_screen)
+			l_texte_cl_pointage.set_texte("0 point")
+			l_texte_cl_pointage.set_x(725)
+			l_texte_cl_pointage.set_y(560)
 
 			-- Create an ennemy
 			create  l_trou.make(l_screen)
@@ -110,6 +118,8 @@ feature -- Access
 					end
 					l_poll_event:=poll_event(l_event)
 				end
+				l_cl_pointage:=l_reseau_serveur.recoit
+				l_texte_cl_pointage.set_texte(l_cl_pointage+" points")
 				-- Display images
 				l_fond.affiche_image
 				l_trou.affiche_image
@@ -117,16 +127,16 @@ feature -- Access
 				--l_font_surface:={SDL_TTF}.TTF_RenderText_Solid(font,l_c_text.item,l_color)
 				--affiche_texte(l_font_surface, l_screen)
 				l_texte_pointage.affiche_texte
+				l_texte_cl_pointage.affiche_texte
 				l_texte_nom.affiche_texte
 				l_marteau.affiche_image
 				-- Wait 17ms (for 60fps)
-				delay(17)
+				delay(1)
 				-- Display a frame
 				l_ctr := flip(l_screen)
 
 			end
-		--	l_reseau_client.close
-			--l_reseau_serveur.close
+			l_reseau_serveur.close
 			--l_fond.destroy()
 			exit()
 
@@ -164,7 +174,7 @@ make_client
 			l_ctr := show_cursor_disable(l_disable)
 			create {FOND_ECRAN} l_fond.make(l_screen)
 			create {DATABASE} bdd.make
-			create  {RESEAU_CLIENT}reseau.make
+			create  {RESEAU_CLIENT}l_reseau_client.make
 
 			--create l_c_text.make ("19472 points")
 
@@ -230,6 +240,7 @@ make_client
 					end
 					l_poll_event:=poll_event(l_event)
 				end
+				l_reseau_client.envoye(l_pointage.out)
 				-- Display images
 				l_fond.affiche_image
 				l_trou.affiche_image
@@ -245,7 +256,7 @@ make_client
 				l_ctr := flip(l_screen)
 
 			end
-			--l_reseau_client.close
+			l_reseau_client.close
 			--l_fond.destroy()
 			exit()
 
@@ -291,10 +302,10 @@ feature{NONE} --Routine
 			result:={SDL_WRAPPER}.SDL_Flip(l_screen)
 		end
 
-	delay(temp:INTEGER)
+	delay(temp:NATURAL_32)
 		--Delai d'image seconde
 		do
-			{SDL_WRAPPER}.SDL_Delay(17)
+			{SDL_WRAPPER}.SDL_Delay(temp)
 		end
 	exit()
 		--Quitter
