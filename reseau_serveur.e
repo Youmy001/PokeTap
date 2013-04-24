@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {RESEAU_SERVEUR}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "[Gestion du réseau du côté serveur]"
+	author: "Véronique Blais"
+	date: "18 Avril 2013"
+	revision: "0.13.04.18"
 
 class
 	RESEAU_SERVEUR

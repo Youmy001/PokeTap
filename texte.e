@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {TEXTE}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "[Gestion de tous les éléments textuels à afficher à l'écran]"
+	author: "Tommy Teasdale et Véronique Blais"
+	date: "18 Avril 2013"
+	revision: "0.13.04.18"
 
 class
 	TEXTE

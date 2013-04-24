@@ -1,8 +1,8 @@
 note
-	description: "Affichage de l'arrière-plan {FOND_ECRAN}."
+	description: "[Gestion de l'affichage de l'arrière plan]"
 	author: "Véronique Blais"
-	date: "21 février 2013"
-	revision: "24 février 2013: Passage à SDL_image, 28 février 2013: intégration à la boucle de jeu"
+	date: "22 Avril 2013"
+	revision: "0.13.04.22"
 
 class
 	FOND_ECRAN

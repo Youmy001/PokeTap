@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {COLLISION}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "[Gestion des collisions présentes entre les objets]"
+	author: "Tommy Teasdale, Véronique Blais"
+	date: "4 Mars 2013"
+	revision: "0.13.03.04"
 
 class
 	COLLISION

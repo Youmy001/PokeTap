@@ -1,8 +1,8 @@
 note
-	description: "class pour que le Meowth sort "
-	author: "Véronique Blais & Tommy Teasdale"
-	date: "4 avril 2013"
-	revision: "$Revision$"
+	description: "[Gestion de l'animation de la marmotte, des mouvements, etc.]"
+	author: "Véronique Blais"
+	date: "15 Avril 2013"
+	revision: "0.13.04.15"
 
 class
 	MARMOTTE

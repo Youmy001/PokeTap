@@ -1,9 +1,9 @@
 
 note
-	description: "mouvement de l'os"
-	author: "Tommy Teasdale & Véronique Blais"
-	date: "28 mars 2013"
-	revision: "4 avril 2013"
+	description: "[Gestion du pointeur du joueur (Marteau du joueur)]"
+	author: "Véronique Blais et Tommy Teasdale"
+	date: "22 Avril 2013"
+	revision: "0.13.04.22"
 
 class
 	MARTEAU

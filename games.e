@@ -1,8 +1,8 @@
 note
-	description: "Boucle de jeu {GAMES}"
+	description: "[Gestion principale du jeu. Cette classe est la pièce maîtresse du jeu. Elle appelle diverses fonctions de diverses classes.]"
 	author: "Tommy Teasdale et Véronique Blais"
-	date: "28 février 2013"
-	revision: ""
+	date: "22 Avril 2013"
+	revision: "0.13.04.22"
 
 class
 	GAMES

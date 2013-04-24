@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {BUTTONS}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "[Gestion des boutons présents dans le menu]"
+	author: "Véronique Blais"
+	date: "17 Avril 2013"
+	revision: "0.13.04.17"
 
 class
 	BUTTONS

@@ -1,8 +1,8 @@
 note
-	description: "WRAPPER SDL_IMAGE C {SDL_IMAGE}."
-	author: "Tommy Teasdale"
-	date: "2013/02/24"
-	revision: ""
+	description: "[Wrapper des diverses fonction SDL_Image (Pour afficher les images) pour rendre ces fonctions C utilisables en Eiffel]"
+	author: "Tommy Teasdale et Véronique Blais"
+	date: "22 Avril 2013"
+	revision: "0.13.04.22"
 
 class
 	SDL_IMAGE
