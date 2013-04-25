@@ -16,12 +16,14 @@ make_local
 	local
 			l_fond_ecran:FOND_ECRAN
 			l_init, l_init_png: NATURAL_32
-			l_screen:POINTER
-			l_ctr:INTEGER
-			l_exit, l_single:BOOLEAN
+			l_screen, l_event, l_memory_manager:POINTER
+			l_poll_event, l_ctr:INTEGER
+			l_quit, l_mousedown:NATURAL_8
+			l_exit:BOOLEAN
 			l_quit_button:BUTTONS
 			l_single_button:BUTTONS
 			l_multijoueur_button:BUTTONS
+			l_texte_titre:TEXTE
 	do
 		-- Initialiser la fenêtre et SDL
 			l_init := init_video
@@ -30,50 +32,78 @@ make_local
 			l_ctr := img_init (l_init_png)
 			l_screen := set_video_mode
 			create l_fond_ecran.make_menu (l_screen)
-			create l_quit_button.make (l_screen,"images/quitter.png", 300, 500)
-			create l_single_button.make (l_screen,"images/forever.png", 300,300)
-			create l_multijoueur_button.make (l_screen,"images/multijoueur.png", 300, 400)
+			create l_texte_titre.make (l_screen)
+			l_texte_titre.set_font_size (75)
+			l_texte_titre.set_font_style ("fonts/Pokemon_Hollow.ttf")
+			l_texte_titre.set_font
+			l_texte_titre.set_texte ("PokeTap")
+			l_texte_titre.set_x (350)
+			l_texte_titre.set_y (35)
+			create l_single_button.make (l_screen,"images/forever.png", 300, 125)
+			create l_multijoueur_button.make (l_screen,"images/multijoueur.png", 300, l_single_button.button_y + 100)
+			create l_quit_button.make (l_screen,"images/quitter.png", 300, l_multijoueur_button.button_y + 100)
+			create l_memory_manager.default_create
+			l_event := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
+			l_quit := {SDL_WRAPPER}.SDL_QUIT
+			l_mousedown := {SDL_WRAPPER}.SDL_MOUSEBUTTONDOWN
+
 			from
 				l_exit:=false
 			until
 				l_exit=true
 			loop
 				from
-					l_quit := {SDL_WRAPPER}.SDL_QUIT
-					l_quit_bool := false
+					l_poll_event := poll_event (l_event)
 				until
-					l_quit_bool = true
+					l_poll_event /= 1
 				loop
-					from
-						l_poll_event := poll_event (l_event)
-					until
-						l_poll_event /= 1
-					loop
-							-- Quit event
-						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_quit then
-							l_exit:=true
-						end
-							-- Mouse click event
-						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
 
-						end
-						l_poll_event := poll_event (l_event)
+					l_texte_titre.set_texte ("PokeTap")
+					l_texte_titre.set_x (350)
+						-- Quit event
+					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_quit then
+						l_exit:=true
 					end
-				end
-				l_fond_ecran.affiche_image
-				l_single_button.affiche_image
-				l_multijoueur_button.affiche_image
-				l_quit_button.affiche_image
-				single_player
+						-- Mouse click event
 
-				l_exit:=true
+					if {SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(l_event) > l_single_button.button_x AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(l_event) < (l_single_button.button_x + l_single_button.button_w) then
+						if {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) > l_single_button.button_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) < (l_single_button.button_y + l_single_button.button_h) then
+							l_texte_titre.set_texte ("Singleplayer !")
+							l_texte_titre.set_x (250)
+							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+								single_player(l_screen)
+							end
+						elseif {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) > l_multijoueur_button.button_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) < (l_multijoueur_button.button_y + l_multijoueur_button.button_h) then
+							l_texte_titre.set_texte ("INDISPONIBLE !")
+							l_texte_titre.set_x (250)
+--							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+--								multijoueur(l_screen)
+--							end
+						elseif {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) > l_quit_button.button_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) < (l_quit_button.button_y + l_quit_button.button_h) then
+							l_texte_titre.set_texte ("Quitter... ")
+							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+								l_exit := True
+							end
+						end
+					end
+					l_poll_event := poll_event (l_event)
+				end
+			l_fond_ecran.affiche_image
+			l_texte_titre.affiche_texte
+			l_single_button.affiche_image
+			l_multijoueur_button.affiche_image
+			l_quit_button.affiche_image
+			if flip(l_screen) < 0 then
+				print("Erreur at FlipScreen")
 			end
+		end
+		exit
 	end
-single_player
+
+single_player(a_screen:POINTER)
 		local
 			l_marteau: MARTEAU
 			l_marmotte: MARMOTTE
-			l_init: NATURAL_32
 			l_ctr, l_pointage, l_disable, l_poll_event: INTEGER
 			l_screen, l_event, l_memory_manager: POINTER
 			l_fond_ecran: FOND_ECRAN
@@ -85,9 +115,7 @@ single_player
 			l_texte_nom: TEXTE
 		do
 				-- Initialiser la fenêtre et SDL
-			l_init := init_video
-			l_ctr := init (l_init)
-			l_screen := set_video_mode
+			l_screen := a_screen
 			l_disable := disable
 			l_ctr := show_cursor_disable (l_disable)
 			create l_fond_ecran.make_fond (l_screen)
@@ -138,75 +166,74 @@ single_player
 			l_mousemotion := mouse_motion
 			l_mousedown := {SDL_WRAPPER}.SDL_MOUSEBUTTONDOWN
 
-				--l_marteau.get_best_pointage()
+			--l_marteau.get_best_pointage()
+			from
+				l_quit := {SDL_WRAPPER}.SDL_QUIT
+				l_quit_bool := false
+			until
+				l_quit_bool = true
+			loop
 				from
-					l_quit := {SDL_WRAPPER}.SDL_QUIT
-					l_quit_bool := false
+					l_poll_event := poll_event (l_event)
 				until
-					l_quit_bool = true
+					l_poll_event /= 1
 				loop
-					from
-						l_poll_event := poll_event (l_event)
-					until
-						l_poll_event /= 1
-					loop
-							-- Quit event
-						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_quit then
-							l_quit_bool := true
-						end
-							-- Mouse movement event
-						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousemotion then
-							l_marteau.x := mouse_x (l_event)
-							l_marteau.y := mouse_y (l_event)
-						end
-							-- Mouse click event
-						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
-							l_pointage := l_marteau.get_pointage
-							l_pointage := l_pointage + 1
-							l_marteau.set_pointage (l_pointage)
-							l_marteau.update_pointage
-							l_texte_pointage.set_texte (l_pointage.out + " points")
-							print (l_pointage)
-							print ("%N")
-						end
-						l_poll_event := poll_event (l_event)
+						-- Quit event
+					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_quit then
+						l_quit_bool := true
 					end
-						-- Display images
-					l_fond_ecran.affiche_image
-					l_trou.affiche_image
-					l_trou1.affiche_image
-					l_trou2.affiche_image
-					l_trou3.affiche_image
-					l_trou4.affiche_image
-					l_trou5.affiche_image
-					l_trou6.affiche_image
-					l_trou7.affiche_image
-					l_trou8.affiche_image
-					l_trou9.affiche_image
-					l_trou10.affiche_image
-					l_trou11.affiche_image
-					l_trou12.affiche_image
-					l_trou13.affiche_image
-					l_trou14.affiche_image
-					l_trou15.affiche_image
-					l_trou16.affiche_image
-					l_trou17.affiche_image
-					l_trou18.affiche_image
-					l_trou19.affiche_image
-
-					l_marmotte.animation_marmotte
-						--l_font_surface:={SDL_TTF}.TTF_RenderText_Solid(font,l_c_text.item,l_color)
-						--affiche_texte(l_font_surface, l_screen)
-					l_texte_pointage.affiche_texte
-					l_texte_nom.affiche_texte
-					l_marteau.affiche_image
-						-- Wait 17ms (for 60fps)
-					delay (1)
-						-- Display a frame
-					l_ctr := flip (l_screen)
+						-- Mouse movement event
+					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousemotion then
+						l_marteau.x := mouse_x (l_event)
+						l_marteau.y := mouse_y (l_event)
+					end
+						-- Mouse click event
+					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+						l_pointage := l_marteau.get_pointage
+						l_pointage := l_pointage + 1
+						l_marteau.set_pointage (l_pointage)
+						l_marteau.update_pointage
+						l_texte_pointage.set_texte (l_pointage.out + " points")
+						print (l_pointage)
+						print ("%N")
+					end
+					l_poll_event := poll_event (l_event)
 				end
-				--l_fond.destroy()
-			exit ()
+					-- Display images
+				l_fond_ecran.affiche_image
+				l_trou.affiche_image
+				l_trou1.affiche_image
+				l_trou2.affiche_image
+				l_trou3.affiche_image
+				l_trou4.affiche_image
+				l_trou5.affiche_image
+				l_trou6.affiche_image
+				l_trou7.affiche_image
+				l_trou8.affiche_image
+				l_trou9.affiche_image
+				l_trou10.affiche_image
+				l_trou11.affiche_image
+				l_trou12.affiche_image
+				l_trou13.affiche_image
+				l_trou14.affiche_image
+				l_trou15.affiche_image
+				l_trou16.affiche_image
+				l_trou17.affiche_image
+				l_trou18.affiche_image
+				l_trou19.affiche_image
+
+				l_marmotte.animation_marmotte
+					--l_font_surface:={SDL_TTF}.TTF_RenderText_Solid(font,l_c_text.item,l_color)
+					--affiche_texte(l_font_surface, l_screen)
+				l_texte_pointage.affiche_texte
+				l_texte_nom.affiche_texte
+				l_marteau.affiche_image
+					-- Wait 17ms (for 60fps)
+				delay (1)
+					-- Display a frame
+				l_ctr := flip (l_screen)
+			end
+			l_ctr := show_cursor_disable (1)
 		end
 
 	make_serveur

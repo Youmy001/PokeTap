@@ -12,18 +12,12 @@ create
 feature -- Access
 	make(a_screen:POINTER)
 		local
-			l_font:STRING
 		    l_memory_manager:POINTER
 			l_ctr:INTEGER
-
 		do
 			screen:=a_screen
 			l_ctr:={SDL_TTF}.TTF_Init
-			l_font := "fonts/DejaVuSans.ttf"
-			create font_name.make (l_font)
-			font_size:=34
-			font := {SDL_TTF}.TTF_OpenFont (font_name.item,font_size)
-
+			set_font
 			create texte.make ("point")
 			create l_memory_manager.default_create
 			color:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Color)
@@ -34,6 +28,25 @@ feature -- Access
 			affiche_texte()
 		end
 		--open_font
+		set_font_style(a_file_path:STRING_8)
+			do
+				font_path := a_file_path
+			end
+		set_font_size(a_size:INTEGER_16)
+			do
+				font_size := a_size
+			end
+		set_font
+			do
+				if font_path = Void then
+					font_path := "fonts/DejaVuSans.ttf"
+				end
+				create font_name.make (font_path)
+				if font_size < 5 then
+					font_size := 34
+				end
+				font := {SDL_TTF}.TTF_OpenFont (font_name.item,font_size)
+			end
 		set_texte(a_texte:STRING)
 			local
 				l_texte:STRING
@@ -77,6 +90,7 @@ feature{NONE}
 texte:C_STRING
 font:POINTER
 font_name:C_STRING
+font_path:STRING_8
 font_size:INTEGER
 color:POINTER
 screen:POINTER

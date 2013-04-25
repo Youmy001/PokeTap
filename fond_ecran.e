@@ -22,6 +22,6 @@ feature {NONE} -- Initialization
 	make_menu(a_screen:POINTER)
 		do
 			screen:=a_screen
-			creer_image("images/logo.png")
+			creer_image("images/menu.png")
 		end
 end
