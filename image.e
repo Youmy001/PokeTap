@@ -1,5 +1,5 @@
 note
-	description: "Gestion des images dans le jeu. Cette classe composée majoritairement bâtie de fonctions de la librairie SDL 1.2"
+	description: "[Gestion des images dans le jeu. Cette classe est composée majoritairement de fonctions de la librairie SDL 1.2]"
 	author: "Tommy Teasdale & Véronique Blais"
 	date: "15 Avril 2013"
 	revision: "0.13.04.15"
