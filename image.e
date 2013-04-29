@@ -1,8 +1,8 @@
 note
-	description: "Gère tout les images."
+	description: "Gestion des images dans le jeu. Cette classe composée majoritairement bâtie de fonctions de la librairie SDL 1.2"
 	author: "Tommy Teasdale & Véronique Blais"
-	date: "mars 2013"
-	revision: "6 avril 2013"
+	date: "15 Avril 2013"
+	revision: "0.13.04.15"
 
 deferred class
 	IMAGE

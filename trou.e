@@ -1,8 +1,8 @@
 note
-	description: "Creation du trou."
-	author: "Véronique Blais & Tommy Teasdale"
-	date: "28 mars 2013"
-	revision: "$Revision$"
+	description: "[Gestion des trous utilisés pour les marmottes]"
+	author: "Tommy Teasdale et Véronique Blais"
+	date: "18 Avril 2013"
+	revision: "0.13.04.18"
 
 class
 	TROU

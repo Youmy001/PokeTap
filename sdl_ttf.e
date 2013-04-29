@@ -1,8 +1,8 @@
 note
-	description: "Wrapper for SDL_TTF C Library {SDL_TTF}."
-	author: "Tommy Teasdale"
-	date: "2013/04/10"
-	revision: ""
+	description: "[Wrapper des diverses fonctions SDL_ttf (Pour afficher du texte à l'écran) pour rendre ces fonctions C utilisables en Eiffel]"
+	author: "Tommy Teasdale et Véronique Blais"
+	date: "15 Avril 2013"
+	revision: "0.13.04.15"
 
 class
 	SDL_TTF

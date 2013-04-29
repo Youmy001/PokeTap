@@ -1,7 +1,8 @@
 note
-	description: "WRAPPER SDL C {SDL_WRAPPER}."
-	author: "Veronique Blais et Tommy Teasdale"
-	date: "31 janvier 2012"
+	description: "[Wrapper des diverses fonction SDL (Pour effectuer diverses fonctions) pour rendre ces fonctions C utilisables en Eiffel]"
+	author: "Tommy Teasdale et Véronique Blais"
+	date: "15 Avril 2013"
+	revision: "0.13.04.15"
 
 class
 	SDL_WRAPPER

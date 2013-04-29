@@ -1,8 +1,8 @@
 note
-	description: "Pointage du joueur et enregistrement dans la BD"
-	author: "Tommy Teadale et Véronique Blais"
-	date: "4 mars 2013"
-	revision: ""
+	description: "[Gestion de du pointage et ajout du pointage dans la base de données]"
+	author: "Véronique Blais et Tommy Teasdale"
+	date: "4 Mars 2013"
+	revision: "0.13.03.04"
 
 class
 	POINTAGE

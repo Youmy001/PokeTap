@@ -1,8 +1,8 @@
 note
-	description: "Base de donnée {DATABASE}."
-	author: "Véronique Blais & Tommy Teasdale"
-	date: "28 mars 2013"
-	revision: "4 avril 2013"
+	description: "[Gestion de la base de données ainsi que des requêtes associées à celle-ci]"
+	author: "Tommy Teasdale, Véronique Blais"
+	date: "15 Avril 2013"
+	revision: "0.13.04.15"
 
 class
 	DATABASE
