@@ -235,6 +235,14 @@ feature -- Constante C
 	alias
 		"SDL_INIT_VIDEO"
 	end
+	
+	frozen SDL_INIT_AUDIO :NATURAL_32
+		--Constante C pour initialiser
+	external
+		"C inline use <SDL.h>"
+	alias
+		"SDL_INIT_AUDIO"
+	end
 
 	frozen SDL_SWSURFACE :NATURAL_32
 		-- Constante C pour initialiser la surface

@@ -50,7 +50,16 @@
 				<platform excluded_value="windows"/>
 			</condition>
 		</external_library>
-		<external_library location="..\..\..\SDL_ttf-2.0.11\lib\x86\SDL_ttf.lib"/>
+		<external_library location="..\..\..\SDL_ttf-2.0.11\lib\x86\SDL_ttf.lib">
+			<condition>
+				<platform value="windows"/>
+			</condition>
+		</external_library>
+		<external_library location="-lSDL_mixer">
+			<condition>
+				<platform excluded_value="windows"/>
+			</condition>
+		</external_library>
 		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="net" location="$ISE_LIBRARY\library\net\net.ecf"/>

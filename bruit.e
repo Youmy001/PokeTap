@@ -6,8 +6,20 @@ note
 
 class
 	BRUIT
-
+create
+	make_sound,make_music
 feature -- Access
+	make_sound
+		local
 
+		do
+
+		end
+	make_music
+		local
+
+		do
+
+		end
 
 end
