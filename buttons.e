@@ -12,9 +12,22 @@ create
 	make
 
 feature {GAMES} -- Initialization
-	button_x, button_y, button_w, button_h:INTEGER_16
+	button_x:INTEGER_16
+	-- Coordonnées horizontale du boutton
+	button_y:INTEGER_16
+	-- Coordonnées verticale du boutton
+	button_w:INTEGER_16
+	-- Largeur du boutton
+	button_h:INTEGER_16
+	-- Hauteur du boutton
 
 	make(a_screen:POINTER; a_img_path:STRING; a_x:INTEGER_16; a_y:INTEGER_16)
+	-- Initialiser `Current' dans l'écran `a_screen' avec l'image `a_img_path' aux coordonnées [`a_x', `a_y']
+		require
+			a_screen_is_not_void : not a_screen.is_default_pointer
+			a_img_path_is_not_empty : not a_img_path.is_empty
+			a_x_is_not_below_0 : a_x >= 0
+			a_y_is_not_below_0 : a_y >= 0
 		do
 			screen:=a_screen
 			creer_image(a_img_path)
@@ -26,4 +39,7 @@ feature {GAMES} -- Initialization
 			set_y(button_y)
 
 		end
+
+
 end
+

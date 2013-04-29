@@ -13,6 +13,7 @@ create
 feature -- Access
 
 make_local
+-- Initialise `Current'
 	local
 			l_fond_ecran:FOND_ECRAN
 			l_init, l_init_png: NATURAL_32
@@ -124,6 +125,9 @@ make_local
 	end
 
 single_player(a_screen:POINTER)
+-- Lance le mode singleplayer dans l'écran `a_screen'
+		require
+			a_screen_is_not_void : not a_screen.is_default_pointer
 		local
 			l_marteau: MARTEAU
 			l_marmotte: MARMOTTE
@@ -315,94 +319,103 @@ single_player(a_screen:POINTER)
 feature {NONE} --Routine
 
 	init_video: NATURAL_32
-			--initialisation de la video
+		-- Valeur de la constante SDL_INIT_VIDEO
 		do
 			result := {SDL_WRAPPER}.SDL_INIT_VIDEO
 		end
 
 	init (l_init: NATURAL_32): INTEGER
-			--initialisation
+		-- Valeur retournée par SDL_Init avec le paramètre `l_init'
+		require
+			l_init_is_not_below_0 : l_init >= 0
 		do
 			result := {SDL_WRAPPER}.SDL_Init (l_init)
 		end
 	img_png:NATURAL_32
-		--Parametre de l'image a PNG
+		-- Valeur de la constante IMG_INIT_PNG
 		do
 			result:= {SDL_IMAGE}.IMG_INIT_PNG
 		end
 	img_init(l_init:NATURAL_32):INTEGER
-		--initialisation du format de l'image
+		-- Valeur retournée par IMG_Init avec le paramètre `l_init'
 		do
 			result := {SDL_IMAGE}.IMG_Init(l_init)
 		end
 	set_video_mode: POINTER
-			--set les propriétés de la fenêtre
+		-- Écran dans lequel seront affichés les éléments du jeu
 		do
 			result := {SDL_WRAPPER}.SDL_SetVideoMode (914, 680, 32, {SDL_WRAPPER}.SDL_SWSURFACE)
 		end
 
 	disable: INTEGER
-			--faire disparaitre la souris
+		-- Valeur de la constante SDL_DISABLE
 		do
 			result := {SDL_WRAPPER}.SDL_DISABLE
 		end
 
 	show_cursor_disable (l_disable: INTEGER): INTEGER
-			--faire disparaitre/apparaitre la souris
+		-- Valeur de l'état actuel de la souris avec le paramètre `toggle'
 		do
 			result := {SDL_WRAPPER}.SDL_ShowCursor (l_disable)
 		end
 
 	poll_event (l_event: POINTER): INTEGER
-			--Poll event
+		-- Valeur retournée par SDL_PollEvent avec `event' pour indiquer s'il y a encore des événements en attente
 		do
 			result := {SDL_WRAPPER}.SDL_PollEvent (l_event)
 		end
 
 	flip (l_screen: POINTER): INTEGER
-			--Flip surface
+		-- Valeur retournée par l'initialisation de SDL_Flip avec l'écran `screen' pour indiquer si une erreur a eu lieu
 		do
 			result := {SDL_WRAPPER}.SDL_Flip (l_screen)
 		end
 
 	delay (temp: NATURAL_32)
-			--Delai d'image seconde
+		-- Attend pendant `ms' millisecondes
 		do
 			{SDL_WRAPPER}.SDL_Delay (temp)
 		end
 
-	exit ()
-			--Quitter
+	exit
+		-- Quitte le jeu
 		do
-			{SDL_WRAPPER}.SDL_Exit ()
+			{SDL_WRAPPER}.SDL_Exit
 		end
 
 	mouse_motion: NATURAL_8
-			--Deplacement de la souris
+		-- Déplacement de la souris
 		do
 			result := {SDL_WRAPPER}.SDL_MOUSEMOTION
 		end
 
 	mouse_x (l_event: POINTER): INTEGER_16
-			--getter de la position de la souris
+		-- Coordonnée horizontale de l'emplacement de la souris lors de l'événement `l_event'
 		do
 			result := {SDL_WRAPPER}.get_SDL_MouseMotionEvent_x (l_event)
 		end
 
 	mouse_y (l_event: POINTER): INTEGER_16
-			--getter de la position de la souris
+		-- Coordonnée verticale de l'emplacement de la souris lors de l'événement `l_event'
 		do
 			result := {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y (l_event)
 		end
 	over_button(button:BUTTONS):BOOLEAN
+		-- Réponse de si la souris est au dessus du bouton `button'
 		do
 
 		end
-	id: INTEGER
-	pointage: INTEGER
-	nom: STRING
-	bdd: DATABASE
+	id:INTEGER
+	-- Numéro d'identification du joueur
+	pointage:INTEGER
+	-- Pointage du joueur
+	nom:STRING
+	-- Nom du joueur
+	bdd:DATABASE
+	-- Instance de la classe `DATABASE'
 	reseau_client: RESEAU_CLIENT
+	-- Instance de la classe `RESEAU_CLIENT'
 	reseau_serveur: RESEAU_SERVEUR
+	-- Instance de la classe `RESEAU_SERVEUR'
 
 end

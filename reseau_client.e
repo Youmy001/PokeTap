@@ -14,6 +14,7 @@ create
 feature {NONE} -- Initialization
 
 	make
+	-- Initialise `Current'
 		local
 			l_addr_factory:INET_ADDRESS_FACTORY
 			l_address:INET_ADDRESS
@@ -46,10 +47,17 @@ feature {NONE} -- Initialization
 		end
 feature
 	envoye(a_string:STRING)
+	-- Envoie `a_string' a un autre client
+	require
+		socket_is_connected : socket.is_connected
+		a_string_is_not_empty : not a_string.is_empty
 		do
 			socket.put_string (a_string+"%N")
 		end
 	recoit():STRING
+	-- Message envoyé par un autre client
+	require
+		socket_is_connected : socket.is_connected
 	local
 		l_string:STRING
 	do
@@ -59,10 +67,13 @@ feature
 		Result:=l_string
 	end
 	close
+	-- Ferme la connection du client
+		require
+			socket_is_not_closed : not socket.is_closed
 		do
 			socket.close
 		end
 
 	socket: NETWORK_STREAM_SOCKET
-
+	-- Connexion avec un autre client
 end

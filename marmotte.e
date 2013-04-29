@@ -17,14 +17,16 @@ create
 feature -- Access
 
 	make (a_screen: POINTER)
+	-- Initialise `Current' dans l'écran `a_screen'
+		require
+			a_screen_is_not_void : not a_screen.is_default_pointer
 		do
 			screen := a_screen
 			creer_image("images/meowth.png")
-
 		end
 
 	animation_marmotte
-
+	-- Anime la marmotte
 		do
 			create l_memory_manager.default_create
 			l_rect_src := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
@@ -59,6 +61,7 @@ feature -- Access
 		end
 
 	rentrer_trou
+	-- Anime la marmotte qui rentre dans son trou
 		do
 			if y < 71 then
 				set_y(y + 1)
@@ -68,6 +71,7 @@ feature -- Access
 		end
 
 	sortir_trou
+	-- Anime la marmotte qui sort de son trou
 		do
 			if y < 15 then
 				l_i := l_i + 1
@@ -79,10 +83,20 @@ feature -- Access
 				set_y(y - 1)
 			end
 		end
-	l_bmp_w, l_bmp_h, l_i: INTEGER
+	l_bmp_w:INTEGER
+	-- Largeur de l'image
+	l_bmp_h:INTEGER
+	-- Hauteur de l'image
+	l_i:INTEGER
+	-- Compteur utilisé lors de l'animation de la marmotte
 	l_rect_src: POINTER
+	-- Partie ciblée dans la port
 	l_rect_h: INTEGER
+	-- Hauteur de la partie ciblé dans l'image
+
 	l_memory_manager: POINTER
+	-- Pointeur de la gestion de mémoire
 	sort_trou:BOOLEAN
+	-- Booléen indicant si la marmotte doit sortir de son trou
 end
 

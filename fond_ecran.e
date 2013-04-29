@@ -15,13 +15,20 @@ create
 
 feature {NONE} -- Initialization
 	make_fond(a_screen:POINTER)
+	-- Initialise le fond d'écran dans l'écran `a_screen'
+		require
+			a_screen_is_not_void : not a_screen.is_default_pointer
 		do
 			screen:=a_screen
 			creer_image("images/background.png")
 		end
 	make_menu(a_screen:POINTER)
+	-- Initialise le menu dans l'écran `a_screen'
+		require
+			a_screen_is_not_void : not a_screen.is_default_pointer
 		do
 			screen:=a_screen
 			creer_image("images/menu.png")
 		end
+
 end
