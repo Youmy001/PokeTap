@@ -26,6 +26,12 @@ make_local
 			l_serveur_button:BUTTONS
 			l_client_button:BUTTONS
 			l_texte_titre:TEXTE
+
+			l_mp3:INTEGER
+			l_default_format:NATURAL_16
+			l_file_mus:STRING
+			l_c_file_mus:C_STRING
+			l_music:POINTER
 	do
 		-- Initialiser la fenêtre et SDL
 			l_init := init_video
@@ -34,6 +40,17 @@ make_local
 			l_ctr := img_init (l_init_png)
 			l_screen := set_video_mode
 			l_multiplayer:= false
+
+			l_mp3:={SDL_MIXER}.MIX_INIT_MP3
+			l_default_format:={SDL_MIXER}.MIX_DEFAULT_FORMAT
+			l_ctr:={SDL_MIXER}.MIX_Init(l_mp3)
+			l_ctr:={SDL_MIXER}.MIX_OpenAudio(44100,l_default_format,2,2048)
+			l_file_mus:="mus/poke_menu.mp3"
+			create l_c_file_mus.make (l_file_mus)
+			l_music:={SDL_MIXER}.MIX_LoadMUS(l_c_file_mus.item)
+			l_ctr:={SDL_MIXER}.MIX_PlayMusic(l_music,0)
+			l_ctr:={SDL_MIXER}.Mix_VolumeMusic(128)
+
 			create l_fond_ecran.make_menu (l_screen)
 			create l_texte_titre.make (l_screen)
 			l_texte_titre.set_font_size (75)
@@ -76,7 +93,9 @@ make_local
 							l_texte_titre.set_texte ("Singleplayer !")
 							l_texte_titre.set_x (250)
 							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+								l_ctr:={SDL_MIXER}.Mix_HaltMusic
 								single_player(l_screen)
+								l_ctr:={SDL_MIXER}.MIX_PlayMusic(l_music,0)
 							end
 						elseif {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) > l_multijoueur_button.button_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) < (l_multijoueur_button.button_y + l_multijoueur_button.button_h) then
 							l_texte_titre.set_texte ("INDISPONIBLE !")
@@ -369,6 +388,7 @@ feature {NONE} --Routine
 	exit ()
 			--Quitter
 		do
+			{SDL_MIXER}.MIX_Quit
 			{SDL_WRAPPER}.SDL_Exit ()
 		end
 
