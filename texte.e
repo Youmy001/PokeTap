@@ -13,10 +13,7 @@ feature -- Access
 	make(a_screen:POINTER)
 		local
 			l_font:STRING
-			l_c_font, l_c_text:C_STRING
-			l_font_surface:POINTER
-			l_color, l_memory_manager:POINTER
-			l_texte_pointage:TEXTE
+		    l_memory_manager:POINTER
 			l_ctr:INTEGER
 
 		do

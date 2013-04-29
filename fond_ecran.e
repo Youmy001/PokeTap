@@ -10,12 +10,17 @@ class
 inherit
 	IMAGE
 create
-	make
+	make_fond
 
 feature {NONE} -- Initialization
-	make(a_screen:POINTER)
+	make_fond(a_screen:POINTER)
 		do
 			screen:=a_screen
 			creer_image("images/background.png")
 		end
+--	make_menu(a_screen:POINTER)
+--		do
+--			screen:=a_screen
+--			creer_image("images/menu.png")
+--		end
 end

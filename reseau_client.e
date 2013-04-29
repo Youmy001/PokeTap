@@ -49,11 +49,15 @@ feature
 		do
 			socket.put_string (a_string+"%N")
 		end
-	recoit
-		do
-			socket.read_line
-			io.put_string ("Le serveur a dit: "+socket.last_string+"%N")
-		end
+	recoit():STRING
+	local
+		l_string:STRING
+	do
+		socket.read_line
+		l_string:=socket.last_string
+		io.put_string ("Le serveur a dit: "+l_string+"%N")
+		Result:=l_string
+	end
 	close
 		do
 			socket.close
