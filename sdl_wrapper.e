@@ -9,7 +9,7 @@ class
 Feature --Functions- SDL.h
 
 	Frozen SDL_Init(flags:NATURAL_32) :INTEGER
-		-- Initialise la bibliothèque SDL
+		-- Valeur retournée par l'initialisation de SDL_Init avec le flag `flags' pour indiquer si une erreur a eu lieu
 	external
 		"C (Uint32) : int | <SDL.h>"
 	alias
@@ -17,14 +17,14 @@ Feature --Functions- SDL.h
 	end
 
 	Frozen SDL_LoadBMP(file:POINTER) :POINTER
-		--Loads a surface from a named Windows BMP file.
+		-- Pointeur de l'image chargé à partir de l'emplacement `file'
 	external
 		"C (const char *) : SDL_Surface* | <SDL.h>"
 	alias
 		"SDL_LoadBMP"
 	end
 	frozen SDL_SetVideoMode(width,height,bitsperpixel:INTEGER;flags:NATURAL_32) : POINTER
-		--Set up a video mode with the specified width, height and bitsperpixel.
+		-- Écran d'une largeur de `width' px et d'une hauteur de `height' px, avec `bitsperpixel' et `flags'
 	external
 		"C (int, int, int, Uint32) : SDL_Surface* | <SDL.h>"
 	alias
@@ -32,7 +32,8 @@ Feature --Functions- SDL.h
 	end
 
 	frozen SDL_BlitSurface(src,srcrect,dst,dstrect:POINTER) : INTEGER
-		--This performs a fast blit from the source surface to the destination surface.
+		-- Valeur retournée par l'initialisation de SDL_BlitSurface avec la source `src', la partie ciblé de la source `srcrect',
+		-- la destination `dst' et la partie ciblé de la destionation `dstrect' pour indiquer si une erreur a eu lieu
 	external
 		"C (SDL_Surface *, SDL_Rect *, SDL_Surface *, SDL_Rect *) : int | <SDL.h>"
 	alias
@@ -40,7 +41,7 @@ Feature --Functions- SDL.h
 	end
 
 	frozen SDL_FreeSurface(surface:POINTER)
-		--Frees(deletes) a SDL_Surface
+		-- Libère la surface
 	external
 		"C (SDL_Surface *) | <SDL.h>"
 	alias
@@ -48,7 +49,7 @@ Feature --Functions- SDL.h
 	end
 
 	frozen SDL_Flip(screen:POINTER) : INTEGER
-		-- swaps screen buffers
+		-- Valeur retournée par l'initialisation de SDL_Flip avec l'écran `screen' pour indiquer si une erreur a eu lieu
 	external
 		"C (SDL_Surface*) : int | <SDL.h>"
 	alias
@@ -56,7 +57,7 @@ Feature --Functions- SDL.h
 	end
 
 	frozen SDL_Delay(ms:NATURAL_32)
-		-- Wait a specified number of milliseconds before returning.
+		-- Attend pendant `ms' millisecondes
 	external
 		"C (Uint32) | <SDL.h>"
 	alias
@@ -64,7 +65,7 @@ Feature --Functions- SDL.h
 	end
 
 	frozen SDL_PollEvent(event:POINTER):INTEGER
-		-- Polls for currently pending events
+		-- Valeur retournée par SDL_PollEvent avec `event' pour indiquer s'il y a encore des événements en attente
 	external
 		"C (SDL_Event*): int | <SDL.h>"
 	alias
@@ -72,7 +73,7 @@ Feature --Functions- SDL.h
 	end
 
 	frozen SDL_Exit()
-		-- Quit SDL
+		-- Quitte la librairie SDL
 	external
 		"C | <SDL.h>"
 	alias
@@ -82,28 +83,28 @@ Feature --Functions- SDL.h
 
 feature -- Setter -- SDL.h	
 	frozen set_SDL_Rect_X(SDL_Rect:POINTER; value:INTEGER_16)
-		--Modifie le x de l'image
+		-- Modifie le x pour `value' de la partie ciblée dans `SDL_Rect'
 	external
 		"C [struct <SDL.h>] (SDL_Rect, Sint16)"
 	alias
 		"x"
 	end
 	frozen set_SDL_Rect_Y(SDL_Rect:POINTER; value:INTEGER_16)
-		--Modifie le y de l'image
+		-- Modifie le y pour `value' de la partie ciblée dans `SDL_Rect'
 	external
 		"C [struct <SDL.h>] (SDL_Rect, Sint16)"
 	alias
 		"y"
 	end
 	frozen set_SDL_Rect_H(SDL_Rect:POINTER; value:INTEGER)
-		--Modifie le h de l'image
+		-- Modifie la hauteur pour `value' de la partie ciblée dans `SDL_Rect'
 	external
 		"C [struct <SDL.h>] (SDL_Rect, Uint16)"
 	alias
 		"h"
 	end
 	frozen set_SDL_Rect_W(SDL_Rect:POINTER; value:INTEGER)
-		--Modifie le w de l'image
+		-- Modifie la largeur pour `value' de la partie ciblée dans `SDL_Rect'
 	external
 		"C [struct <SDL.h>] (SDL_Rect, Uint16)"
 	alias
@@ -111,7 +112,7 @@ feature -- Setter -- SDL.h
 	end
 
 	frozen set_SDL_Color_r(SDL_Color:POINTER; value:INTEGER_8)
-		--Set color red value
+		-- Modifie la valeur du rouge pour `value' dans `SDL_Color'
 	external
 		"C [struct <SDL.h>](SDL_Color,Uint8)"
 	alias
@@ -119,7 +120,7 @@ feature -- Setter -- SDL.h
 	end
 
 	frozen set_SDL_Color_g(SDL_Color:POINTER; value:INTEGER_8)
-		--Set color red value
+		-- Modifie la valeur du vert pour `value' dans `SDL_Color'
 	external
 		"C [struct <SDL.h>](SDL_Color,Uint8)"
 	alias
@@ -127,7 +128,7 @@ feature -- Setter -- SDL.h
 	end
 
 	frozen set_SDL_Color_b(SDL_Color:POINTER; value:INTEGER_8)
-		--Set color red value
+		-- Modifie la valeur du bleu pour `value' dans `SDL_Color'
 	external
 		"C [struct <SDL.h>](SDL_Color,Uint8)"
 	alias
@@ -137,7 +138,7 @@ feature -- Setter -- SDL.h
 
 feature -- getter  -- SDL.h
 	frozen get_SDL_Surface_H(SDL_Surface : POINTER):INTEGER
-		--la surface vertical de l'image
+		-- Hauteur dans la surface `SDL_Surface'
 	external
 		"C [struct <SDL.h>] (SDL_Surface) : int"
 	alias
@@ -145,7 +146,7 @@ feature -- getter  -- SDL.h
 	end
 
 	frozen get_SDL_rect_x(SDL_Rect: POINTER):INTEGER_16
-		--La position de l'image x
+		-- Coordonnée horizontale dans la surface `SDL_Surface'
 	external
 		"C [struct <SDL.h>] (SDL_Rect) : int"
 	alias
@@ -153,7 +154,7 @@ feature -- getter  -- SDL.h
 	end
 
 	frozen get_SDL_rect_y(SDL_Rect: POINTER):INTEGER_16
-		--La position de l'image y
+		-- Coordonnée verticale dans la surface `SDL_Surface'
 	external
 		"C [struct <SDL.h>] (SDL_Rect) : int"
 	alias
@@ -161,7 +162,7 @@ feature -- getter  -- SDL.h
 	end
 
 	frozen get_SDL_Surface_W(SDL_Surface : POINTER):INTEGER
-		-- la surface horizontale de l'image
+		-- Largeur dans la surface `SDL_Surface'
 	external
 		"C [struct <SDL.h>] (SDL_Surface) : int"
 	alias
@@ -169,7 +170,7 @@ feature -- getter  -- SDL.h
 	end
 
 	frozen get_SDL_Event_Type(SDL_Event:POINTER):NATURAL_8
-		-- Le type d'event
+		-- Type d'événment selon le pointeur `SDL_Event'
 	external
 		"C [struct <SDL.h>] (SDL_Event) : Uint8"
 	alias
@@ -177,14 +178,14 @@ feature -- getter  -- SDL.h
 	end
 
 	frozen get_SDL_MouseMotionEvent_x(SDL_MouseMotionEvent:POINTER):INTEGER_16
-		--Retrieve the current state of the mouse
+		-- Coordonnée horizontale de la souris selon l'événement `SDL_MouseMotionEvent'
 	external
 		"C [struct <SDL.h>] (SDL_MouseMotionEvent): Sint16"
 	alias
 		"x"
 	end
 	frozen get_SDL_MouseMotionEvent_y(SDL_MouseMotionEvent:POINTER):INTEGER_16
-		--Retrieve the current state of the mouse
+		-- Coordonnée verticale de la souris selon l'événement `SDL_MouseMotionEvent'
 	external
 		"C [struct <SDL.h>] (SDL_MouseMotionEvent): Sint16"
 	alias
@@ -192,7 +193,7 @@ feature -- getter  -- SDL.h
 	end
 
 	frozen SDL_ShowCursor(toggle:INTEGER):INTEGER
-		--Toggle whether or not the cursor is shown on the screen
+		-- Valeur de l'état actuel de la souris avec le paramètre `toggle'
 	external
 		"C (int):int | <SDL.h>"
 	alias
@@ -202,7 +203,7 @@ feature -- getter  -- SDL.h
 feature --sizeof
 
 	frozen sizeof_SDL_Rect:INTEGER
-		-- Définie une zone rectangulaire
+		-- Mémoire alloué pour un SDL_Rect
 	external
 		"C inline use <SDL.h>"
 	alias
@@ -210,7 +211,7 @@ feature --sizeof
 	end
 
 	frozen sizeof_SDL_Event:INTEGER
-		-- Définie un évènement
+		-- Mémoire alloué pour un SDL_Event
 	external
 		"C inline use <SDL.h>"
 	alias
@@ -218,7 +219,7 @@ feature --sizeof
 	end
 
 	frozen sizeof_SDL_Color:INTEGER
-		-- Définie une couleur
+		-- Mémoire alloué pour un SDL_Color
 	external
 		"C inline use <SDL.h>"
 	alias
@@ -228,7 +229,7 @@ feature --sizeof
 feature -- Constante C
 
 	frozen SDL_INIT_VIDEO :NATURAL_32
-		--Constante C pour initialiser
+		-- Constante C pour initialiser le mode vidéo
 	external
 		"C inline use <SDL.h>"
 	alias
@@ -244,7 +245,7 @@ feature -- Constante C
 	end
 
 	frozen SDL_SWSURFACE :NATURAL_32
-		--Constante C pour initialiser la surface
+		-- Constante C pour initialiser la surface
 	external
 		"C inline use <SDL.h>"
 	alias
@@ -252,7 +253,7 @@ feature -- Constante C
 	end
 
 	frozen SDL_QUIT:NATURAL_8
-		--Constante C pour l'évènement Quit
+		-- Constante C de la valeur du SDL_QUIT
 	external
 		"C inline use <SDL.h>"
 	alias
@@ -260,7 +261,7 @@ feature -- Constante C
 	end
 
 	frozen SDL_MOUSEMOTION:NATURAL_8
-		--Constante C pour l'évènement déplacement de souris
+		-- Constante C pour l'évènement déplacement de souris
 	external
 		"C inline use <SDL.h>"
 	alias
@@ -268,7 +269,7 @@ feature -- Constante C
 	end
 
 	frozen SDL_DISABLE:INTEGER
-		--Constant C pour retirer le curseur
+		-- Constante C pour cacher le curseur
 	external
 		"C inline use <SDL.h>"
 	alias
@@ -276,10 +277,11 @@ feature -- Constante C
 	end
 
 	frozen SDL_MOUSEBUTTONDOWN:NATURAL_8
-		--Constante C pour l'évènement bouton de souris
+		-- Constante C pour l'évènement bouton de souris appuyé
 	external
 		"C inline use <SDL.h>"
 	alias
 		"SDL_MOUSEBUTTONDOWN"
 	end
+
 end

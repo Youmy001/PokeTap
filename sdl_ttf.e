@@ -9,7 +9,7 @@ class
 Feature --Functions- SDL_ttf.h
 
 	frozen TTF_Init():INTEGER
-		--Initialize the truetype font API.
+		-- Valeur retournée par l'initialisation de TTF_Init pour indiquer si une erreur a eu lieu
 	external
 		"C ():int | <SDL_ttf.h>"
 	alias
@@ -17,7 +17,7 @@ Feature --Functions- SDL_ttf.h
 	end
 
 	frozen TTF_Quit()
-		--Shutdown and cleanup the truetype font API
+		-- Ferme la librairie TTF
 	external
 		"C | <SDL_ttf.h>"
 	alias
@@ -25,7 +25,7 @@ Feature --Functions- SDL_ttf.h
 	end
 
 	frozen TTF_OpenFont(file:POINTER;ptsize:INTEGER):POINTER
-		--Load file for use as a font, at ptsize size. This can load TTF and FON files.
+		-- Style de police situé à `file' avec une taille de `ptsize' px
 	external
 		"C (const char *, Uint32):TTF_Font * | <SDL_ttf.h>"
 	alias
@@ -33,7 +33,7 @@ Feature --Functions- SDL_ttf.h
 	end
 
 	frozen TTF_RenderText_Solid(font:POINTER;text:POINTER;fg:POINTER):POINTER
-		--render the given text with the given font with fg color onto a new surface.
+		-- Image du texte `text' avec le style de police `font' et la couleur `fg'
 	external
 		"C inline use <SDL_ttf.h>"
 	alias

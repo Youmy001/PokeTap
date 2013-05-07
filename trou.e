@@ -11,7 +11,12 @@ inherit
 create
 	make
 feature
-	make(a_screen:POINTER a_x, a_y:INTEGER_16)
+	make(a_screen:POINTER; a_x, a_y:INTEGER_16)
+	-- Initialise `Current' dans `a_screen' aux coordonnées [`a_x', `a_y']
+		require
+			a_screen_is_not_void : not a_screen.is_default_pointer
+			a_x_is_above_0 : a_x >= 0
+			a_y_is_above_0 : a_y >= 0
 		local
 			l_trou:STRING
 			l_c_trou:C_STRING
@@ -22,9 +27,9 @@ feature
 		do
 			create l_memory_manager.default_create
 			targetarea:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
-			screen:=a_screen
+			screen := a_screen
 			l_x := a_x
-			l_y:=a_y
+			l_y := a_y
 			l_trou :="images/trou.png"
 			create l_c_trou.make (l_trou)
 			infile:={SDL_IMAGE}.IMG_Load(l_c_trou.item)

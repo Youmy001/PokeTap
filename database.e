@@ -17,6 +17,7 @@ create
 feature {NONE} -- Initialization
 
 	make
+	-- Initialise `Current'
 		local
 
 			l_table_present: BOOLEAN
@@ -56,6 +57,7 @@ feature {NONE} -- Initialization
 feature
 
 	insert_new_pointage (a_pointage: INTEGER a_nom: STRING):INTEGER
+	-- Pointage du joueur `a_nom' dans `Current'
 		local
 			l_id:INTEGER
 			l_insert:SQLITE_INSERT_STATEMENT
@@ -83,6 +85,11 @@ feature
 			Result:=l_id
 		end
 	update_pointage(a_id: INTEGER a_pointage: INTEGER a_nom: STRING)
+	-- Met à jour le pointage `a_pointage' associé au joueur `a_nom' dans la database `Current'
+		require
+			a_id_is_not_below_0 : a_id >= 0
+			a_pointage_is_not_below_0 : a_pointage >= 0
+			a_nom_is_not_empty : not a_nom.is_empty
 		local
 			l_modify:SQLITE_MODIFY_STATEMENT
 		do
@@ -96,6 +103,7 @@ feature
 		end
 feature
 	get_best_pointage
+	-- Trouve le meilleur pointage dans `Current'
 		local
 			l_query:SQLITE_QUERY_STATEMENT
 		do
@@ -123,5 +131,7 @@ feature
 		end
 
 	db: SQLITE_DATABASE
+	-- Base de donnée
+
 
 end
