@@ -27,11 +27,7 @@ make_local
 			l_client_button:BUTTONS
 			l_texte_titre:TEXTE
 
-			l_mp3:INTEGER
-			l_default_format:NATURAL_16
-			l_file_mus:STRING
-			l_c_file_mus:C_STRING
-			l_music:POINTER
+			l_music:BRUIT
 	do
 		-- Initialiser la fenêtre et SDL
 			l_init := init_video
@@ -41,15 +37,9 @@ make_local
 			l_screen := set_video_mode
 			l_multiplayer:= false
 
-			l_mp3:={SDL_MIXER}.MIX_INIT_MP3
-			l_default_format:={SDL_MIXER}.MIX_DEFAULT_FORMAT
-			l_ctr:={SDL_MIXER}.MIX_Init(l_mp3)
-			l_ctr:={SDL_MIXER}.MIX_OpenAudio(44100,l_default_format,2,2048)
-			l_file_mus:="mus/poke_menu.mp3"
-			create l_c_file_mus.make (l_file_mus)
-			l_music:={SDL_MIXER}.MIX_LoadMUS(l_c_file_mus.item)
-			l_ctr:={SDL_MIXER}.MIX_PlayMusic(l_music,0)
-			l_ctr:={SDL_MIXER}.Mix_VolumeMusic(128)
+			create l_music.make_music ("mp3") -- allowed format: mp3, ogg, flac and mod
+			l_music.music_load_file ("mus/poke_menu.mp3")
+			l_music.music_play (0) --if loop equal 0; loop forever
 
 			create l_fond_ecran.make_menu (l_screen)
 			create l_texte_titre.make (l_screen)
@@ -93,9 +83,9 @@ make_local
 							l_texte_titre.set_texte ("Singleplayer !")
 							l_texte_titre.set_x (250)
 							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
-								l_ctr:={SDL_MIXER}.Mix_HaltMusic
+								l_music.music_stop
 								single_player(l_screen)
-								l_ctr:={SDL_MIXER}.MIX_PlayMusic(l_music,0)
+								l_music.music_play (0) --if loop equal 0, loop forever
 							end
 						elseif {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) > l_multijoueur_button.button_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) < (l_multijoueur_button.button_y + l_multijoueur_button.button_h) then
 							l_texte_titre.set_texte ("INDISPONIBLE !")
@@ -139,6 +129,7 @@ make_local
 				print("Erreur at FlipScreen")
 			end
 		end
+		l_music.music_quit
 		exit
 	end
 
@@ -161,10 +152,15 @@ single_player(a_screen:POINTER)
 			l_cl_pointage, l_cl_nom: STRING
 			l_texte_cl_pointage: TEXTE
 			l_texte_cl_nom:TEXTE
+
+			l_game_music:BRUIT
 		do
 				-- Initialiser la fenêtre et SDL
 			l_screen := a_screen
 			l_disable := disable
+
+			create l_game_music.make_music ("mp3")
+			l_game_music.music_load_file ("mus/poke_game.mp3")
 
 			l_ctr := show_cursor_disable (l_disable)
 			create l_fond_ecran.make_fond (l_screen)
@@ -190,6 +186,8 @@ single_player(a_screen:POINTER)
 			l_texte_nom.set_texte (l_marteau.get_nom)
 			l_texte_nom.set_x (25)
 			l_texte_nom.set_y (560)
+
+			l_game_music.music_play (0) --if loop equal 0, loop forever
 
 			if reseau_serveur /= void then
 				-- Create client
@@ -329,6 +327,7 @@ single_player(a_screen:POINTER)
 					-- Display a frame
 				l_ctr := flip (l_screen)
 			end
+			l_game_music.music_close
 			l_ctr := show_cursor_disable (1)
 		end
 
@@ -388,7 +387,6 @@ feature {NONE} --Routine
 	exit ()
 			--Quitter
 		do
-			{SDL_MIXER}.MIX_Quit
 			{SDL_WRAPPER}.SDL_Exit ()
 		end
 

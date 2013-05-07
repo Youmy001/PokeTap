@@ -41,7 +41,7 @@ Feature --Functions- SDL_mixer.h
 	end
 
 	frozen Mix_LoadMUS(file:POINTER):POINTER
-		--Load music file to use
+		-- Charge le fichier de musique à utiliser
 	external
 		"C (const char *):Mix_Music * | <SDL_mixer.h>"
 	alias
@@ -49,16 +49,15 @@ Feature --Functions- SDL_mixer.h
 	end
 
 	frozen Mix_PlayMusic(music:POINTER;loops:INTEGER):INTEGER
-		--Play the loaded music loop times through from start to finish
+		-- retrourne 0 si erreur. Joue la musique le nombre de `loops'
 	external
-		--"C (Mix_Music *, int):int | <SDL_mixer.h>"
 		"C inline use <SDL_mixer.h>"
 	alias
 		"Mix_PlayMusic((Mix_Music *)$music, (int)$loops)"
 	end
 
 	frozen Mix_PauseMusic()
-		-- Pause playing music
+		-- Met la musique sur pause
 	external
 		"C inline use <SDL_mixer.h>"
 	alias
@@ -66,7 +65,7 @@ Feature --Functions- SDL_mixer.h
 	end
 
 	frozen Mix_HaltMusic():INTEGER
-		-- Stop playing music
+		-- Arrête la musique
 	external
 		"C ():int | <SDL_mixer.h>"
 	alias
@@ -74,15 +73,17 @@ Feature --Functions- SDL_mixer.h
 	end
 
 	frozen Mix_VolumeMusic(volume:INTEGER):INTEGER
-		-- Music volume
+		-- Valeur du volume retournée après un changement de volume à `volume'
 	external
 		"C (int):int | <SDL_mixer.h>"
 	alias
 		"Mix_VolumeMusic"
 	end
+
 feature --Constants
+
 	frozen MIX_INIT_MP3:INTEGER
-		--Load MP3 library
+		-- Permet de charger la librairie MP3
 	external
 		"C inline use <SDL_mixer.h>"
 	alias
@@ -90,29 +91,39 @@ feature --Constants
 	end
 
 	frozen MIX_INIT_OGG:INTEGER
-		--Load MP3 library
+		-- Permet de charger la librairie OGG
 	external
 		"C inline use <SDL_mixer.h>"
 	alias
 		"MIX_INIT_OGG"
 	end
 
+	frozen MIX_INIT_FLAC:INTEGER
+		-- Permet de charger la librairie FLAC
+	external
+		"C inline use <SDL_mixer.h>"
+	alias
+		"MIX_INIT_FLAC"
+	end
+
+	frozen MIX_INIT_MOD:INTEGER
+		-- Permet de charger la librairie MOD
+	external
+		"C inline use <SDL_mixer.h>"
+	alias
+		"MIX_INIT_MOD"
+	end
+
 	frozen MIX_DEFAULT_FORMAT:NATURAL_16
-		--
+		-- format audio système
 	external
 		"C inline use <SDL_mixer.h>"
 	alias
 		"MIX_DEFAULT_FORMAT"
 	end
-	frozen AUDIO_S16SYS:NATURAL_16
-		--Audio format
-	external
-		"C inline use <SDL_mixer.h>"
-	alias
-		"AUDIO_S16SYS"
-	end
+
 	frozen MIX_MAX_VOLUME:INTEGER
-		-- Max volume
+		-- volume maximal
 	external
 		"C inline use <SDL_mixer.h>"
 	alias
