@@ -45,4 +45,18 @@ feature
 			{SDL_WRAPPER}.set_SDL_Rect_w(targetarea, l_bmp_w)
 			{SDL_WRAPPER}.set_SDL_Rect_h(targetarea, l_bmp_h)
 		end
+
+	invariant
+
+	note
+		copyright: "Copyright (c) 2013, Véronique Blais & Tommy Teasdale"
+		license: "GPL 3.0 (see http://www.gnu.org/licenses/gpl-3.0.txt)"
+		source: "[
+			Véronique Blais & Tommy teasdale
+			Etudiants en Techniques de l'informatique
+			Cégep de Drummondville
+			960, rue Saint-Georges
+			Drummondville, (Québec)
+			J2C-6A2
+		]"
 end

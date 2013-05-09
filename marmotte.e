@@ -98,5 +98,19 @@ feature -- Access
 	-- Pointeur de la gestion de mémoire
 	sort_trou:BOOLEAN
 	-- Booléen indicant si la marmotte doit sortir de son trou
+
+invariant
+
+note
+	copyright: "Copyright (c) 2013, Véronique Blais & Tommy Teasdale"
+	license: "GPL 3.0 (see http://www.gnu.org/licenses/gpl-3.0.txt)"
+	source: "[
+		Véronique Blais & Tommy teasdale
+		Etudiants en Techniques de l'informatique
+		Cégep de Drummondville
+		960, rue Saint-Georges
+		Drummondville, (Québec)
+		J2C-6A2
+	]"
 end
 
