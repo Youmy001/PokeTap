@@ -1,6 +1,7 @@
 note
 	description: "[Gestion du réseau du côté serveur]"
 	author: "Véronique Blais"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "18 Avril 2013"
 	revision: "0.13.04.18"
 
@@ -19,7 +20,6 @@ feature {NONE} -- Initialization
 			l_port:INTEGER
 			l_serveur_address, l_client_address: NETWORK_SOCKET_ADDRESS
 			l_serveur_socket: NETWORK_STREAM_SOCKET
-
 		do
 			l_port := 12345
 				io.put_string ("Ouverture du serveur sur le port: "+l_port.out+".%N")
@@ -70,6 +70,8 @@ feature
 		l_string:=client_socket.last_string
 		io.put_string ("Le client a dit: "+l_string+"%N")
 		Result:=l_string
+		ensure
+			Result_is_not_empty : not result.is_empty
 	end
 	close
 	-- Ferme la connection du client
@@ -77,6 +79,8 @@ feature
 			client_socket_is_not_closed : not client_socket.is_closed
 		do
 			client_socket.close
+			ensure
+				client_socket_is_closed : client_socket.is_closed
 		end
 
 	client_socket: NETWORK_STREAM_SOCKET

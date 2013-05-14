@@ -1,6 +1,7 @@
 note
 	description: "[Gestion principale du jeu. Cette classe est la pièce maîtresse du jeu. Elle appelle diverses fonctions de diverses classes.]"
 	author: "Tommy Teasdale et Véronique Blais"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "22 Avril 2013"
 	revision: "0.13.04.22"
 
@@ -137,7 +138,7 @@ make_local
 single_player(a_screen:POINTER)
 -- Lance le mode singleplayer dans l'écran `a_screen'
 		require
-			a_screen_is_not_void : not a_screen.is_default_pointer
+			a_screen_is_not_null : not a_screen.is_default_pointer
 		local
 			l_marteau: MARTEAU
 			l_marmotte: MARMOTTE
@@ -341,57 +342,85 @@ feature {NONE} --Routine
 		-- Valeur de la constante SDL_INIT_VIDEO
 		do
 			result := {SDL_WRAPPER}.SDL_INIT_VIDEO
+			ensure
+				result_is_at_least_0 :  result >= 0
 		end
 
 	init (l_init: NATURAL_32): INTEGER
 		-- Valeur retournée par SDL_Init avec le paramètre `l_init'
 		require
-			l_init_is_not_below_0 : l_init >= 0
+			l_init_is_at_least_0 : l_init >= 0
 		do
 			result := {SDL_WRAPPER}.SDL_Init (l_init)
+			ensure
+				result_is_at_least_0 :  result >= 0
 		end
 	img_png:NATURAL_32
 		-- Valeur de la constante IMG_INIT_PNG
 		do
 			result:= {SDL_IMAGE}.IMG_INIT_PNG
+			ensure
+				result_is_at_least_0 :  result >= 0
 		end
 	img_init(l_init:NATURAL_32):INTEGER
 		-- Valeur retournée par IMG_Init avec le paramètre `l_init'
+		require
+			l_init_is_at_least_0 : l_init >= 0
 		do
 			result := {SDL_IMAGE}.IMG_Init(l_init)
+			ensure
+				result_is_at_least_0 :  result >= 0
 		end
 	set_video_mode: POINTER
 		-- Écran dans lequel seront affichés les éléments du jeu
 		do
 			result := {SDL_WRAPPER}.SDL_SetVideoMode (914, 680, 32, {SDL_WRAPPER}.SDL_SWSURFACE)
+			ensure
+				result_is_not_null :  not result.is_default_pointer
 		end
 
 	disable: INTEGER
 		-- Valeur de la constante SDL_DISABLE
 		do
 			result := {SDL_WRAPPER}.SDL_DISABLE
+			ensure
+				result_is_at_least_0 :  result >= 0
 		end
 
 	show_cursor_disable (l_disable: INTEGER): INTEGER
 		-- Valeur de l'état actuel de la souris avec le paramètre `toggle'
+		require
+			l_disable_is_at_least: l_disable >= 0
 		do
 			result := {SDL_WRAPPER}.SDL_ShowCursor (l_disable)
+			ensure
+				result_is_at_least_0 :  result >= 0
 		end
 
 	poll_event (l_event: POINTER): INTEGER
 		-- Valeur retournée par SDL_PollEvent avec `event' pour indiquer s'il y a encore des événements en attente
+		require
+			l_event_is_not_null : not l_event.is_default_pointer
 		do
 			result := {SDL_WRAPPER}.SDL_PollEvent (l_event)
+			ensure
+				result_is_at_least_0 :  result >= 0
 		end
 
 	flip (l_screen: POINTER): INTEGER
 		-- Valeur retournée par l'initialisation de SDL_Flip avec l'écran `screen' pour indiquer si une erreur a eu lieu
+		require
+			l_screen_is_not_null : not l_screen.is_default_pointer
 		do
 			result := {SDL_WRAPPER}.SDL_Flip (l_screen)
+			ensure
+				result_is_at_least_0 :  result >= 0
 		end
 
 	delay (temp: NATURAL_32)
 		-- Attend pendant `ms' millisecondes
+		require
+			temp_is_at_least_0 : temp >= 0
 		do
 			{SDL_WRAPPER}.SDL_Delay (temp)
 		end
@@ -436,4 +465,8 @@ feature {NONE} --Routine
 	-- Instance de la classe `RESEAU_CLIENT'
 	reseau_serveur: RESEAU_SERVEUR
 	-- Instance de la classe `RESEAU_SERVEUR'
+invariant
+	id_is_at_least_0: id >= 0
+	pointage_is_at_least_0: pointage >= 0
+
 end

@@ -1,6 +1,7 @@
 note
 	description: "[Wrapper des diverses fonction SDL (Pour effectuer diverses fonctions) pour rendre ces fonctions C utilisables en Eiffel]"
 	author: "Tommy Teasdale et Véronique Blais"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "15 Avril 2013"
 	revision: "0.13.04.15"
 
@@ -235,7 +236,7 @@ feature -- Constante C
 	alias
 		"SDL_INIT_VIDEO"
 	end
-	
+
 	frozen SDL_INIT_AUDIO :NATURAL_32
 		--Constante C pour initialiser
 	external

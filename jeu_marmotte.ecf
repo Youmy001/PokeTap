@@ -25,6 +25,11 @@
 				<platform value="windows"/>
 			</condition>
 		</external_include>
+		<external_include location="..\..\..\..\SDL_mixer-1.2.12\include">
+			<condition>
+				<platform value="windows"/>
+			</condition>
+		</external_include>
 		<external_library location="..\..\..\SDL-1.2.14\lib\libSDL.dll.a">
 			<condition>
 				<platform value="windows"/>
@@ -58,6 +63,11 @@
 		<external_library location="-lSDL_mixer">
 			<condition>
 				<platform excluded_value="windows"/>
+			</condition>
+		</external_library>
+		<external_library location="..\..\..\SDL_mixer-1.2.12\lib\x86\SDL_mixer.dll">
+			<condition>
+				<platform value="windows"/>
 			</condition>
 		</external_library>
 		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>

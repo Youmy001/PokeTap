@@ -1,6 +1,7 @@
 note
 	description: "[Gestion de tous les bruits/sons/musiques du jeu]"
 	author: "Tommy Teasdale"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "15 Avril 2013"
 	revision: "0.13.04.29"
 
