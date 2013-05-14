@@ -1,6 +1,7 @@
 note
 	description: "[Gestion de l'animation de la marmotte, des mouvements, etc.]"
 	author: "Véronique Blais"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "15 Avril 2013"
 	revision: "0.13.04.15"
 
@@ -19,10 +20,12 @@ feature -- Access
 	make (a_screen: POINTER)
 	-- Initialise `Current' dans l'écran `a_screen'
 		require
-			a_screen_is_not_void : not a_screen.is_default_pointer
+			a_screen_is_not_null : not a_screen.is_default_pointer
 		do
 			screen := a_screen
 			creer_image("images/meowth.png")
+			ensure
+				screen_is_not_null : not screen.is_default_pointer
 		end
 
 	animation_marmotte
@@ -56,8 +59,7 @@ feature -- Access
 			{SDL_WRAPPER}.set_SDL_Rect_y (l_rect_src, 0)
 			{SDL_WRAPPER}.set_SDL_Rect_w (l_rect_src, 100)
 			{SDL_WRAPPER}.set_SDL_Rect_h (l_rect_src, l_rect_h)
-			ctr := {SDL_WRAPPER}.SDL_BlitSurface (infile, l_rect_src, screen, targetarea)
-
+			error_return := {SDL_WRAPPER}.SDL_BlitSurface (infile, l_rect_src, screen, targetarea)
 		end
 
 	rentrer_trou
@@ -83,6 +85,7 @@ feature -- Access
 				set_y(y - 1)
 			end
 		end
+
 	l_bmp_w:INTEGER
 	-- Largeur de l'image
 	l_bmp_h:INTEGER
@@ -98,5 +101,11 @@ feature -- Access
 	-- Pointeur de la gestion de mémoire
 	sort_trou:BOOLEAN
 	-- Booléen indicant si la marmotte doit sortir de son trou
-end
 
+	invariant
+		l_bmp_h_is_at_least_0 : l_bmp_h >= 0
+		l_bmp_w_is_at_least_0 : l_bmp_w >= 0
+		l_i_is_at_least_0 : l_i >= 0
+		l_rect_h_is_at_least_0 : l_rect_h >= 0
+
+end

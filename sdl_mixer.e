@@ -1,6 +1,7 @@
 note
 	description: "Wrapper C for SDL_mixer library {SDL_MIXER}."
 	author: "Tommy Teasdale"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "$Date$"
 	revision: "$Revision$"
 

@@ -1,6 +1,7 @@
 note
 	description: "[Gestion du réseau du côté client]"
 	author: "Véronique Blais"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "18 Avril 2013"
 	revision: "0.13.04.18"
 
@@ -65,6 +66,8 @@ feature
 		l_string:=socket.last_string
 		io.put_string ("Le serveur a dit: "+l_string+"%N")
 		Result:=l_string
+		ensure
+			Result_is_not_empty : not result.is_empty
 	end
 	close
 	-- Ferme la connection du client
@@ -72,8 +75,11 @@ feature
 			socket_is_not_closed : not socket.is_closed
 		do
 			socket.close
+			ensure
+				socket_is_closed : socket.is_closed
 		end
 
 	socket: NETWORK_STREAM_SOCKET
 	-- Connexion avec un autre client
+
 end

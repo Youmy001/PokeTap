@@ -1,6 +1,7 @@
 note
 	description: "[Gestion des images dans le jeu. Cette classe est composée majoritairement de fonctions de la librairie SDL 1.2]"
 	author: "Tommy Teasdale & Véronique Blais"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "15 Avril 2013"
 	revision: "0.13.04.15"
 
@@ -11,14 +12,16 @@ feature
 
 		affiche_image
 		-- Affiche l'image `infile' dans l'écran `screen' dans la partie cible `targetarea'
-			require
---				infile_is_not_null : not infile.is_default_pointer
---				screen_is_not_void : not screen.is_default_pointer
---				targetarea_is_not_null : not targetarea.is_default_pointer
 			do
-				ctr := {SDL_WRAPPER}.SDL_BlitSurface(infile, create{POINTER}, screen, targetarea)
+				check targetarea_is_not_null : not targetarea.is_default_pointer  end
+				error_return := {SDL_WRAPPER}.SDL_BlitSurface(infile, create{POINTER}, screen, targetarea)
 			end
 
+		is_error:BOOLEAN
+		-- Vérifie si une erreur à eu lieu
+		do
+			Result := error_return > 0
+		end
 
 		creer_image(a_image:STRING)
 		-- Crée l'image `a_image'
@@ -53,14 +56,14 @@ feature
 			do
 				Result:={SDL_WRAPPER}.get_SDL_Rect_x(targetarea)
 				ensure
-					result_is_not_below_0 : Result >= 0
+					result_is_at_least_0 : Result >= 0
 			end
 		y:INTEGER_16 assign set_y
 		-- Coordonnée de y
 			do
 				Result:={SDL_WRAPPER}.get_SDL_Rect_y(targetarea)
 				ensure
-						result_is_not_below_0 : Result >= 0
+						result_is_at_least_0 : Result >= 0
 			end
 
 
@@ -69,7 +72,7 @@ feature {NONE}
 		set_x(a_x:INTEGER_16)
 		-- Change la coordonnée x dans `targetarea' pour `a_x'
 			require
-				a_x_is_not_below_0 : a_x >= 0
+				a_x_is_at_least_0 : a_x >= 0
 			do
 				{SDL_WRAPPER}.set_SDL_Rect_x(targetarea, a_x)
 			end
@@ -77,7 +80,7 @@ feature {NONE}
 		set_y(a_y:INTEGER_16)
 		-- Change la coordonnée y dans `targetarea' pour `a_y'
 			require
-				a_y_is_not_below_0 : a_y >= 0
+				a_y_is_at_least_0 : a_y >= 0
 			do
 				{SDL_WRAPPER}.set_SDL_Rect_y(targetarea, a_y)
 			end
@@ -98,7 +101,7 @@ feature{NONE}--Routine
 	destroy
 		-- Détruit la surface `screen'
 		require
-			screen_is_not_void : not screen.is_default_pointer
+			screen_is_not_null : not screen.is_default_pointer
 		do
 			{SDL_WRAPPER}.SDL_FreeSurface(screen)
 		end
@@ -107,11 +110,15 @@ infile:POINTER
 -- Pointeur vers une image
 targetarea:POINTER
 -- Partie ciblé dans l'écran
-ctr:INTEGER
--- ?
+error_return:INTEGER
+-- Valeur indiquant s'il y a une erreur
 screen:POINTER
 -- Pointeur vers l'écran
 memory_manager:POINTER
 -- Pointeur qui gère la mémoire
+
+invariant
+	no_error_occured : not is_error
+	screen_is_not_null : not screen.is_default_pointer
 
 end

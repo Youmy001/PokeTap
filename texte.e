@@ -1,6 +1,7 @@
 note
 	description: "[Gestion de tous les éléments textuels à afficher à l'écran]"
 	author: "Tommy Teasdale et Véronique Blais"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "18 Avril 2013"
 	revision: "0.13.04.18"
 
@@ -13,7 +14,7 @@ feature -- Access
 	make(a_screen:POINTER)
 	-- Initialise `Current' dans `a_screen'
 		require
-			a_screen_is_not_void : not a_screen.is_default_pointer
+			a_screen_is_not_null : not a_screen.is_default_pointer
 		local
 		    l_memory_manager:POINTER
 			l_ctr:INTEGER
@@ -42,6 +43,8 @@ feature -- Access
 				a_file_path_is_not_empty : not a_file_path.is_empty
 			do
 				font_path := a_file_path
+				ensure
+					font_path_is_not_empty : not font_path.is_empty
 			end
 
 		set_font_size(a_size:INTEGER_16)
@@ -80,6 +83,7 @@ feature -- Access
 			-- Ajuste la valeur du rouge à `a_r'
 			require
 				a_r_is_above_0 : a_r >= 0
+				color_is_not_null : not color.is_default_pointer
 			do
 				{SDL_WRAPPER}.set_SDL_Color_r(color, a_r)
 			end
@@ -88,6 +92,7 @@ feature -- Access
 		-- Ajuste la valeur du vert à `a_g'
 			require
 				a_g_is_above_0 : a_g >= 0
+				color_is_not_null : not color.is_default_pointer
 			do
 				{SDL_WRAPPER}.set_SDL_Color_g(color, a_g)
 			end
@@ -95,6 +100,7 @@ feature -- Access
 		-- Ajuste la valeur du bleu à `a_b'
 			require
 				a_b_is_above_0 : a_b >= 0
+				color_is_not_null : not color.is_default_pointer
 			do
 				{SDL_WRAPPER}.set_SDL_Color_b(color, a_b)
 			end
@@ -121,6 +127,7 @@ feature -- Access
 				targetarea_is_not_null : not targetarea.is_default_pointer
 				font_is_not_null : not font.is_default_pointer
 				color_is_not_null : not color.is_default_pointer
+				texte_is_not_null : not texte.item.is_default_pointer
 			do
 				surface:={SDL_TTF}.TTF_RenderText_Solid(font,texte.item,color)
 				{SDL_WRAPPER}.set_SDL_Rect_w (targetarea, 100)
@@ -149,4 +156,7 @@ surface:POINTER
 -- Pointeur vers le texte à afficher
 targetarea:POINTER
 -- Partie Ciblée où doit être afficher le texte
+
+	invariant
+		font_size_is_at_least_0 : font_size >= 0
 end

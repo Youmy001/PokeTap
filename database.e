@@ -1,6 +1,7 @@
 note
 	description: "[Gestion de la base de données ainsi que des requêtes associées à celle-ci]"
 	author: "Tommy Teasdale, Véronique Blais"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "15 Avril 2013"
 	revision: "0.13.04.15"
 
@@ -19,7 +20,6 @@ feature {NONE} -- Initialization
 	make
 	-- Initialise `Current'
 		local
-
 			l_table_present: BOOLEAN
 			l_query:SQLITE_QUERY_STATEMENT
 			l_modify:SQLITE_MODIFY_STATEMENT
@@ -57,7 +57,10 @@ feature {NONE} -- Initialization
 feature
 
 	insert_new_pointage (a_pointage: INTEGER a_nom: STRING):INTEGER
-	-- Pointage du joueur `a_nom' dans `Current'
+	-- Id du joueur `a_nom' dans `Current'
+		require
+			a_pointage_is_at_least_0 : a_pointage >= 0
+			a_nom_is_not_empty : not a_nom.is_empty
 		local
 			l_id:INTEGER
 			l_insert:SQLITE_INSERT_STATEMENT
@@ -83,12 +86,14 @@ feature
 			end
 
 			Result:=l_id
+			ensure
+				Result_is_at_least : Result >= 0
 		end
 	update_pointage(a_id: INTEGER a_pointage: INTEGER a_nom: STRING)
 	-- Met à jour le pointage `a_pointage' associé au joueur `a_nom' dans la database `Current'
 		require
-			a_id_is_not_below_0 : a_id >= 0
-			a_pointage_is_not_below_0 : a_pointage >= 0
+			a_id_is_at_least_0 : a_id >= 0
+			a_pointage_is_at_least_0 : a_pointage >= 0
 			a_nom_is_not_empty : not a_nom.is_empty
 		local
 			l_modify:SQLITE_MODIFY_STATEMENT
@@ -132,6 +137,5 @@ feature
 
 	db: SQLITE_DATABASE
 	-- Base de donnée
-
 
 end

@@ -1,6 +1,7 @@
 note
 	description: "[Wrapper des diverses fonctions SDL_ttf (Pour afficher du texte à l'écran) pour rendre ces fonctions C utilisables en Eiffel]"
 	author: "Tommy Teasdale et Véronique Blais"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "15 Avril 2013"
 	revision: "0.13.04.15"
 
