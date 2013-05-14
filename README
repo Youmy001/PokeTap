@@ -1,0 +1,31 @@
+PokéTap Le Jeu
+=========
+
+PokéTap est un jeu de marmotte avec les Pokémons.
+
+  - Jouez seul et essayez de vaincre votre meilleur score
+  - Jouez contre un ami via une connection TCP/IP
+  - Compatible Windows et Linux  
+
+Version
+-
+
+0.1
+
+Tech
+-----------
+
+
+Installation
+--------------
+
+```
+```
+
+
+License
+-
+
+GPL 3.1
+
+    
