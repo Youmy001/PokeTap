@@ -85,4 +85,5 @@ feature
 
 	client_socket: NETWORK_STREAM_SOCKET
 	-- Connexion avec un autre client
+
 end

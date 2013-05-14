@@ -83,10 +83,4 @@
 	<target name="make_local" extends="make_commun">
 		<root class="GAMES" feature="make_local"/>
 	</target>
-	<target name="make_server" extends="make_commun">
-		<root class="GAMES" feature="make_server"/>
-	</target>
-	<target name="make_client" extends="make_commun">
-		<root class="GAMES" feature="make_client"/>
-	</target>
 </system>

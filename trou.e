@@ -50,4 +50,5 @@ feature
 				screen_is_not_null : not screen.is_default_pointer
 				targetarea_is_not_null : not targetarea.is_default_pointer
 		end
+
 end

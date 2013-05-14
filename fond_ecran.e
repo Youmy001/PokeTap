@@ -40,5 +40,5 @@ feature {NONE} -- Initialization
 
 invariant
 	screen_is_not_null: not screen.is_default_pointer
-
+	
 end

@@ -137,4 +137,5 @@ feature
 
 	db: SQLITE_DATABASE
 	-- Base de donnée
+
 end

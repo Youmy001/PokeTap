@@ -89,4 +89,5 @@ feature {NONE}
 	music:POINTER
 	sound:POINTER
 	volume:INTEGER
+
 end

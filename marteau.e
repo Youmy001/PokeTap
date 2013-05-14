@@ -105,4 +105,5 @@ bdd:DATABASE
 	invariant
 		id_is_at_least_0 : id >= 0
 		pointage_is_at_least_0 : pointage >= 0
+
 end

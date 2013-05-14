@@ -107,5 +107,5 @@ feature -- Access
 		l_bmp_w_is_at_least_0 : l_bmp_w >= 0
 		l_i_is_at_least_0 : l_i >= 0
 		l_rect_h_is_at_least_0 : l_rect_h >= 0
-end
 
+end
