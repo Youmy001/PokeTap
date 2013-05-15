@@ -12,20 +12,42 @@ Version
 
 0.1
 
-Tech
------------
+Comment jouer?
+----------------
+
+Pour jouer à PokeTap, il faut disposer d'un périphérique de pointage tel qu'une souris, un pavé tactile ou un écran tactile.
+
+Dans le menu principal:
+
+  - Cliquer sur Forever Alone pour jouer une partie seule
+  - Cliquer sur Multiplayer pour un jeu réseau contre un ami
+	Il faut créer un serveur avec un client!
+  - Pour marquer des points, cliquez sur les Meowths.
 
 
 Installation
 --------------
 
 ```
+- Lancer la commande « git clone https://github.com/Youmy001/PokeTap.git » dans un Gitbash
+  OU aller sur www.github.com/Youmy001/Poketap et appuyer sur ZIP et extraire le tout dans un dossier quelconque
+- Ouvrir le fichier jeu_marmotte.ecf avec eiffelstudio
+- Bon jeu !
 ```
 
 
 License
 -
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+	
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-GPL 3.1
-
-    
