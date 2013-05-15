@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<meta charset='utf-8' />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="description" content="Poketap : Jeux de marmotte au thème pokemon" />
+<META NAME="generator" CONTENT="ISE EiffelStudio version 7.1.8.8986 GPL Edition - windows">
+<meta name="description" content="[Gestion principale du jeu. Cette classe est la pièce maîtresse du jeu. Elle appelle diverses fonctions de diverses classes.]"/>
+<meta name="author" content="Tommy Teasdale et Véronique Blais"/>
+<meta name="copyright" content="Copyright (c) 2013, Tommy Teasdale, Véronique Blais"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>games Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<LINK REL="stylesheet" HREF="../../stylesheets/stylesheet.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<div id="header_wrap" class="outer">
+<header class="inner">
+<a id="forkme_banner" href="https://github.com/Youmy001/PokeTap">View on GitHub</a>
+<h1 id="project_title">Poketap</h1>
+<h2 id="project_tagline">Jeux de marmotte au thème pokemon</h2>
+<a href="media.html">Medias</a>&nbsp;&nbsp;<a href="documentation/index.html">Documentation</a>&nbsp;&nbsp;<a href="downloads.html">Telechargements</a>
+<section id="downloads">
+<a class="zip_download_link" href="https://github.com/Youmy001/PokeTap/zipball/master">Download this project as a .zip file</a>
+<a class="tar_download_link" href="https://github.com/Youmy001/PokeTap/tarball/master">Download this project as a tar.gz file</a>
+</section>
+</header>
+</div>
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="games_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="games_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="games_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="games_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="games_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="games"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;[Gestion principale du jeu. Cette classe est la pi&egrave;ce ma�tresse du jeu. Elle appelle diverses fonctions de diverses classes.]&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Tommy Teasdale et V&eacute;ronique Blais&quot;</SPAN>
+	<SPAN CLASS="eitag">copyright</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Copyright (c) 2013, Tommy Teasdale, V&eacute;ronique Blais&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;22 Avril 2013&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;0.13.04.22&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../jeu_marmotte/games.html">GAMES</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_make_local">make_local</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access</SPAN>
+
+	<A NAME="f_make_local"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_make_local">make_local</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initialise </SPAN>`Current'
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">l_fond_ecran</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/fond_ecran.html">FOND_ECRAN</A>
+			<SPAN CLASS="elocal">l_init</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_init_png</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN>
+			<SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_memory_manager</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="elocal">l_poll_event</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_ctr</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">l_quit</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_mousedown</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_8</SPAN>
+			<SPAN CLASS="elocal">l_exit</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_multiplayer</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="elocal">l_quit_button</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/buttons.html">BUTTONS</A>
+			<SPAN CLASS="elocal">l_single_button</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/buttons.html">BUTTONS</A>
+			<SPAN CLASS="elocal">l_multijoueur_button</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/buttons.html">BUTTONS</A>
+			<SPAN CLASS="elocal">l_serveur_button</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/buttons.html">BUTTONS</A>
+			<SPAN CLASS="elocal">l_client_button</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/buttons.html">BUTTONS</A>
+			<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/texte.html">TEXTE</A>
+			<SPAN CLASS="elocal">l_music</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/bruit.html">BRUIT</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">l_init</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_init_video">init_video</A>
+			<SPAN CLASS="elocal">l_ctr</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_init">init</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_init</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_init_png</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_img_png">img_png</A>
+			<SPAN CLASS="elocal">l_ctr</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_img_init">img_init</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_init_png</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_screen</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_set_video_mode">set_video_mode</A>
+			<SPAN CLASS="elocal">l_multiplayer</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_music</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/bruit.html#f_make_music">make_music</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;mp3&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_music</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/bruit.html#f_music_load_file">music_load_file</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;mus/poke_menu.mp3&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_music</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/bruit.html#f_music_play">music_play</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_fond_ecran</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/fond_ecran.html#f_make_menu">make_menu</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_font_size">set_font_size</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">75</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_font_style">set_font_style</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;fonts/Pokemon_Hollow.ttf&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_font">set_font</A>
+			<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;PokeTap&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_x">set_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">350</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_y">set_y</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">35</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_single_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> &quot;images/forever.png&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">300</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">125</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_multijoueur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> &quot;images/multijoueur.png&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">300</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_single_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">100</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_quit_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> &quot;images/quitter.png&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">300</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_multijoueur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">100</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_serveur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> &quot;images/serveur.png&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">300</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_quit_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">100</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_client_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> &quot;images/client.png&quot;<SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">300</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_serveur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">100</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_memory_manager</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">default_create</SPAN>
+			<SPAN CLASS="elocal">l_event</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_memory_manager</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">memory_alloc</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sizeof_sdl_event">sizeof_sdl_event</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_quit</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_quit">sdl_quit</A>
+			<SPAN CLASS="elocal">l_mousedown</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_mousebuttondown">sdl_mousebuttondown</A>
+			<SPAN CLASS="ekeyword">from</SPAN>
+				<SPAN CLASS="elocal">l_exit</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+			<SPAN CLASS="ekeyword">until</SPAN>
+				<SPAN CLASS="elocal">l_exit</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+			<SPAN CLASS="ekeyword">loop</SPAN>
+				<SPAN CLASS="ekeyword">from</SPAN>
+					<SPAN CLASS="elocal">l_poll_event</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_poll_event">poll_event</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">until</SPAN>
+					<SPAN CLASS="elocal">l_poll_event</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="enumber">1</SPAN>
+				<SPAN CLASS="ekeyword">loop</SPAN>
+					<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;PokeTap&quot;<SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_x">set_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">350</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_event_type">get_sdl_event_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">l_quit</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+						<SPAN CLASS="elocal">l_exit</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+					<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_x">get_sdl_mousemotionevent_x</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="elocal">l_single_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_x">button_x</A> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_x">get_sdl_mousemotionevent_x</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&lt;</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_single_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_x">button_x</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">l_single_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_w">button_w</A><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="elocal">l_single_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&lt;</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_single_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">l_single_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_h">button_h</A><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Singleplayer !&quot;<SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_x">set_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">250</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_event_type">get_sdl_event_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">l_mousedown</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="elocal">l_music</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/bruit.html#f_music_stop">music_stop</A>
+								<A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_single_player">single_player</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+								<SPAN CLASS="elocal">l_music</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/bruit.html#f_music_play">music_play</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="ekeyword">elseif</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="elocal">l_multijoueur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&lt;</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_multijoueur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">l_multijoueur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_h">button_h</A><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;INDISPONIBLE !&quot;<SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_x">set_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">250</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_event_type">get_sdl_event_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">l_mousedown</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="elocal">l_multiplayer</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+							<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="ekeyword">elseif</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="elocal">l_quit_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&lt;</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_quit_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">l_quit_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_h">button_h</A><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Quitter... &quot;<SPAN CLASS="esymbol">)</SPAN>
+							<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_event_type">get_sdl_event_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">l_mousedown</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="elocal">l_exit</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+							<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">l_multiplayer</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">True</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+							<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="elocal">l_serveur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&lt;</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_serveur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">l_serveur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_h">button_h</A><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_event_type">get_sdl_event_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">l_mousedown</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+									<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_serveur">reseau_serveur</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/reseau_serveur.html#f_make">make</A>
+									<A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_single_player">single_player</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+								<SPAN CLASS="ekeyword">end</SPAN>
+							<SPAN CLASS="ekeyword">elseif</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="elocal">l_client_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&lt;</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_client_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_y">button_y</A> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="elocal">l_client_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/buttons.html#f_button_h">button_h</A><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+								<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_event_type">get_sdl_event_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">l_mousedown</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+									<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_client">reseau_client</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/reseau_client.html#f_make">make</A>
+									<A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_single_player">single_player</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+								<SPAN CLASS="ekeyword">end</SPAN>
+							<SPAN CLASS="ekeyword">end</SPAN>
+						<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="elocal">l_poll_event</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_poll_event">poll_event</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="elocal">l_fond_ecran</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_texte_titre</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_affiche_texte">affiche_texte</A>
+				<SPAN CLASS="elocal">l_single_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_multijoueur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_quit_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">l_multiplayer</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">True</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+					<SPAN CLASS="elocal">l_serveur_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+					<SPAN CLASS="elocal">l_client_button</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_flip">flip</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&lt;</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+					<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Erreur at FlipScreen&quot;<SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="elocal">l_music</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/bruit.html#f_music_quit">music_quit</A>
+			<A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_exit">exit</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_single_player"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_single_player">single_player</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_screen</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Lance le mode singleplayer dans l'&eacute;cran </SPAN>`a_screen'
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">a_screen_is_not_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">a_screen</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_default_pointer</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/marteau.html">MARTEAU</A>
+			<SPAN CLASS="elocal">l_marmotte</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/marmotte.html">MARMOTTE</A>
+			<SPAN CLASS="elocal">l_ctr</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_pointage</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_disable</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_poll_event</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_memory_manager</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="elocal">l_fond_ecran</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/fond_ecran.html">FOND_ECRAN</A>
+			<SPAN CLASS="elocal">l_quit_bool</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="elocal">l_mousemotion</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_mousedown</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_quit</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_8</SPAN>
+			<SPAN CLASS="elocal">l_trou</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou1</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou2</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou3</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou4</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou5</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou6</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou7</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou8</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou9</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou10</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou11</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/trou.html">TROU</A>
+			<SPAN CLASS="elocal">l_trou12</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou13</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou14</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou15</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou17</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou18</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_trou19</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/trou.html">TROU</A>
+			<SPAN CLASS="elocal">l_texte_pointage</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/texte.html">TEXTE</A>
+			<SPAN CLASS="elocal">l_texte_nom</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/texte.html">TEXTE</A>
+			<SPAN CLASS="elocal">l_sv_pointage</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_sv_nom</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="elocal">l_texte_sv_pointage</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/texte.html">TEXTE</A>
+			<SPAN CLASS="elocal">l_texte_sv_nom</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/texte.html">TEXTE</A>
+			<SPAN CLASS="elocal">l_cl_pointage</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">l_cl_nom</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="elocal">l_texte_cl_pointage</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/texte.html">TEXTE</A>
+			<SPAN CLASS="elocal">l_texte_cl_nom</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/texte.html">TEXTE</A>
+			<SPAN CLASS="elocal">l_game_music</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/bruit.html">BRUIT</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">l_screen</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">a_screen</SPAN>
+			<SPAN CLASS="elocal">l_disable</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_disable">disable</A>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_game_music</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/bruit.html#f_make_music">make_music</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;mp3&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_game_music</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/bruit.html#f_music_load_file">music_load_file</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;mus/poke_game.mp3&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_ctr</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_show_cursor_disable">show_cursor_disable</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_disable</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_fond_ecran</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/fond_ecran.html#f_make_fond">make_fond</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_bdd">bdd</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/database.html#f_make">make</A>
+			<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;Entrez votre nom : &quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="nefeature">Io</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">readline</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marteau.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="nefeature">Io</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">last_string</SPAN><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_bdd">bdd</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_texte_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;0 point&quot;<SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_x">set_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">265</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_y">set_y</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">560</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_texte_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marteau.html#f_get_nom">get_nom</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_x">set_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">25</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_texte_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_y">set_y</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">560</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_game_music</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/bruit.html#f_music_play">music_play</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_serveur">reseau_serveur</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_texte_cl_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_cl_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;0 point&quot;<SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_cl_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_x">set_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">725</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_cl_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_y">set_y</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">560</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_texte_cl_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_cl_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marteau.html#f_get_nom">get_nom</A><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_cl_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_x">set_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">490</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_cl_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_y">set_y</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">560</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_client">reseau_client</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_texte_sv_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_sv_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;0 point&quot;<SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_sv_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_x">set_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">725</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_sv_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_y">set_y</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">560</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_texte_sv_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_sv_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marteau.html#f_get_nom">get_nom</A><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_sv_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_x">set_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">490</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_texte_sv_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_y">set_y</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">560</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">20</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">30</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou1</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">210</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">30</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou2</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">400</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">30</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou3</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">590</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">30</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou4</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">780</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">30</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou5</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">20</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">180</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou6</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">20</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">330</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou7</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">20</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">480</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou8</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">210</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">180</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou9</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">210</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">330</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou10</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">210</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">480</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou11</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">400</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">180</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou12</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">400</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">330</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou13</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">400</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">480</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou14</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">590</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">180</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou15</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">590</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">330</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou16</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">590</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">480</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou17</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">780</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">180</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou18</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">780</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">330</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_trou19</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/trou.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">780</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">480</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_integer_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_marmotte</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marmotte.html#f_make">make</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">l_memory_manager</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">default_create</SPAN>
+			<SPAN CLASS="elocal">l_event</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_memory_manager</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">memory_alloc</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sizeof_sdl_event">sizeof_sdl_event</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_mousemotion</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_mouse_motion">mouse_motion</A>
+			<SPAN CLASS="elocal">l_mousedown</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_mousebuttondown">sdl_mousebuttondown</A>
+			<SPAN CLASS="ekeyword">from</SPAN>
+				<SPAN CLASS="elocal">l_quit</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_quit">sdl_quit</A>
+				<SPAN CLASS="elocal">l_quit_bool</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">False</SPAN>
+			<SPAN CLASS="ekeyword">until</SPAN>
+				<SPAN CLASS="elocal">l_quit_bool</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+			<SPAN CLASS="ekeyword">loop</SPAN>
+				<SPAN CLASS="ekeyword">from</SPAN>
+					<SPAN CLASS="elocal">l_poll_event</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_poll_event">poll_event</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">until</SPAN>
+					<SPAN CLASS="elocal">l_poll_event</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="enumber">1</SPAN>
+				<SPAN CLASS="ekeyword">loop</SPAN>
+					<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_event_type">get_sdl_event_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">l_quit</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+						<SPAN CLASS="elocal">l_quit_bool</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+					<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_event_type">get_sdl_event_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">l_mousemotion</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+						<SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_x">x</A> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_mouse_x">mouse_x</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_y">y</A> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_mouse_y">mouse_y</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_event_type">get_sdl_event_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="elocal">l_mousedown</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+						<SPAN CLASS="elocal">l_pointage</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marteau.html#f_get_pointage">get_pointage</A>
+						<SPAN CLASS="elocal">l_pointage</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">l_pointage</SPAN> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">1</SPAN>
+						<SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marteau.html#f_set_pointage">set_pointage</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_pointage</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marteau.html#f_update_pointage">update_pointage</A>
+						<SPAN CLASS="elocal">l_texte_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_pointage</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot; points&quot;<SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_pointage</SPAN><SPAN CLASS="esymbol">)</SPAN>
+						<SPAN CLASS="nefeature">print</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN>&quot;%N&quot;<SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="ekeyword">end</SPAN>
+					<SPAN CLASS="elocal">l_poll_event</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_poll_event">poll_event</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_serveur">reseau_serveur</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+					<SPAN CLASS="elocal">l_cl_pointage</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_serveur">reseau_serveur</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/reseau_serveur.html#f_recoit">recoit</A>
+					<SPAN CLASS="elocal">l_cl_nom</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_serveur">reseau_serveur</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/reseau_serveur.html#f_recoit">recoit</A>
+					<A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_serveur">reseau_serveur</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/reseau_serveur.html#f_envoye">envoye</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_pointage</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN><SPAN CLASS="esymbol">)</SPAN>
+					<A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_serveur">reseau_serveur</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/reseau_serveur.html#f_envoye">envoye</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marteau.html#f_get_nom">get_nom</A><SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="elocal">l_texte_cl_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_cl_pointage</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot; points&quot;<SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="elocal">l_texte_cl_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_cl_nom</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="ekeyword">if</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_client">reseau_client</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+					<A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_client">reseau_client</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/reseau_client.html#f_envoye">envoye</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_pointage</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">out</SPAN><SPAN CLASS="esymbol">)</SPAN>
+					<A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_client">reseau_client</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/reseau_client.html#f_envoye">envoye</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marteau.html#f_get_nom">get_nom</A><SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="elocal">l_sv_pointage</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_client">reseau_client</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/reseau_client.html#f_recoit">recoit</A>
+					<SPAN CLASS="elocal">l_sv_nom</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_client">reseau_client</A><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/reseau_client.html#f_recoit">recoit</A>
+					<SPAN CLASS="elocal">l_texte_sv_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_sv_pointage</SPAN> <SPAN CLASS="esymbol">+</SPAN> &quot; points&quot;<SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="elocal">l_texte_sv_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_set_texte">set_texte</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_sv_nom</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="elocal">l_fond_ecran</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou1</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou2</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou3</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou4</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou5</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou6</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou7</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou8</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou9</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou10</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou11</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou12</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou13</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou14</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou15</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou16</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou17</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou18</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_trou19</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<SPAN CLASS="elocal">l_marmotte</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/marmotte.html#f_animation_marmotte">animation_marmotte</A>
+				<SPAN CLASS="elocal">l_texte_pointage</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_affiche_texte">affiche_texte</A>
+				<SPAN CLASS="elocal">l_texte_nom</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/texte.html#f_affiche_texte">affiche_texte</A>
+				<SPAN CLASS="elocal">l_marteau</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/image.html#f_affiche_image">affiche_image</A>
+				<A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_delay">delay</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="elocal">l_ctr</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_flip">flip</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="elocal">l_game_music</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/bruit.html#f_music_close">music_close</A>
+			<SPAN CLASS="elocal">l_ctr</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_show_cursor_disable">show_cursor_disable</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">Routine</SPAN>
+
+	<A NAME="f_init_video"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_init_video">init_video</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur de la constante SDL_INIT_VIDEO</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_init_video">sdl_init_video</A>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_init"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_init">init</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_init</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur retourn&eacute;e par SDL_Init avec le param&egrave;tre </SPAN>`l_init'
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">l_init_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">l_init</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_init">sdl_init</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_init</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_img_png"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_img_png">img_png</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur de la constante IMG_INIT_PNG</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_image.html">SDL_IMAGE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_image.html#f_img_init_png">img_init_png</A>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_img_init"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_img_init">img_init</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_init</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur retourn&eacute;e par IMG_Init avec le param&egrave;tre </SPAN>`l_init'
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">l_init_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">l_init</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_image.html">SDL_IMAGE</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_image.html#f_img_init">img_init</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_init</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_set_video_mode"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_set_video_mode">set_video_mode</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &eacute;cran dans lequel seront affich&eacute;s les &eacute;l&eacute;ments du jeu</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_setvideomode">sdl_setvideomode</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="enumber">914</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">680</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">32</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_swsurface">sdl_swsurface</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_is_not_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_default_pointer</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_disable"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_disable">disable</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur de la constante SDL_DISABLE</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_disable">sdl_disable</A>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_show_cursor_disable"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_show_cursor_disable">show_cursor_disable</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_disable</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur de l'&eacute;tat actuel de la souris avec le param&egrave;tre </SPAN>`toggle'
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">l_disable_is_at_least</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">l_disable</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_showcursor">sdl_showcursor</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_disable</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_poll_event"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_poll_event">poll_event</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur retourn&eacute;e par SDL_PollEvent avec </SPAN>`event'<SPAN CLASS="ecomment"> pour indiquer s'il y a encore des &eacute;v&eacute;nements en attente</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">l_event_is_not_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_default_pointer</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_pollevent">sdl_pollevent</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_flip"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_flip">flip</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur retourn&eacute;e par l'initialisation de SDL_Flip avec l'&eacute;cran </SPAN>`screen'<SPAN CLASS="ecomment"> pour indiquer si une erreur a eu lieu</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">l_screen_is_not_null</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_default_pointer</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_flip">sdl_flip</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_screen</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN>
+			<SPAN CLASS="etag">result_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_delay"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_delay">delay</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">temp</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Attend pendant </SPAN>`ms'<SPAN CLASS="ecomment"> millisecondes</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">temp_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">temp</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_delay">sdl_delay</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">temp</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_exit"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_exit">exit</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Quitte le jeu</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_exit">sdl_exit</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_mouse_motion"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_mouse_motion">mouse_motion</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> D&eacute;placement de la souris</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_sdl_mousemotion">sdl_mousemotion</A>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_mouse_x"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_mouse_x">mouse_x</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_16</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Coordonn&eacute;e horizontale de l'emplacement de la souris lors de l'&eacute;v&eacute;nement </SPAN>`l_event'
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_x">get_sdl_mousemotionevent_x</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_mouse_y"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_mouse_y">mouse_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_16</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Coordonn&eacute;e verticale de l'emplacement de la souris lors de l'&eacute;v&eacute;nement </SPAN>`l_event'
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="edot">.</SPAN><A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_event</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_over_button"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_over_button">over_button</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">button</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/buttons.html">BUTTONS</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> R&eacute;ponse de si la souris est au dessus du bouton </SPAN>`button'
+		<SPAN CLASS="ekeyword">do</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_id"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_id">id</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Num&eacute;ro d'identification du joueur</SPAN>
+
+	<A NAME="f_pointage"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_pointage">pointage</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Pointage du joueur</SPAN>
+
+	<A NAME="f_nom"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_nom">nom</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Nom du joueur</SPAN>
+
+	<A NAME="f_bdd"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_bdd">bdd</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/database.html">DATABASE</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Instance de la classe </SPAN>`DATABASE'
+
+	<A NAME="f_reseau_client"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_client">reseau_client</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/reseau_client.html">RESEAU_CLIENT</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Instance de la classe </SPAN><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_client">reseau_client</A>
+
+	<A NAME="f_reseau_serveur"></A><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_serveur">reseau_serveur</A><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/reseau_serveur.html">RESEAU_SERVEUR</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Instance de la classe </SPAN><A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_reseau_serveur">reseau_serveur</A>
+	
+<SPAN CLASS="ekeyword">invariant</SPAN>
+	<SPAN CLASS="etag">id_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_id">id</A> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+	<SPAN CLASS="etag">pointage_is_at_least_0</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/games.html#f_pointage">pointage</A> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN>
+
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../jeu_marmotte/games.html">GAMES</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="games_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="games_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="games_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="games_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="games_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="games"></TD>
+</TR></TABLE></FORM></pre>
+</section>
+</div>
+<div id="footer_wrap" class="outer">
+<footer class="inner">
+<p class="copyright">Poketap maintained by <a href="https://github.com/Youmy001">Youmy001</a></p>
+<p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+</footer>
+</div>
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<meta charset='utf-8' />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="description" content="Poketap : Jeux de marmotte au thème pokemon" />
+<META NAME="generator" CONTENT="ISE EiffelStudio version 7.1.8.8986 GPL Edition - windows">
+<meta name="description" content="[Wrapper des diverses fonction SDL (Pour effectuer diverses fonctions) pour rendre ces fonctions C utilisables en Eiffel]"/>
+<meta name="author" content="Tommy Teasdale et Véronique Blais"/>
+<meta name="copyright" content="Copyright (c) 2013, Tommy Teasdale, Véronique Blais"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sdl_wrapper Flat contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<LINK REL="stylesheet" HREF="../../stylesheets/stylesheet.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<div id="header_wrap" class="outer">
+<header class="inner">
+<a id="forkme_banner" href="https://github.com/Youmy001/PokeTap">View on GitHub</a>
+<h1 id="project_title">Poketap</h1>
+<h2 id="project_tagline">Jeux de marmotte au thème pokemon</h2>
+<a href="media.html">Medias</a>&nbsp;&nbsp;<a href="documentation/index.html">Documentation</a>&nbsp;&nbsp;<a href="downloads.html">Telechargements</a>
+<section id="downloads">
+<a class="zip_download_link" href="https://github.com/Youmy001/PokeTap/zipball/master">Download this project as a .zip file</a>
+<a class="tar_download_link" href="https://github.com/Youmy001/PokeTap/tarball/master">Download this project as a tar.gz file</a>
+</section>
+</header>
+</div>
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_wrapper_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_wrapper_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_wrapper.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_wrapper_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_wrapper_short.html">Contracts</A></TD>
+<TD CLASS="nolink2">Flat contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sdl_wrapper"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;[Wrapper des diverses fonction SDL (Pour effectuer diverses fonctions) pour rendre ces fonctions C utilisables en Eiffel]&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Tommy Teasdale et V&eacute;ronique Blais&quot;</SPAN>
+	<SPAN CLASS="eitag">copyright</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Copyright (c) 2013, Tommy Teasdale, V&eacute;ronique Blais&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;15 Avril 2013&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;0.13.04.15&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A NAME="f_default_create"></A><SPAN CLASS="nefeature">default_create</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Process instances of classes with no creation clause.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> (Default: do nothing.)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access</SPAN>
+
+	<A NAME="f_generating_type"></A><SPAN CLASS="nefeature">generating_type</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">TYPE</SPAN> <SPAN CLASS="esymbol">[</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">]</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Type of current object</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> (type of which it is a direct instance)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">generating_type_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_generator"></A><SPAN CLASS="nefeature">generator</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Name of current object's generating class</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> (base class of the type of which it is a direct instance)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">generator_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">generator_not_empty</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">not</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_empty</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Comparison</SPAN>
+
+	<A NAME="f_deep_equal"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">deep_equal</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> arg #<SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Are </SPAN>`a'<SPAN CLASS="ecomment"> and </SPAN>`b'<SPAN CLASS="ecomment"> either both void</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> or attached to isomorphic object structures?</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">shallow_implies_deep</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">standard_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="ekeyword">Result</SPAN>
+			<SPAN CLASS="etag">both_or_none_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="etag">same_type</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">and then</SPAN> <SPAN CLASS="elocal">a</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">same_type</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="etag">symmetric</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="nefeature">deep_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">a</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_equal"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">equal</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> arg #<SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Are </SPAN>`a'<SPAN CLASS="ecomment"> and </SPAN>`b'<SPAN CLASS="ecomment"> either both void or attached</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> to objects considered equal?</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">definition</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="elocal">b</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">or else</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="elocal">b</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">and then</SPAN> <SPAN CLASS="elocal">a</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_is_deep_equal"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">is_deep_equal</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Are </SPAN>`Current'<SPAN CLASS="ecomment"> and </SPAN>`other'<SPAN CLASS="ecomment"> attached to isomorphic object structures?</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">other_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">other</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">shallow_implies_deep</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">standard_is_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="ekeyword">Result</SPAN>
+			<SPAN CLASS="etag">same_type</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="nefeature">same_type</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="etag">symmetric</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="elocal">other</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">is_deep_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_is_equal"></A><SPAN CLASS="nefeature">is_equal</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Is </SPAN>`other'<SPAN CLASS="ecomment"> attached to an object considered</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> equal to current object?</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">other_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">other</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">symmetric</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="elocal">other</SPAN> <SPAN CLASS="esymbol">~</SPAN> <SPAN CLASS="ekeyword">Current</SPAN>
+			<SPAN CLASS="etag">consistent</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">standard_is_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="ekeyword">Result</SPAN>
+
+	<A NAME="f_standard_equal"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">standard_equal</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> arg #<SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Are </SPAN>`a'<SPAN CLASS="ecomment"> and </SPAN>`b'<SPAN CLASS="ecomment"> either both void or attached to</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> field-by-field identical objects of the same type?</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Always uses default object comparison criterion.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">definition</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="elocal">b</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">or else</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="elocal">b</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">and then</SPAN> <SPAN CLASS="elocal">a</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">standard_is_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">b</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_standard_is_equal"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">standard_is_equal</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Is </SPAN>`other'<SPAN CLASS="ecomment"> attached to an object of the same type</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> as current object, and field-by-field identical to it?</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">other_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">other</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">same_type</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="nefeature">same_type</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="etag">symmetric</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="ekeyword">implies</SPAN> <SPAN CLASS="elocal">other</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">standard_is_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Status report</SPAN>
+
+	<A NAME="f_conforms_to"></A><SPAN CLASS="nefeature">conforms_to</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Does type of current object conform to type</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> of </SPAN>`other'<SPAN CLASS="ecomment"> (as per Eiffel: The Language, chapter 13)?</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">other_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">other</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_same_type"></A><SPAN CLASS="nefeature">same_type</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Is type of current object identical to type of </SPAN>`other'<SPAN CLASS="ecomment">?</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">other_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">other</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">definition</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="nefeature">conforms_to</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="elocal">other</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">conforms_to</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Duplication</SPAN>
+
+	<A NAME="f_copy"></A><SPAN CLASS="nefeature">copy</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Update current object using fields of object attached</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> to </SPAN>`other'<SPAN CLASS="ecomment">, so as to yield equal objects.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">other_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">other</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">type_identity</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">same_type</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">is_equal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Current</SPAN> <SPAN CLASS="esymbol">~</SPAN> <SPAN CLASS="elocal">other</SPAN>
+
+	<A NAME="f_deep_copy"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">deep_copy</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Effect equivalent to that of:</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">		</SPAN><SPAN CLASS="nefeature">copy</SPAN><SPAN CLASS="ecomment"> (</SPAN>`other'<SPAN CLASS="ecomment"> . </SPAN><SPAN CLASS="nefeature">deep_twin</SPAN><SPAN CLASS="ecomment">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">other_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">other</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">deep_equal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">deep_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_deep_twin"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">deep_twin</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> New object structure recursively duplicated from Current.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">deep_twin_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">deep_equal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">deep_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_standard_copy"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">standard_copy</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Copy every field of </SPAN>`other'<SPAN CLASS="ecomment"> onto corresponding field</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> of current object.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">other_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">other</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">type_identity</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">same_type</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">is_standard_equal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">standard_is_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_standard_twin"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">standard_twin</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> New object field-by-field identical to </SPAN>`other'<SPAN CLASS="ecomment">.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Always uses default copying semantics.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">standard_twin_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">equal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">standard_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+	<A NAME="f_twin"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">twin</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> New object equal to </SPAN>`Current'
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> </SPAN><SPAN CLASS="nefeature">twin</SPAN><SPAN CLASS="ecomment"> calls </SPAN><SPAN CLASS="nefeature">copy</SPAN><SPAN CLASS="ecomment">; to change copying/twining semantics, redefine </SPAN><SPAN CLASS="nefeature">copy</SPAN><SPAN CLASS="ecomment">.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">twin_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+			<SPAN CLASS="etag">is_equal</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">~</SPAN> <SPAN CLASS="ekeyword">Current</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Basic operations</SPAN>
+
+	<A NAME="f_as_attached"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">as_attached</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Attached version of Current</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> (Can be used during transitional period to convert</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> non-void-safe classes to void-safe ones.)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+
+	<A NAME="f_default"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">default</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Default value of object's type</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+
+	<A NAME="f_default_pointer"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">default_pointer</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Default value of type </SPAN>`POINTER'
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> (Avoid the need to write </SPAN>`p'<SPAN CLASS="ecomment">.</SPAN><SPAN CLASS="nefeature">default</SPAN><SPAN CLASS="ecomment"> for</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> some </SPAN>`p'<SPAN CLASS="ecomment"> of type </SPAN>`POINTER'<SPAN CLASS="ecomment">.)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+
+	<A NAME="f_default_rescue"></A><SPAN CLASS="nefeature">default_rescue</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Process exception for routines with no Rescue clause.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> (Default: do nothing.)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+
+	<A NAME="f_do_nothing"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">do_nothing</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Execute a null action.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Constante C</SPAN>
+
+	<A NAME="f_sdl_disable"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_disable">sdl_disable</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Constante C pour cacher le curseur</SPAN>
+
+	<A NAME="f_sdl_init_audio"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_init_audio">sdl_init_audio</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">Constante C pour initialiser</SPAN>
+
+	<A NAME="f_sdl_init_video"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_init_video">sdl_init_video</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Constante C pour initialiser le mode vid&eacute;o</SPAN>
+
+	<A NAME="f_sdl_mousebuttondown"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_mousebuttondown">sdl_mousebuttondown</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Constante C pour l'&eacute;v&egrave;nement bouton de souris appuy&eacute;</SPAN>
+
+	<A NAME="f_sdl_mousemotion"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_mousemotion">sdl_mousemotion</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Constante C pour l'&eacute;v&egrave;nement d&eacute;placement de souris</SPAN>
+
+	<A NAME="f_sdl_quit"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_quit">sdl_quit</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Constante C de la valeur du SDL_QUIT</SPAN>
+
+	<A NAME="f_sdl_swsurface"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_swsurface">sdl_swsurface</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Constante C pour initialiser la surface</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Output</SPAN>
+
+	<A NAME="f_io"></A><SPAN CLASS="nefeature">Io</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STD_FILES</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Handle to standard file setup</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">io_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_out"></A><SPAN CLASS="nefeature">out</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> New string containing terse printable representation</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> of current object</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">out_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+
+	<A NAME="f_print"></A><SPAN CLASS="nefeature">print</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">o</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Write terse external representation of </SPAN>`o'
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> on standard output.</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+
+	<A NAME="f_tagged_out"></A><SPAN CLASS="ekeyword">frozen</SPAN> <SPAN CLASS="nefeature">tagged_out</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> New string containing terse printable representation</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> of current object</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">tagged_out_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Platform</SPAN>
+
+	<A NAME="f_operating_environment"></A><SPAN CLASS="nefeature">Operating_environment</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">OPERATING_ENVIRONMENT</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Objects available from the operating system</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">(from </SPAN><SPAN CLASS="neclass">ANY</SPAN><SPAN CLASS="ecomment">)</SPAN>
+		<SPAN CLASS="ekeyword">ensure</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+			<SPAN CLASS="etag">operating_environment_not_void</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Setter -- SDL.h	</SPAN>
+
+	<A NAME="f_set_sdl_color_b"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_set_sdl_color_b">set_sdl_color_b</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_color</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Modifie la valeur du bleu pour </SPAN>`value'<SPAN CLASS="ecomment"> dans </SPAN>`SDL_Color'
+
+	<A NAME="f_set_sdl_color_g"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_set_sdl_color_g">set_sdl_color_g</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_color</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Modifie la valeur du vert pour </SPAN>`value'<SPAN CLASS="ecomment"> dans </SPAN>`SDL_Color'
+
+	<A NAME="f_set_sdl_color_r"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_set_sdl_color_r">set_sdl_color_r</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_color</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Modifie la valeur du rouge pour </SPAN>`value'<SPAN CLASS="ecomment"> dans </SPAN>`SDL_Color'
+
+	<A NAME="f_set_sdl_rect_h"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_set_sdl_rect_h">set_sdl_rect_h</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_rect</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Modifie la hauteur pour </SPAN>`value'<SPAN CLASS="ecomment"> de la partie cibl&eacute;e dans </SPAN>`SDL_Rect'
+
+	<A NAME="f_set_sdl_rect_w"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_set_sdl_rect_w">set_sdl_rect_w</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_rect</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Modifie la largeur pour </SPAN>`value'<SPAN CLASS="ecomment"> de la partie cibl&eacute;e dans </SPAN>`SDL_Rect'
+
+	<A NAME="f_set_sdl_rect_x"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_set_sdl_rect_x">set_sdl_rect_x</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_rect</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Modifie le x pour </SPAN>`value'<SPAN CLASS="ecomment"> de la partie cibl&eacute;e dans </SPAN>`SDL_Rect'
+
+	<A NAME="f_set_sdl_rect_y"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_set_sdl_rect_y">set_sdl_rect_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_rect</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">value</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_16</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Modifie le y pour </SPAN>`value'<SPAN CLASS="ecomment"> de la partie cibl&eacute;e dans </SPAN>`SDL_Rect'
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> getter &nbsp;-- SDL.h</SPAN>
+
+	<A NAME="f_get_sdl_event_type"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_get_sdl_event_type">get_sdl_event_type</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_event</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_8</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Type d'&eacute;v&eacute;nment selon le pointeur </SPAN>`SDL_Event'
+
+	<A NAME="f_get_sdl_mousemotionevent_x"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_get_sdl_mousemotionevent_x">get_sdl_mousemotionevent_x</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_mousemotionevent</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_16</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Coordonn&eacute;e horizontale de la souris selon l'&eacute;v&eacute;nement </SPAN>`SDL_MouseMotionEvent'
+
+	<A NAME="f_get_sdl_mousemotionevent_y"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_get_sdl_mousemotionevent_y">get_sdl_mousemotionevent_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_mousemotionevent</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_16</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Coordonn&eacute;e verticale de la souris selon l'&eacute;v&eacute;nement </SPAN>`SDL_MouseMotionEvent'
+
+	<A NAME="f_get_sdl_rect_x"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_get_sdl_rect_x">get_sdl_rect_x</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_rect</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_16</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Coordonn&eacute;e horizontale dans la surface </SPAN>`SDL_Surface'
+
+	<A NAME="f_get_sdl_rect_y"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_get_sdl_rect_y">get_sdl_rect_y</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_rect</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_16</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Coordonn&eacute;e verticale dans la surface </SPAN>`SDL_Surface'
+
+	<A NAME="f_get_sdl_surface_h"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_get_sdl_surface_h">get_sdl_surface_h</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_surface</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Hauteur dans la surface </SPAN>`SDL_Surface'
+
+	<A NAME="f_get_sdl_surface_w"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_get_sdl_surface_w">get_sdl_surface_w</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">sdl_surface</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Largeur dans la surface </SPAN>`SDL_Surface'
+
+	<A NAME="f_sdl_showcursor"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_showcursor">sdl_showcursor</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">toggle</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur de l'&eacute;tat actuel de la souris avec le param&egrave;tre </SPAN>`toggle'
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">Functions- SDL.h</SPAN>
+
+	<A NAME="f_sdl_blitsurface"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_blitsurface">sdl_blitsurface</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">src</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">srcrect</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">dst</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">dstrect</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur retourn&eacute;e par l'initialisation de SDL_BlitSurface avec la source </SPAN>`src'<SPAN CLASS="ecomment">, la partie cibl&eacute; de la source </SPAN>`srcrect'<SPAN CLASS="ecomment">,</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> la destination </SPAN>`dst'<SPAN CLASS="ecomment"> et la partie cibl&eacute; de la destionation </SPAN>`dstrect'<SPAN CLASS="ecomment"> pour indiquer si une erreur a eu lieu</SPAN>
+
+	<A NAME="f_sdl_delay"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_delay">sdl_delay</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">ms</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Attend pendant </SPAN>`ms'<SPAN CLASS="ecomment"> millisecondes</SPAN>
+
+	<A NAME="f_sdl_exit"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_exit">sdl_exit</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Quitte la librairie SDL</SPAN>
+
+	<A NAME="f_sdl_flip"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_flip">sdl_flip</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">screen</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur retourn&eacute;e par l'initialisation de SDL_Flip avec l'&eacute;cran </SPAN>`screen'<SPAN CLASS="ecomment"> pour indiquer si une erreur a eu lieu</SPAN>
+
+	<A NAME="f_sdl_freesurface"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_freesurface">sdl_freesurface</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">surface</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Lib&egrave;re la surface</SPAN>
+
+	<A NAME="f_sdl_init"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_init">sdl_init</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">flags</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur retourn&eacute;e par l'initialisation de SDL_Init avec le flag </SPAN>`flags'<SPAN CLASS="ecomment"> pour indiquer si une erreur a eu lieu</SPAN>
+
+	<A NAME="f_sdl_loadbmp"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_loadbmp">sdl_loadbmp</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">file</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Pointeur de l'image charg&eacute; &agrave; partir de l'emplacement </SPAN>`file'
+
+	<A NAME="f_sdl_pollevent"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_pollevent">sdl_pollevent</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">event</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur retourn&eacute;e par SDL_PollEvent avec </SPAN>`event'<SPAN CLASS="ecomment"> pour indiquer s'il y a encore des &eacute;v&eacute;nements en attente</SPAN>
+
+	<A NAME="f_sdl_setvideomode"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sdl_setvideomode">sdl_setvideomode</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">width</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">height</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">bitsperpixel</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">flags</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> &eacute;cran d'une largeur de </SPAN>`width'<SPAN CLASS="ecomment"> px et d'une hauteur de </SPAN>`height'<SPAN CLASS="ecomment"> px, avec </SPAN>`bitsperpixel'<SPAN CLASS="ecomment"> et </SPAN>`flags'
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">sizeof</SPAN>
+
+	<A NAME="f_sizeof_sdl_color"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sizeof_sdl_color">sizeof_sdl_color</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> M&eacute;moire allou&eacute; pour un SDL_Color</SPAN>
+
+	<A NAME="f_sizeof_sdl_event"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sizeof_sdl_event">sizeof_sdl_event</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> M&eacute;moire allou&eacute; pour un SDL_Event</SPAN>
+
+	<A NAME="f_sizeof_sdl_rect"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html#f_sizeof_sdl_rect">sizeof_sdl_rect</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> M&eacute;moire allou&eacute; pour un SDL_Rect</SPAN>
+	
+<SPAN CLASS="ekeyword">invariant</SPAN>
+		<SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">from </SPAN><SPAN CLASS="neclass">ANY</SPAN>
+	<SPAN CLASS="etag">reflexive_equality</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">standard_is_equal</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN>
+	<SPAN CLASS="etag">reflexive_conformance</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="nefeature">conforms_to</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">)</SPAN>
+
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_wrapper_flatshort.html">SDL_WRAPPER</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_wrapper_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_wrapper_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_wrapper.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_wrapper_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_wrapper_short.html">Contracts</A></TD>
+<TD CLASS="nolink2">Flat contracts</TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sdl_wrapper"></TD>
+</TR></TABLE></FORM></pre>
+</section>
+</div>
+<div id="footer_wrap" class="outer">
+<footer class="inner">
+<p class="copyright">Poketap maintained by <a href="https://github.com/Youmy001">Youmy001</a></p>
+<p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+</footer>
+</div>
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

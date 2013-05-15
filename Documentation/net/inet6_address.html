@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<meta charset='utf-8' />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="description" content="Poketap : Jeux de marmotte au thème pokemon" />
+<META NAME="generator" CONTENT="ISE EiffelStudio version 7.1.8.8986 GPL Edition - windows">
+<meta name="description" content="Objects that represents an IP V6 address ..."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>inet6_address Text</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<LINK REL="stylesheet" HREF="../../stylesheets/stylesheet.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<div id="header_wrap" class="outer">
+<header class="inner">
+<a id="forkme_banner" href="https://github.com/Youmy001/PokeTap">View on GitHub</a>
+<h1 id="project_title">Poketap</h1>
+<h2 id="project_tagline">Jeux de marmotte au thème pokemon</h2>
+<a href="media.html">Medias</a>&nbsp;&nbsp;<a href="documentation/index.html">Documentation</a>&nbsp;&nbsp;<a href="downloads.html">Telechargements</a>
+<section id="downloads">
+<a class="zip_download_link" href="https://github.com/Youmy001/PokeTap/zipball/master">Download this project as a .zip file</a>
+<a class="tar_download_link" href="https://github.com/Youmy001/PokeTap/tarball/master">Download this project as a tar.gz file</a>
+</section>
+</header>
+</div>
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="inet6_address_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="inet6_address_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="inet6_address_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="inet6_address_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="inet6_address_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="inet6_address"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Objects that represents an IP V6 address ...&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date: 2010-10-18 09:53:06 -0700 (Mon, 18 Oct 2010) $&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision: 84626 $&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> 
+	<A CLASS="eclass" HREF="../network/inet6_address.html">INET6_ADDRESS</A>
+
+<SPAN CLASS="ekeyword">inherit</SPAN>
+	<A CLASS="eclass" HREF="../network/inet_address.html">INET_ADDRESS</A>
+
+	<A CLASS="eclass" HREF="../network/inet_properties.html">INET_PROPERTIES</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_address">make_from_host_and_address</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_address_and_interface_name">make_from_host_and_address_and_interface_name</A><SPAN CLASS="esymbol">,</SPAN>
+	<A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_address_and_scope">make_from_host_and_address_and_scope</A>
+
+
+<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../network/inet_address_factory.html">INET_ADDRESS_FACTORY</A><SPAN CLASS="esymbol">}</SPAN>
+	<A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_pointer">make_from_host_and_pointer</A>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Constants</SPAN>
+
+	<A NAME="f_inaddrsz"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_inaddrsz">Inaddrsz</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">16</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../network/inet_address_factory.html">INET_ADDRESS_FACTORY</A><SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Initialization</SPAN>
+
+	<A NAME="f_make_from_host_and_address"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_address">make_from_host_and_address</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_hostname</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">an_address</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAY</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">NATURAL_8</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">an_address_count_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">an_address</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN> <SPAN CLASS="esymbol">=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_inaddrsz">Inaddrsz</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../network/inet_address.html#f_family">family</A> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../network/inet_address.html#f_ipv6">Ipv6</A>
+			<A CLASS="efeature" HREF="../network/inet_address.html#f_internal_host_name">internal_host_name</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">a_hostname</SPAN>
+			<A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">an_address</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_make_from_host_and_address_and_interface_name"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_address_and_interface_name">make_from_host_and_address_and_interface_name</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_hostname</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">an_address</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAY</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">NATURAL_8</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">an_iface_name</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">an_address_count_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">an_address</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN> <SPAN CLASS="esymbol">=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_inaddrsz">Inaddrsz</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../network/inet6_address.html#f_the_scope_ifname">the_scope_ifname</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">an_iface_name</SPAN>
+			<A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_address_and_scope">make_from_host_and_address_and_scope</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_hostname</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">an_address</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_make_from_host_and_address_and_scope"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_address_and_scope">make_from_host_and_address_and_scope</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_hostname</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">an_address</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAY</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">NATURAL_8</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_scope_id</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="etag">an_address_count_valid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="elocal">an_address</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN> <SPAN CLASS="esymbol">=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_inaddrsz">Inaddrsz</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_address">make_from_host_and_address</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_hostname</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">an_address</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">a_scope_id</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<A CLASS="efeature" HREF="../network/inet6_address.html#f_the_scope_id">the_scope_id</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">a_scope_id</SPAN>
+				<A CLASS="efeature" HREF="../network/inet6_address.html#f_is_scope_id_set">is_scope_id_set</A> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="ekeyword">True</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_make_from_host_and_pointer"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_pointer">make_from_host_and_pointer</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_hostname</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_pointer</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">ptr</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="elocal">addr</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAY</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">NATURAL_8</SPAN><SPAN CLASS="esymbol">]</SPAN>
+			<SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">scope</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">addr</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_filled</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">{</SPAN><SPAN CLASS="neclass">NATURAL_8</SPAN><SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_inaddrsz">Inaddrsz</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">a_pointer</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="nefeature">default_pointer</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="elocal">ptr</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_c_sockaddr_get_ipv6_address">c_sockaddr_get_ipv6_address</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_pointer</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">from</SPAN>
+					<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="enumber">1</SPAN>
+				<SPAN CLASS="ekeyword">until</SPAN>
+					<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_inaddrsz">Inaddrsz</A>
+				<SPAN CLASS="ekeyword">loop</SPAN>
+					<SPAN CLASS="elocal">addr</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">put</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_c_get_addr_element">c_get_addr_element</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">ptr</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">-</SPAN> <SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">)</SPAN>
+					<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">1</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="elocal">scope</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_c_sockaddr_get_ipv6_address_scope">c_sockaddr_get_ipv6_address_scope</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_pointer</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<A CLASS="efeature" HREF="../network/inet6_address.html#f_make_from_host_and_address_and_scope">make_from_host_and_address_and_scope</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_hostname</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">addr</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">scope</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Access</SPAN>
+
+	<A NAME="f_host_address"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_host_address">host_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">l_scope_ifname</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="ekeyword">like</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_the_scope_ifname">the_scope_ifname</A>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_numeric_to_text">numeric_to_text</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="elocal">l_scope_ifname</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_the_scope_ifname">the_scope_ifname</A>
+			<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">l_scope_ifname</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">append_character</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="echar">'%%'</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">append_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">l_scope_ifname</SPAN><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">elseif</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_is_scope_id_set">is_scope_id_set</A> <SPAN CLASS="ekeyword">and then</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_the_scope_id">the_scope_id</A> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">0</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">append_character</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="echar">'%%'</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">append_integer</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_scope_id">the_scope_id</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_multicast_address"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_multicast_address">is_multicast_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_any_local_address"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_any_local_address">is_any_local_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">test</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_8</SPAN>
+			<SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">test</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN>
+			<SPAN CLASS="ekeyword">from</SPAN>
+				<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="enumber">1</SPAN>
+			<SPAN CLASS="ekeyword">until</SPAN>
+				<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_inaddrsz">Inaddrsz</A>
+			<SPAN CLASS="ekeyword">loop</SPAN>
+				<SPAN CLASS="elocal">test</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">test</SPAN> <SPAN CLASS="esymbol">|</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">]</SPAN>
+				<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">1</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">test</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_loopback_address"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_loopback_address">is_loopback_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">test</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_8</SPAN>
+			<SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="elocal">test</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN>
+			<SPAN CLASS="ekeyword">from</SPAN>
+				<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="enumber">1</SPAN>
+			<SPAN CLASS="ekeyword">until</SPAN>
+				<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">&gt;</SPAN> <SPAN CLASS="enumber">15</SPAN>
+			<SPAN CLASS="ekeyword">loop</SPAN>
+				<SPAN CLASS="elocal">test</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">test</SPAN> <SPAN CLASS="esymbol">|</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">]</SPAN>
+				<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">1</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">test</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">0</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">16</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">1</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_link_local_address"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_link_local_address">is_link_local_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">254</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">2</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">192</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">128</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_site_local_address"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_site_local_address">is_site_local_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">254</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">2</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">192</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">192</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_mc_global"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_mc_global">is_mc_global</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">2</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">15</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">14</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_mc_node_local"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_mc_node_local">is_mc_node_local</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">2</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">15</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">1</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_mc_link_local"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_mc_link_local">is_mc_link_local</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">2</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">15</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">2</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_mc_site_local"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_mc_site_local">is_mc_site_local</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">2</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">15</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">5</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_mc_org_local"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_mc_org_local">is_mc_org_local</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN> <SPAN CLASS="ekeyword">and</SPAN> <SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="enumber">2</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">15</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">=</SPAN> <SPAN CLASS="enumber">8</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_8</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_raw_address"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_raw_address">raw_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAY</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">NATURAL_8</SPAN><SPAN CLASS="esymbol">]</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">twin</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../network/network_socket_address.html">NETWORK_SOCKET_ADDRESS</A><SPAN CLASS="esymbol">}</SPAN> 
+
+	<A NAME="f_sockaddr"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_sockaddr">sockaddr</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_port</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">MANAGED_POINTER</SPAN>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">a</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">MANAGED_POINTER</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet_address.html#f_sockaddr_size">sockaddr_size</A><SPAN CLASS="esymbol">)</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="elocal">a</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_from_array</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A><SPAN CLASS="esymbol">)</SPAN>
+			<A CLASS="efeature" HREF="../network/inet6_address.html#f_fill_ipv6">fill_ipv6</A><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">item</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">a</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">item</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">a_port</SPAN><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_the_scope_id">the_scope_id</A><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Implementation</SPAN>
+
+	<A NAME="f_the_address"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_address">the_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAY</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">NATURAL_8</SPAN><SPAN CLASS="esymbol">]</SPAN>
+
+	<A NAME="f_the_scope_id"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_scope_id">the_scope_id</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+
+	<A NAME="f_the_scope_ifname"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_the_scope_ifname">the_scope_ifname</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+
+	<A NAME="f_is_scope_ifname_set"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_scope_ifname_set">is_scope_ifname_set</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> This will be set to true if the object is constructed with a scoped</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> interface instead of a numeric scope id.</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">Result</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_the_scope_ifname">the_scope_ifname</A> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_is_scope_id_set"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_is_scope_id_set">is_scope_id_set</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> This will be set to true when the scope_id field contains a valid</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> integer scope_id.</SPAN>
+
+	<A NAME="f_numeric_to_text"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_numeric_to_text">numeric_to_text</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">addr</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">ARRAY</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="neclass">NATURAL_8</SPAN><SPAN CLASS="esymbol">]</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN>
+		<SPAN CLASS="ekeyword">require</SPAN>
+			<SPAN CLASS="elocal">addr</SPAN> <SPAN CLASS="esymbol">/=</SPAN> <SPAN CLASS="ekeyword">Void</SPAN> <SPAN CLASS="ekeyword">and then</SPAN> <SPAN CLASS="elocal">addr</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">count</SPAN> <SPAN CLASS="esymbol">=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_inaddrsz">Inaddrsz</A>
+		<SPAN CLASS="ekeyword">local</SPAN>
+			<SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="elocal">e</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_16</SPAN>
+		<SPAN CLASS="ekeyword">do</SPAN>
+			<SPAN CLASS="ekeyword">create</SPAN> <SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">make_empty</SPAN>
+			<SPAN CLASS="ekeyword">from</SPAN>
+				<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="enumber">1</SPAN>
+			<SPAN CLASS="ekeyword">until</SPAN>
+				<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">&gt;=</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_inaddrsz">Inaddrsz</A>
+			<SPAN CLASS="ekeyword">loop</SPAN>
+				<SPAN CLASS="elocal">e</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">addr</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">item</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">as_natural_16</SPAN> <SPAN CLASS="esymbol">|&lt;&lt;</SPAN> <SPAN CLASS="enumber">8</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">65280</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_16</SPAN><SPAN CLASS="esymbol">)</SPAN> <SPAN CLASS="esymbol">|</SPAN> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">addr</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">item</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">1</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">as_natural_16</SPAN> <SPAN CLASS="esymbol">&#38;</SPAN> <SPAN CLASS="enumber">255</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_natural_16</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">as_natural_16</SPAN>
+				<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">append_string</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">e</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">to_hex_string</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">if</SPAN> <SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">&lt;</SPAN> <A CLASS="efeature" HREF="../network/inet6_address.html#f_inaddrsz">Inaddrsz</A> <SPAN CLASS="esymbol">-</SPAN> <SPAN CLASS="enumber">1</SPAN> <SPAN CLASS="ekeyword">then</SPAN>
+					<SPAN CLASS="ekeyword">Result</SPAN><SPAN CLASS="edot">.</SPAN><SPAN CLASS="nefeature">append_character</SPAN><SPAN CLASS="esymbol"> </SPAN><SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="echar">':'</SPAN><SPAN CLASS="esymbol">)</SPAN>
+				<SPAN CLASS="ekeyword">end</SPAN>
+				<SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">:=</SPAN> <SPAN CLASS="elocal">i</SPAN> <SPAN CLASS="esymbol">+</SPAN> <SPAN CLASS="enumber">2</SPAN>
+			<SPAN CLASS="ekeyword">end</SPAN>
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="esymbol">{</SPAN>NONE<SPAN CLASS="esymbol">}</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Externals</SPAN>
+
+	<A NAME="f_fill_ipv6"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_fill_ipv6">fill_ipv6</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">data_ptr</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">address</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">port</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">scopeid</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN>
+		<SPAN CLASS="ekeyword">external</SPAN>
+			&quot;C&quot;
+		<SPAN CLASS="ekeyword">alias</SPAN>
+			&quot;en_socket_address_fill_ipv6&quot;
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_c_sockaddr_get_ipv6_address"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_c_sockaddr_get_ipv6_address">c_sockaddr_get_ipv6_address</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_pointer</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+		<SPAN CLASS="ekeyword">external</SPAN>
+			&quot;C&quot;
+		<SPAN CLASS="ekeyword">alias</SPAN>
+			&quot;en_sockaddr_get_ipv6_address&quot;
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_c_sockaddr_get_ipv6_address_scope"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_c_sockaddr_get_ipv6_address_scope">c_sockaddr_get_ipv6_address_scope</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_pointer</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+		<SPAN CLASS="ekeyword">external</SPAN>
+			&quot;C&quot;
+		<SPAN CLASS="ekeyword">alias</SPAN>
+			&quot;en_sockaddr_get_ipv6_address_scope&quot;
+		<SPAN CLASS="ekeyword">end</SPAN>
+
+	<A NAME="f_c_get_addr_element"></A><A CLASS="efeature" HREF="../network/inet6_address.html#f_c_get_addr_element">c_get_addr_element</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">ptr</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">index</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_8</SPAN>
+		<SPAN CLASS="ekeyword">external</SPAN>
+			&quot;C inline&quot;
+		<SPAN CLASS="ekeyword">alias</SPAN>
+			&quot;((unsigned char*)$ptr)[$index]&quot;
+		<SPAN CLASS="ekeyword">end</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../network/inet6_address.html">INET6_ADDRESS</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="inet6_address_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="inet6_address_links.html">Relations</A></TD>
+<TD CLASS="nolink2">Text</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="inet6_address_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="inet6_address_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="inet6_address_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="inet6_address"></TD>
+</TR></TABLE></FORM></pre>
+</section>
+</div>
+<div id="footer_wrap" class="outer">
+<footer class="inner">
+<p class="copyright">Poketap maintained by <a href="https://github.com/Youmy001">Youmy001</a></p>
+<p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+</footer>
+</div>
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

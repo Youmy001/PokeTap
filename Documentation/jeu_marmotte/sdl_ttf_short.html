@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<meta charset='utf-8' />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="description" content="Poketap : Jeux de marmotte au thème pokemon" />
+<META NAME="generator" CONTENT="ISE EiffelStudio version 7.1.8.8986 GPL Edition - windows">
+<meta name="description" content="[Wrapper des diverses fonctions SDL_ttf (Pour afficher du texte à l'écran) pour rendre ces fonctions C utilisables en Eiffel]"/>
+<meta name="author" content="Tommy Teasdale et Véronique Blais"/>
+<meta name="copyright" content="Copyright (c) 2013, Tommy Teasdale, Véronique Blais"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sdl_ttf Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<LINK REL="stylesheet" HREF="../../stylesheets/stylesheet.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<div id="header_wrap" class="outer">
+<header class="inner">
+<a id="forkme_banner" href="https://github.com/Youmy001/PokeTap">View on GitHub</a>
+<h1 id="project_title">Poketap</h1>
+<h2 id="project_tagline">Jeux de marmotte au thème pokemon</h2>
+<a href="media.html">Medias</a>&nbsp;&nbsp;<a href="documentation/index.html">Documentation</a>&nbsp;&nbsp;<a href="downloads.html">Telechargements</a>
+<section id="downloads">
+<a class="zip_download_link" href="https://github.com/Youmy001/PokeTap/zipball/master">Download this project as a .zip file</a>
+<a class="tar_download_link" href="https://github.com/Youmy001/PokeTap/tarball/master">Download this project as a tar.gz file</a>
+</section>
+</header>
+</div>
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_ttf_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_ttf_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_ttf.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_ttf_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_ttf_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sdl_ttf"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;[Wrapper des diverses fonctions SDL_ttf (Pour afficher du texte &agrave; l'&eacute;cran) pour rendre ces fonctions C utilisables en Eiffel]&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Tommy Teasdale et V&eacute;ronique Blais&quot;</SPAN>
+	<SPAN CLASS="eitag">copyright</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Copyright (c) 2013, Tommy Teasdale, V&eacute;ronique Blais&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;15 Avril 2013&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;0.13.04.15&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../jeu_marmotte/sdl_ttf_short.html">SDL_TTF</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<SPAN CLASS="nefeature">default_create</SPAN>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">Functions- SDL_ttf.h</SPAN>
+
+	<A NAME="f_ttf_init"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_ttf_short.html#f_ttf_init">ttf_init</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur retourn&eacute;e par l'initialisation de TTF_Init pour indiquer si une erreur a eu lieu</SPAN>
+
+	<A NAME="f_ttf_quit"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_ttf_short.html#f_ttf_quit">ttf_quit</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Ferme la librairie TTF</SPAN>
+
+	<A NAME="f_ttf_openfont"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_ttf_short.html#f_ttf_openfont">ttf_openfont</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">file</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">ptsize</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Style de police situ&eacute; &agrave; </SPAN>`file'<SPAN CLASS="ecomment"> avec une taille de </SPAN>`ptsize'<SPAN CLASS="ecomment"> px</SPAN>
+
+	<A NAME="f_ttf_rendertext_solid"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_ttf_short.html#f_ttf_rendertext_solid">ttf_rendertext_solid</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">font</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">text</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">fg</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Image du texte </SPAN>`text'<SPAN CLASS="ecomment"> avec le style de police </SPAN>`font'<SPAN CLASS="ecomment"> et la couleur </SPAN>`fg'
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_ttf_short.html">SDL_TTF</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_ttf_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_ttf_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_ttf.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_ttf_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_ttf_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sdl_ttf"></TD>
+</TR></TABLE></FORM></pre>
+</section>
+</div>
+<div id="footer_wrap" class="outer">
+<footer class="inner">
+<p class="copyright">Poketap maintained by <a href="https://github.com/Youmy001">Youmy001</a></p>
+<p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+</footer>
+</div>
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

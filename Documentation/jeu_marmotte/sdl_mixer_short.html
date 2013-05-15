@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<meta charset='utf-8' />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="description" content="Poketap : Jeux de marmotte au thème pokemon" />
+<META NAME="generator" CONTENT="ISE EiffelStudio version 7.1.8.8986 GPL Edition - windows">
+<meta name="description" content="Wrapper C for SDL_mixer library {SDL_MIXER}."/>
+<meta name="author" content="Tommy Teasdale"/>
+<meta name="copyright" content="Copyright (c) 2013, Tommy Teasdale, Véronique Blais"/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>sdl_mixer Contracts</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<LINK REL="stylesheet" HREF="../../stylesheets/stylesheet.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<div id="header_wrap" class="outer">
+<header class="inner">
+<a id="forkme_banner" href="https://github.com/Youmy001/PokeTap">View on GitHub</a>
+<h1 id="project_title">Poketap</h1>
+<h2 id="project_tagline">Jeux de marmotte au thème pokemon</h2>
+<a href="media.html">Medias</a>&nbsp;&nbsp;<a href="documentation/index.html">Documentation</a>&nbsp;&nbsp;<a href="downloads.html">Telechargements</a>
+<section id="downloads">
+<a class="zip_download_link" href="https://github.com/Youmy001/PokeTap/zipball/master">Download this project as a .zip file</a>
+<a class="tar_download_link" href="https://github.com/Youmy001/PokeTap/tarball/master">Download this project as a tar.gz file</a>
+</section>
+</header>
+</div>
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_mixer_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_mixer_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_mixer.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_mixer_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_mixer_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sdl_mixer"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">note</SPAN>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Wrapper C for SDL_mixer library </SPAN><SPAN CLASS="esymbol">{</SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_mixer_short.html">SDL_MIXER</A><SPAN CLASS="esymbol">}</SPAN><SPAN CLASS="estring">.&quot;</SPAN>
+	<SPAN CLASS="eitag">author</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Tommy Teasdale&quot;</SPAN>
+	<SPAN CLASS="eitag">copyright</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;Copyright (c) 2013, Tommy Teasdale, V&eacute;ronique Blais&quot;</SPAN>
+	<SPAN CLASS="eitag">date</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Date$&quot;</SPAN>
+	<SPAN CLASS="eitag">revision</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;$Revision$&quot;</SPAN>
+
+<SPAN CLASS="ekeyword">class</SPAN> <SPAN CLASS="ekeyword">interface</SPAN>
+	<A CLASS="eclass" HREF="../jeu_marmotte/sdl_mixer_short.html">SDL_MIXER</A>
+
+<SPAN CLASS="ekeyword">create</SPAN> 
+	<SPAN CLASS="nefeature">default_create</SPAN>
+
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">Functions- SDL_mixer.h</SPAN>
+
+	<A NAME="f_mix_init"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_init">mix_init</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">flags</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">Initialize by loading support as indicated by the flags</SPAN>
+
+	<A NAME="f_mix_quit"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_quit">mix_quit</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">cleans up all dynamically loaded library handles, freeing memory</SPAN>
+
+	<A NAME="f_mix_openaudio"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_openaudio">mix_openaudio</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">frequency</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">format</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_16</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">channels</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">chunksize</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">Opens the audio device with the desired parameters.</SPAN>
+
+	<A NAME="f_mix_closeaudio"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_closeaudio">mix_closeaudio</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">performs shutdown and cleanup of Mixer API.</SPAN>
+
+	<A NAME="f_mix_loadmus"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_loadmus">mix_loadmus</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">file</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Charge le fichier de musique &agrave; utiliser</SPAN>
+
+	<A NAME="f_mix_playmusic"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_playmusic">mix_playmusic</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">music</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">POINTER</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">loops</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> retrourne 0 si erreur. Joue la musique le nombre de </SPAN>`loops'
+
+	<A NAME="f_mix_pausemusic"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_pausemusic">mix_pausemusic</A>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Met la musique sur pause</SPAN>
+
+	<A NAME="f_mix_haltmusic"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_haltmusic">mix_haltmusic</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Arr�te la musique</SPAN>
+
+	<A NAME="f_mix_volumemusic"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_volumemusic">mix_volumemusic</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">volume</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Valeur du volume retourn&eacute;e apr&egrave;s un changement de volume &agrave; </SPAN>`volume'
+	
+<SPAN CLASS="ekeyword">feature</SPAN> <SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment">Constants</SPAN>
+
+	<A NAME="f_mix_init_mp3"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_init_mp3">mix_init_mp3</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Permet de charger la librairie MP3</SPAN>
+
+	<A NAME="f_mix_init_ogg"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_init_ogg">mix_init_ogg</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Permet de charger la librairie OGG</SPAN>
+
+	<A NAME="f_mix_init_flac"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_init_flac">mix_init_flac</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Permet de charger la librairie FLAC</SPAN>
+
+	<A NAME="f_mix_init_mod"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_init_mod">mix_init_mod</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> Permet de charger la librairie MOD</SPAN>
+
+	<A NAME="f_mix_default_format"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_default_format">mix_default_format</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">NATURAL_16</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> format audio syst&egrave;me</SPAN>
+
+	<A NAME="f_mix_max_volume"></A><SPAN CLASS="ekeyword">frozen</SPAN> <A CLASS="efeature" HREF="../jeu_marmotte/sdl_mixer_short.html#f_mix_max_volume">mix_max_volume</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN>
+			<SPAN CLASS="ecomment">--</SPAN><SPAN CLASS="ecomment"> volume maximal</SPAN>
+	
+<SPAN CLASS="ekeyword">end</SPAN> <SPAN CLASS="ecomment">--</SPAN> <SPAN CLASS="ecomment">class </SPAN><A CLASS="eclass" HREF="../jeu_marmotte/sdl_mixer_short.html">SDL_MIXER</A><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_mixer_chart.html">Chart</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_mixer_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_mixer.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_mixer_flat.html">Flat</A></TD>
+<TD CLASS="nolink2">Contracts</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="sdl_mixer_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="sdl_mixer"></TD>
+</TR></TABLE></FORM></pre>
+</section>
+</div>
+<div id="footer_wrap" class="outer">
+<footer class="inner">
+<p class="copyright">Poketap maintained by <a href="https://github.com/Youmy001">Youmy001</a></p>
+<p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+</footer>
+</div>
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+<meta charset='utf-8' />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<meta name="description" content="Poketap : Jeux de marmotte au thème pokemon" />
+<META NAME="generator" CONTENT="ISE EiffelStudio version 7.1.8.8986 GPL Edition - windows">
+<meta name="description" content="A network socket address."/>
+<meta name="legal" content="See notice at end of class."/>
+<meta name="keywords" content="Eiffel class"/>
+<meta name="copyright" content="Copyright (c) 1984-2006, Eiffel Software and others"/>
+<meta name="license" content="Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"/>
+<meta name="source" content="Eiffel Software 356 Storke Road, Goleta, CA 93117 USA Telephone 805-685-1006, Fax 805-685-6869 Website http://www.eiffel.com Customer support http://support.eiffel.com"/>
+<meta name="keywords" content="Eiffel class"/>
+<TITLE>network_socket_address Chart</TITLE>
+<LINK REL="stylesheet" HREF="../default.css" TYPE="text/css">
+<LINK REL="stylesheet" HREF="../../stylesheets/stylesheet.css" TYPE="text/css">
+<SCRIPT TYPE="text/javascript" SRC="../goto.html"></SCRIPT>
+</HEAD>
+<BODY>
+<div id="header_wrap" class="outer">
+<header class="inner">
+<a id="forkme_banner" href="https://github.com/Youmy001/PokeTap">View on GitHub</a>
+<h1 id="project_title">Poketap</h1>
+<h2 id="project_tagline">Jeux de marmotte au thème pokemon</h2>
+<a href="media.html">Medias</a>&nbsp;&nbsp;<a href="documentation/index.html">Documentation</a>&nbsp;&nbsp;<a href="downloads.html">Telechargements</a>
+<section id="downloads">
+<a class="zip_download_link" href="https://github.com/Youmy001/PokeTap/zipball/master">Download this project as a .zip file</a>
+<a class="tar_download_link" href="https://github.com/Youmy001/PokeTap/tarball/master">Download this project as a tar.gz file</a>
+</section>
+</header>
+</div>
+<div id="main_content_wrap" class="outer">
+<section id="main_content" class="inner">
+<pre><FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="network_socket_address_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="network_socket_address.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="network_socket_address_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="network_socket_address_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="network_socket_address_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="network_socket_address"></TD>
+</TR></TABLE></FORM><SPAN CLASS="ekeyword">class</SPAN>
+	<A CLASS="eclass" HREF="../network/network_socket_address_chart.html">NETWORK_SOCKET_ADDRESS</A>
+
+<SPAN CLASS="ekeyword">General</SPAN>
+	<SPAN CLASS="eitag">cluster</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="ecluster" HREF="../network/index.html">network</A>
+	<SPAN CLASS="eitag">description</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="estring">&quot;A network socket address.&quot;</SPAN>
+	<SPAN CLASS="eitag">create</SPAN><SPAN CLASS="esymbol">:</SPAN> <A CLASS="efeature" HREF="../network/network_socket_address.html#f_make_from_hostname_and_port">make_from_hostname_and_port</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../network/network_socket_address.html#f_make_from_address_and_port">make_from_address_and_port</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../network/network_socket_address.html#f_make_any_local">make_any_local</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../network/network_socket_address.html#f_make_localhost">make_localhost</A><SPAN CLASS="esymbol">,</SPAN> <A CLASS="efeature" HREF="../network/network_socket_address.html#f_make_loopback">make_loopback</A>
+
+<SPAN CLASS="ekeyword">Ancestors</SPAN>
+	<A CLASS="eclass" HREF="../network/inet_address_factory_chart.html">INET_ADDRESS_FACTORY</A>
+	<A CLASS="eclass" HREF="../abstract/socket_address_chart.html">SOCKET_ADDRESS</A>
+	<A CLASS="eclass" HREF="../abstract/socket_resources_chart.html">SOCKET_RESOURCES</A>
+
+<SPAN CLASS="ekeyword">Queries</SPAN>
+	<SPAN TITLE="`address_in_use' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_address_in_use">address_in_use</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`address_not_readable' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_address_not_readable">address_not_readable</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`already_bound' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_already_bound">already_bound</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`bad_socket_handle' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_bad_socket_handle">bad_socket_handle</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`c_msgdontroute' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_c_msgdontroute">c_msgdontroute</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`c_oobmsg' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_c_oobmsg">c_oobmsg</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`c_peekmsg' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_c_peekmsg">c_peekmsg</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`connect_in_progress' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_connect_in_progress">connect_in_progress</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`connection_refused' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_connection_refused">connection_refused</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`count' was declared in SOCKET_ADDRESS"><A CLASS="efeature" HREF="../abstract/socket_address.html#f_count">count</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`dtable_full' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_dtable_full">dtable_full</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`error' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_error">error</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">detachable</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN></SPAN>
+	<SPAN TITLE="`error_number' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_error_number">error_number</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`expired_socket' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_expired_socket">expired_socket</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`family' was declared in SOCKET_ADDRESS"><A CLASS="efeature" HREF="../abstract/socket_address.html#f_family">family</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`host_address' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_host_address">host_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">detachable</SPAN><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../network/inet_address_chart.html">INET_ADDRESS</A></SPAN>
+	<SPAN TITLE="`invalid_address' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_invalid_address">invalid_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`invalid_socket_handle' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_invalid_socket_handle">invalid_socket_handle</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_equal' was declared in SOCKET_ADDRESS"><A CLASS="efeature" HREF="../abstract/socket_address.html#f_is_equal">is_equal</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">detachable</SPAN><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../network/network_socket_address_chart.html">NETWORK_SOCKET_ADDRESS</A><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`is_valid_host' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_is_valid_host">is_valid_host</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">hostname</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">detachable</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`network' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_network">network</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`no_buffers' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_no_buffers">no_buffers</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`no_permission' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_no_permission">no_permission</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`not_connected' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_not_connected">not_connected</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`port' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_port">port</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN></SPAN>
+	<SPAN TITLE="`protected_address' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_protected_address">protected_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`protocol_not_supported' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_protocol_not_supported">protocol_not_supported</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`socket_address' was declared in SOCKET_ADDRESS"><A CLASS="efeature" HREF="../abstract/socket_address.html#f_socket_address">socket_address</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">detachable</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">MANAGED_POINTER</SPAN></SPAN>
+	<SPAN TITLE="`socket_family_not_supported' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_socket_family_not_supported">socket_family_not_supported</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`socket_in_use' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_socket_in_use">socket_in_use</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`socket_ok' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_socket_ok">socket_ok</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`socket_would_block' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_socket_would_block">socket_would_block</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+	<SPAN TITLE="`zero_option' was declared in SOCKET_RESOURCES"><A CLASS="efeature" HREF="../abstract/socket_resources.html#f_zero_option">zero_option</A><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">BOOLEAN</SPAN></SPAN>
+
+<SPAN CLASS="ekeyword">Commands</SPAN>
+	<SPAN TITLE="`copy' was declared in SOCKET_ADDRESS"><A CLASS="efeature" HREF="../abstract/socket_address.html#f_copy">copy</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">other</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">like</SPAN> <SPAN CLASS="ekeyword">Current</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">detachable</SPAN><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../network/network_socket_address_chart.html">NETWORK_SOCKET_ADDRESS</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`make_any_local' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_make_any_local">make_any_local</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_port</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`make_from_address_and_port' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_make_from_address_and_port">make_from_address_and_port</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">an_address</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">detachable</SPAN><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../network/inet_address_chart.html">INET_ADDRESS</A><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_port</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`make_from_hostname_and_port' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_make_from_hostname_and_port">make_from_hostname_and_port</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_hostname</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">detachable</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">;</SPAN> <SPAN CLASS="elocal">a_port</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`make_localhost' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_make_localhost">make_localhost</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_port</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`make_loopback' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_make_loopback">make_loopback</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_port</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`set_family' was declared in SOCKET_ADDRESS"><A CLASS="efeature" HREF="../abstract/socket_address.html#f_set_family">set_family</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">f</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`set_host_address' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_set_host_address">set_host_address</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_host_address</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">detachable</SPAN><SPAN CLASS="esymbol">]</SPAN> <A CLASS="eclass" HREF="../network/inet_address_chart.html">INET_ADDRESS</A><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`set_port' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_set_port">set_port</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">p</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="neclass">INTEGER_32</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`set_port_from_name' is declared in `Current'"><A CLASS="efeature" HREF="../network/network_socket_address.html#f_set_port_from_name">set_port_from_name</A> <SPAN CLASS="esymbol">(</SPAN><SPAN CLASS="elocal">a_name</SPAN><SPAN CLASS="esymbol">,</SPAN> <SPAN CLASS="elocal">protocol</SPAN><SPAN CLASS="esymbol">:</SPAN> <SPAN CLASS="esymbol">[</SPAN><SPAN CLASS="ekeyword">detachable</SPAN><SPAN CLASS="esymbol">]</SPAN> <SPAN CLASS="neclass">STRING_8</SPAN><SPAN CLASS="esymbol">)</SPAN></SPAN>
+	<SPAN TITLE="`socket_address_make' was declared in SOCKET_ADDRESS as `make'"><A CLASS="efeature" HREF="../abstract/socket_address.html#f_make">socket_address_make</A></SPAN>
+
+<FORM ONSUBMIT="go_to('../',this.c.value);return false;">
+<TABLE CELLSPACING="5" CELLPADDING="4"><TR>
+<TD CLASS="link1"><A CLASS="link1" HREF="../class_list.html">Classes</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_list.html">Clusters</A></TD>
+<TD CLASS="link1"><A CLASS="link1" HREF="../cluster_hierarchy.html">Cluster hierarchy</A></TD>
+<TD CLASS="nolink2">Chart</TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="network_socket_address_links.html">Relations</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="network_socket_address.html">Text</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="network_socket_address_flat.html">Flat</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="network_socket_address_short.html">Contracts</A></TD>
+<TD CLASS="link2"><A CLASS="link2" HREF="network_socket_address_flatshort.html">Flat contracts</A></TD>
+<TD CLASS="link2">Go to: <INPUT NAME="c" VALUE="network_socket_address"></TD>
+</TR></TABLE></FORM></pre>
+</section>
+</div>
+<div id="footer_wrap" class="outer">
+<footer class="inner">
+<p class="copyright">Poketap maintained by <a href="https://github.com/Youmy001">Youmy001</a></p>
+<p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+</footer>
+</div>
+<BR>For more details: <A HREF="http://www.eiffel.com">www.eiffel.com</A></P>
+</BODY>
+</HTML>
