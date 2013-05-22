@@ -5,6 +5,7 @@
 			<assertions precondition="true" postcondition="true" check="true" invariant="true" loop="true" supplier_precondition="true"/>
 		</option>
 		<setting name="console_application" value="true"/>
+		<setting name="concurrency" value="thread"/>
 		<external_include location="..\..\..\..\SDL-1.2.14\include\SDL">
 			<condition>
 				<platform value="windows"/>
@@ -70,10 +71,11 @@
 				<platform value="windows"/>
 			</condition>
 		</external_library>
-		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>
+		<precompile name="base-mt_pre" location="$ISE_PRECOMP\base-mt.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
 		<library name="net" location="$ISE_LIBRARY\library\net\net.ecf"/>
 		<library name="sqlite" location="$ISE_LIBRARY\unstable\library\persistency\database\sqlite3\sqlite.ecf"/>
+		<library name="thread" location="$ISE_LIBRARY\library\thread\thread.ecf"/>
 		<cluster name="jeu_marmotte" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>

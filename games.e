@@ -61,6 +61,7 @@ make_local
 			l_quit := {SDL_WRAPPER}.SDL_QUIT
 			l_mousedown := {SDL_WRAPPER}.SDL_MOUSEBUTTONDOWN
 
+
 			from
 				l_exit:=false
 			until
@@ -89,7 +90,7 @@ make_local
 							l_music.music_play (0) --if loop equal 0, loop forever
 						end
 					elseif l_multijoueur_button.is_collision(l_event) then
-						l_texte_titre.set_texte ("INDISPONIBLE !")
+						l_texte_titre.set_texte ("MultiJoueur !")
 						l_texte_titre.set_x (250)
 						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
 							l_multiplayer := true
@@ -155,6 +156,7 @@ single_player(a_screen:POINTER)
 			l_cl_pointage, l_cl_nom: STRING
 			l_texte_cl_pointage: TEXTE
 			l_texte_cl_nom:TEXTE
+			l_test:RESEAU_THREAD
 
 			l_game_music:BRUIT
 		do
@@ -181,6 +183,7 @@ single_player(a_screen:POINTER)
 			print ("Entrez votre nom : ")
 			io.readLine
 			create l_marteau.make (l_screen, io.last_string, bdd)
+			--create l_test.make (l_marteau)
 			create l_texte_pointage.make (l_screen)
 			l_texte_pointage.set_texte ("0 point")
 			l_texte_pointage.set_x (265)
@@ -189,6 +192,7 @@ single_player(a_screen:POINTER)
 			l_texte_nom.set_texte (l_marteau.get_nom)
 			l_texte_nom.set_x (25)
 			l_texte_nom.set_y (560)
+			--l_test.launch
 
 			l_game_music.music_play (0) --if loop equal 0, loop forever
 

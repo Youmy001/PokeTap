@@ -53,17 +53,19 @@ feature
 		socket_is_connected : socket.is_connected
 		a_string_is_not_empty : not a_string.is_empty
 		do
+			print(" Test: Envoi :" + a_string)
 			socket.put_string (a_string+"%N")
 		end
 	recoit():STRING
 	-- Message envoyé par un autre client
 	require
-		socket_is_connected : socket.is_connected
+		--socket_is_connected : socket.is_connected
 	local
 		l_string:STRING
 	do
 		socket.read_line
 		l_string:=socket.last_string
+		print(" Test: Recoi :" + l_string)
 		io.put_string ("Le serveur a dit: "+l_string+"%N")
 		Result:=l_string
 		ensure
