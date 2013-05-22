@@ -5,18 +5,22 @@ note
 	date: "4 Mars 2013"
 	revision: "0.13.03.04"
 
-class
+deferred class
 	COLLISION
-
-inherit
-	POINTAGE
 
 feature -- Access
 
-	marteau_C: MARTEAU
-
-	marmotte_C: MARMOTTE
-
-	bruit_C: BRUIT
+	check_collision(a_event:POINTER;a_x,a_y,a_w,a_h:INTEGER_16):BOOLEAN
+		do
+			if {SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(a_event) > a_x AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(a_event) < a_x+a_w then
+				if {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(a_event) > a_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(a_event) < a_y+a_h then
+					Result := TRUE
+				else
+					Result:=FALSE
+				end
+			else
+				Result:=FALSE
+			end
+		end
 
 end

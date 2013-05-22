@@ -11,7 +11,6 @@ class
 
 inherit
 	IMAGE
-	COLLISION
 create
 	make
 feature -- Access

@@ -8,18 +8,15 @@ note
 class
 	BUTTONS
 inherit
+	COLLISION
 	IMAGE
 create
 	make
 
 feature {GAMES} -- Initialization
-	button_x:INTEGER_16
-	-- Coordonnées horizontale du boutton
-	button_y:INTEGER_16
-	-- Coordonnées verticale du boutton
-	button_w:INTEGER_16
+	w:INTEGER_16
 	-- Largeur du boutton
-	button_h:INTEGER_16
+	h:INTEGER_16
 	-- Hauteur du boutton
 
 	make(a_screen:POINTER; a_img_path:STRING; a_x:INTEGER_16; a_y:INTEGER_16)
@@ -32,21 +29,25 @@ feature {GAMES} -- Initialization
 		do
 			screen:=a_screen
 			creer_image(a_img_path)
-			button_x := a_x
-			button_y := a_y
-			button_w := {SDL_WRAPPER}.get_SDL_Surface_W(infile).as_integer_16
-			button_h := {SDL_WRAPPER}.get_SDL_Surface_H(infile).as_integer_16
-			set_x(button_x)
-			set_y(button_y)
+			w := {SDL_WRAPPER}.get_SDL_Surface_W(infile).as_integer_16
+			h := {SDL_WRAPPER}.get_SDL_Surface_H(infile).as_integer_16
+			set_x(a_x)
+			set_y(a_y)
 			ensure
 				screen_is_not_null : not screen.is_default_pointer
-				button_w_is_above_0: button_w > 0
-				button_h_is_above_0: button_h > 0
+				button_w_is_above_0: w > 0
+				button_h_is_above_0: h > 0
 		end
 
+		is_collision(a_event:POINTER):BOOLEAN
+			do
+				Result:=check_collision(a_event,x,y,w,h)
+			end
+
+
 invariant
-	button_w_is_at_least_0 : button_w >= 0
-	button_h_is_at_least_0 : button_h >= 0
+	button_w_is_at_least_0 : w >= 0
+	button_h_is_at_least_0 : h >= 0
 
 end
 

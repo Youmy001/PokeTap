@@ -9,7 +9,7 @@ class
 	MARMOTTE
 
 inherit
-
+	COLLISION
 	IMAGE
 
 create
@@ -84,6 +84,10 @@ feature -- Access
 			elseif y >= 15 then
 				set_y(y - 1)
 			end
+		end
+	is_collision(a_event:POINTER):BOOLEAN
+		do
+			Result:=check_collision(a_event,x,y,l_bmp_w.as_integer_16,l_bmp_h.as_integer_16)
 		end
 
 	l_bmp_w:INTEGER

@@ -52,10 +52,10 @@ make_local
 			l_texte_titre.set_x (350)
 			l_texte_titre.set_y (35)
 			create l_single_button.make (l_screen,"images/forever.png", 300, 125)
-			create l_multijoueur_button.make (l_screen,"images/multijoueur.png", 300, l_single_button.button_y + 100)
-			create l_quit_button.make (l_screen,"images/quitter.png", 300, l_multijoueur_button.button_y + 100)
-			create l_serveur_button.make(l_screen, "images/serveur.png", 300, l_quit_button.button_y + 100)
-			create l_client_button.make(l_screen, "images/client.png", 300, l_serveur_button.button_y + 100)
+			create l_multijoueur_button.make (l_screen,"images/multijoueur.png", 300, l_single_button.y + 100)
+			create l_quit_button.make (l_screen,"images/quitter.png", 300, l_multijoueur_button.y + 100)
+			create l_serveur_button.make(l_screen, "images/serveur.png", 300, l_quit_button.y + 100)
+			create l_client_button.make(l_screen, "images/client.png", 300, l_serveur_button.y + 100)
 			create l_memory_manager.default_create
 			l_event := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
 			l_quit := {SDL_WRAPPER}.SDL_QUIT
@@ -80,38 +80,36 @@ make_local
 					end
 						-- Mouse click event
 
-					if {SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(l_event) > l_single_button.button_x AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_x(l_event) < (l_single_button.button_x + l_single_button.button_w) then
-						if {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) > l_single_button.button_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) < (l_single_button.button_y + l_single_button.button_h) then
-							l_texte_titre.set_texte ("Singleplayer !")
-							l_texte_titre.set_x (250)
-							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
-								l_music.music_stop
-								single_player(l_screen)
-								l_music.music_play (0) --if loop equal 0, loop forever
-							end
-						elseif {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) > l_multijoueur_button.button_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) < (l_multijoueur_button.button_y + l_multijoueur_button.button_h) then
-							l_texte_titre.set_texte ("INDISPONIBLE !")
-							l_texte_titre.set_x (250)
-							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
-								l_multiplayer := true
-							end
-						elseif {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) > l_quit_button.button_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) < (l_quit_button.button_y + l_quit_button.button_h) then
-							l_texte_titre.set_texte ("Quitter... ")
-							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
-								l_exit := True
-							end
+					if l_single_button.is_collision(l_event) then
+						l_texte_titre.set_texte ("Singleplayer !")
+						l_texte_titre.set_x (250)
+						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+							l_music.music_stop
+							single_player(l_screen)
+							l_music.music_play (0) --if loop equal 0, loop forever
 						end
-						if l_multiplayer = True then
-							if {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) > l_serveur_button.button_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) < (l_serveur_button.button_y + l_serveur_button.button_h) then
-								if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
-									create reseau_serveur.make
-									single_player(l_screen)
-								end
-							elseif {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) > l_client_button.button_y AND {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y(l_event) < (l_client_button.button_y + l_client_button.button_h) then
-								if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
-									create reseau_client.make
-									single_player(l_screen)
-								end
+					elseif l_multijoueur_button.is_collision(l_event) then
+						l_texte_titre.set_texte ("INDISPONIBLE !")
+						l_texte_titre.set_x (250)
+						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+							l_multiplayer := true
+						end
+					elseif l_quit_button.is_collision(l_event) then
+						l_texte_titre.set_texte ("Quitter... ")
+						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+							l_exit := True
+						end
+					end
+					if l_multiplayer = True then
+						if l_serveur_button.is_collision (l_event) then
+							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+								create reseau_serveur.make
+								single_player(l_screen)
+							end
+						elseif l_client_button.is_collision (l_event) then
+							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+								create reseau_client.make
+								single_player(l_screen)
 							end
 						end
 					end
@@ -272,13 +270,15 @@ single_player(a_screen:POINTER)
 					end
 						-- Mouse click event
 					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
-						l_pointage := l_marteau.get_pointage
-						l_pointage := l_pointage + 1
-						l_marteau.set_pointage (l_pointage)
-						l_marteau.update_pointage
-						l_texte_pointage.set_texte (l_pointage.out + " points")
-						print (l_pointage)
-						print ("%N")
+						if l_marmotte.is_collision(l_event) then
+							l_pointage := l_marteau.get_pointage
+							l_pointage := l_pointage + 1
+							l_marteau.set_pointage (l_pointage)
+							l_marteau.update_pointage
+							l_texte_pointage.set_texte (l_pointage.out + " points")
+							print (l_pointage)
+							print ("%N")
+						end
 					end
 					l_poll_event := poll_event (l_event)
 				end
