@@ -54,15 +54,15 @@ feature
 	envoye(a_string:STRING)
 	-- Envoie `a_string' a un autre client
 	require
-		--client_socket_is_connected : client_socket.is_connected
+		client_socket_is_extendible : client_socket /= Void and then client_socket.extendible
 		a_string_is_not_empty : not a_string.is_empty
 	do
 		client_socket.put_string (a_string+"%N")
 	end
-	recoit():STRING
-	-- Message envoyé par un autre client
+	recoit:STRING
+		-- Message envoyé par un autre client
 	require
-		--client_socket_is_connected : client_socket.is_connected
+		client_socket_can_read : client_socket /= Void and then client_socket.readable
 	local
 		l_string:STRING
 	do
@@ -76,7 +76,7 @@ feature
 	close
 	-- Ferme la connection du client
 		require
-			client_socket_is_not_closed : not client_socket.is_closed
+			client_socket_is_not_closed : client_socket /= Void and then not client_socket.is_closed
 		do
 			client_socket.close
 			ensure

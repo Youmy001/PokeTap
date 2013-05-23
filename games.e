@@ -8,6 +8,9 @@ note
 class
 	GAMES
 
+inherit
+	MEMORY
+
 create
 	make_local
 
@@ -90,7 +93,7 @@ make_local
 						l_texte_titre.set_x (250)
 						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
 							l_music.music_stop
-							single_player(l_screen)
+							single_player(l_screen, 0)
 							l_music.music_play (0) --if loop equal 0, loop forever
 						end
 					elseif l_multijoueur_button.is_collision(l_event) then
@@ -108,13 +111,11 @@ make_local
 					if l_multiplayer = True then
 						if l_serveur_button.is_collision (l_event) then
 							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
-								create reseau_serveur.make
-								single_player(l_screen)
+								single_player(l_screen, 1)
 							end
 						elseif l_client_button.is_collision (l_event) then
 							if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
-								create reseau_client.make
-								single_player(l_screen)
+								single_player(l_screen, 2)
 							end
 						end
 					end
@@ -141,12 +142,12 @@ make_local
 		exit
 	end
 
-single_player(a_screen:POINTER)
+single_player(a_screen:POINTER; a_game_mode:INTEGER)
 -- Lance le mode singleplayer dans l'écran `a_screen'
 		require
 			a_screen_is_not_null : not a_screen.is_default_pointer
 		local
-			l_marteau: MARTEAU
+			l_marteau, l_other_marteau: MARTEAU
 			l_marmotte: MARMOTTE
 			l_ctr, l_pointage, l_disable, l_poll_event: INTEGER
 			l_screen, l_event, l_memory_manager: POINTER
@@ -157,13 +158,10 @@ single_player(a_screen:POINTER)
 			l_trou12,l_trou13,l_trou14,l_trou15,l_trou16,l_trou17,l_trou18,l_trou19:TROU
 			l_texte_pointage: TEXTE
 			l_texte_nom: TEXTE
-			l_sv_pointage, l_sv_nom: STRING
-			l_texte_sv_pointage: TEXTE
-			l_texte_sv_nom:TEXTE
-			l_cl_pointage, l_cl_nom: STRING
-			l_texte_cl_pointage: TEXTE
-			l_texte_cl_nom:TEXTE
-			l_test:RESEAU_THREAD
+			l_texte_other_pointage: TEXTE
+			l_texte_other_nom:TEXTE
+			l_thread_reseau:RESEAU_THREAD
+			l_other_name_mutex:MUTEX
 
 			l_game_music:BRUIT
 		do
@@ -190,7 +188,12 @@ single_player(a_screen:POINTER)
 			print ("Entrez votre nom : ")
 			io.readLine
 			create l_marteau.make (l_screen, io.last_string, bdd)
-			--create l_test.make (l_marteau)
+			if a_game_mode > 0 then
+				create l_other_marteau.make (l_screen, " ", bdd)
+				create l_other_name_mutex.make
+				create l_thread_reseau.make (l_marteau, l_other_marteau, l_other_name_mutex, a_game_mode)
+				l_thread_reseau.launch
+			end
 			create l_texte_pointage.make (l_screen)
 			l_texte_pointage.set_texte ("0 point")
 			l_texte_pointage.set_x (265)
@@ -199,37 +202,25 @@ single_player(a_screen:POINTER)
 			l_texte_nom.set_texte (l_marteau.get_nom)
 			l_texte_nom.set_x (25)
 			l_texte_nom.set_y (560)
-			--l_test.launch
+			if a_game_mode > 0 then
+				-- Create client
+				--pointage
+				l_other_name_mutex.lock
+				create l_texte_other_pointage.make (l_screen)
+				l_texte_other_pointage.set_texte ("0 point")
+				l_texte_other_pointage.set_x (725)
+				l_texte_other_pointage.set_y (560)
+				--nom
+				create l_texte_other_nom.make (l_screen)
+				l_texte_other_nom.set_texte ("Testing")
+				l_texte_other_nom.set_texte (l_other_marteau.get_nom)
+				l_texte_other_nom.set_x (490)
+				l_texte_other_nom.set_y (560)
+				l_other_name_mutex.unlock
+			end
 
 			l_game_music.music_play (0) --if loop equal 0, loop forever
 
-			if reseau_serveur /= void then
-				-- Create client
-				--pointage
-				create l_texte_cl_pointage.make (l_screen)
-				l_texte_cl_pointage.set_texte ("0 point")
-				l_texte_cl_pointage.set_x (725)
-				l_texte_cl_pointage.set_y (560)
-				--nom
-				create l_texte_cl_nom.make (l_screen)
-				l_texte_cl_nom.set_texte (l_marteau.get_nom)
-				l_texte_cl_nom.set_x (490)
-				l_texte_cl_nom.set_y (560)
-			end
-			if reseau_client /= void then
-				--create serveur
-				--pointage
-				create l_texte_sv_pointage.make (l_screen)
-				l_texte_sv_pointage.set_texte ("0 point")
-				l_texte_sv_pointage.set_x (725)
-				l_texte_sv_pointage.set_y (560)
-				--nom
-				create l_texte_sv_nom.make (l_screen)
-				l_texte_sv_nom.set_texte (l_marteau.get_nom)
-				l_texte_sv_nom.set_x (490)
-				l_texte_sv_nom.set_y (560)
-			end
-				-- Create an ennemy
 			create l_trou.make (l_screen, 20 , 30)
 			create l_trou1.make (l_screen, 210 , 30)
 			create l_trou2.make (l_screen, 400 , 30)
@@ -293,22 +284,7 @@ single_player(a_screen:POINTER)
 					end
 					l_poll_event := poll_event (l_event)
 				end
-				if reseau_serveur /= void then
-					l_cl_pointage := reseau_serveur.recoit
-					l_cl_nom := reseau_serveur.recoit
-					reseau_serveur.envoye (l_pointage.out)
-				    reseau_serveur.envoye (l_marteau.get_nom)
-					l_texte_cl_pointage.set_texte (l_cl_pointage + " points")
-					l_texte_cl_nom.set_texte (l_cl_nom)
-				end
-				if reseau_client /= void then
-					reseau_client.envoye (l_pointage.out)
-					reseau_client.envoye (l_marteau.get_nom)
-					l_sv_pointage := reseau_client.recoit
-					l_sv_nom := reseau_client.recoit
-					l_texte_sv_pointage.set_texte (l_sv_pointage + " points")
-					l_texte_sv_nom.set_texte (l_sv_nom)
-				end
+
 					-- Display images
 				l_fond_ecran.affiche_image
 				l_trou.affiche_image
@@ -335,6 +311,11 @@ single_player(a_screen:POINTER)
 				l_marmotte.animation_marmotte
 					--l_font_surface:={SDL_TTF}.TTF_RenderText_Solid(font,l_c_text.item,l_color)
 					--affiche_texte(l_font_surface, l_screen)
+				if a_game_mode > 0 then
+					l_texte_other_pointage.set_texte (l_other_marteau.pointage.out)
+					l_texte_other_pointage.affiche_texte
+					l_texte_other_nom.affiche_texte
+				end
 				l_texte_pointage.affiche_texte
 				l_texte_nom.affiche_texte
 				l_marteau.affiche_image
@@ -342,9 +323,11 @@ single_player(a_screen:POINTER)
 				delay (1)
 					-- Display a frame
 				l_ctr := flip (l_screen)
+				full_collect
 			end
 			l_game_music.music_close
 			l_ctr := show_cursor_disable (1)
+			l_thread_reseau.stop
 		end
 
 feature {NONE} --Routine
@@ -459,11 +442,21 @@ feature {NONE} --Routine
 		do
 			result := {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y (l_event)
 		end
-	over_button(button:BUTTONS):BOOLEAN
-		-- Réponse de si la souris est au dessus du bouton `button'
-		do
-
-		end
+--	random
+--		--Random pour la sortie aléatoire du Meowth `marmotte'
+--		local
+--	      l_time: TIME
+--	      l_seed: INTEGER
+--	    do
+--	         -- This computes milliseconds since midnight.
+--	         -- Milliseconds since 1970 would be even better.
+--	      create l_time.make_now
+--	      l_seed := l_time.hour
+--	      l_seed := l_seed * 60 + l_time.minute
+--	      l_seed := l_seed * 60 + l_time.second
+--	      l_seed := l_seed * 1000 + l_time.milli_second
+--	      create random_sequence.set_seed (l_seed)
+--	    end
 	id:INTEGER
 	-- Numéro d'identification du joueur
 	pointage:INTEGER
@@ -472,10 +465,6 @@ feature {NONE} --Routine
 	-- Nom du joueur
 	bdd:DATABASE
 	-- Instance de la classe `DATABASE'
-	reseau_client: RESEAU_CLIENT
-	-- Instance de la classe `RESEAU_CLIENT'
-	reseau_serveur: RESEAU_SERVEUR
-	-- Instance de la classe `RESEAU_SERVEUR'
 invariant
 	id_is_at_least_0: id >= 0
 	pointage_is_at_least_0: pointage >= 0
