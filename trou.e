@@ -26,17 +26,10 @@ feature
 			l_x, l_y: INTEGER_16
 
 		do
-			create l_memory_manager.default_create
-			targetarea:=l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Rect)
 			screen := a_screen
+			creer_image("images/trou.png")
 			l_x := a_x
 			l_y := a_y
-			l_trou := "images/trou.png"
-			create l_c_trou.make (l_trou)
-			infile:={SDL_IMAGE}.IMG_Load(l_c_trou.item)
-
-			l_bmp_h := {SDL_WRAPPER}.get_SDL_Surface_H(infile)
-			l_bmp_w := {SDL_WRAPPER}.get_SDL_Surface_W(infile)
 
 			set_x(l_x)
 			set_y(l_y)

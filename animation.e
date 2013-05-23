@@ -64,19 +64,11 @@ feature -- Access
 		local
 			l_c_image:C_STRING
 		do
-			--if cur_image+1 > nb_image then
-			--	cur_image:=1
-			--else
-			--	cur_image:=cur_image+1
-			--end
 			cur_image:=cur_image+1
 			if cur_image > image_list.count then
 				cur_image:=1
 			end
-			print("Magikarp: "+cur_image.out+"%N")
-			--print(image_list[cur_image]+"%N")
-			--create l_c_image.make (image_list[cur_image])
-			--infile := {SDL_IMAGE}.IMG_Load (l_c_image.item)
+			--print("Magikarp: "+cur_image.out+"%N")
 			infile:=image_list[cur_image]
 		end
 

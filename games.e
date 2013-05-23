@@ -149,7 +149,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 		local
 			l_marteau, l_other_marteau: MARTEAU
 			l_marmotte: MARMOTTE
-			l_ctr, l_pointage, l_disable, l_poll_event: INTEGER
+			l_ctr, l_pointage, l_disable, l_poll_event, l_i: INTEGER
 			l_screen, l_event, l_memory_manager: POINTER
 			l_fond_ecran: FOND_ECRAN
 			l_quit_bool: BOOLEAN
@@ -161,7 +161,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			l_texte_other_pointage: TEXTE
 			l_texte_other_nom:TEXTE
 			l_thread_reseau:RESEAU_THREAD
-			l_other_name_mutex:MUTEX
+			l_trou_liste:LIST[TROU]
 
 			l_game_music:BRUIT
 		do
@@ -190,8 +190,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			create l_marteau.make (l_screen, io.last_string, bdd)
 			if a_game_mode > 0 then
 				create l_other_marteau.make (l_screen, " ", bdd)
-				create l_other_name_mutex.make
-				create l_thread_reseau.make (l_marteau, l_other_marteau, l_other_name_mutex, a_game_mode)
+				create l_thread_reseau.make (l_marteau, l_other_marteau, a_game_mode)
 				l_thread_reseau.launch
 			end
 			create l_texte_pointage.make (l_screen)
@@ -205,7 +204,6 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			if a_game_mode > 0 then
 				-- Create client
 				--pointage
-				l_other_name_mutex.lock
 				create l_texte_other_pointage.make (l_screen)
 				l_texte_other_pointage.set_texte ("0 point")
 				l_texte_other_pointage.set_x (725)
@@ -216,11 +214,19 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				l_texte_other_nom.set_texte (l_other_marteau.get_nom)
 				l_texte_other_nom.set_x (490)
 				l_texte_other_nom.set_y (560)
-				l_other_name_mutex.unlock
 			end
 
 			l_game_music.music_play (0) --if loop equal 0, loop forever
 
+--			create {ARRAYED_LIST[TROU]} l_trou_liste.make (20)
+--			
+--			from
+--				l_i := 1
+--			until
+--				
+--			loop
+--				
+--			end
 			create l_trou.make (l_screen, 20 , 30)
 			create l_trou5.make (l_screen, 20 , 180)
 			create l_trou6.make (l_screen, 20 , 330)
@@ -241,7 +247,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			create l_trou17.make (l_screen, 780 , 180)
 			create l_trou18.make (l_screen, 780 , 330)
 			create l_trou19.make (l_screen, 780 , 480)
-			create l_marmotte.make (l_screen, x, y)
+			create l_marmotte.make (l_screen)
 
 				-- Allow memory for events
 			create l_memory_manager.default_create
@@ -287,26 +293,13 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 
 					-- Display images
 				l_fond_ecran.affiche_image
-				l_trou.affiche_image
-				l_trou1.affiche_image
-				l_trou2.affiche_image
-				l_trou3.affiche_image
-				l_trou4.affiche_image
-				l_trou5.affiche_image
-				l_trou6.affiche_image
-				l_trou7.affiche_image
-				l_trou8.affiche_image
-				l_trou9.affiche_image
-				l_trou10.affiche_image
-				l_trou11.affiche_image
-				l_trou12.affiche_image
-				l_trou13.affiche_image
-				l_trou14.affiche_image
-				l_trou15.affiche_image
-				l_trou16.affiche_image
-				l_trou17.affiche_image
-				l_trou18.affiche_image
-				l_trou19.affiche_image
+
+				from
+				until
+					l_i <= 20
+				loop
+					l_trou_liste[l_i].affiche_image
+				end
 
 				l_marmotte.animation_marmotte
 					--l_font_surface:={SDL_TTF}.TTF_RenderText_Solid(font,l_c_text.item,l_color)

@@ -18,7 +18,7 @@ create
 
 feature {GAMES} -- Main
 
-	make (a_marteau, a_other_marteau:MARTEAU; a_mutex:MUTEX; a_game_mode:INTEGER)
+	make (a_marteau, a_other_marteau:MARTEAU; a_game_mode:INTEGER)
 		do
 			stop_thread := false
 			make_thread
@@ -31,17 +31,13 @@ feature {GAMES} -- Main
 			other_marteau := a_other_marteau
 			if	is_server then
 				create reseau_serveur.make
-			else
-				create reseau_client.make
-			end
-			if is_server then
 				other_marteau.set_nom (reseau_serveur.recoit)
 				reseau_serveur.envoye (player_marteau.nom)
 			else
+				create reseau_client.make
 				reseau_client.envoye (player_marteau.nom)
 				other_marteau.set_nom (reseau_client.recoit)
 			end
-			other_name_mutex := a_mutex
 		end
 
 	execute

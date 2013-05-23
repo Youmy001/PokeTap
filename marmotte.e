@@ -36,11 +36,8 @@ feature -- Access
 			-- Get size of picture file
 			l_bmp_h := {SDL_WRAPPER}.get_SDL_Surface_H (infile)
 			l_bmp_w := {SDL_WRAPPER}.get_SDL_Surface_W (infile)
-			set_x(27)
 
 			-- Setup position and surface of image
-			{SDL_WRAPPER}.set_SDL_Rect_x (targetarea, x)
-			{SDL_WRAPPER}.set_SDL_Rect_y (targetarea, y)
 			{SDL_WRAPPER}.set_SDL_Rect_w (targetarea, l_bmp_w)
 			{SDL_WRAPPER}.set_SDL_Rect_h (targetarea, l_bmp_h)
 			if y = 0 then
