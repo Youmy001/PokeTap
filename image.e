@@ -7,7 +7,6 @@ note
 
 deferred class
 	IMAGE
-
 feature
 
 		affiche_image

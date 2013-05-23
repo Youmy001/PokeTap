@@ -10,7 +10,7 @@ class
 inherit
 	IMAGE
 create
-	make
+	make_anim
 feature -- Access
 
 	image_list:LIST[POINTER]
@@ -19,7 +19,7 @@ feature -- Access
 	--Nombre d'image dans l'animation
 	cur_image:INTEGER
 	--Image actuelement affichee
-	make(a_screen:POINTER;a_chemin:STRING;a_nb_img:INTEGER)
+	make_anim(a_screen:POINTER;a_chemin:STRING;a_nb_img:INTEGER)
 		require
 			a_screen_is_not_null : not a_screen.is_default_pointer
 			a_nom_is_not_empty : not a_chemin.is_empty

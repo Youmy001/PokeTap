@@ -11,6 +11,7 @@ class
 
 inherit
 	IMAGE
+	ANIMATION
 create
 	make
 feature -- Access
@@ -21,8 +22,8 @@ feature -- Access
 			a_nom_is_not_empty : not a_nom.is_empty
 		do
 			screen:=a_screen
-			creer_image("images/os_petit.png")
-
+			creer_image("images/os/1.png")
+			make_anim(screen,"images/os",5)
 			set_x(0)
 			set_y(0)
 				--Setup player name
@@ -92,6 +93,25 @@ feature -- Access
 			bdd.update_pointage (id, pointage, nom)
 		end
 
+	start_animation
+		do
+			in_animation:=TRUE
+		end
+	stop_animation
+		do
+			in_animation:=FALSE
+		end
+	afficher
+		do
+			affiche_image
+			if in_animation=TRUE then
+				if cur_image = image_list.count then
+					stop_animation
+				end
+				prochaine_image
+			end
+		end
+
 id:INTEGER
 -- Numéro d'identification du joueur
 pointage:INTEGER
@@ -100,6 +120,11 @@ nom:STRING
 -- Nom du joueur
 bdd:DATABASE
 -- Instance de la classe `DATABASE'
+anim_click:ANIMATION
+-- Instance de l'animation
+in_animation:BOOLEAN
+-- Indique si le marteau est en animation
+
 
 	invariant
 		id_is_at_least_0 : id >= 0
