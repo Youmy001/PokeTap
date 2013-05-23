@@ -149,13 +149,12 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 		local
 			l_marteau, l_other_marteau: MARTEAU
 			l_marmotte: MARMOTTE
-			l_ctr, l_pointage, l_disable, l_poll_event, l_i: INTEGER
+			l_ctr, l_pointage, l_disable, l_poll_event: INTEGER
+			l_i, l_x, l_y:INTEGER_16
 			l_screen, l_event, l_memory_manager: POINTER
 			l_fond_ecran: FOND_ECRAN
 			l_quit_bool: BOOLEAN
 			l_mousemotion, l_mousedown, l_quit: NATURAL_8
-			l_trou, l_trou1, l_trou2, l_trou3,l_trou4,l_trou5,l_trou6,l_trou7,l_trou8,l_trou9,l_trou10,l_trou11: TROU
-			l_trou12,l_trou13,l_trou14,l_trou15,l_trou16,l_trou17,l_trou18,l_trou19:TROU
 			l_texte_pointage: TEXTE
 			l_texte_nom: TEXTE
 			l_texte_other_pointage: TEXTE
@@ -175,14 +174,6 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			l_ctr := show_cursor_disable (l_disable)
 			create l_fond_ecran.make_fond (l_screen)
 			create bdd.make
---			if reseau_serveur /= void then
---				create reseau_serveur.make
---			end
---			if reseau_client = void then
---				create reseau_client.make
---			end
-
-				--create l_c_text.make ("19472 points")
 
 				-- Create Player
 			print ("Entrez votre nom : ")
@@ -218,35 +209,19 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 
 			l_game_music.music_play (0) --if loop equal 0, loop forever
 
---			create {ARRAYED_LIST[TROU]} l_trou_liste.make (20)
---			
---			from
---				l_i := 1
---			until
---				
---			loop
---				
---			end
-			create l_trou.make (l_screen, 20 , 30)
-			create l_trou5.make (l_screen, 20 , 180)
-			create l_trou6.make (l_screen, 20 , 330)
-			create l_trou7.make (l_screen, 20 , 480)
-			create l_trou1.make (l_screen, 210 , 30)
-			create l_trou8.make (l_screen, 210 , 180)
-			create l_trou9.make (l_screen, 210 , 330)
-			create l_trou10.make (l_screen, 210 , 480)
-			create l_trou2.make (l_screen, 400 , 30)
-			create l_trou11.make (l_screen, 400 , 180)
-			create l_trou12.make (l_screen, 400 , 330)
-			create l_trou13.make (l_screen, 400 , 480)
-			create l_trou3.make (l_screen, 590 , 30)
-			create l_trou14.make (l_screen, 590 , 180)
-			create l_trou15.make (l_screen, 590 , 330)
-			create l_trou16.make (l_screen, 590 , 480)
-			create l_trou4.make (l_screen, 780 , 30)
-			create l_trou17.make (l_screen, 780 , 180)
-			create l_trou18.make (l_screen, 780 , 330)
-			create l_trou19.make (l_screen, 780 , 480)
+			create {ARRAYED_LIST[TROU]} l_trou_liste.make (20)
+
+			from
+				l_i := 0
+			until
+				l_i >= 20
+			loop
+				l_x := ((l_i // 4) * 190) + 20
+				l_y := ((l_i \\ 4) * 150) + 30
+				l_trou_liste.extend (create {TROU}.make(l_screen, l_x, l_y))
+				l_i := l_i + 1
+			end
+
 			create l_marmotte.make (l_screen)
 
 				-- Allow memory for events
@@ -295,10 +270,12 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				l_fond_ecran.affiche_image
 
 				from
+					l_i := 1
 				until
-					l_i <= 20
+					l_i > 20
 				loop
 					l_trou_liste[l_i].affiche_image
+					l_i := l_i + 1
 				end
 
 				l_marmotte.animation_marmotte
@@ -437,21 +414,21 @@ feature {NONE} --Routine
 		do
 			result := {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y (l_event)
 		end
---	random
---		--Random pour la sortie aléatoire du Meowth `marmotte'
---		local
---	      l_time: TIME
---	      l_seed: INTEGER
---	    do
---	         -- This computes milliseconds since midnight.
---	         -- Milliseconds since 1970 would be even better.
---	      create l_time.make_now
---	      l_seed := l_time.hour
---	      l_seed := l_seed * 60 + l_time.minute
---	      l_seed := l_seed * 60 + l_time.second
---	      l_seed := l_seed * 1000 + l_time.milli_second
---	      create random_sequence.set_seed (l_seed)
---	    end
+	random
+		--Random pour la sortie aléatoire du Meowth `marmotte'
+		local
+	      l_time: TIME
+	      l_seed: INTEGER
+	    do
+	         -- This computes milliseconds since midnight.
+	         -- Milliseconds since 1970 would be even better.
+	      create l_time.make_now
+	      l_seed := l_time.hour
+	      l_seed := l_seed * 60 + l_time.minute
+	      l_seed := l_seed * 60 + l_time.second
+	      l_seed := l_seed * 1000 + l_time.milli_second
+	      create random_sequence.set_seed (l_seed)
+	    end
 	id:INTEGER
 	-- Numéro d'identification du joueur
 	pointage:INTEGER
@@ -460,6 +437,7 @@ feature {NONE} --Routine
 	-- Nom du joueur
 	bdd:DATABASE
 	-- Instance de la classe `DATABASE'
+	random_sequence:RANDOM
 invariant
 	id_is_at_least_0: id >= 0
 	pointage_is_at_least_0: pointage >= 0
