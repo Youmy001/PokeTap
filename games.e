@@ -215,26 +215,26 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			l_game_music.music_play (0) --if loop equal 0, loop forever
 
 			create l_trou.make (l_screen, 20 , 30)
-			create l_trou1.make (l_screen, 210 , 30)
-			create l_trou2.make (l_screen, 400 , 30)
-			create l_trou3.make (l_screen, 590 , 30)
-			create l_trou4.make (l_screen, 780 , 30)
 			create l_trou5.make (l_screen, 20 , 180)
 			create l_trou6.make (l_screen, 20 , 330)
 			create l_trou7.make (l_screen, 20 , 480)
+			create l_trou1.make (l_screen, 210 , 30)
 			create l_trou8.make (l_screen, 210 , 180)
 			create l_trou9.make (l_screen, 210 , 330)
 			create l_trou10.make (l_screen, 210 , 480)
+			create l_trou2.make (l_screen, 400 , 30)
 			create l_trou11.make (l_screen, 400 , 180)
 			create l_trou12.make (l_screen, 400 , 330)
 			create l_trou13.make (l_screen, 400 , 480)
+			create l_trou3.make (l_screen, 590 , 30)
 			create l_trou14.make (l_screen, 590 , 180)
 			create l_trou15.make (l_screen, 590 , 330)
 			create l_trou16.make (l_screen, 590 , 480)
+			create l_trou4.make (l_screen, 780 , 30)
 			create l_trou17.make (l_screen, 780 , 180)
 			create l_trou18.make (l_screen, 780 , 330)
 			create l_trou19.make (l_screen, 780 , 480)
-			create l_marmotte.make (l_screen)
+			create l_marmotte.make (l_screen, x, y)
 
 				-- Allow memory for events
 			create l_memory_manager.default_create
@@ -320,7 +320,9 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			end
 			l_game_music.music_close
 			l_ctr := show_cursor_disable (1)
-			l_thread_reseau.stop
+			if a_game_mode > 0 then
+				l_thread_reseau.stop
+			end
 		end
 
 feature {NONE} --Routine
