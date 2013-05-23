@@ -49,6 +49,22 @@ Feature --Functions- SDL_mixer.h
 		"Mix_LoadMUS"
 	end
 
+	frozen Mix_LoadWAV(file:POINTER):POINTER
+		-- Charge le fichier de son à utiliser
+	external
+		"C (const char *):Mix_Chunk * | <SDL_mixer.h>"
+	alias
+		"Mix_LoadWAV"
+	end
+
+	frozen Mix_PlayChannel(channel:INTEGER;chunk:POINTER;loops:INTEGER):INTEGER
+		-- retourne 0 si erreur. Joue le canal selectionné pendant le `loops' répétitions
+	external
+		"C inline use <SDL_mixer.h>"
+	alias
+		"Mix_PlayChannel((int)$channel,(Mix_Chunk *)$chunk, (int)$loops)"
+	end
+
 	frozen Mix_PlayMusic(music:POINTER;loops:INTEGER):INTEGER
 		-- retrourne 0 si erreur. Joue la musique le nombre de `loops'
 	external
