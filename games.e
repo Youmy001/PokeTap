@@ -28,6 +28,7 @@ make_local
 			l_serveur_button:BUTTONS
 			l_client_button:BUTTONS
 			l_texte_titre:TEXTE
+			l_magikarp:ANIMATION
 
 			l_music:BRUIT
 	do
@@ -56,6 +57,9 @@ make_local
 			create l_quit_button.make (l_screen,"images/quitter.png", 300, l_multijoueur_button.y + 100)
 			create l_serveur_button.make(l_screen, "images/serveur.png", 300, l_quit_button.y + 100)
 			create l_client_button.make(l_screen, "images/client.png", 300, l_serveur_button.y + 100)
+
+			create l_magikarp.make(l_screen,"images/magikarp",4)
+
 			create l_memory_manager.default_create
 			l_event := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
 			l_quit := {SDL_WRAPPER}.SDL_QUIT
@@ -122,10 +126,13 @@ make_local
 			l_single_button.affiche_image
 			l_multijoueur_button.affiche_image
 			l_quit_button.affiche_image
+			l_magikarp.affiche_image
+			l_magikarp.prochaine_image
 			if l_multiplayer = true then
 				l_serveur_button.affiche_image
 				l_client_button.affiche_image
 			end
+			delay (100)
 			if flip(l_screen) < 0 then
 				print("Erreur at FlipScreen")
 			end
