@@ -222,7 +222,8 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				l_i := l_i + 1
 			end
 
-			create l_marmotte.make (l_screen)
+
+			create l_marmotte.make (l_screen, l_trou_liste[5].x + 5, l_trou_liste[5].y)
 
 				-- Allow memory for events
 			create l_memory_manager.default_create
@@ -291,7 +292,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				l_texte_nom.affiche_texte
 				l_marteau.afficher
 					-- Wait 17ms (for 60fps)
-				delay (1)
+				delay (17)
 					-- Display a frame
 				l_ctr := flip (l_screen)
 				full_collect

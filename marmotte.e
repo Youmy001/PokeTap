@@ -17,13 +17,17 @@ create
 
 feature -- Access
 
-	make (a_screen: POINTER)
+	make (a_screen: POINTER; a_x, a_y:INTEGER_16)
 	-- Initialise `Current' dans l'écran `a_screen'
 		require
 			a_screen_is_not_null : not a_screen.is_default_pointer
 		do
 			screen := a_screen
 			creer_image("images/meowth.png")
+			set_y (a_y)
+			set_x (a_x)
+			a := y
+			z := 56
 			ensure
 				screen_is_not_null : not screen.is_default_pointer
 		end
@@ -38,11 +42,10 @@ feature -- Access
 			l_bmp_w := {SDL_WRAPPER}.get_SDL_Surface_W (infile)
 
 			-- Setup position and surface of image
+			{SDL_WRAPPER}.set_SDL_Rect_x (targetarea, x)
+			{SDL_WRAPPER}.set_SDL_Rect_y (targetarea, y)
 			{SDL_WRAPPER}.set_SDL_Rect_w (targetarea, l_bmp_w)
 			{SDL_WRAPPER}.set_SDL_Rect_h (targetarea, l_bmp_h)
-			if y = 0 then
-				set_y(71)
-			end
 
 			if not sort_trou then
 				rentrer_trou
@@ -50,7 +53,7 @@ feature -- Access
 				sortir_trou
 			end
 
-			l_rect_h := 71 - y
+			l_rect_h := 56 - z
 
 			{SDL_WRAPPER}.set_SDL_Rect_x (l_rect_src, 0)
 			{SDL_WRAPPER}.set_SDL_Rect_y (l_rect_src, 0)
@@ -62,26 +65,45 @@ feature -- Access
 	rentrer_trou
 	-- Anime la marmotte qui rentre dans son trou
 		do
-			if y < 71 then
-				set_y(y + 1)
-			elseif y = 71 then
+--			if y < 71 then
+--				set_y(y + 1)
+--			elseif y = 71 then
+--				sort_trou := true
+--			end
+			if z < 56 then
+				z := z + 1
+			else
 				sort_trou := true
 			end
+			set_y (a + z)
 		end
 
 	sortir_trou
 	-- Anime la marmotte qui sort de son trou
 		do
-			if y < 15 then
+--			if z = 0 then
+--				l_i := l_i + 1
+--				if l_i = 30 then
+--					sort_trou := false
+--					l_i := 0
+--				end
+
+--			elseif z > 0 then
+--				z := z - 1
+--			end
+--			set_y(y + z)
+			if z = 0 then
 				l_i := l_i + 1
 				if l_i = 30 then
 					sort_trou := false
 					l_i := 0
 				end
-			elseif y >= 15 then
-				set_y(y - 1)
+			else
+				z := z - 1
 			end
+			set_y (a + z)
 		end
+
 	is_collision(a_event:POINTER):BOOLEAN
 		do
 			Result:=check_collision(a_event,x,y,l_bmp_w.as_integer_16,l_bmp_h.as_integer_16)
@@ -102,6 +124,7 @@ feature -- Access
 	-- Pointeur de la gestion de mémoire
 	sort_trou:BOOLEAN
 	-- Booléen indicant si la marmotte doit sortir de son trou
+	z, a:INTEGER_16
 
 	invariant
 		l_bmp_h_is_at_least_0 : l_bmp_h >= 0
