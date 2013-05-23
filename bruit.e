@@ -17,7 +17,7 @@ feature -- Access
 
 		end
 	make_music(a_type:STRING)
-		--Initialise la musique à partir de `a_type'
+		--Initialise le son et la musique à partir de `a_type'
 		local
 			l_type:INTEGER
 			--type de la musique
@@ -50,6 +50,15 @@ feature -- Access
 			create l_c_file.make(a_file)
 			music:={SDL_MIXER}.MIX_LoadMUS(l_c_file.item)
 		end
+	sound_load_file(a_file:STRING)
+		--charger le fichier `a_file'
+		local
+			l_c_file:C_STRING
+			--chemin ver le fichier audio
+		do
+			create l_c_file.make(a_file)
+			sound:={SDL_MIXER}.MIX_LoadWAV(l_c_file.item)
+		end
 	music_play(a_loop:INTEGER)
 		--faire jouer la musique pendant `a_loop' boucles.
 		--si `a_loop' est 0, la musique joue à l'infini
@@ -57,6 +66,14 @@ feature -- Access
 			l_ctr:INTEGER
 		do
 			l_ctr:={SDL_MIXER}.MIX_PlayMusic(music,a_loop)
+		end
+	sound_play(a_channel,a_loop:INTEGER)
+		--faire jouer le son pendant `a_loop' boucles.
+		--si `a_loop' est -1, le son joue à l'infini
+		local
+			l_ctr:INTEGER
+		do
+			l_ctr:={SDL_MIXER}.MIX_PlayChannel(a_channel,sound,a_loop)
 		end
 	music_pause
 		--mettre la musique sur pause

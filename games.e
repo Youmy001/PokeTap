@@ -163,6 +163,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			l_trou_liste:LIST[TROU]
 
 			l_game_music:BRUIT
+			l_hammer_sound:BRUIT
 		do
 				-- Initialiser la fenêtre et SDL
 			l_screen := a_screen
@@ -170,6 +171,9 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 
 			create l_game_music.make_music ("mp3")
 			l_game_music.music_load_file ("mus/poke_game.mp3")
+
+			create l_hammer_sound.make_music("ogg")
+			l_hammer_sound.sound_load_file("mus/hammer.ogg")
 
 			l_ctr := show_cursor_disable (l_disable)
 			create l_fond_ecran.make_fond (l_screen)
@@ -254,6 +258,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 						-- Mouse click event
 					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
 						l_marteau.start_animation
+						l_hammer_sound.sound_play(-1,0)
 						if l_marmotte.is_collision(l_event) then
 							l_pointage := l_marteau.get_pointage
 							l_pointage := l_pointage + 1
@@ -262,6 +267,16 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 							l_texte_pointage.set_texte (l_pointage.out + " points")
 							print (l_pointage)
 							print ("%N")
+						else
+							if l_pointage > 0 then
+								l_pointage := l_marteau.get_pointage
+								l_pointage := l_pointage - 1
+								l_marteau.set_pointage (l_pointage)
+								l_marteau.update_pointage
+								l_texte_pointage.set_texte (l_pointage.out + " points")
+								print (l_pointage)
+								print ("%N")
+							end
 						end
 					end
 					l_poll_event := poll_event (l_event)
@@ -291,11 +306,11 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				l_texte_nom.affiche_texte
 				l_marteau.afficher
 					-- Wait 17ms (for 60fps)
-				delay (1)
+				delay (17)
 					-- Display a frame
 				l_ctr := flip (l_screen)
-				full_collect
 				destroy(l_screen)
+				full_collect
 			end
 			l_game_music.music_close
 			l_ctr := show_cursor_disable (1)
