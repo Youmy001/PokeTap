@@ -8,233 +8,140 @@ In thread           Root thread            0x0 (thread id)
 -------------------------------------------------------------------------------
 Class / Object      Routine                Nature of exception           Effect
 -------------------------------------------------------------------------------
-NETWORK_STREAM_SOCKET
-                    c_read_stream          WSAECONNRESET: Connection reset by peer.:
-<0000000003C1267C>  (From SOCKET)          Developer exception.          Fail
--------------------------------------------------------------------------------
-NETWORK_STREAM_SOCKET
-                    c_read_stream          
-<0000000003C1267C>  (From SOCKET)          Routine failure.              Fail
--------------------------------------------------------------------------------
-NETWORK_STREAM_SOCKET
-                    read_to_managed_pointer @7
-<0000000003C1267C>  (From SOCKET)          Routine failure.              Fail
--------------------------------------------------------------------------------
-NETWORK_STREAM_SOCKET
-                    read_character @2      
-<0000000003C1267C>  (From SOCKET)          Routine failure.              Fail
--------------------------------------------------------------------------------
-NETWORK_STREAM_SOCKET
-                    read_line @3           
-<0000000003C1267C>  (From SOCKET)          Routine failure.              Fail
--------------------------------------------------------------------------------
-RESEAU_CLIENT       recoit @2                                           
-<0000000003C1264C>                         Routine failure.              Fail
--------------------------------------------------------------------------------
-GAMES               single_player @96                                   
-<0000000003C1255C>                         Routine failure.              Fail
--------------------------------------------------------------------------------
-GAMES               make_local @59                                      
-<0000000003C1255C>                         Routine failure.              Fail
--------------------------------------------------------------------------------
-GAMES               root's creation                                     
-<0000000003C1255C>                         Routine failure.              Exit
--------------------------------------------------------------------------------
-
-jeu_marmotte: system execution failed.
-Following is the set of recorded exceptions:
-
-******************************** Thread exception *****************************
-In thread           Root thread            0x0 (thread id)
-*******************************************************************************
--------------------------------------------------------------------------------
-Class / Object      Routine                Nature of exception           Effect
--------------------------------------------------------------------------------
 RESEAU_SERVEUR      recoit @1              client_socket_is_connected:  
-<0000000002FB39D8>                         Precondition violated.        Fail
--------------------------------------------------------------------------------
-GAMES               single_player @87                                   
-<0000000002FB0420>                         Routine failure.              Fail
--------------------------------------------------------------------------------
-GAMES               make_local @55                                      
-<0000000002FB0420>                         Routine failure.              Fail
--------------------------------------------------------------------------------
-GAMES               root's creation                                     
-<0000000002FB0420>                         Routine failure.              Exit
--------------------------------------------------------------------------------
-
-jeu_marmotte: system execution failed.
-Following is the set of recorded exceptions:
-
-******************************** Thread exception *****************************
-In thread           Root thread            0x0 (thread id)
-*******************************************************************************
--------------------------------------------------------------------------------
-Class / Object      Routine                Nature of exception           Effect
--------------------------------------------------------------------------------
-RESEAU_SERVEUR      recoit @1              client_socket_is_connected:  
-<0000000003092CD0>                         Precondition violated.        Fail
+<0000000002FF489C>                         Precondition violated.        Fail
 -------------------------------------------------------------------------------
 GAMES               single_player @85                                   
-<0000000003090420>                         Routine failure.              Fail
+<0000000002FF0408>                         Routine failure.              Fail
 -------------------------------------------------------------------------------
 GAMES               make_local @55                                      
-<0000000003090420>                         Routine failure.              Fail
+<0000000002FF0408>                         Routine failure.              Fail
 -------------------------------------------------------------------------------
 GAMES               root's creation                                     
-<0000000003090420>                         Routine failure.              Exit
+<0000000002FF0408>                         Routine failure.              Exit
 -------------------------------------------------------------------------------
 
 jeu_marmotte: system execution failed.
 Following is the set of recorded exceptions:
 
 ******************************** Thread exception *****************************
-In thread           Root thread            0x0 (thread id)
-*******************************************************************************
--------------------------------------------------------------------------------
-Class / Object      Routine                Nature of exception           Effect
--------------------------------------------------------------------------------
-RESEAU_SERVEUR      recoit @1              client_socket_is_connected:  
-<00000000030C3A20>                         Precondition violated.        Fail
--------------------------------------------------------------------------------
-GAMES               single_player @87                                   
-<00000000030C0420>                         Routine failure.              Fail
--------------------------------------------------------------------------------
-GAMES               make_local @55                                      
-<00000000030C0420>                         Routine failure.              Fail
--------------------------------------------------------------------------------
-GAMES               root's creation                                     
-<00000000030C0420>                         Routine failure.              Exit
--------------------------------------------------------------------------------
-
-jeu_marmotte: system execution failed.
-Following is the set of recorded exceptions:
-
-******************************** Thread exception *****************************
-In thread           Root thread            0x0 (thread id)
-*******************************************************************************
--------------------------------------------------------------------------------
-Class / Object      Routine                Nature of exception           Effect
--------------------------------------------------------------------------------
-RESEAU_SERVEUR      recoit @1              client_socket_is_connected:  
-<0000000002FC237C>                         Precondition violated.        Fail
--------------------------------------------------------------------------------
-GAMES               single_player @87                                   
-<0000000002FC0420>                         Routine failure.              Fail
--------------------------------------------------------------------------------
-GAMES               make_local @55                                      
-<0000000002FC0420>                         Routine failure.              Fail
--------------------------------------------------------------------------------
-GAMES               root's creation                                     
-<0000000002FC0420>                         Routine failure.              Exit
--------------------------------------------------------------------------------
-
-jeu_marmotte: system execution failed.
-Following is the set of recorded exceptions:
-
-******************************** Thread exception *****************************
-In thread           Root thread            0x0 (thread id)
+In thread           Child thread           0x17C (thread id)
 *******************************************************************************
 -------------------------------------------------------------------------------
 Class / Object      Routine                Nature of exception           Effect
 -------------------------------------------------------------------------------
 NETWORK_STREAM_SOCKET
                     c_read_stream          WSAECONNRESET: Connection reset by peer.:
-<0000000002FB80F4>  (From SOCKET)          Developer exception.          Fail
+<0000000002F36AE0>  (From SOCKET)          Developer exception.          Fail
 -------------------------------------------------------------------------------
 NETWORK_STREAM_SOCKET
                     c_read_stream          
-<0000000002FB80F4>  (From SOCKET)          Routine failure.              Fail
+<0000000002F36AE0>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
 NETWORK_STREAM_SOCKET
                     read_to_managed_pointer @7
-<0000000002FB80F4>  (From SOCKET)          Routine failure.              Fail
+<0000000002F36AE0>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
 NETWORK_STREAM_SOCKET
                     read_character @2      
-<0000000002FB80F4>  (From SOCKET)          Routine failure.              Fail
+<0000000002F36AE0>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
 NETWORK_STREAM_SOCKET
                     read_line @3           
-<0000000002FB80F4>  (From SOCKET)          Routine failure.              Fail
+<0000000002F36AE0>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
-RESEAU_SERVEUR      recoit @1                                           
-<0000000002FB7968>                         Routine failure.              Fail
+RESEAU_SERVEUR      recoit @2                                           
+<0000000002F36360>                         Routine failure.              Fail
 -------------------------------------------------------------------------------
-GAMES               single_player @85                                   
-<0000000002FB0420>                         Routine failure.              Fail
+RESEAU_THREAD       execute @8                                          
+<0000000002F36318>                         Routine failure.              Fail
 -------------------------------------------------------------------------------
-GAMES               make_local @55                                      
-<0000000002FB0420>                         Routine failure.              Fail
+RESEAU_THREAD       thr_main @3                                         
+<0000000002F36318>  (From THREAD)          Routine failure.              Rescue
 -------------------------------------------------------------------------------
 GAMES               root's creation                                     
-<0000000002FB0420>                         Routine failure.              Exit
+<0000000002F30420>                         Routine failure.              Exit
 -------------------------------------------------------------------------------
 
 jeu_marmotte: system execution failed.
 Following is the set of recorded exceptions:
 
 ******************************** Thread exception *****************************
-In thread           Root thread            0x0 (thread id)
+In thread           Child thread           0x178 (thread id)
 *******************************************************************************
 -------------------------------------------------------------------------------
 Class / Object      Routine                Nature of exception           Effect
 -------------------------------------------------------------------------------
-RESEAU_SERVEUR      recoit @5              result_is_not_empty:         
-<00000000030F29F4>                         Postcondition violated.       Fail
+NETWORK_STREAM_SOCKET
+                    c_read_stream          WSAECONNRESET: Connection reset by peer.:
+<0000000002F667EC>  (From SOCKET)          Developer exception.          Fail
 -------------------------------------------------------------------------------
-RESEAU_SERVEUR      recoit @5                                           
-<00000000030F29F4>                         Routine failure.              Fail
+NETWORK_STREAM_SOCKET
+                    c_read_stream          
+<0000000002F667EC>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
-GAMES               single_player @85                                   
-<00000000030F0420>                         Routine failure.              Fail
+NETWORK_STREAM_SOCKET
+                    read_to_managed_pointer @7
+<0000000002F667EC>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
-GAMES               make_local @55                                      
-<00000000030F0420>                         Routine failure.              Fail
+NETWORK_STREAM_SOCKET
+                    read_character @2      
+<0000000002F667EC>  (From SOCKET)          Routine failure.              Fail
+-------------------------------------------------------------------------------
+NETWORK_STREAM_SOCKET
+                    read_line @3           
+<0000000002F667EC>  (From SOCKET)          Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_SERVEUR      recoit @2                                           
+<0000000002F6606C>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_THREAD       execute @8                                          
+<0000000002F66024>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_THREAD       thr_main @3                                         
+<0000000002F66024>  (From THREAD)          Routine failure.              Rescue
 -------------------------------------------------------------------------------
 GAMES               root's creation                                     
-<00000000030F0420>                         Routine failure.              Exit
+<0000000002F60420>                         Routine failure.              Exit
 -------------------------------------------------------------------------------
 
 jeu_marmotte: system execution failed.
 Following is the set of recorded exceptions:
 
 ******************************** Thread exception *****************************
-In thread           Root thread            0x0 (thread id)
+In thread           Child thread           0x17C (thread id)
 *******************************************************************************
 -------------------------------------------------------------------------------
 Class / Object      Routine                Nature of exception           Effect
 -------------------------------------------------------------------------------
-RESEAU_SERVEUR      recoit @1              client_socket_is_connected:  
-<0000000003002A30>                         Precondition violated.        Fail
+NETWORK_STREAM_SOCKET
+                    c_read_stream          WSAECONNRESET: Connection reset by peer.:
+<0000000003026F78>  (From SOCKET)          Developer exception.          Fail
 -------------------------------------------------------------------------------
-GAMES               single_player @85                                   
-<0000000003000420>                         Routine failure.              Fail
+NETWORK_STREAM_SOCKET
+                    c_read_stream          
+<0000000003026F78>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
-GAMES               make_local @55                                      
-<0000000003000420>                         Routine failure.              Fail
+NETWORK_STREAM_SOCKET
+                    read_to_managed_pointer @7
+<0000000003026F78>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
-GAMES               root's creation                                     
-<0000000003000420>                         Routine failure.              Exit
+NETWORK_STREAM_SOCKET
+                    read_character @2      
+<0000000003026F78>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
-
-jeu_marmotte: system execution failed.
-Following is the set of recorded exceptions:
-
-******************************** Thread exception *****************************
-In thread           Root thread            0x0 (thread id)
-*******************************************************************************
+NETWORK_STREAM_SOCKET
+                    read_line @3           
+<0000000003026F78>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
-Class / Object      Routine                Nature of exception           Effect
+RESEAU_SERVEUR      recoit @2                                           
+<00000000030267F8>                         Routine failure.              Fail
 -------------------------------------------------------------------------------
-RESEAU_SERVEUR      recoit @1              client_socket_is_connected:  
-<0000000003022634>                         Precondition violated.        Fail
+RESEAU_THREAD       execute @8                                          
+<00000000030267B0>                         Routine failure.              Fail
 -------------------------------------------------------------------------------
-GAMES               single_player @85                                   
-<0000000003020420>                         Routine failure.              Fail
--------------------------------------------------------------------------------
-GAMES               make_local @55                                      
-<0000000003020420>                         Routine failure.              Fail
+RESEAU_THREAD       thr_main @3                                         
+<00000000030267B0>  (From THREAD)          Routine failure.              Rescue
 -------------------------------------------------------------------------------
 GAMES               root's creation                                     
 <0000000003020420>                         Routine failure.              Exit
@@ -244,36 +151,85 @@ jeu_marmotte: system execution failed.
 Following is the set of recorded exceptions:
 
 ******************************** Thread exception *****************************
-In thread           Root thread            0x0 (thread id)
+In thread           Child thread           0x180 (thread id)
 *******************************************************************************
 -------------------------------------------------------------------------------
 Class / Object      Routine                Nature of exception           Effect
 -------------------------------------------------------------------------------
 NETWORK_STREAM_SOCKET
-                    c_put_stream           WSAECONNRESET: Connection reset by peer.:
-<0000000002F9345C>  (From SOCKET)          Developer exception.          Fail
+                    c_read_stream          WSAECONNRESET: Connection reset by peer.:
+<0000000002FD6B70>  (From SOCKET)          Developer exception.          Fail
 -------------------------------------------------------------------------------
 NETWORK_STREAM_SOCKET
-                    c_put_stream           
-<0000000002F9345C>  (From SOCKET)          Routine failure.              Fail
+                    c_read_stream          
+<0000000002FD6B70>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
 NETWORK_STREAM_SOCKET
-                    put_managed_pointer @5 
-<0000000002F9345C>  (From SOCKET)          Routine failure.              Fail
+                    read_to_managed_pointer @7
+<0000000002FD6B70>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
 NETWORK_STREAM_SOCKET
-                    put_string @4          
-<0000000002F9345C>  (From SOCKET)          Routine failure.              Fail
+                    read_character @2      
+<0000000002FD6B70>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
-RESEAU_CLIENT       envoye @4                                           
-<0000000002F931F8>                         Routine failure.              Fail
+NETWORK_STREAM_SOCKET
+                    read_line @3           
+<0000000002FD6B70>  (From SOCKET)          Routine failure.              Fail
 -------------------------------------------------------------------------------
-GAMES               single_player @92                                   
-<0000000002F90420>                         Routine failure.              Fail
+RESEAU_SERVEUR      recoit @2                                           
+<0000000002FD63F0>                         Routine failure.              Fail
 -------------------------------------------------------------------------------
-GAMES               make_local @59                                      
-<0000000002F90420>                         Routine failure.              Fail
+RESEAU_THREAD       execute @8                                          
+<0000000002FD63A8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_THREAD       thr_main @3                                         
+<0000000002FD63A8>  (From THREAD)          Routine failure.              Rescue
 -------------------------------------------------------------------------------
 GAMES               root's creation                                     
-<0000000002F90420>                         Routine failure.              Exit
+<0000000002FD0420>                         Routine failure.              Exit
 -------------------------------------------------------------------------------
+
+jeu_marmotte: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Child thread           0x178 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+NETWORK_STREAM_SOCKET
+                    c_read_stream          WSAECONNRESET: Connection reset by peer.:
+<0000000003E84AF8>  (From SOCKET)          Developer exception.          Fail
+-------------------------------------------------------------------------------
+NETWORK_STREAM_SOCKET
+                    c_read_stream          
+<0000000003E84AF8>  (From SOCKET)          Routine failure.              Fail
+-------------------------------------------------------------------------------
+NETWORK_STREAM_SOCKET
+                    read_to_managed_pointer @7
+<0000000003E84AF8>  (From SOCKET)          Routine failure.              Fail
+-------------------------------------------------------------------------------
+NETWORK_STREAM_SOCKET
+                    read_character @2      
+<0000000003E84AF8>  (From SOCKET)          Routine failure.              Fail
+-------------------------------------------------------------------------------
+NETWORK_STREAM_SOCKET
+                    read_line @3           
+<0000000003E84AF8>  (From SOCKET)          Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_SERVEUR      recoit @2                                           
+<0000000003E84AD4>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_THREAD       execute @10                                         
+<0000000003E849D8>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_THREAD       thr_main @3                                         
+<0000000003E849D8>  (From THREAD)          Routine failure.              Rescue
+-------------------------------------------------------------------------------
+GAMES               root's creation                                     
+<000000000401FEE8>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+Catcall detected in {SQLITE_STATEMENT_EXTERNALS}.sqlite3_db_handle for arg#1: expected SQLITE_API but got ANY
+Catcall detected in {SQLITE_STATEMENT_EXTERNALS}.sqlite3_db_handle for arg#1: expected SQLITE_API but got SPECIAL [CHARACTER_8]
+Catcall detected in {SQLITE_STATEMENT_EXTERNALS}.sqlite3_db_handle for arg#1: expected SQLITE_API but got ANY
