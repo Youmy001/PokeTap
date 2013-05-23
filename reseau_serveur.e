@@ -54,7 +54,7 @@ feature
 	envoye(a_string:STRING)
 	-- Envoie `a_string' a un autre client
 	require
-		client_socket_is_connected : client_socket.is_connected
+		--client_socket_is_connected : client_socket.is_connected
 		a_string_is_not_empty : not a_string.is_empty
 	do
 		client_socket.put_string (a_string+"%N")
@@ -62,7 +62,7 @@ feature
 	recoit():STRING
 	-- Message envoyé par un autre client
 	require
-		client_socket_is_connected : client_socket.is_connected
+		--client_socket_is_connected : client_socket.is_connected
 	local
 		l_string:STRING
 	do
