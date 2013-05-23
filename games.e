@@ -295,6 +295,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 					-- Display a frame
 				l_ctr := flip (l_screen)
 				full_collect
+				destroy(l_screen)
 			end
 			l_game_music.music_close
 			l_ctr := show_cursor_disable (1)
@@ -396,6 +397,13 @@ feature {NONE} --Routine
 		-- Quitte le jeu
 		do
 			{SDL_WRAPPER}.SDL_Exit ()
+		end
+	destroy(a_screen:POINTER)
+		-- Détruit la surface `screen'
+		require
+			screen_is_not_null : not a_screen.is_default_pointer
+		do
+			{SDL_WRAPPER}.SDL_FreeSurface(a_screen)
 		end
 
 	mouse_motion: NATURAL_8
