@@ -61,7 +61,7 @@ make_local
 			create l_serveur_button.make(l_screen, "images/serveur.png", 300, l_quit_button.y + 100)
 			create l_client_button.make(l_screen, "images/client.png", 300, l_serveur_button.y + 100)
 
-			create l_magikarp.make(l_screen,"images/magikarp",4)
+			create l_magikarp.make_anim(l_screen,"images/magikarp",4)
 
 			create l_memory_manager.default_create
 			l_event := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
@@ -253,6 +253,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 					end
 						-- Mouse click event
 					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+						l_marteau.start_animation
 						if l_marmotte.is_collision(l_event) then
 							l_pointage := l_marteau.get_pointage
 							l_pointage := l_pointage + 1
@@ -288,7 +289,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				end
 				l_texte_pointage.affiche_texte
 				l_texte_nom.affiche_texte
-				l_marteau.affiche_image
+				l_marteau.afficher
 					-- Wait 17ms (for 60fps)
 				delay (1)
 					-- Display a frame
