@@ -22,9 +22,12 @@ feature {NONE} -- Initialization
 			--l_socket: NETWORK_STREAM_SOCKET
 			l_addr:STRING
 			l_port:INTEGER
+			l_addr_serveur:INTEGER
 		do
 			create l_addr_factory
-			l_addr:="localhost"
+			print( "Rentrez l'ip du serveur :")
+			io.read_line
+			l_addr:= io.last_string
 			l_port:=12345
 
 			l_address:= l_addr_factory.create_from_name (l_addr)
