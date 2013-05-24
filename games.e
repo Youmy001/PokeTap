@@ -168,6 +168,10 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			--Bonus
 			l_ajout:INTEGER -- points ajoutés à chaque clicks valides
 			l_suite:INTEGER -- nombre de clicks valides de suite
+
+			--Tabeau
+			l_debut:INTEGER -- Heure de début
+			l_now:INTEGER -- Heure actuelle
 		do
 				-- Initialiser la fenêtre et SDL
 			l_screen := a_screen
@@ -243,7 +247,10 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			l_mousemotion := mouse_motion
 			l_mousedown := {SDL_WRAPPER}.SDL_MOUSEBUTTONDOWN
 
-			--l_marteau.get_best_pointage()
+
+			-- Temps debut de partie
+			l_debut := {SDL_WRAPPER}.SDL_GetTicks
+
 			from
 				l_quit := {SDL_WRAPPER}.SDL_QUIT
 				l_quit_bool := false
@@ -255,6 +262,13 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 					l_marmotte.set_x (l_trou_liste[l_random].x + 10)
 					l_marmotte.set_y (l_trou_liste[l_random].y)
 				end
+
+				l_now:={SDL_WRAPPER}.SDL_GetTicks
+
+				if l_now > l_debut+120000 then
+					l_quit_bool:=true
+				end
+
 				from
 					l_poll_event := poll_event (l_event)
 				until
@@ -272,9 +286,10 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 						-- Mouse click event
 					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
 						l_marteau.start_animation
-						print(random.out + " " )
 						l_hammer_sound.sound_play(-1,0)
 						if l_marmotte.is_collision(l_event) then
+							l_marmotte.is_sort(FALSE)
+
 							l_pointage := l_marteau.get_pointage
 							l_pointage := l_pointage + l_ajout
 							l_marteau.set_pointage (l_pointage)
@@ -433,7 +448,7 @@ feature {NONE} --Routine
 		require
 			temp_is_at_least_0 : temp >= 0
 		do
-			{SDL_WRAPPER}.SDL_Delay (0)
+			{SDL_WRAPPER}.SDL_Delay (temp)
 		end
 
 	exit
@@ -472,6 +487,7 @@ feature {NONE} --Routine
 	      l_seed := l_seed * 60 + l_time.minute
 	      l_seed := l_seed * 60 + l_time.second
 	      l_seed := l_seed * 1000 + l_time.milli_second
+	      print(l_seed)
 	      result := l_seed \\ 20 + 1
 	      --create random_sequence.set_seed (l_seed)
 	    end

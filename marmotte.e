@@ -110,6 +110,10 @@ feature -- Access
 		do
 			Result:=check_collision(a_event,x,y,l_bmp_w.as_integer_16,l_bmp_h.as_integer_16)
 		end
+	is_sort(a_bool:BOOLEAN)
+		do
+			sort_trou:=a_bool
+		end
 
 	l_bmp_w:INTEGER
 	-- Largeur de l'image
