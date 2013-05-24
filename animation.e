@@ -62,8 +62,6 @@ feature -- Access
 
 		end
 	prochaine_image
-		local
-			l_c_image:C_STRING
 		do
 			cur_image:=cur_image+1
 			if cur_image > image_list.count then

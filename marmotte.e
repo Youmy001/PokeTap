@@ -108,7 +108,7 @@ feature -- Access
 
 	is_collision(a_event:POINTER):BOOLEAN
 		do
-			Result:=check_collision(a_event,x,y,l_bmp_w.as_integer_16,l_bmp_h.as_integer_16)
+			Result:=check_collision(a_event,x,y-10,l_bmp_w.as_integer_16,l_bmp_h.as_integer_16-44)
 		end
 	is_sort(a_bool:BOOLEAN)
 		do
