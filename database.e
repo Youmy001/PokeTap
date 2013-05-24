@@ -24,17 +24,6 @@ feature {NONE} -- Initialization
 			l_query:SQLITE_QUERY_STATEMENT
 			l_modify:SQLITE_MODIFY_STATEMENT
 		do
-
-				--			from
-				--				allo_liste.start
-				--			until
-				--				allo_liste.exhausted
-				--			loop
-				--				-- Queque chose avec allo_liste
-				--				allo_liste.forth
-				--			end
-
-				--			tous_valid:=across allo_liste as l_element all l_element.is_valid end
 				-- Open/create a Database.
 			create db.make_create_read_write ("saves/pointage")
 			create l_query.make ("SELECT name FROM sqlite_master ORDER BY name;", db)

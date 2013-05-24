@@ -1,8 +1,9 @@
 note
-	description: "Summary description for {RESEAU_THREAD}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "[Gestion du réseau dans un thead]"
+	author: "Véronique Blais"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
+	date: "22 mai 2013"
+	revision: "0.13.05.23"
 
 class
 	RESEAU_THREAD

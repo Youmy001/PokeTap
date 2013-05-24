@@ -31,13 +31,10 @@ feature -- Access
 
 				-- Connection to database
 			bdd:=a_bdd
-			--create {DATABASE} bdd.make()
-				-- Create an entry in the database for the player
-				-- with is name and empty score. Return an ID.
+
+			-- Create an entry in the database for the player
+			-- with is name and empty score. Return an ID.
 			id:=bdd.insert_new_pointage(0,nom)
-				-- Print ID
-			print(id)
-			print("%N")
 		end
 	set_nom(a_nom:STRING)
 	-- Change le nom pour `a_nom'

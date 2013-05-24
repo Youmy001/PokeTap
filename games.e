@@ -3,7 +3,7 @@ note
 	author: "Tommy Teasdale et Véronique Blais"
 	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "22 Avril 2013"
-	revision: "0.13.04.22"
+	revision: "0.13.05.24"
 
 class
 	GAMES
@@ -43,7 +43,7 @@ make_local
 			l_screen := set_video_mode
 			l_multiplayer:= false
 
-			create l_music.make_music ("mp3") -- allowed format: mp3, ogg, flac and mod
+			create l_music.make ("mp3") -- allowed format: mp3, ogg, flac and mod
 			l_music.music_load_file ("mus/poke_menu.mp3")
 			l_music.music_play (0) --if loop equal 0; loop forever
 
@@ -164,20 +164,27 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 
 			l_game_music:BRUIT
 			l_hammer_sound:BRUIT
+
+			--Bonus
+			l_ajout:INTEGER -- points ajoutés à chaque clicks valides
+			l_suite:INTEGER -- nombre de clicks valides de suite
 		do
 				-- Initialiser la fenêtre et SDL
 			l_screen := a_screen
 			l_disable := disable
 
-			create l_game_music.make_music ("mp3")
+			create l_game_music.make ("mp3")
 			l_game_music.music_load_file ("mus/poke_game.mp3")
 
-			create l_hammer_sound.make_music("ogg")
+			create l_hammer_sound.make("ogg")
 			l_hammer_sound.sound_load_file("mus/hammer.ogg")
 
 			l_ctr := show_cursor_disable (l_disable)
 			create l_fond_ecran.make_fond (l_screen)
 			create bdd.make
+
+			l_ajout:=1
+			l_suite:=0
 
 				-- Create Player
 			print ("Entrez votre nom : ")
@@ -261,12 +268,12 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 						l_hammer_sound.sound_play(-1,0)
 						if l_marmotte.is_collision(l_event) then
 							l_pointage := l_marteau.get_pointage
-							l_pointage := l_pointage + 1
+							l_pointage := l_pointage + l_ajout
 							l_marteau.set_pointage (l_pointage)
 							l_marteau.update_pointage
 							l_texte_pointage.set_texte (l_pointage.out + " points")
-							print (l_pointage)
-							print ("%N")
+
+							l_suite:=l_suite+1
 						else
 							if l_pointage > 0 then
 								l_pointage := l_marteau.get_pointage
@@ -274,14 +281,12 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 								l_marteau.set_pointage (l_pointage)
 								l_marteau.update_pointage
 								l_texte_pointage.set_texte (l_pointage.out + " points")
-								print (l_pointage)
-								print ("%N")
 							end
+							l_suite:=0
 						end
 					end
 					l_poll_event := poll_event (l_event)
 				end
-
 					-- Display images
 				l_fond_ecran.affiche_image
 
@@ -295,8 +300,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				end
 
 				l_marmotte.animation_marmotte
-					--l_font_surface:={SDL_TTF}.TTF_RenderText_Solid(font,l_c_text.item,l_color)
-					--affiche_texte(l_font_surface, l_screen)
+
 				if a_game_mode > 0 then
 					l_texte_other_pointage.set_texte (l_other_marteau.pointage.out)
 					l_texte_other_pointage.affiche_texte
@@ -305,6 +309,12 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				l_texte_pointage.affiche_texte
 				l_texte_nom.affiche_texte
 				l_marteau.afficher
+
+				if l_suite > 9 then
+					l_ajout:=2
+				else
+					l_ajout:=1
+				end
 					-- Wait 17ms (for 60fps)
 				delay (17)
 					-- Display a frame

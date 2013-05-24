@@ -3,20 +3,14 @@ note
 	author: "Tommy Teasdale"
 	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "15 Avril 2013"
-	revision: "0.13.04.29"
+	revision: "0.13.05.23"
 
 class
 	BRUIT
 create
-	make_sound,make_music
+	make
 feature -- Access
-	make_sound
-		local
-
-		do
-
-		end
-	make_music(a_type:STRING)
+	make(a_type:STRING)
 		--Initialise le son et la musique à partir de `a_type'
 		local
 			l_type:INTEGER
@@ -57,7 +51,7 @@ feature -- Access
 			--chemin ver le fichier audio
 		do
 			create l_c_file.make(a_file)
-			sound:={SDL_MIXER}.MIX_LoadWAV(l_c_file.item)
+			music:={SDL_MIXER}.MIX_LoadWAV(l_c_file.item)
 		end
 	music_play(a_loop:INTEGER)
 		--faire jouer la musique pendant `a_loop' boucles.
@@ -73,7 +67,7 @@ feature -- Access
 		local
 			l_ctr:INTEGER
 		do
-			l_ctr:={SDL_MIXER}.MIX_PlayChannel(a_channel,sound,a_loop)
+			l_ctr:={SDL_MIXER}.MIX_PlayChannel(a_channel,music,a_loop)
 		end
 	music_pause
 		--mettre la musique sur pause
@@ -119,9 +113,7 @@ feature -- Access
 		end
 feature {NONE}
 	music:POINTER
-	--musique
-	sound:POINTER
-	--bruit
+	--musique ou bruit
 	volume:INTEGER
 	--volume de la musique ou du son
 
