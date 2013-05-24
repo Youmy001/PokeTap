@@ -1,6 +1,6 @@
 note
 	description: "[Gestion des trous utilisés pour les marmottes]"
-	author: "Tommy Teasdale et Véronique Blais"
+	author: "Véronique Blais"
 	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
 	date: "18 Avril 2013"
 	revision: "0.13.04.18"

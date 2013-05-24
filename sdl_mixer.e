@@ -2,8 +2,8 @@ note
 	description: "Wrapper C for SDL_mixer library {SDL_MIXER}."
 	author: "Tommy Teasdale"
 	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
-	date: "$Date$"
-	revision: "$Revision$"
+	date: "15 avril 2013"
+	revision: "0.13.05.23"
 
 class
 	SDL_MIXER

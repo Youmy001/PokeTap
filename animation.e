@@ -1,8 +1,9 @@
 note
-	description: "Summary description for {ANIMATION}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "[Gestion des animations]"
+	author: "Tommy Teasdale"
+	copyright: "Copyright (c) 2013, Tommy Teasdale, Véronique Blais"
+	date: "23 mai 2013"
+	revision: "0.13.05.23"
 
 class
 	ANIMATION

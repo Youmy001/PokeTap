@@ -201,6 +201,14 @@ feature -- getter  -- SDL.h
 		"SDL_ShowCursor"
 	end
 
+	frozen SDL_GetTicks:INTEGER_32
+		-- Millisecondes depuis l'ouverture de SDL
+	external
+		"C ():Uint32 | <SDL.h>"
+	alias
+		"SDL_GetTicks"
+	end
+
 feature --sizeof
 
 	frozen sizeof_SDL_Rect:INTEGER
