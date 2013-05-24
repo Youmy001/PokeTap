@@ -251,6 +251,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			-- Temps debut de partie
 			l_debut := {SDL_WRAPPER}.SDL_GetTicks
 			print (l_debut)
+			create l_temp.make (l_screen)
 
 			from
 				l_quit := {SDL_WRAPPER}.SDL_QUIT
@@ -264,7 +265,6 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 					l_marmotte.set_y (l_trou_liste[l_random].y)
 				end
 
-				create l_temp.make (l_screen)
 				l_now := {SDL_WRAPPER}.SDL_GetTicks - l_debut
 				l_temps_ctr := (120000 - l_now)//1000
 				l_temp.set_texte ("temps restant : " + l_temps_ctr.out)
@@ -368,9 +368,13 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 
 			l_fond_ecran.destroy (l_screen)
 
-			game_over(l_screen,l_game_music)
+			if a_game_mode > 0 then
+				game_over(a_game_mode,l_screen,l_game_music,l_marteau.get_pointage,l_other_marteau.get_pointage)
+			else
+				game_over(a_game_mode,l_screen,l_game_music,l_marteau.get_pointage,l_marteau.get_best_pointage)
+			end
 		end
-	game_over(a_screen:POINTER;a_music:BRUIT)
+	game_over(a_game_mode:INTEGER;a_screen:POINTER;a_music:BRUIT;a_pointage,a_best_pointage:INTEGER)
 		local
 			l_screen:POINTER
 			l_fond_ecran:FOND_ECRAN
@@ -380,6 +384,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			l_quit:NATURAL_8
 			l_mousedown:NATURAL_8
 			l_texte_game_over:TEXTE
+			l_texte_pointage,l_texte_best_pointage:TEXTE
 			l_quit_button:BUTTONS
 			l_quit_bool:BOOLEAN
 		do
@@ -395,11 +400,23 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 
 			create l_texte_game_over.make (l_screen)
 			l_texte_game_over.set_font_size (75)
-			l_texte_game_over.set_font_style ("fonts/Pokemon_Hollow.ttf")
+			l_texte_game_over.set_font_style ("fonts/Pokemon_Solid.ttf")
 			l_texte_game_over.set_font
 			l_texte_game_over.set_texte ("La partie est terminée")
 			l_texte_game_over.set_x (25)
 			l_texte_game_over.set_y (15)
+
+			create l_texte_pointage.make (l_screen)
+			l_texte_game_over.set_font
+			l_texte_pointage.set_texte ("Vous avez marqué "+a_pointage.out+" points.")
+			l_texte_pointage.set_x(5)
+			l_texte_pointage.set_y(510)
+			create l_texte_best_pointage.make(l_screen)
+			l_texte_best_pointage.set_font
+			l_texte_best_pointage.set_texte ("Le meilleur pointage est de "+a_best_pointage.out+" points.")
+			l_texte_best_pointage.set_x(5)
+			l_texte_best_pointage.set_y(540)
+
 			create l_quit_button.make (l_screen,"images/quitter.png", 280, 575)
 
 
@@ -431,6 +448,8 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 
 				l_fond_ecran.affiche_image
 				l_texte_game_over.affiche_texte
+				l_texte_pointage.affiche_texte
+				l_texte_best_pointage.affiche_texte
 				l_quit_button.affiche_image
 				delay (100)
 				if flip(l_screen) < 0 then

@@ -66,10 +66,10 @@ feature -- Access
 			ensure
 				pointage_is_at_least_0 : pointage >= 0
 		end
-	get_best_pointage()
+	get_best_pointage():INTEGER
 	-- Trouve le meilleur pointage dans `bdd'
 		do
-			bdd.get_best_pointage ()
+			Result:=bdd.get_best_pointage (nom)
 		end
 	insert_new_pointage(a_pointage:INTEGER a_nom:STRING):INTEGER
 	-- Id du joueur `a_nom' dans `bdd'
