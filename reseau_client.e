@@ -26,7 +26,7 @@ feature {NONE} -- Initialization
 			create l_addr_factory
 			print( "Rentrez l'ip du serveur :")
 			io.read_line
-			l_addr:= io.last_string
+			l_addr:= io.last_string.string
 			l_port:=12345
 
 			l_address:= l_addr_factory.create_from_name (l_addr)

@@ -164,6 +164,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			l_temps_ctr:INTEGER
 			l_game_music:BRUIT
 			l_hammer_sound:BRUIT
+			l_nom:STRING
 
 			--Bonus
 			l_ajout:INTEGER -- points ajoutés à chaque clicks valides
@@ -180,7 +181,8 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			-- Create Player
 			print ("Entrez votre nom : ")
 			io.readLine
-			create l_marteau.make (l_screen, io.last_string, bdd)
+			l_nom := io.last_string.string
+			create l_marteau.make (l_screen, l_nom, bdd)
 				-- Initialiser la fenêtre et SDL
 
 			l_disable := disable
