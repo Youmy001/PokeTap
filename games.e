@@ -172,8 +172,9 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			--Tabeau
 			l_debut:INTEGER -- Heure de début
 			l_now:INTEGER -- Heure actuelle
+
 		do
-				-- Initialiser la fenêtre et SDL
+			-- Initialiser la fenêtre et SDL
 			l_screen := a_screen
 			l_disable := disable
 
@@ -360,11 +361,83 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				l_trou_liste[l_i].destroy (l_screen)
 				l_i := l_i + 1
 			end
-			l_game_music.music_close
 			l_ctr := show_cursor_disable (1)
 			if a_game_mode > 0 then
 				l_thread_reseau.stop
 			end
+
+			l_fond_ecran.destroy (l_screen)
+
+			game_over(l_screen,l_game_music)
+		end
+	game_over(a_screen:POINTER;a_music:BRUIT)
+		local
+			l_screen:POINTER
+			l_fond_ecran:FOND_ECRAN
+			l_memory_manager:POINTER
+			l_poll_event:INTEGER
+			l_event:POINTER
+			l_quit:NATURAL_8
+			l_mousedown:NATURAL_8
+			l_texte_game_over:TEXTE
+			l_quit_button:BUTTONS
+			l_quit_bool:BOOLEAN
+		do
+			l_screen:=a_screen
+
+			create l_memory_manager.default_create
+			l_event := l_memory_manager.memory_alloc ({SDL_WRAPPER}.sizeof_SDL_Event)
+			l_quit := {SDL_WRAPPER}.SDL_QUIT
+			l_mousedown := {SDL_WRAPPER}.SDL_MOUSEBUTTONDOWN
+
+			create l_fond_ecran.make_fond (l_screen)
+			l_fond_ecran.creer_image ("images/game_over.png")
+
+			create l_texte_game_over.make (l_screen)
+			l_texte_game_over.set_font_size (75)
+			l_texte_game_over.set_font_style ("fonts/Pokemon_Hollow.ttf")
+			l_texte_game_over.set_font
+			l_texte_game_over.set_texte ("La partie est terminée")
+			l_texte_game_over.set_x (25)
+			l_texte_game_over.set_y (15)
+			create l_quit_button.make (l_screen,"images/quitter.png", 280, 575)
+
+
+			from -- Game Over Screen
+				l_quit_bool:=false
+			until
+				l_quit_bool=true
+			loop
+				from
+					l_poll_event := poll_event (l_event)
+				until
+					l_poll_event /= 1
+				loop
+
+						-- Quit event
+					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_quit then
+						l_quit_bool:=true
+					end
+						-- Mouse click event
+
+					if l_quit_button.is_collision(l_event) then
+						--l_texte_game_over.set_texte ("Quitter vers le menu")
+						if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
+							l_quit_bool := True
+						end
+					end
+					l_poll_event := poll_event (l_event)
+				end
+
+				l_fond_ecran.affiche_image
+				l_texte_game_over.affiche_texte
+				l_quit_button.affiche_image
+				delay (100)
+				if flip(l_screen) < 0 then
+					print("Erreur at FlipScreen")
+				end
+			end
+			a_music.music_close
 		end
 
 feature {NONE} --Routine
