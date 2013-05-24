@@ -149,7 +149,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 		local
 			l_marteau, l_other_marteau: MARTEAU
 			l_marmotte: MARMOTTE
-			l_ctr, l_pointage, l_disable, l_poll_event: INTEGER
+			l_ctr, l_pointage, l_disable, l_poll_event, l_random: INTEGER
 			l_i, l_x, l_y:INTEGER_16
 			l_screen, l_event, l_memory_manager: POINTER
 			l_fond_ecran: FOND_ECRAN
@@ -227,7 +227,8 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			end
 
 
-			create l_marmotte.make (l_screen, l_trou_liste[5].x + 5, l_trou_liste[5].y)
+
+			create l_marmotte.make (l_screen, l_trou_liste[11].x + 10, l_trou_liste[11].y)
 
 				-- Allow memory for events
 			create l_memory_manager.default_create
@@ -242,6 +243,11 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			until
 				l_quit_bool = true
 			loop
+				if l_marmotte.z = 56 then
+					l_random := random
+					l_marmotte.set_x (l_trou_liste[l_random].x + 10)
+					l_marmotte.set_y (l_trou_liste[l_random].y)
+				end
 				from
 					l_poll_event := poll_event (l_event)
 				until
@@ -259,6 +265,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 						-- Mouse click event
 					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
 						l_marteau.start_animation
+						print(random.out + " " )
 						l_hammer_sound.sound_play(-1,0)
 						if l_marmotte.is_collision(l_event) then
 							l_pointage := l_marteau.get_pointage
@@ -310,8 +317,18 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				delay (17)
 					-- Display a frame
 				l_ctr := flip (l_screen)
-				destroy(l_screen)
+
 				full_collect
+			end
+			l_marteau.destroy(l_screen)
+			l_fond_ecran.destroy (l_screen)
+			from
+				l_i := 1
+			until
+				l_i > 20
+			loop
+				l_trou_liste[l_i].destroy (l_screen)
+				l_i := l_i + 1
 			end
 			l_game_music.music_close
 			l_ctr := show_cursor_disable (1)
@@ -406,20 +423,13 @@ feature {NONE} --Routine
 		require
 			temp_is_at_least_0 : temp >= 0
 		do
-			{SDL_WRAPPER}.SDL_Delay (temp)
+			{SDL_WRAPPER}.SDL_Delay (0)
 		end
 
 	exit
 		-- Quitte le jeu
 		do
 			{SDL_WRAPPER}.SDL_Exit ()
-		end
-	destroy(a_screen:POINTER)
-		-- Détruit la surface `screen'
-		require
-			screen_is_not_null : not a_screen.is_default_pointer
-		do
-			{SDL_WRAPPER}.SDL_FreeSurface(a_screen)
 		end
 
 	mouse_motion: NATURAL_8
@@ -439,7 +449,7 @@ feature {NONE} --Routine
 		do
 			result := {SDL_WRAPPER}.get_SDL_MouseMotionEvent_y (l_event)
 		end
-	random
+	random :INTEGER
 		--Random pour la sortie aléatoire du Meowth `marmotte'
 		local
 	      l_time: TIME
@@ -452,7 +462,8 @@ feature {NONE} --Routine
 	      l_seed := l_seed * 60 + l_time.minute
 	      l_seed := l_seed * 60 + l_time.second
 	      l_seed := l_seed * 1000 + l_time.milli_second
-	      create random_sequence.set_seed (l_seed)
+	      result := l_seed \\ 20 + 1
+	      --create random_sequence.set_seed (l_seed)
 	    end
 	id:INTEGER
 	-- Numéro d'identification du joueur

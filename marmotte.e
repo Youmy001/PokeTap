@@ -26,7 +26,6 @@ feature -- Access
 			creer_image("images/meowth.png")
 			set_y (a_y)
 			set_x (a_x)
-			a := y
 			z := 56
 			ensure
 				screen_is_not_null : not screen.is_default_pointer
@@ -47,6 +46,9 @@ feature -- Access
 			{SDL_WRAPPER}.set_SDL_Rect_w (targetarea, l_bmp_w)
 			{SDL_WRAPPER}.set_SDL_Rect_h (targetarea, l_bmp_h)
 
+			if z = 56 then
+				a := y
+			end
 			if not sort_trou then
 				rentrer_trou
 			else
