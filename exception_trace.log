@@ -233,3 +233,25 @@ GAMES               root's creation
 Catcall detected in {SQLITE_STATEMENT_EXTERNALS}.sqlite3_db_handle for arg#1: expected SQLITE_API but got ANY
 Catcall detected in {SQLITE_STATEMENT_EXTERNALS}.sqlite3_db_handle for arg#1: expected SQLITE_API but got SPECIAL [CHARACTER_8]
 Catcall detected in {SQLITE_STATEMENT_EXTERNALS}.sqlite3_db_handle for arg#1: expected SQLITE_API but got ANY
+
+jeu_marmotte: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Root thread            0x0 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+GAMES               single_player @59      set_texte:                   
+<00000000031D0420>                         Feature call on void target.  Fail
+-------------------------------------------------------------------------------
+GAMES               single_player @59                                   
+<00000000031D0420>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+GAMES               make_local @41                                      
+<00000000031D0420>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+GAMES               root's creation                                     
+<00000000031D0420>                         Routine failure.              Exit
+-------------------------------------------------------------------------------

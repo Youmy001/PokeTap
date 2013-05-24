@@ -155,13 +155,13 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			l_fond_ecran: FOND_ECRAN
 			l_quit_bool: BOOLEAN
 			l_mousemotion, l_mousedown, l_quit: NATURAL_8
-			l_texte_pointage: TEXTE
+			l_texte_pointage, l_temp: TEXTE
 			l_texte_nom: TEXTE
 			l_texte_other_pointage: TEXTE
 			l_texte_other_nom:TEXTE
 			l_thread_reseau:RESEAU_THREAD
 			l_trou_liste:LIST[TROU]
-
+			l_temps_ctr:INTEGER
 			l_game_music:BRUIT
 			l_hammer_sound:BRUIT
 
@@ -216,7 +216,6 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				l_texte_other_pointage.set_y (560)
 				--nom
 				create l_texte_other_nom.make (l_screen)
-				l_texte_other_nom.set_texte ("Testing")
 				l_texte_other_nom.set_texte (l_other_marteau.get_nom)
 				l_texte_other_nom.set_x (490)
 				l_texte_other_nom.set_y (560)
@@ -250,6 +249,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 
 			-- Temps debut de partie
 			l_debut := {SDL_WRAPPER}.SDL_GetTicks
+			print (l_debut)
 
 			from
 				l_quit := {SDL_WRAPPER}.SDL_QUIT
@@ -263,9 +263,13 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 					l_marmotte.set_y (l_trou_liste[l_random].y)
 				end
 
-				l_now:={SDL_WRAPPER}.SDL_GetTicks
-
-				if l_now > l_debut+120000 then
+				create l_temp.make (l_screen)
+				l_now := {SDL_WRAPPER}.SDL_GetTicks - l_debut
+				l_temps_ctr := (120000 - l_now)//1000
+				l_temp.set_texte ("temps restant : " + l_temps_ctr.out)
+				l_temp.set_x (25)
+				l_temp.set_y (600)
+				if l_now > 120000 then
 					l_quit_bool:=true
 				end
 
@@ -332,6 +336,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				l_texte_pointage.affiche_texte
 				l_texte_nom.affiche_texte
 				l_marteau.afficher
+				l_temp.affiche_texte
 
 				if l_suite > 9 then
 					l_ajout:=2
@@ -339,7 +344,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 					l_ajout:=1
 				end
 					-- Wait 17ms (for 60fps)
-				delay (17)
+				delay (1)
 					-- Display a frame
 				l_ctr := flip (l_screen)
 
@@ -479,6 +484,7 @@ feature {NONE} --Routine
 		local
 	      l_time: TIME
 	      l_seed: INTEGER
+	      random_sequence:RANDOM
 	    do
 	         -- This computes milliseconds since midnight.
 	         -- Milliseconds since 1970 would be even better.
@@ -487,7 +493,6 @@ feature {NONE} --Routine
 	      l_seed := l_seed * 60 + l_time.minute
 	      l_seed := l_seed * 60 + l_time.second
 	      l_seed := l_seed * 1000 + l_time.milli_second
-	      print(l_seed)
 	      result := l_seed \\ 20 + 1
 	      --create random_sequence.set_seed (l_seed)
 	    end
@@ -499,7 +504,7 @@ feature {NONE} --Routine
 	-- Nom du joueur
 	bdd:DATABASE
 	-- Instance de la classe `DATABASE'
-	random_sequence:RANDOM
+
 invariant
 	id_is_at_least_0: id >= 0
 	pointage_is_at_least_0: pointage >= 0

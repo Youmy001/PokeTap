@@ -19,10 +19,7 @@ feature
 			a_x_is_above_0 : a_x >= 0
 			a_y_is_above_0 : a_y >= 0
 		local
-			l_trou:STRING
-			l_c_trou:C_STRING
 			l_bmp_w, l_bmp_h: INTEGER
-			l_memory_manager: POINTER
 			l_x, l_y: INTEGER_16
 
 		do
