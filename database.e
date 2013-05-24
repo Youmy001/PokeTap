@@ -96,32 +96,37 @@ feature
 			db.commit
 		end
 feature
-	get_best_pointage
+	get_best_pointage(a_nom:STRING):INTEGER
 	-- Trouve le meilleur pointage dans `Current'
 		local
 			l_query:SQLITE_QUERY_STATEMENT
 		do
-			create l_query.make ("SELECT name, score FROM pointage ORDER BY score DESC;", db)
-			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
-				local
-					j, j_count: NATURAL
-				do
-						--	print ("> Row " + ia_row.index.out + ": ")
+			create l_query.make ("SELECT score FROM pointage ORDER BY score DESC LIMIT 0,1;", db)
+--			l_query.execute (agent  (ia_row: SQLITE_RESULT_ROW): BOOLEAN
+--				local
+--					j, j_count: NATURAL
+--				do
+--						--	print ("> Row " + ia_row.index.out + ": ")
 
-					from
-						j := 1
-						j_count := ia_row.count
-					until
-						j > j_count
-					loop
-						print (ia_row.column_name (j))
-						print (", ")
-						print (ia_row.string_value (j))
-						print ("%N")
-						j := j + 1
-					end
-					print ("%N")
-				end)
+--					from
+--						j := 1
+--						j_count := ia_row.count
+--					until
+--						j > j_count
+--					loop
+--						print (ia_row.column_name (j))
+--						print (", ")
+--						print (ia_row.string_value (j))
+--						print ("%N")
+--						j := j + 1
+--					end
+--					print ("%N")
+--				end)
+			across
+				l_query.execute_new	as l_cursor
+			loop
+				Result:=l_cursor.item.integer_value (1)
+			end
 		end
 
 	db: SQLITE_DATABASE
