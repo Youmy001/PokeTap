@@ -174,8 +174,15 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 			l_now:INTEGER -- Heure actuelle
 
 		do
-			-- Initialiser la fenêtre et SDL
+
+			create bdd.make
 			l_screen := a_screen
+			-- Create Player
+			print ("Entrez votre nom : ")
+			io.readLine
+			create l_marteau.make (l_screen, io.last_string, bdd)
+				-- Initialiser la fenêtre et SDL
+
 			l_disable := disable
 
 			create l_game_music.make ("mp3")
@@ -186,15 +193,11 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 
 			l_ctr := show_cursor_disable (l_disable)
 			create l_fond_ecran.make_fond (l_screen)
-			create bdd.make
 
 			l_ajout:=1
 			l_suite:=0
 
-				-- Create Player
-			print ("Entrez votre nom : ")
-			io.readLine
-			create l_marteau.make (l_screen, io.last_string, bdd)
+
 			if a_game_mode > 0 then
 				create l_other_marteau.make (l_screen, " ", bdd)
 				create l_thread_reseau.make (l_marteau, l_other_marteau, a_game_mode)

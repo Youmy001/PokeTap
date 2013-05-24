@@ -255,3 +255,53 @@ GAMES               make_local @41
 GAMES               root's creation                                     
 <00000000031D0420>                         Routine failure.              Exit
 -------------------------------------------------------------------------------
+
+jeu_marmotte: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Child thread           0x174 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+RESEAU_SERVEUR      recoit @6              result_is_not_empty:         
+<00000000030F036C>                         Postcondition violated.       Fail
+-------------------------------------------------------------------------------
+RESEAU_SERVEUR      recoit @6                                           
+<00000000030F036C>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_THREAD       execute @3                                          
+<00000000030F0180>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_THREAD       thr_main @3                                         
+<00000000030F0180>  (From THREAD)          Routine failure.              Rescue
+-------------------------------------------------------------------------------
+GAMES               root's creation                                     
+<00000000030F0060>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+jeu_marmotte: system execution failed.
+Following is the set of recorded exceptions:
+
+******************************** Thread exception *****************************
+In thread           Child thread           0x174 (thread id)
+*******************************************************************************
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+RESEAU_SERVEUR      recoit @6              result_is_not_empty:         
+<000000000354036C>                         Postcondition violated.       Fail
+-------------------------------------------------------------------------------
+RESEAU_SERVEUR      recoit @6                                           
+<000000000354036C>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_THREAD       execute @3                                          
+<0000000003540180>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+RESEAU_THREAD       thr_main @3                                         
+<0000000003540180>  (From THREAD)          Routine failure.              Rescue
+-------------------------------------------------------------------------------
+GAMES               root's creation                                     
+<0000000003540060>                         Routine failure.              Exit
+-------------------------------------------------------------------------------

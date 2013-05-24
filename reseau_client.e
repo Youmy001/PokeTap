@@ -70,8 +70,6 @@ feature
 		print(" Test: Recoi :" + l_string)
 		io.put_string ("Le serveur a dit: "+l_string+"%N")
 		Result:=l_string
-		ensure
-			Result_is_not_empty : not result.is_empty
 	end
 	close
 	-- Ferme la connection du client

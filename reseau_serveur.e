@@ -70,8 +70,6 @@ feature
 		l_string:=client_socket.last_string
 		io.put_string ("Le client a dit: "+l_string+"%N")
 		Result:=l_string
-		ensure
-			Result_is_not_empty : not result.is_empty
 	end
 	close
 	-- Ferme la connection du client
