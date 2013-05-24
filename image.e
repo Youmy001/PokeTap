@@ -64,9 +64,15 @@ feature
 				ensure
 						result_is_at_least_0 : Result >= 0
 			end
+	destroy(a_screen:POINTER)
+		-- Détruit la surface `screen'
+		require
+			a_screen_is_not_null : not a_screen.is_default_pointer
+		do
+			{SDL_WRAPPER}.SDL_FreeSurface(a_screen)
+		end
 
-
-feature {NONE}
+feature {GAMES}
 
 		set_x(a_x:INTEGER_16)
 		-- Change la coordonnée x dans `targetarea' pour `a_x'
@@ -97,13 +103,7 @@ feature{NONE}--Routine
 				result_is_not_null : not Result.is_default_pointer
 		end
 
-	destroy
-		-- Détruit la surface `screen'
-		require
-			screen_is_not_null : not screen.is_default_pointer
-		do
-			{SDL_WRAPPER}.SDL_FreeSurface(screen)
-		end
+
 
 infile:POINTER
 -- Pointeur vers une image
