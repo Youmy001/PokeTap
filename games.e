@@ -265,7 +265,6 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 						-- Mouse click event
 					if {SDL_WRAPPER}.get_SDL_Event_Type (l_event) = l_mousedown then
 						l_marteau.start_animation
-						print(random.out + " " )
 						l_hammer_sound.sound_play(-1,0)
 						if l_marmotte.is_collision(l_event) then
 							l_pointage := l_marteau.get_pointage
