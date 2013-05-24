@@ -557,7 +557,6 @@ feature {NONE} --Routine
 		local
 	      l_time: TIME
 	      l_seed: INTEGER
-	      random_sequence:RANDOM
 	    do
 	         -- This computes milliseconds since midnight.
 	         -- Milliseconds since 1970 would be even better.
