@@ -271,11 +271,11 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				end
 
 				l_now := {SDL_WRAPPER}.SDL_GetTicks - l_debut
-				l_temps_ctr := (240000 - l_now)//1000
+				l_temps_ctr := (120000 - l_now)//1000
 				l_temp.set_texte ("temps restant : " + l_temps_ctr.out)
 				l_temp.set_x (25)
 				l_temp.set_y (600)
-				if l_now > 240000 then
+				if l_now > 120000 then
 					l_quit_bool:=true
 				end
 
@@ -341,8 +341,8 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				end
 				l_texte_pointage.affiche_texte
 				l_texte_nom.affiche_texte
-				l_marteau.afficher
 				l_temp.affiche_texte
+				l_marteau.afficher
 
 				if l_suite > 9 then
 					l_ajout:=2

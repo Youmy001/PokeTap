@@ -68,7 +68,6 @@ feature
 	do
 		client_socket.read_line
 		l_string:=client_socket.last_string
-		io.put_string ("Le client a dit: "+l_string+"%N")
 		Result:=l_string
 	end
 
