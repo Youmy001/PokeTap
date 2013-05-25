@@ -42,29 +42,29 @@ feature {GAMES} -- Main
 		end
 
 	execute
+	local
+		l_pointage:STRING
 		do
---			other_name_mutex.lock
---			if is_server then
---				other_marteau.set_nom (reseau_serveur.recoit)
---				reseau_serveur.envoye (player_marteau.nom)
---			else
---				reseau_client.envoye (player_marteau.nom)
---				other_marteau.set_nom (reseau_client.recoit)
---			end
---			other_name_mutex.unlock
+
 			from
 			until
 				stop_thread
 			loop
 				if is_server  then
 					player_marteau.network_mutex.lock
-					other_marteau.set_pointage (reseau_serveur.recoit_integer)
+					l_pointage:=reseau_serveur.recoit
+					if not l_pointage.is_empty then
+					    other_marteau.set_pointage (l_pointage.to_integer_32)
+					end
 					player_marteau.network_mutex.unlock
 					reseau_serveur.envoye (player_marteau.pointage.out)
 				else
 					reseau_client.envoye (player_marteau.pointage.out)
 					player_marteau.network_mutex.lock
-					other_marteau.set_pointage (reseau_client.recoit_integer)
+					l_pointage:=reseau_client.recoit
+					if not l_pointage.is_empty then
+					    other_marteau.set_pointage (l_pointage.to_integer_32)
+					end
 					player_marteau.network_mutex.unlock
 				end
 			end
