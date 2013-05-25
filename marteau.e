@@ -25,6 +25,7 @@ feature -- Access
 			make_anim(screen,"images/os",5)
 			set_x(0)
 			set_y(0)
+			create network_mutex.make
 				--Setup player name
 			set_nom(a_nom)
 

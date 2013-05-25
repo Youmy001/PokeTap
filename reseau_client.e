@@ -73,6 +73,15 @@ feature
 		io.put_string ("Le serveur a dit: "+l_string+"%N")
 		Result:=l_string
 	end
+	recoit_integer:INTEGER
+	local
+		l_int:INTEGER
+	do
+		socket.read_line
+		l_int := socket.last_integer
+		result := l_int
+	end
+
 	close
 	-- Ferme la connection du client
 		require

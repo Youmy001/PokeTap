@@ -52,20 +52,19 @@ feature {GAMES} -- Main
 --				other_marteau.set_nom (reseau_client.recoit)
 --			end
 --			other_name_mutex.unlock
-
 			from
 			until
 				stop_thread
 			loop
 				if is_server  then
 					player_marteau.network_mutex.lock
-					other_marteau.set_pointage (reseau_serveur.recoit.to_integer)
+					other_marteau.set_pointage (reseau_serveur.recoit_integer)
 					player_marteau.network_mutex.unlock
 					reseau_serveur.envoye (player_marteau.pointage.out)
 				else
 					reseau_client.envoye (player_marteau.pointage.out)
 					player_marteau.network_mutex.lock
-					other_marteau.set_pointage (reseau_client.recoit.to_integer)
+					other_marteau.set_pointage (reseau_client.recoit_integer)
 					player_marteau.network_mutex.unlock
 				end
 			end
