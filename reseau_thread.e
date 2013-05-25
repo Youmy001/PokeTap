@@ -58,11 +58,15 @@ feature {GAMES} -- Main
 				stop_thread
 			loop
 				if is_server  then
-					other_marteau.set_pointage (reseau_serveur.recoit.to_integer_32)
+					player_marteau.network_mutex.lock
+					other_marteau.set_pointage (reseau_serveur.recoit.to_integer)
+					player_marteau.network_mutex.unlock
 					reseau_serveur.envoye (player_marteau.pointage.out)
 				else
 					reseau_client.envoye (player_marteau.pointage.out)
-					other_marteau.set_pointage (reseau_client.recoit.to_integer_32)
+					player_marteau.network_mutex.lock
+					other_marteau.set_pointage (reseau_client.recoit.to_integer)
+					player_marteau.network_mutex.unlock
 				end
 			end
 		end

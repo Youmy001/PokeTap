@@ -19,7 +19,6 @@ feature -- Access
 	-- Initialise `Current' dans `a_screen' avec le nom `a_nom' et l'insère dans la database `a_bdd'
 		require
 			a_screen_is_not_null : not a_screen.is_default_pointer
-			a_nom_is_not_empty : not a_nom.is_empty
 		do
 			screen:=a_screen
 			creer_image("images/os/1.png")
@@ -55,7 +54,9 @@ feature -- Access
 		require
 			a_pointage_is_at_least_0 : a_pointage >= 0
 		do
+			network_mutex.lock
 			pointage:=a_pointage
+			network_mutex.unlock
 			ensure
 				pointage_is_at_least_0 : pointage >= 0
 		end
@@ -121,6 +122,7 @@ anim_click:ANIMATION
 -- Instance de l'animation
 in_animation:BOOLEAN
 -- Indique si le marteau est en animation
+network_mutex:MUTEX
 
 
 	invariant

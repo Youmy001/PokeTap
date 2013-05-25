@@ -271,11 +271,11 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				end
 
 				l_now := {SDL_WRAPPER}.SDL_GetTicks - l_debut
-				l_temps_ctr := (120000 - l_now)//1000
+				l_temps_ctr := (240000 - l_now)//1000
 				l_temp.set_texte ("temps restant : " + l_temps_ctr.out)
 				l_temp.set_x (25)
 				l_temp.set_y (600)
-				if l_now > 120000 then
+				if l_now > 240000 then
 					l_quit_bool:=true
 				end
 
@@ -335,7 +335,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 				l_marmotte.animation_marmotte
 
 				if a_game_mode > 0 then
-					l_texte_other_pointage.set_texte (l_other_marteau.pointage.out)
+					l_texte_other_pointage.set_texte (l_other_marteau.pointage.out+ " points")
 					l_texte_other_pointage.affiche_texte
 					l_texte_other_nom.affiche_texte
 				end
@@ -354,7 +354,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 					-- Display a frame
 				l_ctr := flip (l_screen)
 
-				full_collect
+				--full_collect
 			end
 			l_marteau.destroy(l_screen)
 			l_fond_ecran.destroy (l_screen)
