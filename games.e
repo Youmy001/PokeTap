@@ -354,7 +354,7 @@ single_player(a_screen:POINTER; a_game_mode:INTEGER)
 					-- Display a frame
 				l_ctr := flip (l_screen)
 
-				--full_collect
+				full_collect
 			end
 			l_marteau.destroy(l_screen)
 			l_fond_ecran.destroy (l_screen)
