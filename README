@@ -5,7 +5,8 @@ PokéTap est un jeu de marmotte avec les Pokémons.
 
   - Jouez seul et essayez de vaincre votre meilleur score
   - Jouez contre un ami via une connection TCP/IP
-  - Compatible Windows et Linux  
+  - Compatible Windows et Linux
+  - Nécessite EiffelStudio 7.1 ou ultérieur
 
 Version
 -
